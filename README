@@ -1,0 +1,6 @@
+Skabelon til rapportskrivning
+
+Main.tex er hovedfilen der skal compiles, alle subfiler kan også compiles for sig.
+
+Layout.tex indeholder preamblen
+Formalier.tex indeholder en række commands der gør at sådan noget som vejleder navn og afleverings dato bliver skrevet konsekvent
