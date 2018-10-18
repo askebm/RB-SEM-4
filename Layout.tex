@@ -1,4 +1,4 @@
-%Style sheet med alle userpackage
+%Style sheet med alle usepackage
 
 
 %\usepackage[nottoc]{tocbibind}
@@ -208,3 +208,21 @@
 \renewcommand{\footrulewidth}{0.5pt}
 % Holder styr på sidehoved og side fod.
 %Her er et link til hvordan denne package virker: "http://mirrors.dotsrc.org/ctan/macros/latex/contrib/fancyhdr/fancyhdr.pdf".
+
+%===========================================================================
+%================= Allow the use of \includesvg, via inkscape===============
+%===========================================================================
+\usepackage{calc}
+
+\newcommand{\executeiffilenewer}[3]{%
+\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+{\pdffilemoddate{#2}}>0%
+{\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{% 
+\executeiffilenewer{#1.svg}{#1.pdf}
+{inkscape -z -D --file=#1.svg --export-pdf=#1.pdf --export-latex}
+\input{#1.pdf_tex}
+}
+% Kilde: http://ctan.math.utah.edu/ctan/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf
+% Størrelse kan blive sat med \def\svgwidth{<size>} eller \def\svgscale{<scale>} umiddelbart før \includesvg
