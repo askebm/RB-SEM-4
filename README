@@ -4,3 +4,7 @@ Main.tex er hovedfilen der skal compiles, alle subfiler kan også compiles for s
 
 Layout.tex indeholder preamblen
 Formalier.tex indeholder en række commands der gør at sådan noget som vejleder navn og afleverings dato bliver skrevet konsekvent
+
+Ved anvendelse af Bibtex compile i følgende rækkefølge: pdflatex, bibtax, pdflatex, pdflatex
+Ved anvendelse af inkscape huske flag -shell-escape
+
