@@ -5,16 +5,27 @@
 \section{SPI}
 \label{sec:indledning}
 
-Datablad -
-\cite{xilinx2019fpga}
 \subsection{FPGA - PORT}
 \begin{itemize}
-  \item SPI i/o
+  \item SPI:
   \begin{itemize}
-    \item sclk
-    \item mosi
-    \item miso
-    \item ss
+    \item sclk - input
+    \item mosi - input
+    \item miso - output
+    \item ss - input
+  \end{itemize}
+  \item tx\_data - input:
+  \begin{itemize}
+    \item Position - 12 bit signed
+    \item Velocity - 12 bit signed
+    \item Current - 12 bit unsigned
+    \item index - 1 bit
+  \end{itemize}
+  \item rx\_data - output
+  \begin{itemize}
+    \item pwm motor 0 - 8 bit unsigned
+    \item pwm motor 1 - 8 bit unsigned
+  
   \end{itemize}
 
 \end{itemize}
@@ -22,7 +33,8 @@ Datablad -
 \subsection{FSM - States}
 \begin{itemize}
   \item Idel
-  \item
+  \item rd\_command (read commands and set pwm signals) 24 bit recive buffer
+  \item wr\_data (returns data to tiva) 2x30 bits
 \end{itemize}
 
 \subsection{Literature}
