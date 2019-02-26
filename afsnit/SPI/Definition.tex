@@ -1,0 +1,61 @@
+\documentclass[../../main]{subfiles}
+\begin{document}
+\subsection{Definition}
+\label{sub:definition}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ll}
+		\textbf{Tiva}& \textbf{Datatype}  \\
+		Velocity/PWM& 8 bit unsigned \\ 
+		\textbf{FPGA}& \\
+		Position& 12 bit signed \\
+		Velocity& 12 bit signed \\
+		Amps& 12 bit unsigned \\
+		Index& 1 bit \\
+		Reserved for future use& 3 bit
+	\end{tabular}
+	\caption{Datatypes}
+	\label{tab:spi_datatypes}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Package format - Tiva}
+	\label{tab:package_format_tiva}
+	\begin{tabular}{|p{4cm}|*{4}{p{.25cm}|}}
+		\multicolumn{1}{l}{0\hfill7}& \multicolumn{4}{c}{8\hfill11}\\
+		\hline
+		Velocity M0  - 8bits & R P 0 & R V 0 & R A 0 & R I 0\\
+		\hline
+		Velocity M1  - 8bits & R P 1 & R V 1 & R A 1 & R I 1\\
+		\hline
+	\end{tabular}
+\end{table}
+\begin{table}[h]
+	\centering
+	\caption{Shorthand}
+	\label{tab:shorthand}
+	\begin{tabular}{ll}
+	RPX & Request position from motor X\\
+	RVX & Request velocity from motor X\\
+	RAX & Request amps from motor X\\
+	RIX & Request index from moter X
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Package format - FPGA}
+	\label{tab:package_format_fpga}
+	\begin{tabular}{*{8}{p{1.2cm}}}
+		\hline
+		\multicolumn{4}{|c|}{Request0 - 1 to 27 bits}
+		&\multicolumn{4}{c|}{Request1 - 1 to 27 bits}\\
+		\multicolumn{1}{|c}{Position0} &Velocity0&Amp0&\multicolumn{1}{c|}{Index0}&
+		Position1&Velocity1&Amp1&\multicolumn{1}{c|}{Index1}\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\end{document}
