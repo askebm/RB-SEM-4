@@ -2,12 +2,44 @@
 
 
 \begin{document}
-\section{Current Sensor}
-\label{sec:indledning}
+\section*{Current Sensor}
+
+\subsection*{Considerations}
+
+The current sensor system needs to provide individual measurements for each individual motor on the pan-tilt system.
+
+Each driver board can control two motor with a singular supply input which mean that current for each individual motor can only be messured at the PWM output as the input wourd yield the combined current of both motors.
 
 
-Datablad -
-\cite{xilinx2019fpga}
+
+\subsection*{FPGA sense circuit}
+
+The Basys 3 Artix-7 FPGA has an ADC range of 0V-1V therefore the current sense shunt resistor need to by matched with the expected current draw by the system.
+
+Each motor has a load current of 530 mA and a stall current of 2,5 A
+Assuming each motor is monitored separately this means that the needed resistance providing a 20\% margin is
+\begin{equation*}
+  \begin{split}
+    R&=\frac{U}{I}\\
+    R&=\frac{1V}{0.530A\cdot1.20} \\
+    R&=\frac{1V}{0.636A} \\
+    R&=1,57\Omega
+  \end{split}
+\end{equation*}
+
+This of course courses a 1V drop from supply voltage witch is not acceptable.
+
+If a $0.1\Omega$ resistor is used the resulting voltage drop is $0.636A\cdot0.1\Omega = 0.0636V$
+
+This can be amplified using a rail to rail opamp with a gain of
+
+$$
+A = \frac{1V}{0.636V} = 15.72
+$$
+
+
+
+
 
 
 
