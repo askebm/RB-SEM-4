@@ -1,14 +1,14 @@
-\documentclass[../../main]{subfiles}
+\documentclass[../../../main]{subfiles}
 \begin{document}
 \subsection{Definition}
 \label{sub:definition}
 Full duplex, 2MHz.
-
+Hej med dig
 \begin{table}[h]
 	\centering
 	\begin{tabular}{ll}
 		\textbf{Tiva}& \textbf{Datatype}  \\
-		Velocity/PWM& 8 bit unsigned \\ 
+		Velocity/PWM& 9 bit signed \\
 		\textbf{FPGA}& \\
 		Position& 12 bit signed \\
 		Velocity& 12 bit signed \\
@@ -24,12 +24,12 @@ Full duplex, 2MHz.
 	\centering
 	\caption{Package format - Tiva}
 	\label{tab:package_format_tiva}
-	\begin{tabular}{|p{4cm}|*{4}{p{.25cm}|}}
-		\multicolumn{1}{l}{0\hfill7}& \multicolumn{4}{c}{8\hfill11}\\
+	\begin{tabular}{|p{4.25cm}|*{4}{p{.25cm}|}}
+		\multicolumn{1}{l}{0\hfill8}& \multicolumn{4}{c}{9\hfill12}\\
 		\hline
-		Velocity M0  - 8bits & R P 0 & R V 0 & R A 0 & R I 0\\
+		Velocity M0  - 9bits & R P 0 & R V 0 & R A 0 & R I 0\\
 		\hline
-		Velocity M1  - 8bits & R P 1 & R V 1 & R A 1 & R I 1\\
+		Velocity M1  - 9bits & R P 1 & R V 1 & R A 1 & R I 1\\
 		\hline
 	\end{tabular}
 \end{table}
