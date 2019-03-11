@@ -2,7 +2,7 @@
 \begin{document}
 \subsubsection{Definition}
 \label{sub:definition}
-Full duplex, 2MHz.
+Full duplex, 2MHz, Read on rising edge.
 \begin{table}[h]
 	\centering
 	\begin{tabular}{ll}
@@ -59,5 +59,12 @@ Full duplex, 2MHz.
 		\hline
 	\end{tabular}
 \end{table}
+
+\begin{tikztimingtable}[timing/font=\normalfont]
+	{2 MHz Clock}&4L2t14{2t}2t2L\\
+	{Slave Enable}&2H18L2H\\
+	{MOSI}&3L8{2D{}}3L\\
+	{MISO}&3U8{2D{}}3U\\
+\end{tikztimingtable}
 
 \end{document}
