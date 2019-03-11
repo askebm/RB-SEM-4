@@ -3,7 +3,6 @@
 \subsubsection{Definition}
 \label{sub:definition}
 Full duplex, 2MHz.
-Hej med dig
 \begin{table}[h]
 	\centering
 	\begin{tabular}{ll}
@@ -13,8 +12,7 @@ Hej med dig
 		Position& 12 bit signed \\
 		Velocity& 12 bit signed \\
 		Amps& 12 bit unsigned \\
-		Index& 1 bit \\
-		Reserved for future use& 3 bit
+		Index& 12 bit unsigned 
 	\end{tabular}
 	\caption{Datatypes}
 	\label{tab:spi_datatypes}
@@ -24,12 +22,15 @@ Hej med dig
 	\centering
 	\caption{Package format - Tiva}
 	\label{tab:package_format_tiva}
-	\begin{tabular}{|p{4.25cm}|*{4}{p{.25cm}|}}
-		\multicolumn{1}{l}{0\hfill8}& \multicolumn{4}{c}{9\hfill12}\\
+	\begin{tabular}{|*{12}{p{.25cm}|}}
 		\hline
-		Velocity M0  - 9bits & R P 0 & R V 0 & R A 0 & R I 0\\
+		0&1&2&3&4&5&6&7&8&9&10&11\\ 
 		\hline
-		Velocity M1  - 9bits & R P 1 & R V 1 & R A 1 & R I 1\\
+		\multicolumn{9}{|c|}{Velocity M0  - 9bits} & R P 0 & R V 0 & R A 0 \\
+		\hline
+		\multicolumn{9}{|c|}{Velocity M1  - 9bits} & R P 1 & R V 1 & R A 1 \\
+		\hline
+		R I & R M 0 & R M 1 & \multicolumn{9}{c|}{Reserved for future use}\\
 		\hline
 	\end{tabular}
 \end{table}
@@ -41,7 +42,8 @@ Hej med dig
 	RPX & Request position from motor X\\
 	RVX & Request velocity from motor X\\
 	RAX & Request amps from motor X\\
-	RIX & Request index from moter X
+	RMX & Reset position of motor X\\
+	RI & Request index values from homing sensors
 	\end{tabular}
 \end{table}
 
@@ -49,12 +51,11 @@ Hej med dig
 	\centering
 	\caption{Package format - FPGA}
 	\label{tab:package_format_fpga}
-	\begin{tabular}{*{8}{p{1.2cm}}}
+	\begin{tabular}{|*{12}{p{.25cm}|}}
 		\hline
-		\multicolumn{4}{|c|}{Request0 - 1 to 27 bits}
-		&\multicolumn{4}{c|}{Request1 - 1 to 27 bits}\\
-		\multicolumn{1}{|c}{Position0} &Velocity0&Amp0&\multicolumn{1}{c|}{Index0}&
-		Position1&Velocity1&Amp1&\multicolumn{1}{c|}{Index1}\\
+		\multicolumn{12}{|c|}{Request0 - 0 to 36 bits}\\
+		\multicolumn{12}{|c|}{Request1 - 0 to 36 bits}\\
+		\multicolumn{12}{|c|}{Request Hall index sensors - 0 to 12 bits}\\
 		\hline
 	\end{tabular}
 \end{table}
