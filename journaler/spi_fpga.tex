@@ -1,0 +1,46 @@
+\documentclass[../main]{subfiles}
+
+
+\begin{document}
+\section{SPI}
+\label{sec:indledning}
+
+\subsection{FPGA - PORT}
+\begin{itemize}
+  \item SPI:
+  \begin{itemize}
+    \item sclk - input
+    \item mosi - input
+    \item miso - output
+    \item ss - input
+  \end{itemize}
+  \item tx\_data - input:
+  \begin{itemize}
+    \item Position - 12 bit signed
+    \item Velocity - 12 bit signed
+    \item Current - 12 bit unsigned
+    \item index - 1 bit
+  \end{itemize}
+  \item rx\_data - output
+  \begin{itemize}
+    \item pwm motor 0 - 8 bit unsigned
+    \item pwm motor 1 - 8 bit unsigned
+  
+  \end{itemize}
+
+\end{itemize}
+
+\subsection{FSM - States}
+\begin{itemize}
+  \item Idel
+  \item rd\_command (read commands and set pwm signals) 24 bit recive buffer
+  \item wr\_data (returns data to tiva) 2x30 bits
+\end{itemize}
+
+\subsection{Literature}
+SPI FPGA https://www.digikey.com/eewiki/pages/viewpage.action?pageId=7569477
+
+
+
+
+\end{document}
