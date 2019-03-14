@@ -3,6 +3,17 @@
 \subsubsection{Definition}
 \label{sub:definition}
 Full duplex, 2MHz, Read on rising edge.
+\\
+When communication initiates, Slave Enable is driven low and 1 SPI clock cycle later 
+data will be read on rising edge from the SPI clock, as seen in figure \ref{fig:spi_timing_diagram}.
+\\
+Each datagram is 12 bits in size and the package format send by the Tiva 
+\todo{Hvordan refererer vi til Tivaen}
+can be seen in table \ref{tab:package_format_tiva} and the package format send by the FPGA
+can be seen in table \ref{tab:package_format_fpga}.
+In the package format the bit number indicates the order of transmission starting with 0.
+byt nuberr
+
 \begin{table}[h]
 	\centering
 	\begin{tabular}{ll}
@@ -14,7 +25,7 @@ Full duplex, 2MHz, Read on rising edge.
 		Amps& 12 bit unsigned \\
 		Index& 12 bit unsigned 
 	\end{tabular}
-	\caption{Datatypes}
+	\caption{Data types}
 	\label{tab:spi_datatypes}
 \end{table}
 
@@ -76,11 +87,16 @@ Full duplex, 2MHz, Read on rising edge.
 	\end{tabular}
 \end{table}
 
+\begin{figure}[h]
+	\center
 \begin{tikztimingtable}[timing/font=\normalfont]
 	{2 MHz Clock}&4L2t14{2t}2t2L\\
 	{Slave Enable}&2H18L2H\\
 	{MOSI}&3L8{2D{}}3L\\
 	{MISO}&3U8{2D{}}3U\\
 \end{tikztimingtable}
+\caption{SPI timing diagram}
+\label{fig:spi_timing_diagram}
+\end{figure}
 
 \end{document}
