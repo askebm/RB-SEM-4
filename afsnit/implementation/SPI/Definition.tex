@@ -51,12 +51,28 @@ Full duplex, 2MHz, Read on rising edge.
 	\centering
 	\caption{Package format - FPGA}
 	\label{tab:package_format_fpga}
-	\begin{tabular}{|*{12}{p{.25cm}|}}
+	\begin{tabular}{|c|*{12}{p{.25cm}|}}
 		\hline
-		\multicolumn{12}{|c|}{Request0 - 0 to 36 bits}\\
-		\multicolumn{12}{|c|}{Request1 - 0 to 36 bits}\\
-		\multicolumn{12}{|c|}{Request Hall index sensors - 0 to 12 bits}\\
+		If flag is 1 in request msg&0&1&2&3&4&5&6&7&8&9&10&11\\
 		\hline
+		RP0& \multicolumn{12}{c|}{Position}\\
+		\hline
+		RV0& \multicolumn{12}{c|}{Velocity}\\
+		\hline
+		RA0& \multicolumn{12}{c|}{Amps}\\
+		\hline
+		RP1& \multicolumn{12}{c|}{Position}\\
+		\hline
+		RV1& \multicolumn{12}{c|}{Velocity}\\
+		\hline
+		RA1& \multicolumn{12}{c|}{Amps}\\
+		\hline
+		RI& \multicolumn{10}{c|}{Reserved for future use}&I1&I0\\
+		\hline
+	%\multicolumn{12}{|c|}{Request0 - 0 to 36 bits}\\
+	%\multicolumn{12}{|c|}{Request1 - 0 to 36 bits}\\
+	%\multicolumn{12}{|c|}{Request Hall index sensors - 0 to 12 bits}\\
+	%\hline
 	\end{tabular}
 \end{table}
 
