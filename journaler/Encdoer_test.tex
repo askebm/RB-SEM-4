@@ -1,55 +1,103 @@
 \documentclass[../main]{subfiles}
-
-
 \begin{document}
 \section*{Testing the Encoder}
 
 \subsection*{Introduction}
-
-This journal covers tests of the quadraturdecoder software the group made
+This journal covers tests of the quadraturdecoder software produced by the project group.
 \subsection*{Considerations}
-
-According to the protocol, the encoder has to provide a position and a velocity for both the motor and the system as a whole. The data will be send to the Tiva, and the data format has to be 12 bit signed.\todo{not sure this is relevant for the consideration}
+According to the protocol, the encoder has to provide a position and a velocity for both the motor and the system as a whole. The data is to be gathered on the FpGA and send to the Tiva in a  12-bit signed data format.
 \\
-Previously tests regarding the encoder  has shown an inconsistency with it's position counting. The problem is  "drifting", where the position, in certain outer cases, would jump between two "ticks"\footnote{Exsample: If the encoder stops at postion 245, the position counter might jump between 245 and 246} which translate to 1/12 of a degree. The porpuse of this journal is to oberserve, whether or not this error has been corrected, and in case it hasn't, if it even is a problem.
+Previously tests regarding the encoder has shown an inconsistency regarding the position counting. The problem is  "drifting", where the position, in certain outer cases, would jump between two "ticks"\footnote{Exsample: If the encoder stops at postion 245, the position counter might jump between 245 and 246} which translate to 1/12 of a degree. The porpuse of this journal is to oberserve, whether or not this error has been corrected, and in case it hasn't, if it is going to prove an issue.
 
 \subsection*{Test specification and produce execute}
 The experiment is conducted by using the following equipment:
-
 \begin{itemize}
   \item Osicloscope
   \item 2x powersupplies
   \item a FPGA
   \item Pan tilt system
   \item PWM controller
+  \item phone camera
+  \item Logger Pro
 \end{itemize}
 
+\subsubsection*{Velocity experiment}
 For the first experiemnt to determine whether or not the decoder experience drifting, the following produce has been followed:
-First the setup has to be configured, with the PWM controller to 12V, the Hall sensor Vcc to 3.4V and the LOGIC\_VCC to 5V.
+First the setup has to be configured, with the PWM controller to 12V, the Hall sensor Vcc to 5.4V and the LOGIC\_VCC to 5V. The hall sensor outputs have been connected to a voltage division circuit to get a desired 3.3V output (this addition was due to an issue with getting 3.3V as the output - it had a tendency to go higher which is unfortunate for our FPGA).
 
+\subsubsection*{Position experiemnt}
+The second experiemnt is the msot important and determinating of whether or not the decodedr experiences drifting. This experiemnt is carried out by configurating the decoder in counting mode, where the position in counted in Hex is shown on the FPGA's LED display without the velocity. This is to be checked on a system with load on, so the motor that is dirving the system is selected for this test - the motor and hall sensor setup is the same as the velocity experiemnt, see the above section. Before the FPGA/decoder is turned on, the system is set in the desired starting position, then the FGA is placed in such an angle, that the system and the FPGA's display is visible on the camera\footnote{the camera is set to 1080p instead of 4K to optain a fps on 60 instead of 30}. When everything is set up and ready, the decoder is turned on and the PWM is set to 0x0F. This speed is rather slow, which is useful for when it is imported into Logger Pro. The system is set in motion and turns forward 35 times. The video of the system rotating and the counter displayed on the FPGA gets exported to Logger Pro, where whenever the system is near the starting point, the video is slowed down and advanced frame by frame until the system is directly on the starting point. The counter value on the FPGA is then noted.
 \subsection*{Results}
 
-However, at first, there turned out to be a problem with the PWm controller and the encoder frequence. It had a disruptive influence on the encoder frequnce in the sense that the frequnce jumped between 24Hz to 500Hz, with the same motor velocity. This should not have happened. The frequence should be steady on one frequence for each motor velocity. Thereforth the it has been decided to make an experiemnt to figure out, what exactly it is, that is distruptive. \\
-First the motor was set to 6V without the use of the PWM controller. This resulted in a frequnce that was stable at 157Hz and outputtet an expected signal. It continued to do so with other motor velocities. However, as stated above, if the mottor was controlled through the PWM controller, the frequency jumped and the signal was very noisy. We switched the frequncy of the PWM and that worked. \\
+\subsubsection*{Introduktion}
+At first there turned out to be a problem with the PWm controller and the encoder frequency. It had a disruptive influence on the encoder frequnce in the sense that the frequncy jumped between 24Hz to 500Hz, with a constant motor velocity. This should not happen. The frequency should be steady on one frequence for corrosponding to whatever the motor velocity is. Thereforth it has been decided to make an experiemnt to figure out, what exactly it is, that is distruptive. \\
+First the motor is set to 6V DC directly without the use of the PWM controller. This resulted in a frequncy that was stable at 157Hz and gave an expected outputtet signal. Changing the voltages given to the motor between 3V to 12V resulted a steady frequnce as epected. However, as stated above, if the mottor is controlled through the PWM controller, the frequency jumped and the signal was very noisy. To solve the problem, the frequency for how often the PWM singal was changed was switched down from 24kHz to 5kHz. This solution worked.\\
+Now the tests can begin:
 
-
+\subsubsection*{Velocity experiemnt}
+Firstly we had to check whether or not the software can handle a high velocity. There is an issue regarding high velocities where the decoder enters an "undefined" state when it is rotating with too high a velocity. This bug has replaced the bug that made the decoder drift while at very low speeds. This bug is believed to be due to mechnical restraints on the hall sensor on the fpga encoder that the decoder has been tested on first.  (diffrent from the encoder used on the motor). It might not be an issue with the hall sensors on the motor, which is why the test has to be conducted. If there is an issue with high speed inaccurricy, it might limit the maximux velocity that the motors will be allowed to rotate with. The following test has been conducted with a motor without load on:
 \begin{center}
 \begin{tabular}{ c c c c c}
- Type & Test1 & Test2 & Test3 & Test4 \\
+ Test & PWM & Velocity on FPGA & Frequncy on Osciloscope & FPGA velocity converted to Hz\\
+ \hline
 
+ 1 & 0x57 & 5/6 & 12-15Hz &\\
+ 2 & 0xFF & 0x88 & 340Hz &\\
+ 3 & 0x0F & 0x0E  & 35-36Hz & \\
+ 4 & 0x4F & 0x33 & 126-129 Hz &\\
+ 5 & 0xAF & 0x47 & 177-180Hz &\\
+ 6 & 0x78 & 0x06-0x08 & 17-19Hz & \\
 \end{tabular}
 \end{center}
+There did not seem to be a big issue with this, it handled the both higher and lower velocties fairly well. There is a small difference between the Osciloscope results and the decoders, however as can be observed, the Osciloscope flucturets. There is anotehr issue in the same tht the velocity is calculated by taking the hex value and converting it to decimal, then multiply it with 10 and divide that result with four. This is done because the Hex value 1) per 10m seconds and the Hz is of course per second and 2) because the Hz is only looking at the sensors logic high, where the decoder gets four ticks per logic high. Because of the conversion the results will differ somewhat from the Osciloscope, and beside the Osciloscope is a 100\% accurate.
+\\
+Secondly a test with load on was conducted to see if there is a change in velocity or position\footnote{The Position experiemnt is carried out in the subsetion POsition experiemnt} with load on the motor. The experiement on velocities is only conducted on $oxFF$ and $0x57$ PWM speed, since it should be most obvious in high an dlow speeds. The result for $0xFF$ is shown in tabular \ref{fig:max_speed}
+\begin{figure}[H]
+\begin{center}
+\begin{tabular}{ c c c}
+  & velocity on FPGA & velocity on Osciloscope \\
+\hline
+With load & 0x7A & 305Hz \\
+Without load & 0x88  & 340Hz\\
+\end{tabular}
+\end{center}
+\caption{The velocity with and without load on max PWM}
+\label{fig:max_speed}
+\end{figure}
+As it can be observed on
+\begin{figure}[H]
+\begin{center}
+\begin{tabular}{ c c c}
+  & velocity on FPGA & velocity on Osciloscope \\
+\hline
+With load & 3/4 & 7-10Hz \\
+Without load & 5/6  & 12-13Hz\\
+\end{tabular}
+\end{center}
+\caption{The velocity with and without load on lowest PWM}
+\label{fig:min_speed}
+\end{figure}
+The slowest velocity had the PWM value $0x57$ because this was the abselut lowest the motor could take while still rotating whem under load. Without load the motor could rotate with a lower PWM, but since it is a comparrision bwtween the velocity with and without load at Max and min PWm, the lower PWM is irrelevant. As can be observed in both the test with and without load, the velocity with load is a significantly amount slower, which is not unexpected at all. There was observed an intersting behaviour from the system when driving by the motor. With load on the encoder output seemed to jump, when the system was on its way downwards. It is beleved that reason for this is that gravity helps the rotation at a certain time. This can potentially become an issue with position counting, which is what will be tested next:
 
-Secondly we had to check whether or not the software could handle
-
-
+\subsubsection*{Position experiemnt}
+The last test needed to deem the decoder a succes, is the actual drifting experiemnt. The experiemnt consits of filming the system as it is rotating 35 times. The experiemnt is carried out with an encoder value of $0x57$.
+\begin{figure}[H]
+\begin{center}
+\begin{tabular}{ c c c}
+ Full rotations nr & ticks count & ticks count - ticks count last round  \\
+ \hline
+ 1  & 0x438  & 1080\\
+ 2  & 0x870  & 1080\\
+ 3  & 0xCA8  & 1080\\
+ 15 & 0x3F48 & 1080\\
+ 20 & 0x5460 & 1080\\
+ 30 & 0x7e90 & 1080 \\
+\end{tabular}
+\end{center}
+\caption{The position of the decoder shown and calculated by the FPGA}
+\label{fig:poition}
+\end{figure}
+It can be observed, that the decoder does not drift at all even with load on.
 \subsection*{Conclusion}
-
-
-
-
-
-
-
-
+As can be observed in figure \ref{fig:poition} that the position does not drift, not even after 30 full rotations. This is means that the group can deem the decoder a succes, and use it further on in the project. It has however been decided, that the actual velocity is not to be calculated on the FPGA, because it can not easily deal with floating points, and hence the actual velocity is not as close to the actual as anticipated. Therefore the FPGA will only calculate the velocity per 100m seconds and send this to the tiva for further calculations. 
 \end{document}
