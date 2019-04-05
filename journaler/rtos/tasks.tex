@@ -1,0 +1,40 @@
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[headheight=14pt, top=0.5cm, bottom=0.5cm, left=.5cm, right=.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage[final]{pdfpages}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+\setboolean{@twoside}{false}
+\pdfminorversion=7
+\setlength\parindent{0pt}
+
+\begin{document}
+\title{FreeRTOS design doc}
+\date{}
+\maketitle
+\vspace{-2cm}
+
+
+\section*{Tasks}
+
+\begin{itemize}
+	\item SPI Task
+	\item User Interface Task
+	\item Debug Dump Task
+	\item UART RX Task
+	\item UART TX Task	
+	\item PID A Loop Task
+	\item PID B Loop Task
+\end{itemize}
+
+
+\section*{To Be resolved:}
+
+\begin{itemize}
+	\item How to read load \%?
+\end{itemize}
+
+
+\end{document}
