@@ -4,10 +4,10 @@
 \label{sub:definition}
 Full duplex, 2MHz, Read on rising edge.
 \\
-When communication initiates, Slave Enable is driven low and 1 SPI clock cycle later 
+When communication initiates, Slave Enable is driven low and 1 SPI clock cycle later
 data will be read on rising edge from the SPI clock, as seen in figure \ref{fig:spi_timing_diagram}.
 \\
-Each datagram is 16 bits in size and the package format send by the Tiva 
+Each datagram is 16 bits in size and the package format send by the Tiva
 \todo{Hvordan refererer vi til Tivaen}
 can be seen in table \ref{tab:package_format_tiva} and the package format send by the FPGA
 can be seen in table \ref{tab:package_format_fpga}.
@@ -22,7 +22,7 @@ In the package format the bit number indicates the order of transmission startin
 		Position& 12 bit signed \\
 		Velocity& 12 bit signed \\
 		Amps& 12 bit unsigned \\
-		Home Index& 1 bit 
+		Home Index& 1 bit
 	\end{tabular}
 	\caption{Data types}
 	\label{tab:spi_datatypes}
@@ -32,7 +32,7 @@ In the package format the bit number indicates the order of transmission startin
 	\centering
 	\begin{tabular}{|*{16}{p{.3cm}|}}
 		\hline
-		0&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15\\ 
+		0&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15\\
 		\hline
 		\multicolumn{9}{|c|}{PWM  - 9bits} & M S&
 		\multicolumn{2}{p{.6cm}|}{Resp. select}& R S&
@@ -48,7 +48,7 @@ In the package format the bit number indicates the order of transmission startin
 	\begin{tabular}{ll}
 		MS & Motor Select\\
 		\hline
-		Response select &\\ & 
+		Response select &\\ &
 		\begin{tabular}{ll}
 			Position & 00\\
 			Velocity & 01\\
