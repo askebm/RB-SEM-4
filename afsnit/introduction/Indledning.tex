@@ -2,11 +2,6 @@
 
 
 \begin{document}
-
-
-
-
-
-
+This semester projects main theme is centered around the control of a dynamic system. using control theory The system itself is a pan tilt system, shown below in figure \ref{figure_pantil}. The usecase, decided by the group for the project, is mounting a stage lamp onto the system for use in theatre or similar setting. The angle of the light is controlled through a interface built around input from a ???? connected to a computer. The usecase is only theoretical and use to have a goal to work towards and requrements for the control theory aspects, meaning that a lamp will never be mounted on the system. The pan tilt system is provided assembled and requres in this project no further physical alterations. This means the project will only be describing the software and control theory decisions required to achieve a functioning pan tilt system for a stage lamp. The software will be divivded into three parts; one part written for a  FPGA xxx, one part is for a tiva C series xx and the last part is for a genreic laptop/computer. The computer part contains the UI and interface for the application used to control the system and provide any useful feedback, positiion or velocity of the systerm, for the user. The Tiva will be progreammed in C and function as the heart of the system with the control theory implemented here and an SPI connecting  itself and the FPGA. The Tiva's porpuse will esssentially be to control the system through the FPGA The FPGA will be responsible for obtaining the position from the systems two encoders and controlling the systems motors with a PWM signal recieved from the Tiva. 
 
 \end{document}
