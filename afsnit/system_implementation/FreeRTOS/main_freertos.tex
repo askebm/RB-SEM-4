@@ -1,13 +1,9 @@
 \documentclass[../../../main]{subfiles}
 
 
-\newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./figures/}{#1.pdf_tex}
-}
 \begin{document}
 
-\section*{Microcontroller implementation}
+\section{Microcontroller implementation}
 
 This section as the purpose of detailing how the software for the Tiva microcontroller is setup and why. The responsibility of the Tiva is to act as the brain of the entire system while the FPGA acts like a data acquisitions device and a hardware controller. 
 
@@ -19,36 +15,32 @@ FreeRTOS handles multiple different types of work by dividing it into user defin
 A task is a single area of responsibility that either by necessity or by convention is combined as single unit. Each task in the system (a full overview can be seen in the task diagram) can then be scheduled based on the priority is has been assigned and whether it has any meaningful work to do. 
 
 
-\section*{Scheduling}
+\section{Scheduling}
 
-In order to enable the microcontroller to run more then one task some form of scheduling must be implemented. This allows the operating system to make a choice as to what task needs processing capacity at this moment in time. In the FreeRTOS based system running on the Tiva scheduling is done trough a priority based preemption capable implementation.
+In order to enable the microcontroller to run more then one task some form of scheduling must be implemented. This allows the operating system to make a choice as to what task needs processing capacity at this moment in time. In the FreeRTOS based system running on the Tiva scheduling is done trough a priority based preemption\footnote{The ability to pause and resume processes without the process knowing.} capable implementation.
 
 The preemption capability enables the system to respond quickly to higher priority tasks becoming available for execution rather then waiting for the current task to finish on its on, it will be paused and the higher priority task executed before the lower priority one is resumed and potentially completed.
+ 
+As mentioned the priority allows the system to select more important\footnote{Defined by the programmer} processes to be run quickly when available.  
 
+\section{Inter-task communication}
 
-\begin{itemize}
-    \item Priority
-    \item Preemption
-    \item Process
-\end{itemize}
+The multi-task architecture where each task deals only in their own specific area of the system, due to the fact that the tasks need to work together there need to be a way for them to communicate.
+This is accomplished using a combination of state buffers and queues. State buffers are simple buffers keeping the last value written to it until a new value is written regardless of reads performed in that time.
 
-\section*{Inter-task communication}
+All queues in the system are FIFO\footnote{First-In-First-Out} queues allowing easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product. 
 
-\begin{itemize}
-    \item Queues
-    \item State Buffers
-\end{itemize}
+To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by simultaneous access.
 
+\section{Tasks}
 
-
-
-
-
-
-
+The entire system has been created as a task diagram in figure \ref{fig:entire_task_diagram}. 
 
 \begin{figure}[H]
 \includegraphics[width=\columnwidth]{taskdiagram_full.png}
+\caption{Task Diagram of entire system}
+\label{fig:entire_task_diagram}
 \end{figure}
+
 \end{document}
 
