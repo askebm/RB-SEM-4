@@ -1,24 +1,54 @@
 \documentclass[../../rapport/main]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{blindtext}
-\title{Determine electrical inductance of motors}
+\usepackage{amsmath,amsthm}
+ \usepackage{amssymb}
+%\usepackage{dsfont}                         % Enables double stroke fonts
+\usepackage{color}
+\usepackage[draft,inline]{fixme}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{epstopdf}
+
+\title{Determine inductance of motors}
 \maketitle
 \begin{document}
 \section{Abstract}
-The ohmic resistance of the two motors controlling the pan-tilt system gets determined.
+The inductance of the two motors controlling the pan-tilt system gets determined.
 \section{Introduction}
-The ohmic ressitance of the motors are the goal to be determined in this jounal.
+The electrical inductance of the motors are gets determined in this jounal. Every constant concerning the motor of the topframe is denoted $A_t$ while constants for the buttom frame is denoted $A_b$.
 \section{Materials and Methods}
-To determine the ohmic resistance of the motors a known voltage will be applied, causing a current to flow through the motor. Using Ohm's law we thus can determine the wanted resistance.
+
+To determien the electrical inductance of the two motors, the timeconstant method is used.\\
+firstly the motor, illustrated as a coil, is linked in series with a resistor and s PWM controlled MOSFET. This can be seen on figure (\ref{fig:inductance_circuit}). By rapidly switching the MOSFET on and off the coil inside the motor will be charged and discarged along with current flowing through the resistor. This will cause a wave pattern to show the voltage across the coil. Using an oscilloscope the time from the wave starting to the top of the wave is given as:
+$$\tau = \frac{L}{R}$$
+
+\begin{wrapfigure}
+  \label{fig:inductance_circuit}
+  \begin{center}
+    \includegraphics[width=0.3\textwidth]{screenshot-2019:05:08:14:11:39.png}
+  \end{center}
+\end{wrapfigure}
+
+
+
+\newpage
+
+By apllying this method the timeconstant is determined to be $\tau = 17.5 \cdot 10^{-6}s$. Thus the inductance with a resistor of size $22\Omega$ gets determined to be.\\
+$$L = 17.5 \cdot 10^{-6}s \cdot 22 \Omega = 3.85 \cdot 10^{-4}H$$
+The timeconstant was measured to be approximitly equal, and this therefore the case that the following is true:\\
+$$L_b=L_t=3.85 \cdot 10^{-4}H$$
+
 \section{Results}
 
+The result of this experiment is as follows.
+$$L_b = 3.85 \cdot 10^{-4}H$$
+$$L_t = 3.85 \cdot 10^{-4}H$$
 
-
-
-\section{Discussion}
-Who helped me out?
 \section{Conclusion}
 
+The electrical inductance of the motor controlling the top frame is $L_t= 3.85 \cdot 10^{-4}H$ and the resistance of the motor controlling the buttom frame is $L_b= 3.85 \cdot 10^{-4}H$.
 
 
 
