@@ -3,7 +3,7 @@
 
 \begin{document}
 
-\section{Microcontroller implementation}
+\section{FreeRTOS}
 
 This section as the purpose of detailing how the software for the Tiva microcontroller is setup and why. The responsibility of the Tiva is to act as the brain of the entire system while the FPGA acts like a data acquisitions device and a hardware controller. 
 
@@ -14,7 +14,7 @@ FreeRTOS handles system processes of different types by creating "Tasks" that ar
 
 A task is a single area of responsibility that either by necessity or by convention is combined as a single logical unit. Each task in the system (a full overview can be seen in the task diagram) can then be scheduled based on the priority it has been assigned and whether the task itself has decided that it wants to be scheduled. 
 
-\section{Scheduling}
+\subsection{Scheduling}
 
 In order to enable the microcontroller to run more then one task some form of scheduling must be implemented. This allows the operating system\footnote{FreeRTOS} to make a choice as to what tasks needs processing capacity at this moment in time. In the FreeRTOS based system running on the Tiva scheduling is done trough a priority based preemption\footnote{The ability to pause and resume processes without the process knowing.} capable implementation.
 
@@ -22,21 +22,23 @@ The preemption capability enables the system to respond quickly to higher priori
  
 As mentioned the priority allows the system to select more important\footnote{Defined by the programmer} processes to be run quickly when available.  
 
-The scheduler is run by a timer interrupt every 5ms and during this the current task is paused and the scheduler evaluates the next eligible task to run, this may be the same task that was running before and this will then be resumed, but the scheduler must be run every 5ms tick.
+The scheduler is run by a timer interrupt every 5ms and during this the current task is paused and the scheduler evaluates the next eligible task to run, this may be the same task that was running before and this will then be resumed, but the scheduler must be run every 5ms tick to ensure correct handling of priorities.
 
-\section{Subtask Communication}
+\subsection{Subtask Communication}
 
-The multiple task architecture where each task deals only in their own specific area of the system, due to the fact that the tasks need to work together there need to be a way for them to communicate.
-This is accomplished using a combination of state buffers and queues. State buffers are simple buffers keeping the last value written to it until a new value is written regardless of reads performed in that time.
+The multiple task architecture where each task deals only in their own specific area of the system requires, since the combination of tasks are designed to accomplish one or more high level objective, a way to efficiently communicate between tasks running on the system. 
+This is accomplished using a combination of state buffers and queues. 
+
+State buffers are simple buffers keeping the last value written to it until a new value is written regardless of reads performed in that time. The implementation of this concept is done trough variables of the appropriate task being declared in global scope and therefore available to every function in the system.
 
 All queues in the system are FIFO\footnote{First-In-First-Out} queues allowing easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product. 
 
-To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by simultaneous access.
+To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by interrupted write access.
 
 
 
 
-\section{Tasks}
+\subsection{Tasks}
 
 The entire system has been created as a task diagram in figure \ref{fig:entire_task_diagram}. 
 
