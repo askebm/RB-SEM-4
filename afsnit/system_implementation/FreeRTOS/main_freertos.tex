@@ -42,18 +42,31 @@ To maintain data integrity all shared-write resources are protected with semapho
 
 The entire system has been created as a task diagram in figure \ref{fig:entire_task_diagram}. 
 
+There is a number of task that exists only to provide services to other tasks, those tasks are designated system tasks. 
+
+\subsubsection{Status LED task}
+
+This task only exist to toggle an LED on the board to verify that the OS is running and has not encountered some problem that could not be resolved automatically. Therefore the task has been assigned a low priority and will be processed with spare capacity.
+
+\subsubsection{UART Tasks}%
+
+This group consists of the Transmit and Receive task which a created completely independently. The TX task accepts data via a queue and sends that out the system via UART. The RX task is the inverse of this. The tasks are a part of making the system work and therefore run with normal priority. 
+
+
+\subsubsection{LCD Task}
+
+The LCD task takes items from a queue and adds them to the currently active line on the LCD display. The task is run with low priority as this only need to provide feedback in human observable time frames.
+
+\subsubsection{Matrix Keypad Task}
+
+This task simply adds key presses from the keypad to a queue available to the rest of the system. Is being run with low priority as immediate response is not required for function.
+
+\subsubsection{Serial Peripheral Interface Task}
+
+The SPI task handles all communication between the microcontroller and the FPGA and thus is indirectly responsible for all data acquisition and hardware control. This requires a priority of normal so the task is prioritized but does not require hard timing.  
 
 \begin{itemize}
     \item Describe each task requirements towards the OS
-        \begin{itemize}
-            \item System tasks
-                \begin{itemize}
-                    \item Status LED
-                    \item UART 
-                    \item LCD
-                    \item Matrix keyboard
-                    \item SPI
-                \end{itemize}
                  \item User tasks
                 \begin{itemize}
                     \item PID
