@@ -65,15 +65,15 @@ This task simply adds key presses from the keypad to a queue available to the re
 
 The SPI task handles all communication between the microcontroller and the FPGA and thus is indirectly responsible for all data acquisition and hardware control. This requires a priority of normal so the task is prioritized but does not require hard timing.  
 
-\begin{itemize}
-    \item Describe each task requirements towards the OS
-                 \item User tasks
-                \begin{itemize}
-                    \item PID
-                    \item User interface
-                \end{itemize}
-        \end{itemize}
-\end{itemize}
+Besides system tasks there are tasks that can be categorized as being the "application" run on the system. These tasks are designated "user tasks".
+
+\subsubsection{PID}
+
+This group of two tasks handle the control for both axis of the pan-tilt system and are the most critical processes. These run with high priority and therefore the best timing reliability that the system can offer.
+
+\subsubsection{User interface}
+
+% TODO
 
 \begin{figure}[H]
 \includegraphics[width=\columnwidth]{taskdiagram_full.png}
