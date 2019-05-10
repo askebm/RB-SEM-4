@@ -22,7 +22,7 @@ The preemption capability enables the system to respond quickly to higher priori
  
 As mentioned the priority allows the system to select more important\footnote{Defined by the programmer} processes to be run quickly when available.  
 
-The schduler is run by a timer interupt every 5ms and during this the current task is paused and the scheduler evaluates the next eleqible task to run, this may be the same task that was running before and this will then be resumed, but the scheduler must be run every 5ms tick.
+The scheduler is run by a timer interrupt every 5ms and during this the current task is paused and the scheduler evaluates the next eligible task to run, this may be the same task that was running before and this will then be resumed, but the scheduler must be run every 5ms tick.
 
 \section{Subtask Communication}
 
@@ -32,6 +32,9 @@ This is accomplished using a combination of state buffers and queues. State buff
 All queues in the system are FIFO\footnote{First-In-First-Out} queues allowing easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product. 
 
 To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by simultaneous access.
+
+
+
 
 \section{Tasks}
 
