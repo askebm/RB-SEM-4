@@ -2,7 +2,9 @@
 
 
 \begin{document}
-
+\todo{In General: Why use FreeRTOS? Perhaps compare it to the alternative - no preemption -> succesive program execution Pros and Cons.
+	For FreeRTOS. Easier to maintain and expand?
+}
 \section{FreeRTOS}
 
 This section has the purpose of detailing how the software for the Tiva microcontroller is setup and why. The responsibility of the Tiva is to act as the brain of the entire system while the FPGA acts like a data acquisitions device and a hardware controller. 
@@ -33,6 +35,7 @@ State buffers are simple buffers keeping the last value written to it until a ne
 
 All queues in the system are FIFO\footnote{First-In-First-Out} queues allowing easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product. 
 
+\todo{Maybe a more detailed general description of Semaphore?}
 To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by interrupted write access.
 
 
@@ -43,6 +46,8 @@ To maintain data integrity all shared-write resources are protected with semapho
 The entire system has been created as a task diagram in figure \ref{fig:entire_task_diagram}. 
 
 There is a number of task that exists only to provide services to other tasks, those tasks are designated system tasks. 
+
+\todo{General overview of priotity designation in introduction? Describe the three levels, og which types of tasks will have each priority? }
 
 \subsubsection{Status LED task}
 
