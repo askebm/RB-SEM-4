@@ -1,13 +1,12 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
-\subsubsection{Definition}
-\label{sub:definition}
-Full duplex, 2MHz, Read on rising edge.
-\\
-When communication initiates, Slave Enable is driven low and 1 SPI clock cycle later
+The SPI protocol is a shift register protocol, with a possible register size of 8-16 bits\todo{ref}.
+The communication protocol is designed as to keep size of the datagram less or equal to the register size, as to keep communication protocol between the FPGA and Tiva simple and utilise the full duplex capabilities of the SPI protocol. \\
+The communication protocol uses the master-slave principle, with the Tiva as the master and the FPGA as slave.\\
+When the Tiva initiates communication, Slave Enable is driven low and 1 SPI clock cycle later
 data will be read on rising edge from the SPI clock, as seen in figure \ref{fig:spi_timing_diagram}.
 \\
-Each datagram is 16 bits in size and the package format send by the Tiva
+Each datagram is 16 bits in size and the datagram format send by the Tiva
 \todo{Hvordan refererer vi til Tivaen}
 can be seen in table \ref{tab:package_format_tiva} and the package format send by the FPGA
 can be seen in table \ref{tab:package_format_fpga}.
@@ -16,7 +15,7 @@ In the package format the bit number indicates the order of transmission startin
 \begin{table}[h]
 	\centering
 	\begin{tabular}{ll}
-		\textbf{Data}& \textbf{Datatype}  \\
+		\textbf{Data}& \textbf{Data type}  \\
 		\hline
 		PWM& 9 bit signed \\
 		Position& 12 bit signed \\
