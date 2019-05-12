@@ -28,6 +28,10 @@
 %Denne package gør at man kan printe "æ", "ø" & "å".
 
 %===========================================================================
+
+\usepackage{siunitx}
+% Denne pakke gør at SI enheder ser ebdre ud i equations.
+%===========================================================================
 \usepackage[pdftex]{graphicx}
 %Denne package gør at man kan indsætte et billede i dokumentet.
 %Her er et link til hvordan denne package virker: "http://mirrors.dotsrc.org/ctan/macros/latex/required/graphics/grfguide.pdf"
@@ -47,15 +51,15 @@
 
 %===========================================================================
 \usepackage{hyperref}%hidelinks
-%Denne package tilføjer kommandoer som gør at man kan lave hyperlinks. Den gør dog også at table of content bliver hyperlink som giver røde kasser. 
-%For at fjerne de røde kasser, kan man tilføjes "[hidelinks]" foran. Eller man kan bruge funktionen under her. "hypersetup" styrer farven på links i dokumentet og man kan definerer forskellige farver til forskellige links. 
+%Denne package tilføjer kommandoer som gør at man kan lave hyperlinks. Den gør dog også at table of content bliver hyperlink som giver røde kasser.
+%For at fjerne de røde kasser, kan man tilføjes "[hidelinks]" foran. Eller man kan bruge funktionen under her. "hypersetup" styrer farven på links i dokumentet og man kan definerer forskellige farver til forskellige links.
 \hypersetup{
-					colorlinks, 
+					colorlinks,
 					linkcolor={black},
 					citecolor={blue!50!black},
 					urlcolor={blue!80!black},
 					}
-%Dette gør at farverne på link er defineret. 
+%Dette gør at farverne på link er defineret.
 %Her er et link til hvordan denne package virker: "http://mirrors.dotsrc.org/ctan/macros/latex/contrib/hyperref/doc/manual.pdf".
 
 
@@ -65,17 +69,17 @@
 
 %===========================================================================
 %\usepackage{siunitx}
-%Denne package bruges til at skrive SI enheder så det kommer til at se helt rigtigt og pænt ud. SI enhederne skal skrives som man normalt ville, og så finder denne package selv ud af hvordan den skal sætter op. 
+%Denne package bruges til at skrive SI enheder så det kommer til at se helt rigtigt og pænt ud. SI enhederne skal skrives som man normalt ville, og så finder denne package selv ud af hvordan den skal sætter op.
 %Her er et link til hvordan denne package virker: "http://mirrors.dotsrc.org/ctan/macros/latex/contrib/siunitx/siunitx.pdf".
 
 %===========================================================================
 %\usepackage[version=3]{mhchem}
-%Denne package kan bruges til at skrives pæne kemi opskrivninger. 
+%Denne package kan bruges til at skrives pæne kemi opskrivninger.
 %Her er et link til hvordan denne package virker: "http://mirrors.dotsrc.org/ctan/macros/latex/contrib/mhchem/mhchem.pdf".
 
 %===========================================================================
 \usepackage{tikz}
-%Denne package gør at man kan tegne skitser og figure i latex. 
+%Denne package gør at man kan tegne skitser og figure i latex.
 
 %===========================================================================
 \usepackage[textfont={rm, it}, labelfont={bf}]{caption}
@@ -86,7 +90,7 @@
 
 %===========================================================================
 \usepackage{float}
-%Styrer hvordan ting floater i dokumentet. 
+%Styrer hvordan ting floater i dokumentet.
 %Se følgende link for at finde mere om denne package
 %http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
 
@@ -94,13 +98,14 @@
 %\usepackage{mathtools}
 
 \usepackage{expl3}
+
 %===========================================================================
 \usepackage{subfig}
 %Her er et link til hvordan denne package virker: "http://mirrors.dotsrc.org/ctan/macros/latex/contrib/subfig/subfig.pdf".
 
 %===========================================================================
 \usepackage{sidecap}
-%Ligger caption teksten ud til højre side istedet for at placerer teksten under. 
+%Ligger caption teksten ud til højre side istedet for at placerer teksten under.
 
 %===========================================================================
 \usepackage{placeins}
@@ -132,12 +137,12 @@
 
 %===========================================================================
 \usepackage{listings}
-\lstset{language=TeX, 
-	basicstyle=\footnotesize, 
+\lstset{language=TeX,
+	basicstyle=\footnotesize,
 	tabsize=4,
-	numbers=left, 
-	numberstyle=\tiny, 
-	stepnumber=1, 
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
 	numbersep=5pt}
 %Her er et link til hvordan denne package virker: "http://mirrors.dotsrc.org/ctan/macros/latex/contrib/listings/listings.pdf".
 
@@ -165,8 +170,8 @@
 %===========================================================================
 %Undgå at lave dobbelt arbejde med kommandoer:
 %Kommandoer:
-%\newcommand{\sayhello}[1]{Hello #1!} 
-%"sayhello" er navnet, "[1]" er antalet af kommandoer, "{}" skriver hvad der er inde i og "#" er det første argument. 
+%\newcommand{\sayhello}[1]{Hello #1!}
+%"sayhello" er navnet, "[1]" er antalet af kommandoer, "{}" skriver hvad der er inde i og "#" er det første argument.
 
 %===========================================================================
 %Generel opbygning af kommandoer:
@@ -181,12 +186,13 @@
 
 %Laver en vandret linje over hele siden
 \newcommand{\Line}{\noindent\underline{\hspace{\textwidth}}\vspace{0.25cm}\\}
-\newcommand{\Under}{\noindent\underline{\hspace{\textwidth}}\vspace{0.75cm}\\} 
+\newcommand{\Under}{\noindent\underline{\hspace{\textwidth}}\vspace{0.75cm}\\}
 
 %===========================================================================
 \addtolength\textheight{2cm}
 \addtolength\topmargin{-1cm}
 \addtolength\marginparwidth{1.5cm}
+%\parindent{}
 \addtolength\headheight{1.6pt}
 % Øg teksthøjden med 2 cm på alle sider
 
@@ -222,7 +228,7 @@
 {\pdffilemoddate{#2}}>0%
 {\immediate\write18{#3}}\fi%
 }
-\newcommand{\includesvg}[2][./]{% 
+\newcommand{\includesvg}[2][./]{%
 \executeiffilenewer{#1#2.svg}{#1#2.pdf}
 {inkscape -z -D --file=#1#2.svg --export-pdf=#1#2.pdf --export-latex}
 \import{#1}{#2.pdf_tex}
