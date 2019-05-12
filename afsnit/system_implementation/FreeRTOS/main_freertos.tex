@@ -35,9 +35,8 @@ State buffers are simple buffers keeping the last value written to it until a ne
 
 All queues in the system are FIFO\footnote{First-In-First-Out} queues allowing easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product. 
 
-\todo{Maybe a more detailed general description of Semaphore?}
 To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by interrupted write access.
-
+These semaphores are done via the implementation that ships with FreeRTOS and allows both binary and counting semaphores, although only the binary implementation is utilized.
 
 
 
@@ -47,7 +46,8 @@ The entire system has been created as a task diagram in figure \ref{fig:entire_t
 
 There is a number of task that exists only to provide services to other tasks, those tasks are designated system tasks. 
 
-\todo{General overview of priotity designation in introduction? Describe the three levels, og which types of tasks will have each priority? }
+Each task is designated a priority\footnote{by the designer} based on the demands of that particular task. The biggest consideration is the time sensitivity of the task, the need for timing to be consistent between runs. FreeRTOS in theory supports as many priority levels as RAM is available to handle. Therefore the recommendation from FreeRTOS is to not have more levels then needed. The system uses three levels in this implementation, LOW, NORMAL and HIGH. With HIGH providing the best timing accuracy due to the fact that is a HIGH priority task  ready to run, then it will be run at the next scheduler run without having to wait for other tasks to potentially use up a time slice before its run.
+
 
 \subsubsection{Status LED task}
 
