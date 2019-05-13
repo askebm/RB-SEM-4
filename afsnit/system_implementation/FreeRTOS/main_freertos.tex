@@ -2,16 +2,14 @@
 
 
 \begin{document}
-\todo{In General: Why use FreeRTOS? Perhaps compare it to the alternative - no preemption -> succesive program execution Pros and Cons.
-	For FreeRTOS. Easier to maintain and expand?
-}
-\section{FreeRTOS}
+\section{Microcontroller Operating System}
 
 The purpose of this section is to detail how the operating system for the Tiva microcontroller is setup and why. The responsibility of the Tiva is to act as the brain of the entire system while the FPGA acts like a data acquisitions device and a hardware controller. 
 
-The operating system used as the platform on the Tiva is FreeRTOS, an open source RealTime operating system created by Real Time Engineers LTD.
+The guiding reasoning behind the choice of operating system is the need to run more then one task on the system. The system FreeRTOS is chosen partly due to the fact that this system is part of another course and therefore beneficial to be familiar with, but also due to allowing a preemption scheduler as opposed to a Run-To-Complete scheduler. At the time of choice it was not clear whether the preemptive capability was going to be decisive and FreeRTOS provides both.
+\\
 
-FreeRTOS handles system processes of different types by creating "Tasks" that are the run using a preemptive scheduler which allows the system to not only run multiple tasks in "parallel"\footnote{Due to only one core being supported, true parallel is not possible.} but also efficiently allocate the systems resources available.
+FreeRTOS, an open source RealTime operating system created by Real Time Engineers LTD handles system processes of different types by creating "Tasks" that are the run using a preemptive scheduler which allows the system to not only run multiple tasks in "parallel"\footnote{Due to only one core being supported, true parallel is not possible.} but also efficiently allocate the systems resources available.
 
 
 A task is a single area of responsibility that either by necessity or by convention is combined as a single logical unit. Each task in the system (a full overview can be seen in the task diagram) can then be scheduled based on the priority it has been assigned and whether the task itself has decided that it wants to be scheduled. 
