@@ -2,23 +2,23 @@
 
 
 \begin{document}
-\todo{In General: Why use FreeRTOS? Perhaps compare it to the alternative - no preemption -> succesive program execution Pros and Cons.
-	For FreeRTOS. Easier to maintain and expand?
-}
-\section{FreeRTOS}
+\section{Microcontroller Operating System}
 
 The purpose of this section is to detail how the operating system for the Tiva microcontroller is setup and why. The responsibility of the Tiva is to act as the brain of the entire system while the FPGA acts like a data acquisitions device and a hardware controller. 
 
-The operating system used as the platform on the Tiva is FreeRTOS, an open source RealTime operating system created by Real Time Engineers LTD.
+The guiding reasoning behind the choice of operating system is the need to run more then one task on the system. The system FreeRTOS is chosen partly due to the fact that this system is part of another course and therefore beneficial to be familiar with, but also due to allowing a preemption scheduler as opposed to a Run-To-Complete scheduler. At the time of choice it was not clear whether the preemptive capability was going to be decisive and FreeRTOS provides both.
+\\
 
-FreeRTOS handles system processes of different types by creating "Tasks" that are the run using a preemptive scheduler which allows the system to not only run multiple tasks in "parallel"\footnote{Due to only one core being supported, true parallel is not possible.} but also efficiently allocate the systems resources available.
+FreeRTOS, an open source RealTime operating system created by Real Time Engineers LTD handles system processes of different types by creating "Tasks" that are the run using a preemptive scheduler which allows the system to not only run multiple tasks in "parallel"\footnote{Due to only one core being supported, true parallel is not possible.} but also efficiently allocate the systems resources available.
 
 
 A task is a single area of responsibility that either by necessity or by convention is combined as a single logical unit. Each task in the system (a full overview can be seen in the task diagram) can then be scheduled based on the priority it has been assigned and whether the task itself has decided that it wants to be scheduled. 
 
 \subsection{Scheduling}
 
-In order to enable the microcontroller to run more then one task some form of scheduling must be implemented. This allows the operating system\footnote{FreeRTOS} to make a choice as to what tasks needs processing capacity at this moment in time. In the FreeRTOS based system running on the Tiva scheduling is done trough a priority based preemption\footnote{The ability to pause and resume processes without the process knowing.} capable implementation.
+In order to enable the microcontroller to run more then one task some form of scheduling must be implemented. This allows the operating system\footnote{FreeRTOS} to make a choice as to what tasks needs processing capacity at this moment in time. In the FreeRTOS based system running on the Tiva scheduling is done trough a priority based preemption capable implementation.
+
+Preemption is when the operating system has the ability to pause execution of a process without the process willingly giving up CPU time. This allows time slicing without having the need for individual processes to be designed in a way to accommodate this. Further this allows the system to equally share time between long running processes. 
 
 The preemption capability enables the system to respond quickly to higher priority tasks becoming available for execution rather then waiting for the current task to return on its own potentially taking the CPU forever, it will be paused and the higher priority task executed before the lower priority one is resumed and potentially completed.
  
@@ -35,9 +35,8 @@ State buffers are simple buffers keeping the last value written to it until a ne
 
 All queues in the system are FIFO\footnote{First-In-First-Out} queues allowing easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product. 
 
-\todo{Maybe a more detailed general description of Semaphore?}
 To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by interrupted write access.
-
+These semaphores are done via the implementation that ships with FreeRTOS and allows both binary and counting semaphores, although only the binary implementation is utilized.
 
 
 
@@ -47,7 +46,8 @@ The entire system has been created as a task diagram in figure \ref{fig:entire_t
 
 There is a number of task that exists only to provide services to other tasks, those tasks are designated system tasks. 
 
-\todo{General overview of priotity designation in introduction? Describe the three levels, og which types of tasks will have each priority? }
+Each task is designated a priority\footnote{by the designer} based on the demands of that particular task. The biggest consideration is the time sensitivity of the task, the need for timing to be consistent between runs. FreeRTOS in theory supports as many priority levels as RAM is available to handle. Therefore the recommendation from FreeRTOS is to not have more levels then needed. The system uses three levels in this implementation, LOW, NORMAL and HIGH. With HIGH providing the best timing accuracy due to the fact that is a HIGH priority task  ready to run, then it will be run at the next scheduler run without having to wait for other tasks to potentially use up a time slice before its run.
+
 
 \subsubsection{Status LED task}
 
