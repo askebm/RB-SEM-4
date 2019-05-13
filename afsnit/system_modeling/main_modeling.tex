@@ -69,18 +69,18 @@ To determine the vicious friction experiments not made in this project would be 
 The last constant to determine is the moment of inertia.
 
 \subsubsection{Moment of interia - Top frame}
-\label{ch:Top_frame}
+\label{ch:Top_frame_inertia}
 To determine the top frame's moment of inertia, $J_{t}$, its seen as an isolated system with only the frames contributing to $J_{t}$, thus the weight of motors and wires on the frame are considered negligible. The system then considered is seen on figure \ref{fig:TopFrame}. Here the axis of rotation can be seen and for this calculation will be our reference.\\
 
 \begin{figure}[h]
   \label{fig:TopFrame}
   \centering
-  \includesvg[\main/afsnit/system_modeling/]{TopFrame_3}
+  \includesvg[\main/afsnit/system_modeling/]{TopFrame}
   \caption{Top frame of the pan-tilt system.}
 \end{figure}
 
 
-Since moments of inertia can be added together in components, the frame is to be considered a collection of four bars, as seen on figure \ref{REF TO (image in progress)}. From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be seen, the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true.
+Since moments of inertia can be added together in components, the frame is to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be seen, the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true.
 \begin{equation}
   \label{eq:Top_frame_total_inertia_formula}
   J_t = \sum J_{t,n} + J_{t,n-1} + \dotsb + J_{t,1} = J_{t,a} + J_{t,b} + J_{t,c} + J_{t,d}
@@ -143,7 +143,14 @@ The top frames moment og inertia is therefore determined to be
 \subsubsection{Moment of interia - Base frame}
 
 To calculate the moment of inertia for the base frame, some observations needs to be made. Firstly the same prosedure as in section \ref{ch:Top_frame} can be followed to determine the base frames own inertia, since the base frame of it selv has a structure identical to the top frame, with one bar being the difference. Secondly, the base frames moment of inertia is directly influenced by the position of the topframe, thus making the base frames moment of inertia a function of the top frames position $\phi$.\\
-As in section \ref{cp:Top_frame} the base frame is fragmented, this time in three parts:$e$, $f$ and $g$ as shown on figure \ref{fig:FIGURE OF BASE FRAME - INKSCAPE}. The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frames moment of inertia can now be expressed as seen in eq. (\ref{eq:Base_frame_equ}).
+As in section \ref{cp:Top_frame_inertia} the base frame is fragmented, this time in three parts:$e$, $f$ and $g$ as shown on figure (\ref{fig:ButtomFrame}). The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frames moment of inertia can now be expressed as seen in eq. (\ref{eq:Base_frame_equ}).
+
+\begin{figure}[h]
+  \label{fig:ButtomFrame}
+  \centering
+  \includesvg[\main/afsnit/system_modeling/]{ButtomFrame}
+  \caption{Buttom frame of the pan-tilt system.}
+\end{figure}
 
 \begin{equation}
   \label{eq:Base_frame_equ}
@@ -176,7 +183,7 @@ $g$ & 0.207 & 0.2629  \\
     \label{tab:mass_table}
 \end{table}
 
-$J_{b,const}$ can now de determined as shown in eq. (\ref{eq:J_b,cont}).
+$J_{b,const}$ can now de determined as shown in eq. (\ref{eq:J_b,const}).
 
 \begin{equation}
   \label{eq:J_b,const}
@@ -190,12 +197,17 @@ $J_{b,const}$ can now de determined as shown in eq. (\ref{eq:J_b,cont}).
 
 Thus the constant moment of inertia of the base frames is determined to be $J_{b,const} = 0.0304 \si{kg\cdot m^2}$
 \\
+The varying moment of inertia, $J(\phi)$, is dependent on the angular diaplacement of the top frame, from the vertikal axis parallel to the buttom frame. This can from be seen on figure (\ref{fig:TrekantDiagram}).
 
-\begin{figure}[h]
+\begin{figure}[H]
+  \label{fig:TrekantDiagram}
   \centering
-  \includesvg[\main/afsnit/system_modeling/]{ButtomFrame}
-  \caption{Buttom frame of the pan-tilt system.}
+  \def\svgwidth{0.4\columnwidth}
+  \includesvg[\main/afsnit/system_modeling/]{TrekantDiagram}
+  \caption{System seen from the side.}
 \end{figure}
+
+
 
 \subsubsection{Simulation}
 
