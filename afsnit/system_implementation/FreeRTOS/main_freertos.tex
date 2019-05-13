@@ -16,7 +16,9 @@ A task is a single area of responsibility that either by necessity or by convent
 
 \subsection{Scheduling}
 
-In order to enable the microcontroller to run more then one task some form of scheduling must be implemented. This allows the operating system\footnote{FreeRTOS} to make a choice as to what tasks needs processing capacity at this moment in time. In the FreeRTOS based system running on the Tiva scheduling is done trough a priority based preemption\footnote{The ability to pause and resume processes without the process knowing.} capable implementation.
+In order to enable the microcontroller to run more then one task some form of scheduling must be implemented. This allows the operating system\footnote{FreeRTOS} to make a choice as to what tasks needs processing capacity at this moment in time. In the FreeRTOS based system running on the Tiva scheduling is done trough a priority based preemption capable implementation.
+
+Preemption is when the operating system has the ability to pause execution of a process without the process willingly giving up CPU time. This allows time slicing without having the need for individual processes to be designed in a way to accommodate this. Further this allows the system to equally share time between long running processes. 
 
 The preemption capability enables the system to respond quickly to higher priority tasks becoming available for execution rather then waiting for the current task to return on its own potentially taking the CPU forever, it will be paused and the higher priority task executed before the lower priority one is resumed and potentially completed.
  
