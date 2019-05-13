@@ -1,0 +1,92 @@
+\documentclass[../../../main]{subfiles}
+\begin{document}
+The SPI protocol is a shift register protocol, with a possible register size of 8-16 bits\todo{ref}.
+The communication protocol is designed as to keep size of the datagram less or equal to the register size, as to keep communication protocol between the FPGA and Tiva simple and utilise the full duplex capabilities of the SPI protocol. \\
+The communication protocol uses the master-slave principle, with the Tiva as the master and the FPGA as slave.\\
+When the Tiva initiates communication, Slave Enable is driven low and 1 SPI clock cycle later
+data will be read on rising edge from the SPI clock, as seen in figure \ref{fig:spi_timing_diagram}.
+\\
+Each datagram is 16 bits in size and the datagram format send by the Tiva
+\todo{Hvordan refererer vi til Tivaen}
+can be seen in table \ref{tab:package_format_tiva} and the package format send by the FPGA
+can be seen in table \ref{tab:package_format_fpga}.
+In the package format the bit number indicates the order of transmission starting with 0.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ll}
+		\textbf{Data}& \textbf{Data type}  \\
+		\hline
+		PWM& 9 bit signed \\
+		Position& 12 bit signed \\
+		Velocity& 12 bit signed \\
+		Amps& 12 bit unsigned \\
+		Home Index& 1 bit
+	\end{tabular}
+	\caption{Data types}
+	\label{tab:spi_datatypes}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|*{16}{p{.3cm}|}}
+		\hline
+		0&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15\\
+		\hline
+		\multicolumn{9}{|c|}{PWM  - 9bits} & M S&
+		\multicolumn{2}{p{.6cm}|}{Resp. select}& R S&
+		\multicolumn{3}{c|}{Reserved}
+		\\
+		\hline
+	\end{tabular}
+	\caption{Package format - Tiva}
+	\label{tab:package_format_tiva}
+\end{table}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ll}
+		MS & Motor Select\\
+		\hline
+		Response select &\\ &
+		\begin{tabular}{ll}
+			Position & 00\\
+			Velocity & 01\\
+			Acceleration & 10\\
+			Amps & 11
+		\end{tabular}
+		\\\hline
+		RS & Reset Position
+		\\\hline
+	\end{tabular}
+	\caption{Package format extended}
+	\label{tab:shorthand}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Package format - FPGA}
+	\label{tab:package_format_fpga}
+	\begin{tabular}{|*{16}{p{.3cm}|}}
+		\hline
+	 	0& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 13& 14& 15\\
+		\hline
+		\multicolumn{2}{|p{.6cm}|}{Res} & H S 1 & H S 0 &
+		\multicolumn{12}{c|}{Requested Data}\\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\begin{figure}[h]
+	\center
+\begin{tikztimingtable}[timing/font=\normalfont]
+	{2 MHz Clock}&2L32{t}1L\\
+	{Slave Enable}&1H17L1H\\
+	{MOSI}&1L17D{MSG \#N}1L\\
+	{MISO}&1U17D{Response \#N-1}1U\\
+\end{tikztimingtable}
+\caption{SPI timing diagram}
+\label{fig:spi_timing_diagram}
+\end{figure}
+
+\end{document}
