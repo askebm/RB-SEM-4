@@ -1,7 +1,7 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
 \subsubsection{Qudrature Decoder introduction}
-The Quadrature Decoder is used to interprete the position of the system's motors using the signals from the two enocders, each  mounted on motor. This subsection will introduce a little theory of a both Qudrature Decoder and encoder and how the Quadrature decoder has been implementated on the FPGA.
+The Quadrature Decoder is used to interprete the position and velocity of the system's motors using the signals from the two enocders, each  mounted on motor. This subsection will introduce a little theory of a both Qudrature Decoder and encoder and how the Quadrature decoder has been implementated on the FPGA.
 \subsubsection{Quadrature Encoder}
 \label{sub:Theory}
 
@@ -48,8 +48,21 @@ The truth table shows nine possible scenarios that can occur from tracking the t
 The decoder works by first initialalizing and go to a state depending on the level of signal A and B. The decoder will when use the debounced signals to determine the next state. If the starting state is AB\_low, there is three correct outcomes: the reset signal goes low and the counter will go to zero, the signal A goes high and the state changes to A\_high or the last possible outcome, that does not give an error, is B\_high. By looking at the truth table from the above figure \ref{fig:truth_table}, it can be observed that if the state goes from AB\_low to A\_high, the direction will be forward and the counter will increment where the counter would decrement and direction set to backwards if the next state is B\_high.\\ This Statemachine has been implemented and the process described in section \ref{system_implementation}
 
 
-The signals are all debounced to ensure that noise is not altering the position.
+\begin{figure}[H]
+  \centering
+  \def\svgwidth{\columnwidth}
+  \fontsize{9}{9}\selectfont
+  \includesvg[\main/afsnit/system_implementation/Quadraturdecoder/pictures/]{decoder_state}
+  \caption{}
+\end{figure}
+
 
 \subsubsection{Velocity measure}
-The decoder is not only supposed to be able to give the position of the system but also the velocity. There was two main considerations to be done. Should the velocity be 
+The decoder is not only responsible for computing the position of the system but also the velocity. The simplest way to estimate the velocity is by diving the change in position with the change in time.
+\begin{equation}
+v(n) = \frac{x(n)-x(n-1)}{T}
+\end{equation}
+\begin{equation}
+  v(n) = \frac{X}{t(n)-t(n-1)}
+\end{equation}
 \end{document}
