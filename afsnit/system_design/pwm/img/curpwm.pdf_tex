@@ -1,0 +1,88 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'curpwm.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{315bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.33333333)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{curpwm.pdf}}%
+    \put(0.16190476,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau$\end{tabular}}}}%
+    \put(0.19285714,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$2\tau$\end{tabular}}}}%
+    \put(0.22380952,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$3\tau$\end{tabular}}}}%
+    \put(0.2547619,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$4\tau$\end{tabular}}}}%
+    \put(0.28571429,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$5\tau$\end{tabular}}}}%
+    \put(0.31666667,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$6\tau$\end{tabular}}}}%
+    \put(0.34761905,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$7\tau$\end{tabular}}}}%
+    \put(0.37857143,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$8\tau$\end{tabular}}}}%
+    \put(0.40952381,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$9\tau$\end{tabular}}}}%
+    \put(0.44047619,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$10\tau$\end{tabular}}}}%
+    \put(0.50238095,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$12\tau$\end{tabular}}}}%
+    \put(0.56428571,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$14\tau$\end{tabular}}}}%
+    \put(0.62619048,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$16\tau$\end{tabular}}}}%
+    \put(0.68809524,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$18\tau$\end{tabular}}}}%
+    \put(0.75,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$20\tau$\end{tabular}}}}%
+    \put(0.81190476,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$22\tau$\end{tabular}}}}%
+    \put(0.87380952,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$24\tau$\end{tabular}}}}%
+    \put(0.51785762,0.01222214){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}time\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{curpwm.pdf}}%
+    \put(0.12396833,0.07095238){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
+    \put(0.12396833,0.13996595){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1\end{tabular}}}}%
+    \put(0.12396833,0.20897976){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}2\end{tabular}}}}%
+    \put(0.12396833,0.27799333){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}3\end{tabular}}}}%
+    \put(0.04206357,0.18333333){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}V / A\end{tabular}}}}}%
+    \put(0.51785762,0.29925143){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Current and PWM}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{curpwm.pdf}}%
+    \put(0.71428571,0.24895405){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Voltage [V]\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{curpwm.pdf}}%
+    \put(0.71428571,0.21628405){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Current [A]\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{curpwm.pdf}}%
+  \end{picture}%
+\endgroup%
