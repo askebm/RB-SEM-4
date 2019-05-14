@@ -60,15 +60,15 @@
     \put(0.38194439,0.83519162){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14331947\unitlength}\raggedright \end{minipage}}}%
     \put(0.52526385,0.83519162){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.06744446\unitlength}\raggedright \end{minipage}}}%
     \put(0.39037494,0.86048329){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.12645836\unitlength}\raggedright \end{minipage}}}%
-    \put(0.30536148,0.48017504){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}AB_Low\end{tabular}}}}%
+    \put(0.30313089,0.48017504){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}AB\_Low\end{tabular}}}}%
     \put(0.46624996,0.48110824){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.01686111\unitlength}\raggedright \end{minipage}}}%
     \put(0.42409717,0.48953879){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.07587501\unitlength}\raggedright \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{decoder_state.pdf}}%
-    \put(0.81907843,0.48089905){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A_high\end{tabular}}}}%
+    \put(0.81907843,0.48089905){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A\_high\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{decoder_state.pdf}}%
-    \put(0.31290714,0.05475371){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B_high\end{tabular}}}}%
+    \put(0.31290714,0.05475371){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B\_high\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{decoder_state.pdf}}%
-    \put(0.81550669,0.05470551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}AB_high\end{tabular}}}}%
+    \put(0.81550669,0.05470551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}AB\_high\end{tabular}}}}%
     \put(0.35665272,0.5485527){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.22762503\unitlength}\raggedright \end{minipage}}}%
     \put(0.36508327,0.37994154){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18547225\unitlength}\raggedright \end{minipage}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{decoder_state.pdf}}%
@@ -82,7 +82,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=10]{decoder_state.pdf}}%
     \put(0.49427673,0.42096812){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02823593\unitlength}\raggedright \end{minipage}}}%
     \put(0.7089321,0.51032741){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes high\end{tabular}}}}%
-    \put(0.40877313,0.50903412){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes low\end{tabular}}}}%
+    \put(0.40877313,0.50903413){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes low\end{tabular}}}}%
     \put(0.86796716,0.40866517){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
     \put(0.23751827,0.40904514){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{decoder_state.pdf}}%
