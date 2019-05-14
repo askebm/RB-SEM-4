@@ -1,15 +1,15 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
 \subsection{General model}
-\label{sec:General_model}
+\label{ch:General_model}
 
-In this chapter an approximated physical model of the system will be found.\\
+In this chapter an approximated model of the physical system will be found.\\
 
 By analysis of the forces acting on the motors when voltage is added, the following differential equations are found.\\
 
 \begin{equation}
   \label{equ:model_mech_equ}
-  J\cdot \ddot \theta + b\cdot \dot \theta = K_{toque}\cdot i
+  J\cdot \ddot \theta + b\cdot \dot \theta = K_{torque}\cdot i
 \end{equation}
 
 \begin{equation}
@@ -17,18 +17,19 @@ By analysis of the forces acting on the motors when voltage is added, the follow
   L\cdot \frac{di}{dt} + R\cdot i = V - K_{elec}\cdot \dot \theta
 \end{equation}
 
-In (\ref{equ:model_mech_equ}) $J$ is the moment of inertia about the axis of rotation, $b$ is the motor viscous friction constant, $K_{toque}$ is the motor toque constant, $\dot \theta$ is the first time derivative of the position, and $\ddot \theta$ is the second time derivative. The first time derivative is this the velocity and the second is the acceleration.\\
-In (\ref{equ:model_ele_equ}) $L$ is the electric inductance of the coil in the motor, $\frac{di}{dt}$ is the first time derivative of the current, $R$ is the ohmic resistance of the motor, $V$ is the voltage applied, $K_{elec}$ is the electromotive force constant and as mentioned above $\dot \theta$ is the velocity.\\
+In (\ref{equ:model_mech_equ}) $J$ is the moment of inertia about the axis of rotation, $b$ is the motors viscous friction constant, $K_{torque}$ is the motor toque constant, $\dot \theta$ is the first time derivative of the position, and $\ddot \theta$ is the second time derivative. The first time derivative is this the velocity and the second is the acceleration.\\
+In (\ref{equ:model_ele_equ}) $L$ is the electrical inductance of the coil in the motor, $\frac{di}{dt}$ is the first time derivative of the current, $R$ is the ohmic resistance of the motor, $V$ is the voltage applied, $K_{elec}$ is the electromotive force constant and as mentioned above $\dot \theta$ is the velocity.\\
 
-By further inspection a non-linear contribution på the top frames moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
-Adding the gravitational extra gravitational pull on these corners, the mechanical equation describing the motor driving the top frame can be rewritten as seen in eq. (\ref{eq:new_mech_equation_with_corners}).
+By further inspection a non-linear contribution på the top frame's moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
+Adding the extra gravitational pull on these corners, the mechanical equation describing the motor driving the top frame can be rewritten as seen in eq. (\ref{eq:new_mech_equation_with_corners}).
 
 \begin{equation}
   \label{eq:new_mech_equation_with_corners}
-  J_t\cdot \ddot \theta_t + b_t\cdot \dot \theta_t + m_{t,pri}\cdot g \cdot \cos(\theta_t) = K_{toque}\cdot i_t
+  J_t\cdot \ddot \theta_t + b_t\cdot \dot \theta_t + 2\cdot m_{t,cor}\cdot g \cdot \cos(\theta_t) = K_{t,torque}\cdot i_t
 \end{equation}
 
-To ease the further analysis the model in eq. (\ref{eq:new_mech_equation_with_corners}) is linearized by applying the Jacobian matrix. The linearized state space model can be seen in eq. (\ref{eq:topframe_mech_linearized}).
+The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ being the mass of 1 of the 2 the aluminium corners on the top frame.\\
+To ease the further analysis the model mentioned above is linearized by applying the Jacobian matrix. The linearized state space model can be seen in eq. (\ref{eq:topframe_mech_linearized}).
 
 \begin{equation}
       \label{eq:topframe_mech_linearized}
@@ -42,7 +43,7 @@ To ease the further analysis the model in eq. (\ref{eq:new_mech_equation_with_co
     =&
     \begin{bmatrix}
         0 & 1               & 0             \\
-        \frac{m_{t,pri} \cdot g \cdot \cos(\bar \theta)}{J} & -\frac{b_t}{J_t}    & \frac{K_{t,toque}}{J_t} \\
+        \frac{2\cdot m_{t,cor} \cdot g \cdot \cos(\bar \theta)}{J_t} & -\frac{b_t}{J_t}    & \frac{K_{t,torque}}{J_t} \\
         0 & -\frac{K_{t,elec}}{L_t}  & -\frac{R_t}{L_t}  \\
     \end{bmatrix}
     \begin{bmatrix}
@@ -56,7 +57,7 @@ To ease the further analysis the model in eq. (\ref{eq:new_mech_equation_with_co
         0 \\
         \frac{1}{L_t} \\
     \end{bmatrix}
-    V
+    V_t
 \\
       y =&
     \begin{bmatrix}
@@ -70,10 +71,10 @@ To ease the further analysis the model in eq. (\ref{eq:new_mech_equation_with_co
     \end{split}
 \end{equation}
 
-Since the buttom frame isn't influenced by the same gravitational pull, the state space models for the two motors can be written as shown in eq. (\ref{eq:ss_topframe}) and (\ref{eq:ss_buttomframe}).
+The state space models for the two motors can be written as shown in eq. (\ref{eq:ss_topframe_Genereal_model}) and (\ref{eq:ss_buttomframe_Genereal_model}).
 
 \begin{equation}
-      \label{eq:ss_topframe}
+      \label{eq:ss_topframe_Genereal_model}
       \begin{split}
       \frac{d}{dt}
     \begin{bmatrix}
@@ -84,7 +85,7 @@ Since the buttom frame isn't influenced by the same gravitational pull, the stat
     =&
     \begin{bmatrix}
         0 & 1               & 0             \\
-        \frac{m_{t,pri} \cdot g \cdot \cos(\bar \theta)}{J} & -\frac{b_t}{J_t}    & \frac{K_{t,toque}}{J_t} \\
+        \frac{2\cdot m_{t,cor} \cdot g \cdot \cos(\bar \theta)}{J_t} & -\frac{b_t}{J_t}    & \frac{K_{t,torque}}{J_t} \\
         0 & -\frac{K_{t,elec}}{L_t}  & -\frac{R_t}{L_t}  \\
     \end{bmatrix}
     \begin{bmatrix}
@@ -98,7 +99,7 @@ Since the buttom frame isn't influenced by the same gravitational pull, the stat
         0 \\
         \frac{1}{L_t} \\
     \end{bmatrix}
-    V
+    V_t
 \\
       y =&
     \begin{bmatrix}
@@ -113,7 +114,7 @@ Since the buttom frame isn't influenced by the same gravitational pull, the stat
 \end{equation}
 
 \begin{equation}
-      \label{eq:ss_buttomframe}
+      \label{eq:ss_buttomframe_Genereal_model}
       \begin{split}
       \frac{d}{dt}
     \begin{bmatrix}
@@ -124,7 +125,7 @@ Since the buttom frame isn't influenced by the same gravitational pull, the stat
     =&
     \begin{bmatrix}
         0 & 1               & 0             \\
-        0 & -\frac{b_b}{J_b}    & \frac{K_{b,toque}}{J_b} \\
+        0 & -\frac{b_b}{J_b}    & \frac{K_{b,torque}}{J_b} \\
         0 & -\frac{K_{b,elec}}{L_b}  & -\frac{R_b}{L_b}  \\
     \end{bmatrix}
     \begin{bmatrix}
@@ -138,7 +139,7 @@ Since the buttom frame isn't influenced by the same gravitational pull, the stat
         0 \\
         \frac{1}{L_b} \\
     \end{bmatrix}
-    V
+    V_b
 \\
       y =&
     \begin{bmatrix}
@@ -155,51 +156,52 @@ Since the buttom frame isn't influenced by the same gravitational pull, the stat
 
 \subsection{Application specified model}
 
-To apply the models found in the section \textit{General model} on page \pageref{sec:General_model}, the different constants in this model must be determined. Since the pan-tilt system contains two motors, one for the top-frame, and one for the base-frame, the constants concerning these will from this point on be denoted with the following subscripts in the same order as mentioned above: $K_t$ and $K_{b}$.\\
-Firstly the ohmic resistance of the two motors can be seen determined in journal \textit{Determine ohmic resistance of mortors} as $R_t = 4.79 \Omega$ and $R_b = 4.70 \Omega$. The inductance of the motors now also has to be determined. This can be seen done in the journal \textit{Determine electrical inductance of motors}. Here they can be seen as $L_t = L_b = 3.85\cdot 10^{-4}$.\\
+To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model}, the different constants in this model must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the buttom frame, the constants concerning these will from this point on be denoted with the following subscripts, in the same order as mentioned above: $K_{t,a}$ and $K_{b,a}$.\\
+Firstly the ohmic resistance of the two motors can be seen determined in journal the \textit{Determine ohmic resistance of mortors} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors can be seen determined in jounal \textit{Determine electrical inductance of motors}. Here they can be seen as $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.\\
 
-To determine the vicious friction experiments not made in this project would be nessecary. Based on the behavior of the system a friction of $b = 0.8$ is used from this point on.\\
-The last constant to determine is the moment of inertia.
+To determine the vicious frictions, $b_b$ and $b_t$ experiments, not made in this project, would be nessecary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and buttom frame.
 
 \subsubsection{Moment of interia - Top frame}
 \label{ch:Top_frame_inertia}
-To determine the top frame's moment of inertia, $J_{t}$, its seen as an isolated system with only the frames contributing to $J_{t}$, thus the weight of motors and wires on the frame are considered negligible. The system then considered is seen on figure \ref{fig:TopFrame}. Here the axis of rotation can be seen and for this calculation will be our reference.\\
+To determine the top frame's moment of inertia, $J_{t}$, its seen as an isolated system with only the frames contributing to $J_{t}$, thus the weight of motors and wires on the frame are considered negligible. The system then considered is seen on figure (\ref{fig:TopFrame}). Here the axis of rotation can be seen and for this calculation will be our reference.\\
 
 \begin{figure}[h]
-  \label{fig:TopFrame}
   \centering
   \includesvg[\main/afsnit/system_modeling/]{TopFrame}
   \caption{Top frame of the pan-tilt system.}
+  \label{fig:TopFrame}
 \end{figure}
 
-
 Since moments of inertia can be added together in components, the frame is to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be seen, the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true.
+
 \begin{equation}
   \label{eq:Top_frame_total_inertia_formula}
   J_t = \sum J_{t,n} + J_{t,n-1} + \dotsb + J_{t,1} = J_{t,a} + J_{t,b} + J_{t,c} + J_{t,d}
 \end{equation}
-The contributions of $a$ and $b$ are approximated as linear uniform rods rotating about their center of mass located on the axis of rotation. Since moment of inertia is an expression of the mass distribution about a given axis of rotation, $c$ and $d$ are simply considered particles  rotating about this axis. Its here seen that $c$ has two triangular prism corners, $m_{pri}$, which here will be seen as added mass to $c$. As a final concideration the length of $c$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $b$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
+To simplify the moment of inertia calculation the following considerations are made.\\
+The contributions of $a$ and $b$ are approximated as linear uniform rods rotating about their center of mass located on the axis of rotation. Since moment of inertia is an expression of the mass distribution about a given axis of rotation, $c$ and $d$ are simply considered particles rotating about this axis. \\
+The added aluminium corners are considered mass contributions to $d$, and the width of $a$ and $c$ are subtracted twice from the frame sides with $b$ and $d$, such that the true length is determined. The width of $a$ and $c$ are measured to be $l_{bar,width} = 0.04 \si{m}$. With these considerations an expression for the moment of inertia of the top frame can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia}
 \begin{split}
   J_t = \sum J_{t,n} =
-  \underbrace{\frac{1}{12}m_{t,a}L_{t,a}^2}_\text{$J_t,a$} +
-  \underbrace{m_{t,b}\left(\frac{L_{t,a}}{2}\right)^2}_\text{$J_{t,b}$} &+ \\
-  \underbrace{(m_{t,c} + 2\cdot m_{pri})\left(\frac{L_{t,a}}{2}\right)^2}_\text{$J_{t,c}$} +
-  \underbrace{\frac{1}{12}m_{t,d}L_{t,d}^2}_\text{$J_{t,d}$}
+  \underbrace{\frac{1}{12}m_{t,a}l_{t,a}^2}_\text{$J_t,a$} +
+  \underbrace{m_{t,b}\left(\frac{l_{t,a}}{2}\right)^2}_\text{$J_{t,b}$} &+ \\
+  \underbrace{(m_{t,c} + 2\cdot m_{pri})\left(\frac{l_{t,a}}{2}\right)^2}_\text{$J_{t,c}$} +
+  \underbrace{\frac{1}{12}m_{t,d}l_{t,d}^2}_\text{$J_{t,d}$}
 \end{split}
 \end{equation}
 
 Thus an expression to calculate the moment of inertia of the top frame is determined.\\
 
-Since the disassembly of the system is not an possibility, the mass of the different components are determined from the mass density $\rho$, and the length of the component. $\rho$ is found in the datasheet \textit{Frame bars} as $\rho = 1.27 \frac{kg}{m}$. The masses relevant for eq. (\ref{eq:Top_frame_total_inertia}) are caculated in table (\ref{tab:mass_table}).
+Since disassembly of the system is not an possibility, the mass of the different components are determined from the mass density $\rho_{bar}$, and the length of the component. $\rho_{bar}$ is found in the datasheet \textit{Frame bars} as $\rho_{bar} = 1.27 \si{\frac{kg}{m}}$. The mass' relevant for eq. (\ref{eq:Top_frame_total_inertia}) are caculated in table (\ref{tab:Top_frame_table}).
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
-  & $L_{t,n}$ [m]  & $m_{t,n}$ [kg]  \\
+  & $l_{t,n} \, \si{[m]}$ & $m_{t,n} \, \si{[kg]}$ \\
 \hline
 $a$ & 0.291  & 0.3696  \\
 \hline
@@ -209,10 +211,11 @@ $c$ & 0.2110 & 0.4196  \\
 \hline
 $d$ & 0.2110 & 0.3696  \\
 \hline
-$m_{pri}$ & & 0.0758 \\
+$m_{cor}$ & & 0.0758 \\
 \hline
 \end{tabular}
-    \label{tab:mass_table}
+\caption{Top frame measurements.}
+    \label{tab:Top_frame_table}
 \end{table}
 
 Thus the moment of inertia for the top frame can be seen calculated in eq. (\ref{eq:top_frame_inertia_calc})
@@ -221,41 +224,42 @@ Thus the moment of inertia for the top frame can be seen calculated in eq. (\ref
   \centering
     \label{eq:top_frame_inertia_calc}
   \begin{split}
-      J_t  \quad  =&  \quad \frac{1}{12} m_{t,a}L_{t,a}^2 + m_{t,b}\left(\frac{L_{t,a}}{2}\right)^2 + (m_{t,c} + 2\cdot m_{pri})\left(\frac{L_{t,a}}{2}\right)^2 \\
-      &+ \frac{1}{12}m_{t,d}L_{t,d}^2 \\
+      J_t  \quad  =&  \quad \frac{1}{12} m_{t,a}l_{t,a}^2 + m_{t,b}\left(\frac{l_{t,a}}{2}\right)^2 + (m_{t,c} + 2\cdot m_{cor})\left(\frac{l_{t,a}}{2}\right)^2 \\
+      &+ \frac{1}{12}m_{t,d}l_{t,d}^2 \\
       =& \quad  \frac{1}{12} \cdot 0.3696 \si{kg}  \cdot (0.291 \si{m})^2 + 0.2680 \si{kg} \cdot \left(\frac{0.291 \si{m}}{2}\right)^2 \\
       &+ (0.4196 \si{kg} + 2\cdot 0.0758 \si{kg})\left(\frac{0.291\si{kg}}{2}\right)^2 \\
       &+ \frac{1}{12} \cdot 0.3696\si{kg} \cdot (0.2110\si{m})^2 \\
-      =& \quad 0.0198 \si{kg\cdot m^2}
+      =& \quad 0.0198 \si{\,kg\cdot m^2}
   \end{split}
 \end{equation}
 
-The top frames moment og inertia is therefore determined to be
-\newline $J_{t} = 0.0198 \si{kg\cdot m^2}$
+The top frame's moment of inertia is therefore determined to be
+\newline $J_{t} = 0.0198 \si{\,kg\cdot m^2}$
 
 \subsubsection{Moment of interia - Base frame}
 
-To calculate the moment of inertia for the base frame, some observations needs to be made. Firstly the same prosedure as in section \ref{ch:Top_frame} can be followed to determine the base frames own inertia, since the base frame of it selv has a structure identical to the top frame, with one bar being the difference. Secondly, the base frames moment of inertia is directly influenced by the position of the topframe, thus making the base frames moment of inertia a function of the top frames position $\phi$.\\
-As in section \ref{cp:Top_frame_inertia} the base frame is fragmented, this time in three parts:$e$, $f$ and $g$ as shown on figure (\ref{fig:ButtomFrame}). The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frames moment of inertia can now be expressed as seen in eq. (\ref{eq:Base_frame_equ}).
+To calculate the moment of inertia for the buttom frame, some observations needs to be made. Firstly the same prosedure as in section \ref{ch:Top_frame_inertia} can be followed to determine the base frames own inertia, since the base frame of it selv has a structure identical to the top frame, with one bar being the difference. Secondly, the base frame's moment of inertia is directly influenced by the position of the topframe, thus making the base frame's moment of inertia a function of the top frames position $\theta_t$.\\
+As in section \ref{ch:Top_frame_inertia} the base frame is fragmented, this time in three parts:$e$, $f$ and $g$ as shown on figure \ref{fig:ButtomFrame}. The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frame's moment of inertia can now be expressed as seen in eq. (\ref{eq:Base_frame_eq}).
 
 \begin{figure}[h]
-  \label{fig:ButtomFrame}
   \centering
   \includesvg[\main/afsnit/system_modeling/]{ButtomFrame}
   \caption{Buttom frame of the pan-tilt system.}
+  \label{fig:ButtomFrame}
 \end{figure}
 
 \begin{equation}
-  \label{eq:Base_frame_equ}
+  \label{eq:Base_frame_eq}
   J_b =
   \underbrace{
-  \sum J_{b,n} + J_{b,n-1} + \dotsb + J_{b,1}}_\text{$J_{b,const}$} + J_{b,t}(\phi)
+  \sum J_{b,k} + J_{b,k-1} + \dotsb + J_{b,1}}_\text{$J_{b,const}$} + J_{b,var}(\theta_t)
 \end{equation}
 
-Firstly the constant moment of inertia is determined, which, with the same procedure results in eq. (\ref{eq:top_frame_static}).
+Firstly the constant part of the moment of inertia is determined, which, with the same procedure results in eq. (\ref{eq:top_frame_constant}).
 
 \begin{equation}
-  J_{b,const} = \frac{1}{12}m_{b,e}L_{b,e}^2 + m_{b,f} \left( \frac{L_{b,e}}{2} \right)^2 + m_{b,g}\left(\frac{L_{b,e}}{2}\right)^2
+  \label{eq:top_frame_constant}
+  J_{b,const} = \frac{1}{12}m_{b,e}l_{b,e}^2 + m_{b,f} \left( \frac{l_{b,e}}{2} \right)^2 + m_{b,g}\left(\frac{l_{b,e}}{2}\right)^2
 \end{equation}
 
 The different constants needed to determine $J_{b,cont}$ are listed in table \ref{tab:Base_frame_table}.
@@ -264,7 +268,7 @@ The different constants needed to determine $J_{b,cont}$ are listed in table \re
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
-  & $L_{b,k}$ [m]  & $m_{b,k}$ [kg]  \\
+  & $l_{b,k} \, \si{[m]}$ & $m_{b,k} \, \si{[kg]}$ \\
 \hline
 $e$ & 0.42  & 0.5334  \\
 \hline
@@ -273,7 +277,8 @@ $f$ & 0.207  & 0.2629  \\
 $g$ & 0.207 & 0.2629  \\
 \hline
 \end{tabular}
-    \label{tab:mass_table}
+\caption{Buttom frame measurements.}
+    \label{tab:Base_frame_table}
 \end{table}
 
 $J_{b,const}$ can now de determined as shown in eq. (\ref{eq:J_b,const}).
@@ -281,30 +286,30 @@ $J_{b,const}$ can now de determined as shown in eq. (\ref{eq:J_b,const}).
 \begin{equation}
   \label{eq:J_b,const}
   \begin{split}
-      J_{b,const} =& \quad \frac{1}{12}m_{b,e}L_{b,e}^2 + m_{b,f} \left( \frac{L_{b,e}}{2} \right)^2 + m_{b,g}\left(\frac{L_{b,e}}{2}\right)^2\\
+      J_{b,const} =& \quad \frac{1}{12}m_{b,e}l_{b,e}^2 + m_{b,f} \left( \frac{l_{b,e}}{2} \right)^2 + m_{b,g}\left(\frac{l_{b,e}}{2}\right)^2\\
       =& \quad \frac{1}{12} \cdot 0.5334\si{kg} \cdot (0.42 \si{m})^2 + 0.2629\si{kg} \cdot \left( \frac{0.42 \si{m}}{2} \right)^2 \\
       &+ 0.2629 \si{kg}\cdot \left(\frac{0.42 \si{kg}}{2}\right)^2\\
-      =& \quad 0.0304 \si{kg\cdot m^2}
+      =& \quad 0.0304 \si{\,kg\cdot m^2}
   \end{split}
 \end{equation}
 
-Thus the constant moment of inertia of the base frames is determined to be $J_{b,const} = 0.0304 \si{kg\cdot m^2}$.
-\\
-The varying moment of inertia, $J_{b,var}(\phi_t)$, is dependent on the angular diaplacement of the top frame, from the vertikal axis parallel to the buttom frame. This can from be seen on figure (\ref{fig:TrekantDiagram}).
+Thus the constant part of the moment of inertia of the base frame is determined to be $J_{b,const} = 0.0304 \si{kg\cdot m^2}$.\\
+
+The varying moment of inertia, $J_{b,var}(\theta_t)$, is dependent on the angular diaplacement of the top frame, from the vertikal axis parallel to the buttom frame. This can be seen on figure (\ref{fig:TrekantDiagram}).
 
 \begin{figure}[H]
-  \label{fig:TrekantDiagram}
   \centering
   \def\svgwidth{0.4\columnwidth}
   \includesvg[\main/afsnit/system_modeling/]{TrekantDiagram}
   \caption{System seen from the side.}
+  \label{fig:TrekantDiagram}
 \end{figure}
 
-From figure (\ref{fig:TrekantDiagram}) its seen that by applying the parallel axis theorem, the added moment of inertia can be written as seen in eq. (\ref{eq:triangleDiagram_moment_of_inertia}).
+From figure \ref{fig:TrekantDiagram} its seen that by applying the parallel axis theorem, the added moment of inertia can be written as seen in eq. (\ref{eq:triangleDiagram_moment_of_inertia}).
 
 \begin{equation}
   \label{eq:triangleDiagram_moment_of_inertia}
-  J_{b,var}(\phi_t) = m_{t} \left( \frac{L_{t,a}}{2} \cos(\phi_t) \right)^2 = ( m_{t,a} + m_{t,b} + m_{t,c} + m_{t,d} ) \frac{L_{t,a}^2}{4} \cos^2(\phi_t)
+  J_{b,var}(\theta_t) = m_{t} \left( \frac{l_{t,a}}{2} \cos(\theta_t) \right)^2 = ( m_{t,a} + m_{t,b} + m_{t,c} + m_{t,d} ) \frac{l_{t,a}^2}{4} \cos^2(\theta_t)
 \end{equation}
 
 The collective moment of inertia for the buttom frame can thus be determined as seen in eq. (\ref{eq:ButtomFrame_moment_of_inertia}).
@@ -312,22 +317,104 @@ The collective moment of inertia for the buttom frame can thus be determined as 
 \begin{equation}
   \label{eq:ButtomFrame_moment_of_inertia}
 \begin{split}
-    J_b(\phi_t) =& \, J_{b,const} + J_{b,var} = 0.0304 \si{\, kg \, m^2} + ( m_{t,a} + m_{t,b} + m_{t,c} + m_{t,d} ) \frac{L_{t,a}^2}{4} \cos^2(\phi_t)\\
+    J_{b}(\theta_t) =& \, J_{b,const} + J_{b,var} = 0.0304 \si{\, kg \, m^2} + ( m_{t,a} + m_{t,b} + m_{t,c} + m_{t,d} ) \frac{l_{t,a}^2}{4} \cos^2(\theta_t)\\
     =& \, 0.0304 \si{\, kg \, m^2} + ( 0.3696 \si{\, kg \, m^2} + 0.2680 \si{\, kg \, m^2} + 0.4196 \si{\, kg \, m^2}\\
-    &+ 0.3696 \si{\, kg \, m^2})\frac{0.291^2}{4}\cos^2(\phi_t)\\
-    =& \, 0.0606\cdot \cos^2(\phi_t)
+    &+ 0.3696 \si{\, kg \, m^2})\frac{0.291^2}{4}\cos^2(\theta_t)\\
+    =& \, 0.0606\cdot \cos^2(\theta_t)
 \end{split}
 \end{equation}
 
 Thus the moment of inertia for the buttom frame has been determined to be
-\newline $J_b =\, 0.0606\cdot \cos^2(\phi_t)$.
+\newline $J_{b} = \, 0.0606 \cdot \cos^2(\theta_t)$.
 
+\subsection{Application specified model - pre-tuning}
+Since the different parameters in the found models now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. These models can thus be written as seen in eq. (\ref{eq:Theoretical_models_top}) and (\ref{eq:Theoretical_models_buttom}).
 
+\begin{equation}
+      \label{eq:Theoretical_models_top}
+      \begin{split}
+      \frac{d}{dt}
+          \begin{bmatrix}
+              \theta_t \\
+              \dot \theta_t \\
+              i_t
+          \end{bmatrix}
+              =&
+          \begin{bmatrix}
+              0                                                   & 1                         & 0                             \\
+              37.59 \, \si{\frac{m}{s^2}} \cdot \cos(\bar \theta) & -\frac{b_t}{0.0198 \si{kg\,m^2} }  & \frac{K_{t,torque}}{0.0198 \si{\,kg\,m^2}} \\
+              0    & -\frac{K_{t,elec}}{3.85\cdot 10^{-4}\si{H}}  & -12213 \si{\, \frac{\Omega}{H}}              \\
+          \end{bmatrix}
+          \begin{bmatrix}
+              \theta_t      \\
+              \dot \theta_t \\
+              i_t           \\
+          \end{bmatrix}
+              +
+          \begin{bmatrix}
+              0             \\
+              0             \\
+              2597.40 \si{H^{-1}} \\
+          \end{bmatrix}
+              V_t
+\\
+          y =&
+          \begin{bmatrix}
+              0 & 1 & 0
+          \end{bmatrix}
+          \begin{bmatrix}
+              \theta_t      \\
+              \dot \theta_t \\
+              i_t           \\
+          \end{bmatrix}
+    \end{split}
+\end{equation}
+
+\begin{equation}
+      \label{eq:Theoretical_models_buttom}
+      \begin{split}
+      \frac{d}{dt}
+          \begin{bmatrix}
+              \theta_b        \\
+              \dot \theta_b   \\
+              i_b
+          \end{bmatrix}
+        =&
+          \begin{bmatrix}
+              0 & 1                         & 0                         \\
+              0 & -\frac{b_b}{0.06\cdot \cos^2(\theta_t) \si{\,kg\,m^2}} & \frac{K_{b,torque}}{0.06\cdot \cos^2(\theta_t)\si{\,kg\,m^2}}  \\
+              0 & -\frac{K_{b,elec}}{3.85\cdot 10^{-4}\si{H}}   & -12213 \si{\frac{\Omega}{H}}          \\
+          \end{bmatrix}
+    \begin{bmatrix}
+        \theta_b        \\
+        \dot \theta_b   \\
+        i_b             \\
+    \end{bmatrix}
+        +
+    \begin{bmatrix}
+        0             \\
+        0             \\
+        2597.40 \si{H^{-1}} \\
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        0 & 1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_b \\
+        \dot \theta_b\\
+        i_b\\
+    \end{bmatrix}
+  \end{split}
+\end{equation}
 
 
 \subsubsection{Simulation}
 
 \subsection{Stepresponse tuning}
+\label{ch:stepresponse_tuning}
 \subfile{\main/afsnit/system_modeling/stepresponse_tuning.tex}
 
 \subsection{Improvements}
