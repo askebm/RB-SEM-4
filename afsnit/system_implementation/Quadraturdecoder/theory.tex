@@ -8,14 +8,15 @@ The Quadrature Decoder is used to interprete the position of the system's motors
 First, in order to understand the implementation of the Quadrature Decoder on the FPGA, a small explanation of how a Quadrature Encoder works is needed. \\
 A Quadrature Encoder uses two channels to sense the position of, typically, a rotating disk/shaft or a linear strip. The disk or strip has two paths on it, positioned 90 degresse out of phase of each other, see figure \ref{rotary_encoder} for a rotary encoder and see figure \ref{channels_1} for a strip encoder. Statinoary sensores are typically placed on top of the encoder, so when a track moves in relation to a sensor, it outputs a logic high or low output signal depending on what part of the track is visible to the sensor. An encoder has two output signals, one for each channel, typically called A and B, see figure \ref{channels_2}. This two signals, A and B, is what the decoder uses to determine the position of the encoder.
 
+
 \begin{figure}[H]
-  \includegraphics[width = \textwidth]{pictures/encoder.png}
+  \includegraphics[width = \textwidth]{\main/afsnit/system_implementation/Quadraturdecoder/pictures/encoder.png}
   \caption{The figure shows the tracks of a rotary encoder.}
   \label{rotary_encoder}
 \end{figure}
 
 \begin{figure}[H]
-  \includegraphics[width = \textwidth]{pictures/channels.png}
+  \includegraphics[width = \textwidth]{\main/afsnit/system_implementation/Quadraturdecoder/pictures/channels.png}
   \caption{The figure shows the output of both a rotary and linary encoder}
   \label{channels_1}
 \end{figure}
@@ -38,5 +39,5 @@ The idea with a quadrature Decoder is for it to decode the two output signals th
  1 & 1 & 1 & 0 & 1 & Backwards & -1 \\
  x & x & x & x & 0 & No change & 0 \\
  \hline
-\end{tabular}}
+\end{tabular}
 \end{document}
