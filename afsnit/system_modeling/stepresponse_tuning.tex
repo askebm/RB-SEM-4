@@ -1,0 +1,41 @@
+\documentclass[../../main]{subfiles}
+\begin{document}
+
+To tune the theoretical model the electromotiveforce, the motortorque and friction, is adjusted for both the top frame and the bottom frame, to fit the openloop stepresponse of the physical system.
+
+Further more the total weight of the corners is increased by 200\si{g}. The bottom frame also have what seems to be a sizeable nonlinear component, which is evaluated to be a torque of $1.4$\si{N m} sine dependency on the bottom frames position.
+
+The adjusted motorconstants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated stepresponse interlaced with the physical stepresponse can be seen in figure \ref{fig:openloop_step_phys}.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ll}
+		\multicolumn{2}{c}{ \textbf{Top frame} }\\
+		\hline
+		electromotiveforce& 3\si{ \frac{rad}{Vs}}\\
+		motortorque & 2.8 \si{ \frac{N m}{A}}\\
+		friction coefficient& 0.5\\
+		m$_{corners}$& 0.351\si{g}  \\
+
+		\multicolumn{2}{c}{ \textbf{Bottom frame} }\\
+		\hline
+		electromotiveforce& 3\si{ \frac{rad}{Vs}}\\
+		motortorque & 4.4 \si{ \frac{N m}{A}}\\
+		friction coefficient & 0.8\\
+		non-linear torque & 1.4\si{N m}\\
+	\end{tabular}
+	\caption{Fitted motor constants.}
+	\label{tab:fitted_motor_constants}
+\end{table}
+
+\begin{figure}[h]
+	\centering
+	\def\svgwidth{\textwidth}
+	\import{\main/afsnit/system_modeling/img/}{step_response.pdf_tex}
+	\caption{Openloop stepresponse of physical and simulated system.}
+	\label{fig:openloop_step_phys}
+\end{figure}
+
+The resulting simulated model is somewhat close, but there are stille some inconsistencies which could be exlained by slack in the system.
+
+\end{document}
