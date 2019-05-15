@@ -15,7 +15,7 @@ The FPGA used in this project is a Artix7 mounted on a BASYS3 kit. \todo{ref}
   \centering
   \def\svgwidth{\textwidth}
   \includesvg[\main /afsnit/system_implementation/FPGA/images/]{components_connection}
-  \caption{System overview.}
+  \caption{FPGA System overview.}
   \label{fig:FPGA_system_overview}
 \end{figure}
 
@@ -49,9 +49,16 @@ Since all the different processes, like receiving data over SPI and updating dat
 This is done by placing a latch on the output from the protocol module, witch is triggered by a busy signal from the SPI module. 
 
 \subsubsection{Quadrature decoder}
+Since there is to motors on the system and therefor to encoders, their have been implemented to instances of the quadrature decoder module.
+Each of these modules has a 12 bit position vector as output, and takes the A and B signal directly from the encoder. The modules also uses the 100Mhz system clock directly, and takes a reset witch is active low as input.
+The reset for the encoders are inverted before they are given to the module, so when a high reset is sent by the Tiva, a low reset signal is given to the decoder.
 
 
 \subsubsection{Speed measurement}
+These modules are used to calculate the speed of which the system is turning. For this calculation it uses the 12 bit output vector from the quadrature decoder module.
+There are to speed measurement modules implemented, one for each motor.
+
+
 
 
 \end{document}
