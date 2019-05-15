@@ -1,4 +1,49 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
 
+By using the Ziegler-Nichols approach the system is approximated to two second order linear systems
+which can be repsresented in the s-domain shown i eq. \eqref{eq:ziegler_second_order}, where $A$ is
+the final value of the stepresponse, $\tau$ is the rise time and $t_d$ is the lag time.
+The lag time is assumed to be 5\si{ms} as that is the fastest the the system can possibly update due tot he systick timer in freeRTOS \todo{ref free rtos}.
+
+\begin{equation}
+	\label{eq:ziegler_second_order}
+	\frac{A}{\tau s+1}e^{st_d}
+\end{equation}
+
+\begin{figure}[h]
+  \centering
+	\def\svgwidth{1\textwidth}
+  \includesvg[\main/afsnit/system_design/Controller/img/]{ziegler}
+  \caption{Stepresponse with marked values for Ziegler-Nichols}
+  \label{fig:ziegler_step}
+\end{figure}
+
+The top frame approximated to the S-domain representation in eq. \eqref{eq:ziegler_top} and the bottom frame in eq. \eqref{eq:ziegler_bottom}
+
+\begin{align}
+	G_{Top}(s) &=\frac{0.89}{(4.32-3.43)\,s +1} \\
+						 &=\frac{0.89}{0.89s +1}
+	\label{eq:ziegler_top}\\
+	G_{Bottom}(s) &=\frac{0.55}{(3.74-2.78)\,s +1}\\
+								&=\frac{0.55}{0.96s+1}
+	\label{eq:ziegler_bottom}
+\end{align}
+
+A first estimate of the P and I terms are shown in eq. \eqref{eq:pi_ziegler_top} and eq. \eqref{eq:pi_ziegler_bot} in accordance with the Ziegler-Nichols approach shown in eq. \eqref{eq:ziegler_general}.
+
+\begin{equation}
+	\label{eq:ziegler_general}
+	R = \frac{A}{\tau} \qquad K_p = \frac{0.9}{R\,L}\qquad T_i=\frac{L}{0.3} \qquad L = 5\si{ms}
+\end{equation}
+
+\begin{align}
+	\label{eq:pi_ziegler_top}
+	K_{p,top} = 180 \qquad &K_{i,top} = 0.02\\
+	\label{eq:pi_ziegler_bot}
+	K_{p,bottom} = 314.18 \qquad &K_{i,bottom} = 0.02
+\end{align}
+
+\todo{ Tilføj noget scaling}
+
 \end{document}
