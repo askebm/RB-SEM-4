@@ -646,7 +646,7 @@
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
-     inkscape:window-x="-8"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      width="12.8cm"
      height="9.6cm"
@@ -697,7 +697,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -985,14 +985,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.73760223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.85860014"
-       x="-194.73401"
-       y="675.23236"
+       x="-215.03329"
+       y="661.07434"
        id="text7039"
        transform="scale(0.99135656,1.0087188)"><tspan
          sodipodi:role="line"
          id="tspan7037"
-         x="-194.73401"
-         y="675.23236"
+         x="-215.03329"
+         y="661.07434"
          style="stroke-width:0.85860014">B goes high</tspan></text>
     <path
        transform="matrix(0.98594641,0,0,2.3518542,267.79449,-249.13673)"
@@ -1006,14 +1006,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.73091888px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.85818243"
-       x="441.11163"
-       y="578.78644"
+       x="444.16238"
+       y="566.07843"
        id="text7347"
-       transform="scale(0.85113821,1.1748973)"><tspan
+       transform="scale(0.85113822,1.1748973)"><tspan
          sodipodi:role="line"
          id="tspan7345"
-         x="441.11163"
-         y="578.78644"
+         x="444.16238"
+         y="566.07843"
          style="stroke-width:0.85818243">B goes high</tspan></text>
     <path
        transform="matrix(1.7779035,0,0,0.95342063,-102.43525,59.18129)"
@@ -1037,50 +1037,50 @@
          id="flowPara7427" /></flowRoot>    <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.25069046px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.82816815"
-       x="257.45938"
-       y="304.27957"
+       x="243.09567"
+       y="297.23843"
        id="text9687"
-       transform="scale(0.90388312,1.1063377)"><tspan
+       transform="scale(0.90388313,1.1063377)"><tspan
          sodipodi:role="line"
          id="tspan9685"
-         x="257.45938"
-         y="304.27957"
+         x="243.09567"
+         y="297.23843"
          style="stroke-width:0.82816815">A goes high</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.39672565px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.83729535"
-       x="-41.676586"
-       y="295.16656"
+       x="-33.504589"
+       y="287.79254"
        id="text9691"
        transform="scale(0.87380239,1.1444235)"><tspan
          sodipodi:role="line"
          id="tspan9689"
-         x="-41.676586"
-         y="295.16656"
+         x="-33.504589"
+         y="287.79254"
          style="stroke-width:0.83729535">A goes low</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.65184784px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.85324049"
-       x="388.09726"
-       y="413.69186"
+       x="391.45364"
+       y="421.85278"
        id="text9695"
-       transform="scale(0.9670466,1.0340763)"><tspan
+       transform="scale(0.96704661,1.0340763)"><tspan
          sodipodi:role="line"
          id="tspan9693"
-         x="388.09726"
-         y="413.69186"
+         x="391.45364"
+         y="421.85278"
          style="stroke-width:0.85324049">B goes low</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:14.87254047px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.92953378"
-       x="-194.1635"
-       y="418.21332"
+       x="-206.10632"
+       y="431.55106"
        id="text9699"
        transform="scale(0.97839517,1.0220819)"><tspan
          sodipodi:role="line"
          id="tspan9697"
-         x="-194.1635"
-         y="418.21332"
+         x="-206.10632"
+         y="431.55106"
          style="stroke-width:0.92953378">B goes low</tspan></text>
     <path
        transform="matrix(1.794923,0,0,0.95276474,-103.32237,442.74118)"
@@ -1094,26 +1094,26 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.50230408px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.843894"
-       x="263.4202"
-       y="671.01917"
+       x="256.79086"
+       y="681.88898"
        id="text9687-4"
        transform="scale(0.88129502,1.1346938)"><tspan
          sodipodi:role="line"
          id="tspan9685-0"
-         x="263.4202"
-         y="671.01917"
+         x="256.79086"
+         y="681.88898"
          style="stroke-width:0.843894">B goes high</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.04490185px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.81530637"
-       x="-45.766724"
-       y="648.81708"
+       x="-36.61768"
+       y="660.42413"
        id="text9691-7"
-       transform="scale(0.85144036,1.1744804)"><tspan
+       transform="scale(0.85144035,1.1744804)"><tspan
          sodipodi:role="line"
          id="tspan9689-1"
-         x="-45.766724"
-         y="648.81708"
+         x="-36.61768"
+         y="660.42413"
          style="stroke-width:0.81530637">B goes low</tspan></text>
     <path
        transform="translate(-41.22137,160.99055)"
@@ -1219,24 +1219,28 @@
          y="393.91907">Reset goes high</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
-       x="174.1971"
-       y="702.26794"
-       id="text16779-6"><tspan
+       style="font-style:normal;font-weight:normal;font-size:14.57995033px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9112469"
+       x="175.91019"
+       y="690.48486"
+       id="text16779-6"
+       transform="scale(0.99478238,1.005245)"><tspan
          sodipodi:role="line"
          id="tspan16777-9"
-         x="174.1971"
-         y="702.26794">Reset goes high</tspan></text>
+         x="175.91019"
+         y="690.48486"
+         style="stroke-width:0.9112469">Reset goes high</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
-       x="-29.637728"
-       y="702.26794"
-       id="text16779-1"><tspan
+       style="font-style:normal;font-weight:normal;font-size:14.13248348px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.88328022"
+       x="-22.323521"
+       y="735.06805"
+       id="text16779-1"
+       transform="scale(1.0615675,0.9420032)"><tspan
          sodipodi:role="line"
          id="tspan16777-5"
-         x="-29.637728"
-         y="702.26794">Reset goes high</tspan></text>
+         x="-22.323521"
+         y="735.06805"
+         style="stroke-width:0.88328022">Reset goes high</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker17227)"
        d="m 363.52707,303.15561 c -0.2164,-12.98409 -0.43279,-25.9672 -0.64916,-38.94933"
