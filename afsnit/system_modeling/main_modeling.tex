@@ -26,7 +26,7 @@ Adding the extra gravitational pull on these corners, the mechanical equation de
 
 \begin{equation}
   \label{eq:new_mech_equation_with_corners}
-  J_t\cdot \ddot \theta_t + b_t\cdot \dot \theta_t + 2\cdot m_{t,cor}\cdot g \cdot \cos(\theta_t) = K_{t,torque}\cdot i_t
+  J_t\cdot \ddot \theta_t + b_t\cdot \dot \theta_t + 2\cdot m_{t,cor} \cdot l_{t,a} \cdot g \cdot \sin(\theta_t) = K_{t,torque}\cdot i_t
 \end{equation}
 
 The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ being the mass of 1 of the 2 the aluminium corners on the top frame.\\
@@ -44,7 +44,7 @@ To ease the further analysis the model mentioned above is linearized by applying
     =&
     \begin{bmatrix}
         0 & 1               & 0             \\
-        \frac{2\cdot m_{t,cor} \cdot g \cdot \cos(\bar \theta)}{J_t} & -\frac{b_t}{J_t}    & \frac{K_{t,torque}}{J_t} \\
+        -\frac{2\cdot m_{t,cor} \cdot g \cdot \cos(\bar \theta)}{J_t} & -\frac{b_t}{J_t}    & \frac{K_{t,torque}}{J_t} \\
         0 & -\frac{K_{t,elec}}{L_t}  & -\frac{R_t}{L_t}  \\
     \end{bmatrix}
     \begin{bmatrix}
@@ -86,7 +86,7 @@ The state space models for the two motors can be written as shown in eq. (\ref{e
     =&
     \begin{bmatrix}
         0 & 1               & 0             \\
-        \frac{2\cdot m_{t,cor} \cdot g \cdot \cos(\bar \theta)}{J_t} & -\frac{b_t}{J_t}    & \frac{K_{t,torque}}{J_t} \\
+        -\frac{2\cdot m_{t,cor} \cdot g \cdot \cos(\bar \theta)}{J_t} & -\frac{b_t}{J_t}    & \frac{K_{t,torque}}{J_t} \\
         0 & -\frac{K_{t,elec}}{L_t}  & -\frac{R_t}{L_t}  \\
     \end{bmatrix}
     \begin{bmatrix}
@@ -346,7 +346,7 @@ Since the different parameters in the found models now are determined with $K_{b
               =&
           \begin{bmatrix}
               0                                                   & 1                         & 0                             \\
-              37.59 \, \si{\frac{m}{s^2}} \cdot \cos(\bar \theta) & -\frac{b_t}{0.0198 \si{kg\,m^2} }  & \frac{K_{t,torque}}{0.0198 \si{\,kg\,m^2}} \\
+              -37.59 \, \si{\frac{m}{s^2}} \cdot \cos(\bar \theta) & -\frac{b_t}{0.0198 \si{kg\,m^2} }  & \frac{K_{t,torque}}{0.0198 \si{\,kg\,m^2}} \\
               0    & -\frac{K_{t,elec}}{3.85\cdot 10^{-4}\si{H}}  & -12213 \si{\, \frac{\Omega}{H}}              \\
           \end{bmatrix}
           \begin{bmatrix}
