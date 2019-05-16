@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'TrekantDiagram.pdf' (pdf, eps, ps)
+%% Accompanies image file 'TrekantDiagramForce.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{343.97615843bp}%
+    \setlength{\unitlength}{316.99063308bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,14 +50,21 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.08872719)%
+  \begin{picture}(1,1.14022306)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{TrekantDiagram.pdf}}%
-    \put(0.84345527,0.52168135){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0.25630922,1.02161226){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{TrekantDiagram.pdf}}%
-    \put(0.32327814,0.70234175){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$l_{angle}$\end{tabular}}}}%
-    \put(0.37778775,0.80201649){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta_t$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{TrekantDiagramForce.pdf}}%
+    \put(0.9152588,0.56609229){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0.27812887,1.10858245){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
+    \put(0.40994891,0.87029252){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta_t$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{TrekantDiagramForce.pdf}}%
+    \put(0.57413482,0.25426213){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_g$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{TrekantDiagramForce.pdf}}%
+    \put(0.4637755,0.57559123){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\theta_t$\end{tabular}}}}%
+    \put(0.81741131,0.48546337){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_{g,x}$\end{tabular}}}}%
+    \put(0.24957118,0.39251319){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$F_{g,y}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{TrekantDiagramForce.pdf}}%
+    \put(0.38817785,0.65761541){\color[rgb]{0,0,0}\rotatebox{43.236671}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$r$\end{tabular}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{TrekantDiagramForce.pdf}}%
   \end{picture}%
 \endgroup%
