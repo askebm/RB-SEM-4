@@ -1,0 +1,101 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'decoder_state.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{672.46937422bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.77923466)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0.32293048,0.83519162){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18547225\unitlength}\raggedright \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{decoder_state.pdf}}%
+    \put(0.57573592,0.71604239){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Start\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{decoder_state.pdf}}%
+    \put(0.38194439,0.83519162){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14331947\unitlength}\raggedright \end{minipage}}}%
+    \put(0.52526385,0.83519162){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.06744446\unitlength}\raggedright \end{minipage}}}%
+    \put(0.39037494,0.86048329){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.12645836\unitlength}\raggedright \end{minipage}}}%
+    \put(0.30313089,0.48017504){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}AB\_Low\end{tabular}}}}%
+    \put(0.46624996,0.48110824){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.01686111\unitlength}\raggedright \end{minipage}}}%
+    \put(0.42409717,0.48953879){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.07587501\unitlength}\raggedright \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{decoder_state.pdf}}%
+    \put(0.81907843,0.48089905){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A\_high\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{decoder_state.pdf}}%
+    \put(0.31290714,0.05475371){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B\_high\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{decoder_state.pdf}}%
+    \put(0.81550669,0.05470551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}AB\_high\end{tabular}}}}%
+    \put(0.35665272,0.5485527){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.22762503\unitlength}\raggedright \end{minipage}}}%
+    \put(0.36508327,0.37994154){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18547225\unitlength}\raggedright \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{decoder_state.pdf}}%
+    \put(0.57049763,0.27008064){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset\\\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{decoder_state.pdf}}%
+    \put(0.01747565,0.2724136){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Undefined\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{decoder_state.pdf}}%
+    \put(0.21163675,0.14205545){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{decoder_state.pdf}}%
+    \put(0.87101799,0.14401178){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{decoder_state.pdf}}%
+    \put(0.49427673,0.42096812){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02823593\unitlength}\raggedright \end{minipage}}}%
+    \put(0.69445213,0.5190154){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes high\end{tabular}}}}%
+    \put(0.41673711,0.51844609){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes low\end{tabular}}}}%
+    \put(0.87158716,0.3992532){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
+    \put(0.2244863,0.39384118){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{decoder_state.pdf}}%
+    \put(0.70178901,0.02283395){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
+    \put(0.41461651,0.02069258){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{decoder_state.pdf}}%
+    \put(0.46893679,0.28920044){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset\\goes \\low \end{tabular}}}}%
+    \put(0.6665883,0.28775241){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset\\goes \\low \end{tabular}}}}%
+    \put(0.52721946,0.1944886){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes low\end{tabular}}}}%
+    \put(0.40884494,0.44341205){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
+    \put(0.63063758,0.44644){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
+    \put(0.64455649,0.11164327){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
+    \put(0.42295873,0.11350581){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{decoder_state.pdf}}%
+  \end{picture}%
+\endgroup%

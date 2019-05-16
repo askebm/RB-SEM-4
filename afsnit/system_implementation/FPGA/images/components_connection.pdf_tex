@@ -1,0 +1,78 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'components_connection.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{553.73959711bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.57622445)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(-0.01903601,0.60970956){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.42278144\unitlength}\raggedright \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{components_connection.pdf}}%
+    \put(0.05363208,0.49347425){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Encoder\_B\end{tabular}}}}%
+    \put(0.04869111,0.57481983){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.27624456\unitlength}\raggedright \end{minipage}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{components_connection.pdf}}%
+    \put(0.33659937,0.49347425){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Encoder\_T\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{components_connection.pdf}}%
+    \put(0.03618239,0.21913357){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Speedmesh\_B\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{components_connection.pdf}}%
+    \put(0.31802011,0.22039897){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Speedmesh\_T\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{components_connection.pdf}}%
+    \put(0.62053515,0.35561296){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Protocol\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{components_connection.pdf}}%
+    \put(0.63623902,0.21958884){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}PWM\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{components_connection.pdf}}%
+    \put(0.8745046,0.35578754){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}SPI\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{components_connection.pdf}}%
+    \put(0.41433719,0.04887906){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}TIVA Microcontroller\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{components_connection.pdf}}%
+    \put(0.73458214,0.50134622){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}FPGA\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{components_connection.pdf}}%
+  \end{picture}%
+\endgroup%
