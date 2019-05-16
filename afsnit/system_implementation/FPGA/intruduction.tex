@@ -7,19 +7,19 @@ The FPGA connects the  microcontroller all the components on the pan-tilt system
 \\
 One of the main differences between an FPGA and a microcontroller is that on an FPGA everything is implemented in hardware. This also means that all of the processes running, is running in parallel. When implementing the different components this needs to be taken into consideration.
 \\
-The FPGA used in this project is a Artix7 mounted on a BASYS3 kit. \todo{ref} 
+The FPGA used in this project is a Artix7 mounted on a BASYS3 kit. \todo{ref}
 \subsubsection{System overview}%
 \label{sub:system_overview}
 
 \begin{figure}[H]
   \centering
   \def\svgwidth{\textwidth}
-  \includesvg[\main /afsnit/system_implementation/FPGA/images/]{components_connection}
+  \includesvg[\main/afsnit/system_implementation/FPGA/images/]{components_connection}
   \caption{System overview.}
   \label{fig:FPGA_system_overview}
 \end{figure}
 
-The system consist of different modules, implemented in VHDL. 
+The system consist of different modules, implemented in VHDL.
 To store the data that needs to be exchanged between the FPGA and the Tiva microcontroller, different registers is created with the necessary size. Se table \ref{table:FPGA_registers}.
 \\
 The connection between the modules can be seen in the system overview. Se figure \ref{fig:FPGA_system_overview}
@@ -36,9 +36,9 @@ Velocity\_B     & -              & Reset\_B       \\ \hline
 \label{table:FPGA_registers}
 \end{table}
 \subsubsection{PWM}
-The PWM module creates a PWM signal for both motors. It takes a 9 bit vector as input for each motor, and output the signals necessary for the H-Bridges to work. 
-It takes the 100Mhz system clock from the FPGA as a input, and then the module contains a clock divider that creates the necessary clock frequency, for the desired PWM frequency. 
-MSB in the 9 bit input vector determine witch way the motor should turn. 
+The PWM module creates a PWM signal for both motors. It takes a 9 bit vector as input for each motor, and output the signals necessary for the H-Bridges to work.
+It takes the 100Mhz system clock from the FPGA as a input, and then the module contains a clock divider that creates the necessary clock frequency, for the desired PWM frequency.
+MSB in the 9 bit input vector determine witch way the motor should turn.
 The module is design so that it is possible to just define the system clock frequency and the desired PWM frequency, and the correct divider is calculated when the code is synthesized.
 This is done so that it is easy to change the PWM frequency for testing.
 \subsubsection{Protocol}
@@ -46,7 +46,7 @@ The protocol module uses a SPI module created by \todo{ref.} for communicating w
 The role of the protocol module is to decode the data received over SPI, and prepare data for transmission, in regards to the previously determined protocol.
 \\
 Since all the different processes, like receiving data over SPI and updating data registers, all run in parallel, it is important to make sure that the protocol module cannot update the data registers while the SPI module is receiving data form the microcontroller.
-This is done by placing a latch on the output from the protocol module, witch is triggered by a busy signal from the SPI module. 
+This is done by placing a latch on the output from the protocol module, witch is triggered by a busy signal from the SPI module.
 
 \subsubsection{Quadrature decoder}
 
