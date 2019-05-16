@@ -29,7 +29,7 @@
       <path
          id="path877"
          d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:#ffffff;stroke-width:1pt;stroke-opacity:0.94117647;fill:#ffffff;fill-opacity:0.94117647"
          transform="scale(0.4) rotate(180) translate(10,0)" />
     </marker>
     <marker
@@ -43,7 +43,7 @@
       <path
          id="path874"
          d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         style="fill-rule:evenodd;stroke:#ffffff;stroke-width:1pt;stroke-opacity:0.94117647;fill:#ffffff;fill-opacity:0.94117647"
          transform="scale(0.4) translate(10,0)" />
     </marker>
     <marker
@@ -161,13 +161,13 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="435.27081"
-     inkscape:cy="603.51847"
+     inkscape:zoom="5.6"
+     inkscape:cx="398.4393"
+     inkscape:cy="650.98989"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="956"
+     inkscape:window-width="1916"
      inkscape:window-height="1041"
      inkscape:window-x="0"
      inkscape:window-y="18"
@@ -356,7 +356,7 @@
          y="158.84972"
          style="stroke-width:0.26458332;font-size:3.88055556px">$F_{g,y}$</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#marker1131);marker-end:url(#marker1300)"
+       style="fill:none;stroke:#ffffff;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.94117647;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#marker1131);marker-end:url(#marker1300);fill-opacity:1"
        d="M 98.74628,140.42336 122.2753,116.89434"
        id="path862"
        inkscape:connector-curvature="0" />
@@ -371,14 +371,14 @@
          id="tspan864"
          x="-9.0609484"
          y="168.82919"
-         style="font-size:3.88055563px;stroke-width:0.26458332">$r$</tspan></text>
+         style="font-size:3.88055563px;stroke-width:0.26458332">\textcolor{white}{$r$}</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;stroke:#ffffff;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.94117647"
        d="m 97.234373,139.7619 2.149739,2.14974"
        id="path1634"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:none;stroke:#ffffff;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.94117647"
        d="m 121.76739,115.4415 2.14974,2.14974"
        id="path1634-3"
        inkscape:connector-curvature="0" />
