@@ -3,6 +3,7 @@
 \subsection{General model}
 \label{ch:General_model}
 In this chapter an approximated model of the physical system will be found.\\
+\todo{ needs an introduction}
 
 By analysis of the forces acting on the motors when voltage is added, the following differential equations are found.\\
 
@@ -19,7 +20,7 @@ By analysis of the forces acting on the motors when voltage is added, the follow
 In (\ref{equ:model_mech_equ}) $J$ is the moment of inertia about the axis of rotation, $b$ is the motors viscous friction constant, $K_{torque}$ is the motor toque constant, $\dot \theta$ is the first time derivative of the position, and $\ddot \theta$ is the second time derivative. The first time derivative is this the velocity and the second is the acceleration.\\
 In (\ref{equ:model_ele_equ}) $L$ is the electrical inductance of the coil in the motor, $\frac{di}{dt}$ is the first time derivative of the current, $R$ is the ohmic resistance of the motor, $V$ is the voltage applied, $K_{elec}$ is the electromotive force constant and as mentioned above $\dot \theta$ is the velocity.\\
 
-By further inspection a non-linear contribution på the top frame's moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
+By further inspection a non-linear contribution on the top frame's moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
 Adding the extra gravitational pull on these corners, the mechanical equation describing the motor driving the top frame can be rewritten as seen in eq. (\ref{eq:new_mech_equation_with_corners}).
 
 \begin{equation}
@@ -82,6 +83,7 @@ To ease the further analysis the model mentioned above is linearized by applying
 \end{equation}
 
 The state space models for the two motors can be written as shown in eq. (\ref{eq:ss_topframe_Genereal_model}) and (\ref{eq:ss_bottomframe_Genereal_model}).
+\todo{which is which?}
 
 \begin{equation}
       \label{eq:ss_topframe_Genereal_model}
@@ -184,7 +186,7 @@ To determine the top frame's moment of inertia, $J_{t}$, its seen as an isolated
 \end{figure}
 
 Since moments of inertia can be added together in components, the frame is to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be seen, the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true.
-
+\todo{Superposition ?}
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia_formula}
@@ -203,7 +205,7 @@ The contributions of $a$ and $c$ are approximated as linear uniform rods rotatin
   \underbrace{(m_{t,d} + 2\cdot m_{cor})\left(\frac{l_{t,a}}{2}\right)^2}_\text{$J_{t,d}$}
 \end{split}
 \end{equation}
-
+\todo{Do we need to explain the moment of inertia formula?}
 Thus an expression to calculate the moment of inertia of the top frame is determined.\\
 
 Since disassembly of the system is not an possibility, the mass of the different components are determined from the mass density $\rho_{bar}$, and the length of the component. $\rho_{bar}$ is found in the datasheet \textit{Frame bars} as $\rho_{bar} = 1.27 \si{\frac{kg}{m}}$. The mass' relevant for eq. (\ref{eq:Top_frame_total_inertia}) are caculated in table (\ref{tab:Top_frame_table}).
@@ -341,7 +343,7 @@ Thus the moment of inertia for the bottom frame has been determined to be
 
 \subsection{Application specified model - pre-tuning}
 Since the different parameters in the found models now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. These models can thus be written as seen in eq. (\ref{eq:Theoretical_models_top}) and (\ref{eq:Theoretical_models_bottom}).
-
+\todo{add reference for top and bottom frame}
 \begin{equation}
       \label{eq:Theoretical_models_top}
       \begin{split}
