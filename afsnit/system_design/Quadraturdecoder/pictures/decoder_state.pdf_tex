@@ -76,26 +76,26 @@
     \put(0,0){\includegraphics[width=\unitlength,page=7]{decoder_state.pdf}}%
     \put(0.01747565,0.2724136){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Undefined\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{decoder_state.pdf}}%
-    \put(0.23408071,0.12612744){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
+    \put(0.21163675,0.14205545){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{decoder_state.pdf}}%
-    \put(0.868122,0.12735979){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
+    \put(0.87101799,0.14401178){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{decoder_state.pdf}}%
     \put(0.49427673,0.42096812){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.02823593\unitlength}\raggedright \end{minipage}}}%
-    \put(0.7089321,0.51032741){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes high\end{tabular}}}}%
-    \put(0.40877313,0.50903413){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes low\end{tabular}}}}%
-    \put(0.86796716,0.40866517){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
-    \put(0.23751827,0.40904514){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
+    \put(0.69445213,0.5190154){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes high\end{tabular}}}}%
+    \put(0.41673711,0.51844609){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}A goes low\end{tabular}}}}%
+    \put(0.87158716,0.3992532){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
+    \put(0.2244863,0.39384118){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{decoder_state.pdf}}%
-    \put(0.70830499,0.03658986){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
-    \put(0.40592853,0.03589653){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
+    \put(0.70178901,0.02283395){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes high\end{tabular}}}}%
+    \put(0.41461651,0.02069258){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}B goes low\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{decoder_state.pdf}}%
     \put(0.46893679,0.28920044){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset\\goes \\low \end{tabular}}}}%
     \put(0.6665883,0.28775241){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset\\goes \\low \end{tabular}}}}%
     \put(0.52721946,0.1944886){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes low\end{tabular}}}}%
     \put(0.40884494,0.44341205){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
     \put(0.63063758,0.44644){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
-    \put(0.64366955,0.10254083){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
-    \put(0.41633411,0.10254083){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
+    \put(0.64455649,0.11164327){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
+    \put(0.42295873,0.11350581){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Reset goes high\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=13]{decoder_state.pdf}}%
   \end{picture}%
 \endgroup%
