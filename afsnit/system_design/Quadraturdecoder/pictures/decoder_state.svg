@@ -646,7 +646,7 @@
      inkscape:current-layer="layer1"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
-     inkscape:window-x="1912"
+     inkscape:window-x="-8"
      inkscape:window-y="-8"
      width="12.8cm"
      height="9.6cm"
@@ -697,7 +697,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1037,14 +1037,14 @@
          id="flowPara7427" /></flowRoot>    <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.25069046px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.82816815"
-       x="243.09567"
-       y="297.23843"
+       x="223.70467"
+       y="293.1311"
        id="text9687"
-       transform="scale(0.90388313,1.1063377)"><tspan
+       transform="scale(0.90388314,1.1063377)"><tspan
          sodipodi:role="line"
          id="tspan9685"
-         x="243.09567"
-         y="297.23843"
+         x="223.70467"
+         y="293.1311"
          style="stroke-width:0.82816815">A goes high</tspan></text>
     <text
        xml:space="preserve"
@@ -1094,14 +1094,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:13.50230408px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.843894"
-       x="256.79086"
-       y="681.88898"
+       x="225.85397"
+       y="681.31689"
        id="text9687-4"
        transform="scale(0.88129502,1.1346938)"><tspan
          sodipodi:role="line"
          id="tspan9685-0"
-         x="256.79086"
-         y="681.88898"
+         x="225.85397"
+         y="681.31689"
          style="stroke-width:0.843894">B goes high</tspan></text>
     <text
        xml:space="preserve"
@@ -1220,14 +1220,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:14.57995033px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9112469"
-       x="175.91019"
-       y="690.48486"
+       x="153.72314"
+       y="689.83911"
        id="text16779-6"
-       transform="scale(0.99478238,1.005245)"><tspan
+       transform="scale(0.99478237,1.005245)"><tspan
          sodipodi:role="line"
          id="tspan16777-9"
-         x="175.91019"
-         y="690.48486"
+         x="153.72314"
+         y="689.83911"
          style="stroke-width:0.9112469">Reset goes high</tspan></text>
     <text
        xml:space="preserve"
