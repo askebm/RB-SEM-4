@@ -14,7 +14,7 @@
    id="svg8"
    enable-background="new"
    sodipodi:docname="TopFrame.svg"
-   inkscape:version="0.92.4 (unknown)">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -31,10 +31,10 @@
      inkscape:snap-grids="true"
      inkscape:zoom="4.3187876"
      inkscape:cx="237.71713"
-     inkscape:cy="670.30939"
+     inkscape:cy="707.35682"
      inkscape:window-x="0"
      inkscape:window-y="18"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:current-layer="svg8" />
   <defs
      id="defs2" />
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
