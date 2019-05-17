@@ -22,18 +22,18 @@ Preemption is when the operating system has the ability to pause execution of a 
 
 The preemption capability enables the system to respond quickly to higher priority tasks becoming available for execution rather than waiting for the current task to return on its own potentially taking the CPU forever, it will be paused and the higher priority task executed before the lower priority one is resumed and potentially completed. \todo{Meget lang sætning. Kunne bruge at dele den op}
 
-As already mentioned the priority allows the system to select more important\footnote{Defined by the programmer} processes to be run quickly when available.
+As already mentioned the priority allows the system to select more important\footnote{Defined by the programmer} processes to be run quickly when available. \todo{what is available}
 
 The scheduler is run by a timer interrupt every 5ms and during this the current task is paused and the scheduler evaluates the next eligible task to run, this may be the same task that was running before and this will then be resumed, but the scheduler must be run every 5ms tick to ensure correct handling of priorities.
 
 \subsubsection{Subtask Communication}
 
-The multiple task architecture where each task deals only in their own specific area of the system requires, since the combination of tasks are designed to accomplish one or more high level objective, a way to efficiently communicate between tasks running on the system.
+The multiple task architecture where \todo{du starter en indskudt sætning, men du færdiggøre den aldrig/starter på noget nyt} each task deals only in their own specific area of the system requires, since the combination of tasks are designed to accomplish one or more high level objective, a way to efficiently communicate between tasks running on the system.
 This is accomplished using a combination of state buffers and queues.
 
-State buffers are simple buffers keeping the last value written to it until a new value is written regardless of reads performed in that time. The implementation of this concept is done trough variables of the appropriate task being declared in global scope and therefore available to every function in the system.
+State buffers are simple buffers keeping the last value written to it until a new value is overwrites this regardless of how many reads has been performed in that time. The implementation of this concept is done through variables of the appropriate task being declared in global scope and therefore available to every function in the system.
 
-All queues in the system are FIFO\footnote{First-In-First-Out} queues allowing easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product.
+All queues in the system are FIFO\footnote{First-In-First-Out} queues which allows easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product.
 
 To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by interrupted write access.
 These semaphores are done via the implementation that ships with FreeRTOS and allows both binary and counting semaphores, although only the binary implementation is utilized.
@@ -46,7 +46,7 @@ The entire system has been created as a task diagram in figure \ref{fig:entire_t
 
 There is a number of task that exists only to provide services to other tasks, those tasks are designated system tasks.
 
-Each task is designated a priority\footnote{by the designer} based on the demands of that particular task. The biggest consideration is the time sensitivity of the task, the need for timing to be consistent between runs. FreeRTOS in theory supports as many priority levels as RAM is available to handle. Therefore the recommendation from FreeRTOS is to not have more levels then needed. The system uses three levels in this implementation, LOW, NORMAL and HIGH. With HIGH providing the best timing accuracy due to the fact that is a HIGH priority task  ready to run, then it will be run at the next scheduler run without having to wait for other tasks to potentially use up a time slice before its run.
+Each task is designated a priority\footnote{by the designer} based on the demands of that particular task. The biggest consideration is the time sensitivity of the task, the need for timing to be consistent between runs. FreeRTOS in theory supports as many priority levels as RAM is available to handle. Therefore \todo{drop thereforth} the recommendation from FreeRTOS is to not have more levels than needed. The system uses three levels in this implementation, LOW, NORMAL and HIGH. With HIGH providing the best timing accuracy due to the fact that it is a HIGH priority task  ready to run, then it will be run at the next scheduler run without having to wait for other tasks to potentially use up a time slice before its own run.
 
 
 \paragraph{Status LED task}
@@ -55,20 +55,20 @@ This task only exist to toggle an LED on the board to verify that the OS is runn
 
 \paragraph{UART Tasks}%
 
-This group consists of the Transmit and Receive task which a created completely independently. The TX task accepts data via a queue and sends that out the system via UART. The RX task is the inverse of this. The tasks are a part of making the system work and therefore run with normal priority.
+This group consists of the Transmit and Receive task, whom have been created completely independently. The TX task accepts data through a queue and sends that out the system by UART. The RX task is the inverse of this. These tasks are a part of making the system work and therefore run with normal priority. \todo{These taks are part of what makes the sytem work, and thereforth has been given a normal prioority}
 
 
 \paragraph{LCD Task}
 
-The LCD task takes items from a queue and adds them to the currently active line on the LCD display. The task is run with low priority as this only need to provide feedback in human observable time frames.
+The LCD task takes items from a queue and adds them to the currently active line on the LCD display. The task is run with low \todo{skulle low ikke være med stort?} priority as this only need to provide feedback in human observable time frames.
 
 \paragraph{Matrix Keypad Task}
 
-This task simply adds key presses from the keypad to a queue available to the rest of the system. Is being run with low priority as immediate response is not required for function.
+This task simply adds key presses from the keypad to a queue available to the rest of the system. It is being run with low priority as immediate response is not required for function.
 
 \paragraph{Serial Peripheral Interface Task}
 
-The SPI task handles all communication between the microcontroller and the FPGA and thus is indirectly responsible for all data acquisition and hardware control. This requires a priority of normal so the task is prioritized but does not require hard timing.
+The SPI task handles all communication between the microcontroller and the FPGA and thus is indirectly responsible for all data acquisition and hardware control. This requires a priority of normal \todo{samme som med low} so the task is prioritized but does not require hard timing.\\
 
 Besides system tasks there are tasks that can be categorized as being the "application" run on the system. These tasks are designated "user tasks".
 
