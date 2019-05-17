@@ -2,8 +2,29 @@
 \begin{document}
 \subsection{General model}
 \label{ch:General_model}
+
+In this project a pan-tilt system has been given to control. This can be seen on figure \ref{fig:ImageOfPanTiltSystem}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width = 0.5\textwidth, angle = 270]{\main/ImageOfPanTiltSystem.JPG}
+  \caption{Image of the pan-tilt system given.}
+  \label{fig:ImageOfPanTiltSystem}
+\end{figure}
+
+The system works such that the upper frame is driven by a motor causing it to rotate about a horizontal axis, while the buttom frame is driven by a similar motor but has a veritkal axis. This can be seen illustrated on figure \ref{fig:pan-tilt_frames}.
+
+  \begin{figure}[h]
+    \centering
+  \def\svgwidth{0.4\columnwidth}
+  \subfloat[Top frame of the pan-tilt system.]{\includesvg[\main/afsnit/system_modeling/]{TopFrame_general}}\qquad
+  \def\svgwidth{0.2\columnwidth}
+  \subfloat[Bottom frame of the pan-tilt system.]{\includesvg[\main/afsnit/system_modeling/]{ButtomFrame_general}}
+  \caption{Pan-tilt frames.}
+  \label{fig:pan-tilt_frames}
+  \end{figure}
+
 In this chapter an approximated model of the physical system will be found.\\
-\todo{ needs an introduction}
 
 By analysis of the forces acting on the motors when voltage is added, the following differential equations are found.\\
 
@@ -81,8 +102,7 @@ To ease the further analysis the model mentioned above is linearized by applying
     \end{split}
 \end{equation}
 
-The state space models for the two motors can be written as shown in eq. (\ref{eq:ss_topframe_Genereal_model}) and (\ref{eq:ss_bottomframe_Genereal_model}).
-\todo{which is which?}
+The state space models for the two motors can be written as shown in eq. (\ref{eq:ss_topframe_Genereal_model}) for the top and (\ref{eq:ss_bottomframe_Genereal_model}) for the bottom.
 
 \begin{equation}
       \label{eq:ss_topframe_Genereal_model}
@@ -174,22 +194,37 @@ To determine the vicious frictions, $b_b$ and $b_t$ experiments, not made in thi
 \label{ch:Top_frame_inertia}
 To determine the top frame's moment of inertia, $J_{t}$, its seen as an isolated system with only the frames contributing to $J_{t}$, thus the weight of motors and wires on the frame are considered negligible. The system then considered is seen on figure \ref{fig:TopFrame}. Here the axis of rotation can be seen and for this calculation will be our reference.\\
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includesvg[\main/afsnit/system_modeling/]{TopFrame}
   \caption{Top frame of the pan-tilt system.}
   \label{fig:TopFrame}
 \end{figure}
 
-Since moments of inertia can be added together in components, the frame is to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be seen, the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true.
-\todo{Superposition ?}
+Since moments of inertia are linear, the supeorposition principle can be applied, the frames are to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be seen, the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true.
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia_formula}
   J_t = \sum J_{t,n} + J_{t,n-1} + \dotsb + J_{t,1} = J_{t,a} + J_{t,b} + J_{t,c} + J_{t,d}
 \end{equation}
 
-The contributions of $a$ and $c$ are approximated as linear uniform rods rotating about their center of mass located on the axis of rotation. Since moment of inertia is an expression of the mass distribution about a given axis of rotation, $b$ and $d$ are simply considered particles  rotating about this axis. Its here seen that $d$ has two corners, $m_{cor}$, which here will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
+The contributions of $a$ and $c$ are approximated as linear uniform rods rotating about their center of mass located on the axis of rotation. This means the moment of inertia for these can be calculted by applying eq. \ref{eq:moment_of_inertia_rod}.
+
+\begin{equation}
+  \label{eq:moment_of_inertia_rod}
+  I_{rod}=\frac{1}{12}\cdot m_{rod} \cdot l_{rod}^2
+\end{equation}
+
+Since moment of inertia is an expression of the mass distribution about a given axis of rotation, $b$ and $d$ are simply considered particles rotating about this axis. This means that my applying the parallel axis theorem these can be added to the moment of inertia. The parallel axis theorem can be seen in eq. (\ref{eq:parallel_axis_theorem}).
+
+\begin{equation}
+  \label{eq:parallel_axis_theorem}
+  I_{parallel\,axis} = I_{cm} + m\cdot u^2
+\end{equation}
+
+In this expression $I_{parallel axis}$ is the resulting moment of inertia, $I_{cm}$ is the center of mass inertia, $m$ is the mass of the object and $u$ is the distance between the axis of rotation and the axis goind through the center of mass, parallel to the axis of rotation.
+
+Its here seen that $d$ has two corners, $m_{cor}$, which here will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia}
@@ -201,7 +236,6 @@ The contributions of $a$ and $c$ are approximated as linear uniform rods rotatin
   \underbrace{(m_{t,d} + 2\cdot m_{cor})\left(\frac{l_{t,a}}{2}\right)^2}_\text{$J_{t,d}$}
 \end{split}
 \end{equation}
-\todo{Do we need to explain the moment of inertia formula?}
 Thus an expression to calculate the moment of inertia of the top frame is determined.\\
 Since disassembly of the system is not an possibility, the mass of the different components are determined from the mass density $\rho_{bar}$, and the length of the component. $\rho_{bar}$ is found in the datasheet \textit{Frame bars} as $\rho_{bar} = 1.27 \si{\frac{kg}{m}}$. The mass' relevant for eq. (\ref{eq:Top_frame_total_inertia}) are caculated in table (\ref{tab:Top_frame_table}).
 
@@ -335,8 +369,7 @@ Thus the moment of inertia for the bottom frame has been determined to be
 \newline $J_{b} = \, 0.0606 \cdot \cos^2(\theta_t)$.
 
 \subsection{Application specified model - pre-tuning}
-Since the different parameters in the found models now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. These models can thus be written as seen in eq. (\ref{eq:Theoretical_models_top}) and (\ref{eq:Theoretical_models_bottom}).
-\todo{add reference for top and bottom frame}
+Since the different parameters in the found models now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. These models can thus be written as seen in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom.
 \begin{equation}
       \label{eq:Theoretical_models_top}
       \begin{split}
@@ -432,44 +465,6 @@ Since the different parameters in the found models now are determined with $K_{b
   \item Observer
   \item Controller
 \end{itemize}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \end{document}
