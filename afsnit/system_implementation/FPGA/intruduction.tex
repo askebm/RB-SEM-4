@@ -2,7 +2,6 @@
 \begin{document}
 
 The purpose of this section is to discuss some of the challenges and benefits that is related to the use of an FPGA in this project.
-\todo{refrace a bit}
 The FPGA connects the  microcontroller all the components on the pan-tilt system in order to be able to control the system. It collects the data from encoders and homing sensors, and it creates and updates the PWM signal to each of the H-Bridges.
 \\
 One of the main differences between an FPGA and a microcontroller is that on an FPGA everything is implemented in hardware. This also means that all of the processes running, is running in parallel. When implementing the different components this needs to be taken into consideration.
@@ -20,10 +19,12 @@ The FPGA used in this project is a Artix7 mounted on a BASYS3 kit. \todo{ref}
 \end{figure}
 
 The system consist of different modules, implemented in VHDL.
-To store the data that needs to be exchanged between the FPGA and the Tiva microcontroller, different registers is created with the necessary size. Se table \ref{table:FPGA_registers}.
+To store the data that needs to be exchanged between the FPGA and the Tiva microcontroller, different registers is implemented on the FPGA with the necessary size. Se table \ref{table:FPGA_registers}.
 \\
-The connection between the modules can be seen in the system overview. Se figure \ref{fig:FPGA_system_overview}
+The data path between the modules can be seen in the system overview. Se figure \ref{fig:FPGA_system_overview}
+\todo{Maybe add register names to data path lines on figure?}
 \begin{table}[H]
+\centering
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{12 Bit} & \textbf{9 Bit} & \textbf{1 Bit} \\ \hline
@@ -56,9 +57,15 @@ The reset for the encoders are inverted before they are given to the module, so 
 
 \subsubsection{Speed measurement}
 These modules are used to calculate the speed of which the system is turning. For this calculation it uses the 12 bit output vector from the quadrature decoder module.
-There are to speed measurement modules implemented, one for each motor.
+There are two speed measurement modules implemented, one for each motor.
+This is done so that it is possible to regulate both on position and speed for future development of the system.
 
-
+\subsubsection{FPGA Summery}
+All of the above mentioned modules have been developed and implemented on the Artix7 FPGA. 
+The FPGA is able to communicate with the Tiva microcontroller over SPI and the previously designed protocol. 
+\\
+The big advantage with using a FPGA for controlling the motors and reading the encoders is that all of the modules are implemented in hardware.
+This means that all of the processes runs in parallel and therefor its not necessary to take timing of processes into consideration.
 
 
 \end{document}
