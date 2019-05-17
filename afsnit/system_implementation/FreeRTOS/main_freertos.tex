@@ -14,6 +14,12 @@ FreeRTOS, an open source RealTime operating system created by Real Time Engineer
 
 A task is a single area of responsibility that either by necessity or by convention is combined as a single logical unit. Each task in the system, a full overview of these can be observed in the task diagram in figure \ref{fig:entire_task_diagram} can then be scheduled based on the priority it has been assigned and whether the task itself has decided that it wants to be scheduled.
 
+\begin{figure}[H]
+\includegraphics[width=0.9\columnwidth]{\main/afsnit/system_implementation/FreeRTOS/taskdiagram_full.png}
+\caption{Task Diagram of entire system}
+\label{fig:entire_task_diagram}
+\end{figure}
+
 \subsubsection{Scheduling}
 
 In order to enable the microcontroller to run more then one task some form of scheduling must be implemented. This allows the operating system\footnote{FreeRTOS} to make a choice as to what tasks need processing capacity at this moment in time. In the FreeRTOS based system running on the Tiva scheduling is done through a priority based preemption capable implementation.
@@ -77,12 +83,5 @@ This group of two tasks handle the control for both axis of the pan-tilt system 
 
 \paragraph{User interface}
 
-% TODO
-
-\begin{figure}[H]
-\includegraphics[width=\columnwidth]{\main/afsnit/system_implementation/FreeRTOS/taskdiagram_full.png}
-\caption{Task Diagram of entire system}
-\label{fig:entire_task_diagram}
-\end{figure}
 
 \end{document}
