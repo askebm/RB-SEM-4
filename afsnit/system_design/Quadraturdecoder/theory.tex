@@ -6,11 +6,13 @@ In order to understand the design of the Quadrature Decoder a small explanation 
 A Quadrature Encoder uses two channels to sense the position and direction of, typically, a rotating disk/shaft or a linear strip. The disk or strip has two paths on it, positioned 90 degrees out of phase with each other, see figure \ref{rotary_encoder} for a rotary encoder and figure \ref{channels} for a strip encoder. \todo{Placeres sensorere oven pp encoder eller er det en del af den færdige encoder?}Stationary sensors are typically placed on top of the encoder, so when a track moves in relation to a sensor, it outputs a logic high or low output signal depending on what part of the track is visible to the sensor. An encoder has two output signals, one for each channel, typically called A and B, see figure \ref{output_channels} for a representation of those for both encoder types. This two signals, A and B, is what allows the encoder to determine the position and direction of the encoder
 
 \begin{figure}[H]
-  \includegraphics[width = \textwidth]{\main/afsnit/system_design/Quadraturdecoder/pictures/encoder.png}
+  \centering
+  \def\svgwidth{0.5\columnwidth}
+  \fontsize{9}{9}\selectfont
+  \includesvg[\main/afsnit/system_design/Quadraturdecoder/pictures/]{rotary_encoder}
   \caption{Tracks of a rotary encoder.}
   \label{rotary_encoder}
 \end{figure}
-
 
 \begin{figure}[H]
   \centering
