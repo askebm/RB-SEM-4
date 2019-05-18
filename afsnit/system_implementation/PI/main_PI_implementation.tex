@@ -1,0 +1,79 @@
+\documentclass[../../../main]{subfiles}
+
+
+\begin{document}
+
+
+\subsection{Softwaredesign of a PI controller}
+In order to design and implement the aforementioned PI-controller in a fashion that complies with API from FreeRTOS.
+It is chosen that a single interface is to be designed so that only one subprogram has to be written, thus it requires to be generic, if multiple multiple PI-controllers are to be implemented.
+To meet the given requirements the following design criteria must be met:
+
+\begin{itemize}
+
+  \item Must comply with FreeRTOS's API
+  \item Must be re-entrant
+  \item Must be able to be initialized from main
+  \item Must be generic
+\end{itemize}
+
+
+In order to write a routine that will act as the PI-controller, it must be wrapped into a never ending loop, in which the desired calculations will be done, this is done to meet the first criteria.
+This is achieved in listing \ref{list:funtion_body}.
+
+\lstinputlisting[language=C, firstline=3, lastline=16,label={list:funtion_body} ]{code_snippets.h}
+
+This will be the function which the task created by FreeRTOS will have as an argument.
+It is noticed that all of the above criteria are met, if the functions calculate\_error\_PI() and calculate\_P() are assumed to be re-entrant.
+For it to be generic the struct PI, is passed from the function, task\_PI(), this also ensures that it can be initialized from main.
+\\
+
+The struct will contain all the necessary gains and data-samples, which a PI-controller will need in order to operate.
+The struct members can be seen in \ref{list:struct_declar}.
+\lstinputlisting[language=C, firstline=18, lastline=31,label={list:struct_declar}]{code_snippets.h}
+
+
+Since the design requirements are met, the next step is to implement the funtionallity of a PI-controller, which has the following requirements:
+\begin{itemize}
+    \item Must be implemented as a difference equation
+    \item Must include anti-windup
+\end{itemize}
+
+The reasoning for it to be implemented as a difference equation, is due to it being the easiest and most efficient way to compute the controller-signal.
+
+\subsection{Deriving the PI difference equation}
+
+In order to obtain the difference equation for the PI-controller, the standard PI equation in the s-domain is observed:
+
+\begin{equation}
+  u(s) = \Bigg(k_p + \frac{k_i}{s} \Bigg) \cdot e(s)
+\end{equation}
+
+
+To get the PI equation into the time-discrete z-domain, it is chosen to use the Tustin's Method.
+
+This is done by substiting $s$ with the following:
+$$
+s = \frac{2}{T}\cdot \Bigg( \frac{z-1}{z+1}\Bigg)
+$$
+
+Equation ref??  now becomes
+$$
+  u(z) = \Bigg(k_p + k_i\cdot \frac{T}{2} \frac{z+1}{z-1} \Bigg) \cdot e(z)
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
