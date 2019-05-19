@@ -1,0 +1,49 @@
+\documentclass[../../../main]{subfiles}
+\begin{document}
+ 
+To be able to set a desired angel for the system, it is necessary to have a reference point on which the system always can return to. 
+The system is equipped with a hall sensor in both the top frame and the bottom frame.
+These sensors are used to determine when the frame is at $0^\circ$. The position of the sensors and magnets can be seen on figure xx. \todo{create figure}
+\\
+For the system to be able to return to $0^\circ$ a homing processes needs to be designed.
+The bottom frame cannot turn freely, this needs to be taken into consideration when designing the process.
+\subsubsection{Methods} \todo{need a proper title at some point}
+There is multiple ways to home the system. It can be done manually by rotating both the frames to the home position.
+For this to work the FPGA has to be reset manually after the frames are in position.
+This is not the best way of doing so, since it is not possible to home the system without turning it off and the dc-motors has to be turned manually.
+An automated homing process is preferred, and two methods have been considered to achieve this. 
+
+\paragraph{Method 1}%
+\label{par:method_1}
+One way of homing the system is to give the top frame a low PWM signal, so that it is rotating slowly. 
+When the top frame triggers the hall sensor, it resets the encoder for the top frame. 
+Then the reference for the controller is set to zero, so that the frame moves to $0^\circ$. 
+\\
+For the bottom frame it is necessary to be able to determine if the frame is hitting the end stop. 
+If it is hitting the end stop, it needs to switch direction of the motor for the frame to be able to return to home position.
+The detection of the end stop can be done by checking if the frame still is rotating, if not then switch direction of the motor.
+Otherwise the homing of the bottom frame will be identical to the top frame.
+
+\paragraph{Method 2}%
+\label{par:method_2}
+Another method of homing the system is to rotate the frames slowly, like in the previous method. 
+Instead of resetting the encoders when the frames trigger the hall sensors, it will save the position in witch the sensors was triggered, and then change direction of the motor.
+When the sensor is triggered again it will save the that position, and calculate the difference between the to potions. 
+Then the reference for the controller will be the calculated potions, and when the frames are triggering the sensors for a give time the encoders will be reset.
+\\
+This approach will most likely be more precise, but also more complicated. 
+
+
+
+\subsubsection{Homing summary}%
+\label{ssub:homing_summary}
+For this system the second method has been chosen. This is done because a precise home position is desired.
+The system is also able to detect if the bottom frame is hitting the end stop. If this happens while homing the direction of the bottom frame is switched.
+This makes the system able to start at the same position every time.
+If for some reason the position should drift under use, the system is also able to reset the position on request.
+
+
+
+
+
+\end{document}
