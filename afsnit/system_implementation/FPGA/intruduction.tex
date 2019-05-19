@@ -1,10 +1,10 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
 
-The purpose of this section is to discuss some of the challenges and benefits that is related to the use of a FPGA in this project.
-The FPGA connects the  microcontroller all the components on the pan-tilt system in order to be able to control the system. It collects the data from encoders and homing sensors, and it creates and updates the PWM signal to each of the H-Bridges.
+The purpose of this section is to discuss some of the challenges and benefits that are related to the use of a FPGA in this project.
+The FPGA connects the microcontroller to all the components on the pan-tilt system in order to control the system. It collects data from encoders and homing sensors as well as creating and updating the PWM signal to both the H-Bridges.
 \\
-One of the main differences between an FPGA and a microcontroller is that on an FPGA everything is implemented in hardware. This also means that all of the processes running, is running in parallel. When implementing the different components this needs to be taken into consideration.
+One of the main differences between a FPGA and a microcontroller is that on a FPGA everything is implemented in hardware. This means that all of the processes running, are running in parallel. When implementing the different components this needs to be taken into consideration. \todo{hvad}
 \\
 The FPGA used in this project is a Artix7 mounted on a BASYS3 kit. \todo{ref}
 \subsubsection{System overview}%
