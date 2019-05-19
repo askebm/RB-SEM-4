@@ -21,15 +21,15 @@ Then the reference for the controller is set to zero, so that the frame moves to
 \\
 For the bottom frame it is necessary to be able to determine if the frame is hitting the end stop. 
 If it is hitting the end stop, it needs to switch direction of the motor for the frame to be able to return to home position.
-The detection of the end stop can be done by checking if the frame still is rotating, if not then switch direction of the motor.
+The detection of the end stop can be done by checking if the frame is still rotating, if not then switch direction of the motor.
 Otherwise the homing of the bottom frame will be identical to the top frame.
 
 \paragraph{Method 2}%
 \label{par:method_2}
 Another method of homing the system is to rotate the frames slowly, like in the previous method. 
 Instead of resetting the encoders when the frames trigger the hall sensors, it will save the position in witch the sensors was triggered, and then change direction of the motor.
-When the sensor is triggered again it will save the that position, and calculate the difference between the to potions. 
-Then the reference for the controller will be the calculated potions, and when the frames are triggering the sensors for a give time the encoders will be reset.
+When the sensor is triggered again it will save the that position, and calculate the difference between the to positions. 
+Then the reference for the controller will be the calculated positions, and when the frames are triggering the sensors for a given time, the encoders will be reset.
 \\
 This approach will most likely be more precise, but also more complicated. 
 
