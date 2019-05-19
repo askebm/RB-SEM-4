@@ -20,7 +20,13 @@ In order to provide a satisfactory answer to the above questions, the design of 
 \subsection{System requirements}
 
 The theoretical usecase of the system is as mentioned a stage spotlight. The system requirements have be rather hard.
-Overshoot is undesirable as a spotlight is placed rather far away from the stage. Even a 1\% overshoot could result in a sizeable overshoot at the target. This 
+Overshoot is undesirable as a spotlight is placed rather far away from the stage. Even a $1\%$ overshoot would result in a sizeable overshoot of the intented target which could potentially be disruptive to the stage show.
+Furthermore the system needs a rise time as fast as possible without overworking the motors and the gearing.
+
+A rise time of $1$ second fits both criterias, as this should not need a unrealitic amount of current for the system to react nor should it feel too slow and cause a noticable lag to the stage light.
+The settling time is set to be $1.2$ seconds as this gives the system time to slow down when it is nearing the target and settling in to $1\%$ of the reference.
+\\
+The requirements can be observed in the list below:
 
 \begin{itemize}
   \item No overshoot.
