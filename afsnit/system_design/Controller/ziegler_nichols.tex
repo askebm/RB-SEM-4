@@ -8,25 +8,27 @@ The lag time is assumed to be 5\si{ms} as that is the fastest the the system can
 
 \begin{equation}
 	\label{eq:ziegler_second_order}
-	\frac{A}{\tau s+1}e^{st_d}
+	\frac{A}{\tau s+1}e^{s\,L}
 \end{equation}
 
-\begin{figure}[h]
-  \centering
-	\def\svgwidth{1\textwidth}
-  \includesvg[\main/afsnit/system_design/Controller/img/]{ziegler}
-  \caption{Stepresponse with marked values for Ziegler-Nichols}
-  \label{fig:ziegler_step}
+\begin{figure}[H]
+        \centering
+				\def\svgwidth{0.47\columnwidth}
+				\subfloat[Ziegler-Nichols of the bottom frame with top frame at 0 degrees]{%
+				\includesvg[\main/afsnit/system_design/Controller/img/]{ziegler_bot}}
+				\def\svgwidth{0.47\columnwidth}
+				\subfloat[Ziegler-Nichols of the top frame]{%
+				\includesvg[\main/afsnit/system_design/Controller/img/]{ziegler_top}}
+				\caption{Stepresponse results of both frames.}
+				\label{fig:ziegler_step}
 \end{figure}
 
 The top frame approximated to the S-domain representation in eq. \eqref{eq:ziegler_top} and the bottom frame in eq. \eqref{eq:ziegler_bottom}
 
 \begin{align}
-	G_{Top}(s) &=\frac{0.89}{(4.32-3.43)\,s +1} \\
-						 &=\frac{0.89}{0.89s +1}
+	G_{Top}(s) &=\frac{500}{0.63\,s +1}
 	\label{eq:ziegler_top}\\
-	G_{Bottom}(s) &=\frac{0.55}{(3.74-2.78)\,s +1}\\
-								&=\frac{0.55}{0.96s+1}
+	G_{Bottom}(s) &=\frac{695}{0.9\,s +1}
 	\label{eq:ziegler_bottom}
 \end{align}
 
@@ -39,11 +41,9 @@ A first estimate of the P and I terms are shown in eq. \eqref{eq:pi_ziegler_top}
 
 \begin{align}
 	\label{eq:pi_ziegler_top}
-	K_{p,top} = 180 \qquad &K_{i,top} = 0.02\\
+	K_{p,top} = 0.227 \qquad &K_{i,top} = 0.0038\\
 	\label{eq:pi_ziegler_bot}
-	K_{p,bottom} = 314.18 \qquad &K_{i,bottom} = 0.02
+	K_{p,bottom} = 0.233 \qquad &K_{i,bottom} = 0.0039
 \end{align}
-
-\todo{ Tilføj noget scaling}
 
 \end{document}
