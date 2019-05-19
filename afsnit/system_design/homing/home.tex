@@ -3,7 +3,7 @@
  
 To be able to set a desired angel for the system, it is necessary to have a reference point on which the system always can return to. 
 The system is equipped with a hall sensor in both the top frame and the bottom frame.
-These sensors are used to determine when the frame is at $0^\circ$. The position of the sensors and magnets can be seen on figure xx. \todo{create figure}
+These sensors are used to determine when the frame is at $0^\circ$. The position of the sensors and end stop can be seen on figure \ref{fig:homing_system}.
 \\
 For the system to be able to return to $0^\circ$ a homing processes needs to be designed.
 The bottom frame cannot turn freely, this needs to be taken into consideration when designing the process.
@@ -12,7 +12,13 @@ There is multiple ways to home the system. It can be done manually by rotating b
 For this to work the FPGA has to be reset manually after the frames are in position.
 This is not the best way of doing so, since it is not possible to home the system without turning it off and the dc-motors has to be turned manually.
 An automated homing process is preferred, and two methods have been considered to achieve this. 
-
+\begin{figure}[H]
+  \centering
+  \def\svgwidth{\textwidth}
+  \includesvg[\main /afsnit/system_design/homing/img/]{system_homing}
+  \caption{Placement of sensors and end stop.}
+  \label{fig:homing_system}
+\end{figure}
 \paragraph{Method 1}%
 \label{par:method_1}
 One way of homing the system is to give the top frame a low PWM signal, so that it is rotating slowly. 
