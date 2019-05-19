@@ -1,3 +1,5 @@
+
+
 void tsk_PI(void* pvArgs);
 
 void tsk_PI(void* pvArgs)
@@ -29,3 +31,37 @@ typedef struct PI_dif_eq
     int16_t* clamp_ref;
     uint8_t conditional_anti;
 }PI;
+
+
+
+void calculate_PI(int16_t error, PI* K)
+{
+    int16_t tmp_output = 0;
+    K->x_n[2] = K->x_n[1];
+    K->x_n[1] = K->x_n[0];
+    K->x_n[0] = error;
+
+    K->y_n[2] = K->y_n[1];
+    K->y_n[1] = K->y_n[0];
+    K->y_n[0] = K->y_n[1] + ( K->kp * (K->x_n[0] - K->x_n[1]) +
+    ( K->conditional_anti * K->ki * K->sample_rate / 2) * (K->x_n[0] + K->x_n[1]) );
+    K->conditional_anti = 1;
+
+    tmp_output = K->y_n[0];
+
+    if(tmp_output >= K->saturation)
+    {
+         tmp_output = K->saturation;
+         K->conditional_anti = 0;
+    }
+    else
+    {
+        if (tmp_output <= -K->saturation)
+        {
+            tmp_output = -K->saturation;
+            K->conditional_anti = 0;
+        }
+    }
+
+    *K->PWM_out = tmp_output;
+}

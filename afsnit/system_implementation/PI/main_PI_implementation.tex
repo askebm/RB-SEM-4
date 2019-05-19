@@ -5,9 +5,9 @@
 
 
 \subsection{Softwaredesign of a PI controller}
-In order to design and implement the aforementioned PI-controller in a fashion that complies with API from FreeRTOS.
-It is chosen that a single interface is to be designed so that only one subprogram has to be written, thus it requires to be generic, if multiple multiple PI-controllers are to be implemented.
-To meet the given requirements the following design criteria must be met:
+In order to implement the aforementioned PI-controller in a fashion that complies with API from FreeRTOS, it is chosen that a single interface is to be designed.
+This is due to the mattter that only one subprogram has to be written, thus it requieres to be generic, if multiple PI-controllers are to be implemented.
+To meet the given requirements the following design criteria must be fulfilled.
 
 \begin{itemize}
 
@@ -17,29 +17,29 @@ To meet the given requirements the following design criteria must be met:
   \item Must be generic
 \end{itemize}
 
-
-In order to write a routine that will act as the PI-controller, it must be wrapped into a never ending loop, in which the desired calculations will be done, this is done to meet the first criteria.
-This is achieved in listing \ref{list:funtion_body}.
+In order to write a routine that will act as the PI-controller, it must be wrapped into a never ending loop.
+In this the desired calculations will be done. This is due to meet the first criteria and is achieved in \ref{list:funtion_body}.
 
 \lstinputlisting[language=C, firstline=3, lastline=16,label={list:funtion_body} ]{code_snippets.h}
 
-This will be the function which the task created by FreeRTOS will have as an argument.
+tsk\_PI() will be the function which the task created by FreeRTOS will have as an argument.
 It is noticed that all of the above criteria are met, if the functions calculate\_error\_PI() and calculate\_P() are assumed to be re-entrant.
-For it to be generic the struct PI, is passed from the function, task\_PI(), this also ensures that it can be initialized from main.
+%For it to be generic the struct PI, is passed from the function, task\_PI(), this also ensures that it can be initialized from main.
+The third and fourth criteria are achieved by passing the struct PI from the function task\_PI().
 \\
 
 The struct will contain all the necessary gains and data-samples, which a PI-controller will need in order to operate.
 The struct members can be seen in \ref{list:struct_declar}.
 \lstinputlisting[language=C, firstline=18, lastline=31,label={list:struct_declar}]{code_snippets.h}
 
-
+\newpage
 Since the design requirements are met, the next step is to implement the funtionallity of a PI-controller, which has the following requirements:
 \begin{itemize}
     \item Must be implemented as a difference equation
     \item Must include anti-windup
 \end{itemize}
-
-The reasoning for it to be implemented as a difference equation, is due to it being the easiest and most efficient way to compute the controller-signal.
+The reasoning for it to be implemented as a difference equation, is due to it being an exact relationship between current and past samples.
+%The reasoning for it to be implemented as a difference equation, is due to it being the easiest and most efficient way to compute the controller-signal.
 
 \subsection{Deriving the PI difference equation}
 
@@ -52,7 +52,7 @@ In order to obtain the difference equation for the PI-controller, the standard P
 
 To get the PI equation into the time-discrete z-domain, it is chosen to use the Tustin's Method.
 
-This is done by substiting $s$ with the following:
+This is done by substiting $s$ with the following
 $$
 s = \frac{2}{T}\cdot \Bigg( \frac{z-1}{z+1}\Bigg)
 $$
@@ -61,7 +61,41 @@ Equation ref??  now becomes
 $$
   u(z) = \Bigg(k_p + k_i\cdot \frac{T}{2} \frac{z+1}{z-1} \Bigg) \cdot e(z)
 $$
+Now the expression on the right side is refactored
 
+$$
+  u(z) = \Bigg( \frac{k_p \cdot 2(z-1) + k_i \cdot T \cdot (z+1)}{2\cdot (z-1)}\Bigg) \cdot e(z)
+$$
+In order to have the discrete equation in terms of previous samples, both sides of the fraction are divided by $z^{-1}$
+
+$$
+  u(z) = \Bigg( \frac{k_p \cdot(1-z^{-1}) + k_i \cdot \frac{T}{2} \cdot (1+z^{-1}) }{(1-z^{-1})}\Bigg) \cdot e(z)
+$$
+
+It is wished to get an expressions in terms of u(z) and e(z) with no non-constant-fractions, therefore both sides are multiplied by $(1 - z^{-1})$
+$$
+  u(z)\cdot(1 - z^{-1}) = \Bigg( k_p \cdot(z-1) + k_i \cdot \frac{T}{2} \cdot (z+1) \Bigg) \cdot e(z)
+$$
+
+The inverse z-transformation is now performed on both sides
+
+$$
+  u[n]-u[n-1] =  k_p \cdot (e[n] - e[n-1])  + k_i \cdot \frac{T}{2}(e[n] + e[n-1])
+$$
+The final difference equation becomes
+
+$$
+  u[n] = u[n-1] + k_p \cdot (e[n] - e[n-1])  + k_i \cdot \frac{T}{2}(e[n] + e[n-1])
+$$
+
+
+
+\subsection{Implementation of the difference equation}
+
+The design has been chosen.The difference equation has been derived.
+It is time to implement the PI-controller with anti-windup.
+The following code snippet will allow for anti-windup, whilst having the PI-controller expressed as a difference equation.
+\lstinputlisting[language=C, firstline=35, lastline=64,label={list:PI_controller}]{code_snippets.h}
 
 
 
