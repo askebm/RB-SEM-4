@@ -7,7 +7,7 @@ A Quadrature Encoder uses two channels to sense the position and direction of, t
 
 \begin{figure}[H]
   \centering
-  \def\svgwidth{0.5\columnwidth}
+  \def\svgwidth{0.4\columnwidth}
   \fontsize{9}{9}\selectfont
   \includesvg[\main/afsnit/system_design/Quadraturdecoder/pictures/]{rotary_encoder}
   \caption{Tracks of a rotary encoder.}
@@ -16,7 +16,7 @@ A Quadrature Encoder uses two channels to sense the position and direction of, t
 
 \begin{figure}[H]
   \centering
-  \def\svgwidth{\columnwidth}
+  \def\svgwidth{0.7\columnwidth}
   \fontsize{9}{9}\selectfont
   \includesvg[\main/afsnit/system_design/Quadraturdecoder/pictures/]{channel}
   \caption{Tracks of a Linear encoder}
@@ -25,7 +25,7 @@ A Quadrature Encoder uses two channels to sense the position and direction of, t
 
 \begin{figure}[H]
   \centering
-  \def\svgwidth{\columnwidth}
+  \def\svgwidth{0.7\columnwidth}
   \fontsize{9}{9}\selectfont
   \includesvg[\main/afsnit/system_design/Quadraturdecoder/pictures/]{output_channel}
   \caption{The logic output of an encoder}
@@ -68,7 +68,7 @@ The counter keeps track of the position of the encoder. The counter counts posit
 \end{figure}
 As mentioned above, a reset is needed for the application. This allows for a new home position to be set as desired. The state machine does not make use of a clock signal so the reset is required to be a asynchronous reset to avoid adding more complications to the application.
 \subsubsection{Velocity measure}
-The decoder is not only responsible for computing the position of the system but also the velocity. The simplest way to estimate the velocity is by diving the change in position with the change in time. The most classic options are either to keep the $\Delta$t fixed, measure the position between the interval and then take the difference between x(n) and x(n-1) as shown in equation \ref{eq_1}. The other is to keep the position fixed and compute how long it takes to reach the fixed  $\Delta$x like in equation \ref{eq_2}.
+The decoder is not only responsible for computing the position of the system but also the velocity. The simplest way to estimate the velocity is by dividing the change in position with the change in time. The most classic options are either to keep the $\Delta$t fixed, measure the position between the interval and then take the difference between x(n) and x(n-1) as shown in equation \ref{eq_1}. The other is to keep the position fixed and compute how long it takes to reach the fixed  $\Delta$x like in equation \ref{eq_2}.
 \begin{equation}
 v(n) = \frac{x(n)-x(n-1)}{T}
 \label{eq_1}
