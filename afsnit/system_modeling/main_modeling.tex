@@ -190,7 +190,7 @@ The state space models for the two motors can be written as shown in eq. (\ref{e
 
 To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in this model \todo{we are referencing the same model(S) twice, can it be chande?} must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants concerning these will from this point on be denoted with the following subscripts, in the same order as mentioned above: $K_{t,a}$ and $K_{b,a}$. \todo{way too long a sentece with way too many interpolated sentences}\\
 Firstly the ohmic resistance of the two motors is determined in the journal \textit{Determine ohmic resistance of motors} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors is determined  in journal \textit{Determine electrical inductance of motors}. The constants are determined to $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.
-To determine the viscous frictions, $b_b$ and $b_t$ experiments, not preformed in this project, would be necessary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and bottom frame.
+To determine the viscous frictions, $b_b$ and $b_t$, experiments, which has not been performed in this project, would be necessary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and bottom frame.
 
 \subsubsection{Moment of inertia - Top frame}
 \label{ch:Top_frame_inertia}
@@ -226,7 +226,7 @@ Since moment of inertia is an expression of the mass distribution about a given 
 
 In this expression $I_{parallel axis}$ \todo{maybe a bit too long variable name} is the resulting moment of inertia, $I_{cm}$ is the center of mass inertia, $m$ is the mass of the object and $u$ is the distance between the axis of rotation and the axis going through the center of mass parallel to the axis of rotation.
 
-It is here seen that $d$ has two corners, $m_{cor}$, which here will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
+It is here seen that $d$ has two corners \todo{where is that seen? }, $m_{cor}$, which here \todo{which in this particular example? something else than here will be seen as} will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia}
@@ -239,7 +239,7 @@ It is here seen that $d$ has two corners, $m_{cor}$, which here will be seen as 
 \end{split}
 \end{equation}
 Thus an expression to calculate the moment of inertia of the top frame is determined.\\
-Since disassembly of the system is not an possibility, the mass of the different components are determined from the mass density $\rho_{bar}$, and the length of the component. $\rho_{bar}$ is found in the data sheet \textit{Frame bars} as $\rho_{bar} = 1.27 \si{\frac{kg}{m}}$. The mass' relevant for eq. (\ref{eq:Top_frame_total_inertia}) are calculated in table (\ref{tab:Top_frame_table}).
+Since disassembly of the system is not a possibility, the mass of the various components are determined from the mass density $\rho_{bar}$, and the length of the component. $\rho_{bar}$ is found in the data sheet \textit{Frame bars} as $\rho_{bar} = 1.27 \si{\frac{kg}{m}}$. The mass' relevant for eq. (\ref{eq:Top_frame_total_inertia}) are calculated in table (\ref{tab:Top_frame_table}).
 
 \begin{table}[H]
 \centering
@@ -282,10 +282,10 @@ The top frame's moment of inertia is therefore determined to be
 \newline $J_{t} = 0.0198 \si{\,kg\cdot m^2}$
 
 \subsubsection{Moment of inertia - Base frame}
-To calculate the moment of inertia for the bottom frame, some observations needs to be made. Firstly the same procedure as in section \ref{ch:Top_frame_inertia} can be followed to determine the base frames own inertia, since the base frame of itself has a structure identical to the top frame, with one bar being the difference. Secondly, the base frame's moment of inertia is directly influenced by the position of the topframe, thus making the base frame's moment of inertia a function of the top frames position $\theta_t$.\\
-As in section \ref{ch:Top_frame_inertia} the base frame is fragmented, this time in three parts:$e$, $f$ and $g$ as shown on figure \ref{fig:BottomFrame}. The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frame's moment of inertia can now be expressed as seen in eq. (\ref{eq:Base_frame_eq}).
+To calculate the moment of inertia for the bottom frame, some observations needs to be made. Firstly the same procedure as in section \ref{ch:Top_frame_inertia} can be followed to determine the base frame's own inertia, since the base frame of itself has a structure identical to the top frame with one bar being the difference. Secondly, the base frame's moment of inertia is directly influenced by the position of the top frame, thus making the base frame's moment of inertia a function of the top frame's position $\theta_t$.\\
+As in section \ref{ch:Top_frame_inertia} the base frame is fragmented, this time in three parts: $e$, $f$ and $g$ as shown on figure \ref{fig:BottomFrame}. The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frame's moment of inertia can now be expressed as seen in eq. (\ref{eq:Base_frame_eq}).
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includesvg[\main/afsnit/system_modeling/]{ButtomFrame}
   \caption{Bottom frame of the pan-tilt system.}
@@ -299,14 +299,14 @@ As in section \ref{ch:Top_frame_inertia} the base frame is fragmented, this time
   \sum J_{b,k} + J_{b,k-1} + \dotsb + J_{b,1}}_\text{$J_{b,const}$} + J_{b,var}(\theta_t)
 \end{equation}
 
-Firstly the constant part of the moment of inertia is determined, which, with the same procedure results in eq. (\ref{eq:top_frame_constant}).
+First the constant part of the moment of inertia is determined which, with the same procedure, results in eq. \todo{same precedure? i know what you mean, but not sure if it would work} (\ref{eq:top_frame_constant}).
 
 \begin{equation}
   \label{eq:top_frame_constant}
   J_{b,const} = \frac{1}{12}\cdot m_{b,e}\cdot l_{b,e}^2 + m_{b,f} \cdot \left( \frac{l_{b,e}}{2} \right)^2 + m_{b,g} \cdot \left(\frac{l_{b,e}}{2}\right)^2
 \end{equation}
 
-The different constants needed to determine $J_{b,cont}$ are listed in table \ref{tab:Base_frame_table}.
+The various constants needed to determine $J_{b,cont}$ are listed in table \ref{tab:Base_frame_table}.
 
 \begin{table}[H]
 \centering
@@ -338,7 +338,7 @@ $J_{b,const}$ can now be determined as shown in eq. (\ref{eq:J_b,const}).
 \end{equation}
 
 Thus the constant part of the moment of inertia of the base frame is determined to be $J_{b,const} = 0.0304 \si{\,kg\cdot m^2}$.\\
-The varying moment of inertia, $J_{b,var}(\theta_t)$, is dependent on the angular displacement of the top frame, from the vertical axis parallel to the bottom frame. This can be seen on figure (\ref{fig:TrekantDiagram}).
+The varying moment of inertia, $J_{b,var}(\theta_t)$, is dependent on the angular displacement of the top frame from the vertical axis parallel to the bottom frame. This can be seen on figure (\ref{fig:TrekantDiagram}).
 
 \begin{figure}[H]
   \centering
@@ -348,14 +348,14 @@ The varying moment of inertia, $J_{b,var}(\theta_t)$, is dependent on the angula
   \label{fig:TrekantDiagram}
 \end{figure}
 
-From figure \ref{fig:TrekantDiagram} its seen that by applying the parallel axis theorem, the added moment of inertia can be written as seen in eq. (\ref{eq:triangleDiagram_moment_of_inertia}).
+From figure \ref{fig:TrekantDiagram} it is seen that, by applying the parallel axis theorem, the added moment of inertia can be written as in eq. (\ref{eq:triangleDiagram_moment_of_inertia}).
 
 \begin{equation}
   \label{eq:triangleDiagram_moment_of_inertia}
   J_{b,var}(\theta_t) = m_{t} \cdot \left( \frac{l_{t,a}}{2} \cdot \cos(\theta_t) \right)^2 = ( m_{t,a} + m_{t,b} + m_{t,c} + m_{t,d} ) \cdot \frac{l_{t,a}^2}{4} \cdot \cos^2(\theta_t)
 \end{equation}
 
-The collective moment of inertia for the bottom frame can thus be determined as seen in eq. (\ref{eq:BottomFrame_moment_of_inertia}).
+The total moment of inertia for the bottom frame can thus be determined as in eq. (\ref{eq:BottomFrame_moment_of_inertia}).
 
 \begin{equation}
   \label{eq:BottomFrame_moment_of_inertia}
@@ -371,7 +371,7 @@ Thus the moment of inertia for the bottom frame has been determined to be
 \newline $J_{b} = \, 0.0606 \cdot \cos^2(\theta_t)$.
 
 \subsection{Application specified model - pre-tuning}
-Since the different parameters in the found models now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. These models can thus be written as seen in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom. Since we know that the gearing between the motors and frames are $3:1$, each moment of inertia gets divided by 3.
+Since the various parameters in the found models \todo{lidt for fordansket sætning  - f.eks. med "now are determined", "in the found model"}now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. The two models can thus be written as seen \odp{maybe say: can now be put on state space form or similar?} in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom. Since we \todo{WE hehe} know that the gearing between the motors and frames are $3:1$, each moment of inertia gets divided by 3.
 \begin{equation}
       \label{eq:Theoretical_models_top}
       \begin{split}
