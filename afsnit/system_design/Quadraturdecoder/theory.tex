@@ -69,8 +69,16 @@ The counter keeps track of the position of the encoder. The counter counts posit
   \caption{Shows the different states the decoder can be in}
   \label{fig:state_dia}
 \end{figure}
-As mentioned above a reset is needed for the application as this allows a new home position to be set as desired. The reset can be implemented as either a synchronous or an asynchronous reset. The difference between the two is that the synchronous reset depends on a clock signal, either rising or falling egde, as its initial condition and then the reset as its trigger whereas the asynchronous reset only needs a change in the signal level. For a synchronous reset this means that if the reset signal changes this would not be regonised before the rising egde next rising egde occurs. The state machine uses rising egde as its initial trigger making it
- The state machine does not make use of a clock signal so the reset is required to be a asynchronous reset to avoid adding more complications to the application.
+As mentioned above a reset is needed for the application as this allows a new home position to be set as desired. The reset can be implemented as either a synchronous or an asynchronous reset. The difference between the two is that the synchronous reset depends on a clock signal, either rising or falling egde, and will not be effective before next actove edge whereas the asynchronous reset is independent of the clock and triggers immediately when enabled.
+
+The advantages of a synchronous reset is that it gives a synchronous circuit and provides a natural filter for most giltches.\footnote{If a glitch/noise happens on an active clock edge the fake reset will go through}
+The disadvantages are that it requires a clock signal to reset and the response time depends on the clock frequency, which produces a further issue with the length of the reset signal.
+This paticular issue however is not relevant in this system as the decoder component will run many times faster than the component that provides the reset signal.
+
+The asynchronous reset has the advantages of the reset being of higest priority and it has an almost immediate response.
+The disadvantages are that it is very sensitive towards any noise as just a milisond of a "fake" reset signal can set it off and it can cause issues if any synchronous resets are used in the system. \\
+
+Due to the fact that the state machine itself is using an active clock edge and that the decoder component will be the fastest, the synchronous reset has been chosen.
 \subsubsection{Velocity measure}
 The decoder is not only responsible for computing the position of the system but also the velocity. The simplest way to estimate the velocity is by dividing the change in position with the change in time. The most classic options are either to keep the $\Delta$t fixed, measure the position between the interval and then take the difference between x(n) and x(n-1) as shown in equation \ref{eq_1}. The other is to keep the position fixed and compute how long it takes to reach the fixed  $\Delta$x like in equation \ref{eq_2}.
 \begin{equation}
