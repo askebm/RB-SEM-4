@@ -3,7 +3,7 @@
 \subsection{General model}
 \label{ch:General_model}
 
-In this project a pan-tilt system has been given to control. This can be seen on figure \ref{fig:ImageOfPanTiltSystem}.
+In this project a pan-tilt system has been given to control. \todo{A pan-tilt system is provided for the project. The goal is to control this}The system can be seen on figure \ref{fig:ImageOfPanTiltSystem}.
 
 \begin{figure}[h]
   \centering
@@ -12,7 +12,7 @@ In this project a pan-tilt system has been given to control. This can be seen on
   \label{fig:ImageOfPanTiltSystem}
 \end{figure}
 
-The system works such that the upper frame is driven by a motor causing it to rotate about a horizontal axis, while the bottom frame is driven by a similar motor but has a vertical axis. This is  illustrated on figure \ref{fig:pan-tilt_frames}.
+The system works such that the upper frame is driven by a motor causing it to rotate about a horizontal axis, while the bottom frame is driven by a similar motor but has a vertical axis. This is illustrated on figure \ref{fig:pan-tilt_frames}.
 
   \begin{figure}[h]
     \centering
@@ -28,7 +28,7 @@ Each motor is geared to the frame in a $3:1$ relation.\\
 
 In this chapter an approximated model of the physical system will be found.\\
 
-By analysis of the forces acting on the motors when voltage is added, the following differential equations are found.\\
+By analysising the forces acting on the motors when voltage is added the following differential equations are found.\\
 
 \begin{equation}
   \label{equ:model_mech_equ}
@@ -40,18 +40,18 @@ By analysis of the forces acting on the motors when voltage is added, the follow
   L\cdot \frac{di}{dt} + R\cdot i = V - K_{elec}\cdot \dot \theta
 \end{equation}
 
-In (\ref{equ:model_mech_equ}) $J$ is the moment of inertia about the axis of rotation, $b$ is the motors viscous friction constant, $K_{torque}$ is the motor toque constant, $\dot \theta$ is the first time derivative of the position, and $\ddot \theta$ is the second time derivative. The first time derivative is this the velocity and the second is the acceleration.\\
-In (\ref{equ:model_ele_equ}) $L$ is the electrical inductance of the coil in the motor, $\frac{di}{dt}$ is the first time derivative of the current, $R$ is the ohmic resistance of the motor, $V$ is the voltage applied, $K_{elec}$ is the electromotive force constant and as mentioned above $\dot \theta$ is the velocity.\\
+In (\ref{equ:model_mech_equ}) $J$ is the moment of inertia about the axis of rotation, $b$ is the motors viscous friction constant, $K_{torque}$ is the motor toque constant, $\dot \theta$ is the first time derivative of the position, and $\ddot \theta$ is the second time derivative. The first time derivative is the velocity and the second is the acceleration.\\
+In (\ref{equ:model_ele_equ}) $L$ is the electrical inductance of the coil in the motor, $\frac{di}{dt}$ is the first time derivative of the current, $R$ is the ohmic resistance of the motor, $V$ is the voltage applied, $K_{elec}$ is the electromotive force constant and $\dot \theta$ is the velocity as mentioned above.\\
 
-By further inspection a non-linear contribution on the top frame's moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
-Adding the extra gravitational pull on these corners, the mechanical equation describing the motor driving the top frame can be rewritten as seen in eq. (\ref{eq:new_mech_equation_with_corners}).
+By further inspection \todo{inspecting eller inspection of} a non-linear contribution on the top frame's moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
+As an extra gravitational pull on these corners is added, the mechanical equation describing the motor driving the top frame has to be rewritten as seen in eq. (\ref{eq:new_mech_equation_with_corners}).
 
 \begin{equation}
   \label{eq:new_mech_equation_with_corners}
   J_t\cdot \ddot \theta_t + b_t\cdot \dot \theta_t + 2\cdot m_{t,cor} \cdot r \cdot g \cdot \sin(\theta_t) = K_{t,torque}\cdot i_t
 \end{equation}
 
-eq. (\ref{eq:new_mech_equation_with_corners}) is found by analyzing figure \ref{fig:TrekantDiagramForce}.
+Equation (\ref{eq:new_mech_equation_with_corners}) is found by analyzing figure \ref{fig:TrekantDiagramForce}.
 
 \begin{figure}[h]
   \centering
@@ -61,9 +61,9 @@ eq. (\ref{eq:new_mech_equation_with_corners}) is found by analyzing figure \ref{
   \label{fig:TrekantDiagramForce}
 \end{figure}
 
-The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ being the mass of 1 of the 2 the aluminium corners on the top frame.\\
-To ease the further analysis the model mentioned above is linearized by applying the Jacobian matrix. The linearized state space model can be seen in eq. (\ref{eq:topframe_mech_linearized}).
-
+The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ \todo{The $m_{t,cor}$is hard to read and should be changed} being the mass of 1 of the 2 the aluminium corners on the top frame.\\
+To ease the further analysis above mentioned the model is linearized by applying the Jacobian matrix. The linearized state space model can be seen in eq. (\ref{eq:topframe_mech_linearized}).
+ q
 \begin{equation}
       \label{eq:topframe_mech_linearized}
       \begin{split}
@@ -188,13 +188,13 @@ The state space models for the two motors can be written as shown in eq. (\ref{e
 
 \subsection{Application specified model}
 
-To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model}, the different constants in this model must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants concerning these will from this point on be denoted with the following subscripts, in the same order as mentioned above: $K_{t,a}$ and $K_{b,a}$.\\
-Firstly the ohmic resistance of the two motors can be seen determined in journal the \textit{Determine ohmic resistance of motors} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors can be seen determined in journal \textit{Determine electrical inductance of motors}. Here they can be seen as $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.\\
-To determine the viscous frictions, $b_b$ and $b_t$ experiments, not made in this project, would be necessary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and bottom frame.
+To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in this model \todo{we are referencing the same model(S) twice, can it be chande?} must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants concerning these will from this point on be denoted with the following subscripts, in the same order as mentioned above: $K_{t,a}$ and $K_{b,a}$. \todo{way too long a sentece with way too many interpolated sentences}\\
+Firstly the ohmic resistance of the two motors is determined in the journal \textit{Determine ohmic resistance of motors} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors is determined  in journal \textit{Determine electrical inductance of motors}. The constants are determined to $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.
+To determine the viscous frictions, $b_b$ and $b_t$ experiments, not preformed in this project, would be necessary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and bottom frame.
 
 \subsubsection{Moment of inertia - Top frame}
 \label{ch:Top_frame_inertia}
-To determine the top frame's moment of inertia, $J_{t}$, its seen as an isolated system with only the frames contributing to $J_{t}$, thus the weight of motors and wires on the frame are considered negligible. The system then considered is seen on figure \ref{fig:TopFrame}. Here the axis of rotation can be seen and for this calculation will be our reference.\\
+To determine the top frame's moment of inertia, $J_{t}$, it is considered to be an isolated system with only the frames \todo{do you mean both frames or do you mean frame's} contributing to $J_{t}$ as the weight of motors and wires on the frame are considered negligible. The system then considered \todo{The new model of the system is shown in figure \ref{fig:TopFrame}} is seen on figure \ref{fig:TopFrame}. The axis of rotation, shown in the figure \ref{fig:TopFrame} will be the reference for the following calculation.\\
 
 \begin{figure}[H]
   \centering
@@ -203,7 +203,7 @@ To determine the top frame's moment of inertia, $J_{t}$, its seen as an isolated
   \label{fig:TopFrame}
 \end{figure}
 
-Since moments of inertia are linear, the superposition principle can be applied, the frames are to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be seen, the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true.
+Since moments of inertia are linear the superposition principle can be applied. The frames are to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be see the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true. \todo{So the naming is what makes the eq true? This needs changing}
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia_formula}
@@ -217,16 +217,16 @@ The contributions of $a$ and $c$ are approximated as linear uniform rods rotatin
   I_{rod}=\frac{1}{12}\cdot m_{rod} \cdot l_{rod}^2
 \end{equation}
 
-Since moment of inertia is an expression of the mass distribution about a given axis of rotation, $b$ and $d$ are simply considered particles rotating about this axis. This means that my applying the parallel axis theorem these can be added to the moment of inertia. The parallel axis theorem can be seen in eq. (\ref{eq:parallel_axis_theorem}).
+Since moment of inertia is an expression of the mass distribution about a given axis of rotation, $b$ and $d$ are simply considered particles rotating about this axis. This means that by applying the parallel axis theorem these can be added to the moment of inertia. The parallel axis theorem can be seen in eq. (\ref{eq:parallel_axis_theorem}).
 
 \begin{equation}
   \label{eq:parallel_axis_theorem}
   I_{parallel\,axis} = I_{cm} + m\cdot u^2
 \end{equation}
 
-In this expression $I_{parallel axis}$ is the resulting moment of inertia, $I_{cm}$ is the center of mass inertia, $m$ is the mass of the object and $u$ is the distance between the axis of rotation and the axis goind through the center of mass, parallel to the axis of rotation.
+In this expression $I_{parallel axis}$ \todo{maybe a bit too long variable name} is the resulting moment of inertia, $I_{cm}$ is the center of mass inertia, $m$ is the mass of the object and $u$ is the distance between the axis of rotation and the axis going through the center of mass parallel to the axis of rotation.
 
-Its here seen that $d$ has two corners, $m_{cor}$, which here will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
+It is here seen that $d$ has two corners, $m_{cor}$, which here will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia}
