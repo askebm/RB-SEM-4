@@ -3,8 +3,8 @@
 \subsection{General model}
 \label{ch:General_model}
 
-In this project a pan-tilt system has been given to control. \todo{A pan-tilt system is provided for the project. The goal is to control this}The system can be seen on figure \ref{fig:ImageOfPanTiltSystem}.
-\todo{Undgå ordet "goal" brug "aim" eller "Purpose" - Mindre talesprog}
+In this project a pan-tilt system has been provided with the goal of gaining control of its behavior. The system can be seen on figure \ref{fig:ImageOfPanTiltSystem}.
+
 \begin{figure}[h]
   \centering
   \includegraphics[width = 0.5\textwidth]{\main/afsnit/system_modeling/img/system.png}
@@ -17,9 +17,9 @@ The system works such that the upper frame is driven by a motor causing it to ro
   \begin{figure}[h]
     \centering
   \def\svgwidth{0.4\columnwidth}
-  \subfloat[Top frame of the pan-tilt system.]{\includesvg[\main/afsnit/system_modeling/]{TopFrame_general}}\qquad
+  \subfloat[Top frame of the pan-tilt system.\label{subfig:TopFrame_general}]{\includesvg[\main/afsnit/system_modeling/]{TopFrame_general}}\qquad
   \def\svgwidth{0.2\columnwidth}
-  \subfloat[Bottom frame of the pan-tilt system.]{\includesvg[\main/afsnit/system_modeling/]{ButtomFrame_general}}
+  \subfloat[Bottom frame of the pan-tilt system.\label{subfig:ButtomFrame_general}]{\includesvg[\main/afsnit/system_modeling/]{ButtomFrame_general}}
   \caption{Pan-tilt frames.}
   \label{fig:pan-tilt_frames}
   \end{figure}
@@ -43,7 +43,7 @@ By analysising the forces acting on the motors when voltage is added the followi
 In (\ref{equ:model_mech_equ}) $J$ is the moment of inertia about the axis of rotation, $b$ is the motors viscous friction constant, $K_{torque}$ is the motor toque constant, $\dot \theta$ is the first time derivative of the position, and $\ddot \theta$ is the second time derivative. The first time derivative is the velocity and the second is the acceleration.\\
 In (\ref{equ:model_ele_equ}) $L$ is the electrical inductance of the coil in the motor, $\frac{di}{dt}$ is the first time derivative of the current, $R$ is the ohmic resistance of the motor, $V$ is the voltage applied, $K_{elec}$ is the electromotive force constant and $\dot \theta$ is the velocity as mentioned above.\\
 
-By further inspection \todo{inspecting eller inspection of} a non-linear contribution on the top frame's moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
+By further inspection inspection of a non-linear contribution on the top frame's moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
 As an extra gravitational pull on these corners is added, the mechanical equation describing the motor driving the top frame has to be rewritten as seen in eq. (\ref{eq:new_mech_equation_with_corners}).
 
 \begin{equation}
@@ -61,7 +61,7 @@ Equation (\ref{eq:new_mech_equation_with_corners}) is found by analyzing figure 
   \label{fig:TrekantDiagramForce}
 \end{figure}
 
-The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ \todo{The $m_{t,cor}$is hard to read and should be changed} being the mass of 1 of the 2 the aluminium corners on the top frame.\\
+The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ being the mass of 1 of the 2 the aluminium corners on the top frame.\\
 To ease the further analysis above mentioned the model is linearized by applying the Jacobian matrix. The linearized state space model can be seen in eq. (\ref{eq:topframe_mech_linearized}).
  q
 \begin{equation}
@@ -188,13 +188,13 @@ The state space models for the two motors can be written as shown in eq. (\ref{e
 
 \subsection{Application specified model}
 
-To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in this model \todo{we are referencing the same model(S) twice, can it be chande?} must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants concerning these will from this point on be denoted with the following subscripts, in the same order as mentioned above: $K_{t,a}$ and $K_{b,a}$. \todo{way too long a sentece with way too many interpolated sentences}\\
+To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in these models must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants concerning these will from this point on be denoted with the following subscripts, in the same order as mentioned above: $K_{t,a}$ and $K_{b,a}$. \todo{way too long a sentece with way too many interpolated sentences}\\
 Firstly the ohmic resistance of the two motors is determined in the journal \textit{Determine ohmic resistance of motors} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors is determined  in journal \textit{Determine electrical inductance of motors}. The constants are determined to $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.
 To determine the viscous frictions, $b_b$ and $b_t$, experiments, which has not been performed in this project, would be necessary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and bottom frame.
 
 \subsubsection{Moment of inertia - Top frame}
-\label{ch:Top_frame_inertia}
-To determine the top frame's moment of inertia, $J_{t}$, it is considered to be an isolated system with only the frames \todo{do you mean both frames or do you mean frame's} contributing to $J_{t}$ as the weight of motors and wires on the frame are considered negligible. The system then considered \todo{The new model of the system is shown in figure \ref{fig:TopFrame}} is seen on figure \ref{fig:TopFrame}. The axis of rotation, shown in the figure \ref{fig:TopFrame} will be the reference for the following calculation.\\
+\label{sec:Top_frame_inertia}
+To determine the top frame's moment of inertia, $J_{t}$, it is considered to be an isolated system with only the frame's own contributing to $J_{t}$ as the weight of motors and wires on the frame are considered negligible. The system then considered is seen on figure \subref{subfig:TopFrame_general}. The axis of rotation, shown in the figure \subref{subfig:TopFrame_general} will be the reference for the following calculation.\\
 
 \begin{figure}[H]
   \centering
@@ -221,12 +221,12 @@ Since moment of inertia is an expression of the mass distribution about a given 
 
 \begin{equation}
   \label{eq:parallel_axis_theorem}
-  I_{parallel\,axis} = I_{cm} + m\cdot u^2
+  I_{||\,axis} = I_{cm} + m\cdot u^2
 \end{equation}
 
-In this expression $I_{parallel axis}$ \todo{maybe a bit too long variable name} is the resulting moment of inertia, $I_{cm}$ is the center of mass inertia, $m$ is the mass of the object and $u$ is the distance between the axis of rotation and the axis going through the center of mass parallel to the axis of rotation.
+In this expression $I_{||\,axis}$ is the resulting moment of inertia, $I_{cm}$ is the center of mass inertia, $m$ is the mass of the object and $u$ is the distance between the axis of rotation and the axis going through the center of mass parallel to the axis of rotation.
 
-It is here seen that $d$ has two corners \todo{where is that seen? }, $m_{cor}$, which here \todo{which in this particular example? something else than here will be seen as} will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
+It is seen on figure \ref{fig:TopFrame} that $d$ has two corners, $m_{t,cor}$, which in this case will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia}
@@ -299,7 +299,7 @@ As in section \ref{ch:Top_frame_inertia} the base frame is fragmented, this time
   \sum J_{b,k} + J_{b,k-1} + \dotsb + J_{b,1}}_\text{$J_{b,const}$} + J_{b,var}(\theta_t)
 \end{equation}
 
-First the constant part of the moment of inertia is determined which, with the same procedure, results in eq. \todo{same precedure? i know what you mean, but not sure if it would work} (\ref{eq:top_frame_constant}).
+First the constant part of the moment of inertia is determined which, with the same procedure as in section \ref{sec:Top_frame_inertia}, results in eq. (\ref{eq:top_frame_constant}).
 
 \begin{equation}
   \label{eq:top_frame_constant}
@@ -371,7 +371,7 @@ Thus the moment of inertia for the bottom frame has been determined to be
 \newline $J_{b} = \, 0.0606 \cdot \cos^2(\theta_t)$.
 
 \subsection{Application specified model - pre-tuning}
-Since the various parameters in the found models \todo{lidt for fordansket sætning  - f.eks. med "now are determined", "in the found model"}now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. The two models can thus be written as seen \todo{maybe say: can now be put on state space form or similar?} in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom. Since we \todo{WE hehe} know that the gearing between the motors and frames are $3:1$, each moment of inertia gets divided by 3.
+Since the various parameters in the determined models \todo{lidt for fordansket sætning  - f.eks. med "now are determined", "in the found model"} now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. The two models can thus be written as seen \odp{maybe say: can now be put on state space form or similar?} in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom. Since the gearing between the motors and frames are known to be $3:1$, each moment of inertia gets divided by $3$.
 \begin{equation}
       \label{eq:Theoretical_models_top}
       \begin{split}
