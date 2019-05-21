@@ -55,7 +55,7 @@ To use the transitions between encoder output A and output B, a truth table of e
   \caption{This figure shows the truth table for the Quadrature decoder}
   \label{fig:truth_table}
 \end{figure}
-The truth table shows eight possible scenarios that can occur from tracking the transitions of the outputs. Four of these results in a forward direction and the counter will increment, four scenarios results in a backwards direction and the counter will decrements. The last scenario occurs if the reset flag is set low\footnote{Reset is implemented as active low, as can be observed in the truth table \ref{fig:truth_table}.}, and the counter is set to zero regardless of what it was on before. From these observations a state machine containing 5 states has been computed. The states are: AB\_low with the gray code $001$\footnote{The first digit is signal A, second is signal B and third is the reset signal}, AB\_high with gray code $111$, A\_high with gray code $101$, B\_high with gray code $011$ and undefined. The undefined state is purely for debugging purposes used if an error with the signal A and B occurs. A potential error could be if the state is currently AB\_low the gray code can not be $111$ in the next instance. This would mean that both signals changed at the same time. The state machine diagram is shown below in figure \ref{state_dia}. There is no reset state as it would not meet the criterias of a state. Thereforth the reset signal will be treated as synchronous reset signal and every state will check for it. \\
+The truth table shows eight possible scenarios that can occur from tracking the transitions of the outputs. Four of these results in a forward direction and the counter will increment, four scenarios results in a backwards direction and the counter will decrements. The last scenario occurs if the reset flag is set low\footnote{Reset is implemented as active low, as can be observed in the truth table \ref{fig:truth_table}.}, and the counter is set to zero regardless of what it was on before. From these observations a state machine containing 4 states has been computed. The states are: AB\_low with the gray code $001$\footnote{The first digit is signal A, second is signal B and third is the reset signal}, AB\_high with gray code $111$, A\_high with gray code $101$ and B\_high with gray code $011$. The state machine diagram is shown below in figure \ref{fig:state_dia}. There is no reset state as it would not meet the criterias of a state. Thereforth the reset signal will be treated as synchronous reset signal and every state will check for it. \\
 
 The decoder works by first initializing and go to a state depending on the level of signal A and B. The decoder will then use the debounced signals to determine the next state. If the starting state is AB\_low, there is three correct outcomes: the reset signal goes low and the counter will go to zero, the signal A goes high and the state changes to A\_high or the last possible outcome, that does not give an error, is B\_high. By looking at the truth table from the above figure \ref{fig:truth_table}, it can be observed that if the state goes from AB\_low to A\_high, the direction will be forward and the counter will increment where the counter would decrements and direction set to backwards if the next state is B\_high.\\
 
@@ -65,12 +65,20 @@ The counter keeps track of the position of the encoder. The counter counts posit
   \centering
   \def\svgwidth{\columnwidth}
   \fontsize{9}{9}\selectfont
-  \includesvg[\main/afsnit/system_design/Quadraturdecoder/pictures/]{decoder_state}
+  \includesvg[\main/afsnit/system_design/Quadraturdecoder/pictures/]{decoder_state_1}
   \caption{Shows the different states the decoder can be in}
-  \label{state_dia}
+  \label{fig:state_dia}
 \end{figure}
-As mentioned above a reset is needed for the application as this allows a new home position to be set as desired. The reset can implemetned as either a synchronous or an reset. The difference between the two implementations is that the synchronous reset depends on the a clock signal, either rising or falling egde, as its initial condition and then the reset as its trigger. It means that a reset signal would not be regonized before a rising egde has occured after the reset signal goes low. The state machine checks the state of the input signals A and B with every rising egde\footnote{It uses a clock signal as the condition for the process to begin - similar to an if statement's condition}. 
- The state machine does not make use of a clock signal so the reset is required to be a asynchronous reset to avoid adding more complications to the application.
+As mentioned above a reset is needed for the application as this allows a new home position to be set as desired. The reset can be implemented as either a synchronous or an asynchronous reset. The difference between the two is that the synchronous reset depends on a clock signal, either rising or falling egde, and will not be effective before next actove edge whereas the asynchronous reset is independent of the clock and triggers immediately when enabled.
+
+The advantages of a synchronous reset is that it gives a synchronous circuit and provides a natural filter for most giltches.\footnote{If a glitch/noise happens on an active clock edge the fake reset will go through}
+The disadvantages are that it requires a clock signal to reset and the response time depends on the clock frequency, which produces a further issue with the length of the reset signal.
+This paticular issue however is not relevant in this system as the decoder component will run many times faster than the component that provides the reset signal.
+
+The asynchronous reset has the advantages of the reset being of higest priority and it has an almost immediate response.
+The disadvantages are that it is very sensitive towards any noise as just a milisond of a "fake" reset signal can set it off and it can cause issues if any synchronous resets are used in the system. \\
+
+Due to the fact that the state machine itself is using an active clock edge and that the decoder component will be the fastest, the synchronous reset has been chosen.
 \subsubsection{Velocity measure}
 The decoder is not only responsible for computing the position of the system but also the velocity. The simplest way to estimate the velocity is by dividing the change in position with the change in time. The most classic options are either to keep the $\Delta$t fixed, measure the position between the interval and then take the difference between x(n) and x(n-1) as shown in equation \ref{eq_1}. The other is to keep the position fixed and compute how long it takes to reach the fixed  $\Delta$x like in equation \ref{eq_2}.
 \begin{equation}
