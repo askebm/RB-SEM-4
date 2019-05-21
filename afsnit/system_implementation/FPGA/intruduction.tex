@@ -1,10 +1,10 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
 
-The purpose of this section is to discuss some of the challenges and benefits related to the use of a FPGA in this project.
-The FPGA connects the microcontroller to all the components on the pan-tilt system in order to control the system. It collects data from encoders and homing sensors as well as creating and updating the PWM signal to both the H bridges.
+The purpose of this section is to discuss some of the challenges and benefits that are related to the use of a FPGA in this project.
+The FPGA connects the microcontroller to all the components on the pan-tilt system in order to control the system. It collects data from encoders and homing sensors as well as creating and updating the PWM signal to both the H-Bridges.\todo{both of the H-bridges.}
 \\
-One of the main differences between a FPGA and a microcontroller is on a FPGA everything is implemented in hardware. This means that all of the processes on the FPGA are running in parallel. When implementing the different components this needs to be taken into consideration. \todo{hvad}
+One of the main differences between a FPGA and a microcontroller is that on a FPGA everything is implemented in hardware. This means that all of the processes running, are running in parallel\todo{running running - skal måske omformuleres}. When implementing the different components this needs to be taken into consideration. \todo{hvad}
 \\
 The FPGA used in this project is a Artix-7 mounted on a BASYS3 kit. \todo{ref}
 \subsubsection{System overview}%
@@ -14,14 +14,12 @@ The FPGA used in this project is a Artix-7 mounted on a BASYS3 kit. \todo{ref}
   \centering
   \def\svgwidth{\textwidth}
   \includesvg[\main /afsnit/system_implementation/FPGA/images/]{components_connection}
-  \caption{FPGA system overview.}
+  \caption{FPGA System overview.\todo{System = system}}
   \label{fig:FPGA_system_overview}
 \end{figure}
-
-\todo{ Navnene virker en anelse for meget kode specifikke frem for concept fremvisende. eksempel: Encoder\_T = Top encoder}
-
+\todo{Navnene virker en anelse for meget kode specifikke, frem for concept fremvisende. eksempel Encoder\_T = Top encoder.}
 The system consist of different modules, implemented in VHDL.
-To store the data needed to be exchanged between the FPGA and the Tiva microcontroller, different registers is implemented on the FPGA with the necessary size\todo{with the nessecary size, er det ikke overflødigt}. Se table \ref{table:FPGA_registers}. \todo{det virker som en samling af stand alone statements som helst skal have en lidt mere flydende overgang.}
+To store the data that needs to be exchanged between the FPGA and the Tiva microcontroller, different registers is implemented on the FPGA with the necessary size. Se table \ref{table:FPGA_registers}. \todo{det virker som en samling af stand alone statements som helst skal have en lidt mere flydende overgang.}
 \\
 The data path between the modules can be seen in the system overview. Se figure \ref{fig:FPGA_system_overview}
 \todo{Maybe add register names to data path lines on figure?}
@@ -29,7 +27,7 @@ The data path between the modules can be seen in the system overview. Se figure 
 \centering
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{12-bit} & \textbf{9-bit} & \textbf{1-bit} \\ \hline
+\textbf{12 Bit} & \textbf{9 Bit} & \textbf{1 Bit} \\ \hline
 Position\_T     & PWM\_T         & Home\_T        \\ \hline
 Position\_B     & PWM\_B         & Home\_B        \\ \hline
 Velocity\_T     & -              & Reset\_T       \\ \hline
@@ -41,36 +39,35 @@ Velocity\_B     & -              & Reset\_B       \\ \hline
 
 \todo{Hvad er status med hvordan vi skriver 9 bit / 9-bit og H-Bridges / H-Bridges. Tal skal også i math mode og enheder skal i si brackets.}
 \subsubsection{PWM}
-The PWM module creates a PWM signal for both motors. It takes a 9-bit vector as input for each motor, and output the signals necessary for the H bridges to work.
-It takes the $100 \si{MHz}$ system clock from the FPGA as an input, and then the module contains a clock divider that creates the necessary clock frequency, for the desired PWM frequency.
-
-\todo{sætningen skal måske opdeles lidt mht til kommaet, som vil gøre det mere flydende.}
-
-MSB in the 9-bit input vector determine witch way the motor should turn.
-The module is designed such that it is possible to define the system clock frequency, the desired PWM frequency, and calculate the correct divider when the code is synthesized.
-This is done such that the PWM frequency is easy changeable for tests.
+The PWM module creates a PWM signal for both motors. It takes a 9 bit vector as input for each motor, and output the signals necessary for the H-Bridges to work.
+It takes the 100Mhz system clock from the FPGA as a input, and then the module contains a clock divider that creates the necessary clock frequency, for the desired PWM frequency. \todo{sætningen skal måske opdeles lidt mht til kommaet, som vil gøre det mere flydende.}
+MSB in the 9 bit input vector determine witch way the motor should turn.
+The module is design\todo{designed} so \todo{such} that it is possible to just \todo{just skal nok undlades} define the system clock frequency and the desired PWM frequency, and the correct divider is calculated when the code is synthesized.
+This is done so that it is easy to change the PWM frequency for testing.
 \subsubsection{Protocol}
-The protocol module uses a SPI module created by \todo{ref.} for communication with the Tiva microcontroller. \todo{modules skal nok rettes.}
+The protocol module uses a SPI module created by \todo{ref.} for communicating with the Tiva microcontroller. \todo{communication og modules skal nok rettes.}
 The role of the protocol module is to decode the data received over SPI, and prepare data for transmission, in regards to the previously determined protocol.
 \\
-Since all the different processes like receiving data over SPI and updating data registers, all run in parallel, it is important to make sure that the protocol module cannot update the data registers while the SPI module is receiving data form the microcontroller.
-This is done by placing a latch on the output from the protocol module, which is triggered by a busy signal from the SPI module.
+Since all the different processes, like receiving data over SPI and updating data registers, all run in parallel, it is important to make sure that the protocol module cannot update the data registers while the SPI module is receiving data form the microcontroller.
+This is done by placing a latch on the output from the protocol module, witch is triggered by a busy signal from the SPI module.
 
 \subsubsection{Quadrature decoder}
-Since there are two motors on the system and therefore to encoders, \todo{ved vi at enkoderen er inde i motoren ellers er det ikke et given at der er 2 enkodere med hver en motor.} their have been implemented two instances of the quadrature decoder module.
-Each of these modules has a 12-bit position vector as output, and takes the \todo{A and B, hvad er de og hvoran er de defineret} A and B signal directly from the encoder. The modules also uses the $100 \si{MHz}$ system clock directly, and takes a reset which is active low as input.
-The reset for the encoders are inverted before they are given to the module, so when a high reset is sent by the Tiva, a low reset signal is given to the decoder.
+Since there are two motors on the system and therefore to encoders, their have been implemented two instances of the quadrature decoder module.
+Each of these modules has a 12 bit position vector as output, and takes the \todo{A and B, hvad er de og hvoran er de defineret} A and B signal directly from the encoder. The modules also uses the 100Mhz system clock directly, and takes a reset witch \todo{heks?} is active low as input.
+The reset for the encoders are inverted before they are given to the module, so when a high reset is sent by the Tiva \todo{Tiva eller TIVA}, a low reset signal is given to the decoder.
+
 
 \subsubsection{Speed measurement}
-These modules are used to calculate the speed of which the system is turning. For this calculation it uses the 12-bit output vector from the quadrature decoder module.
+These modules are used to calculate the speed of which the system is turning. For this calculation it uses the 12 bit output vector from the quadrature decoder module.
 There are two speed measurement modules implemented, one for each motor.
-This is done such that it is possible to control both position and speed for future development of the system.
+This is done so that it is possible to regulate both on position and speed for future development of the system.
 
 \subsubsection{FPGA Summery}
-All of the above mentioned modules have been developed and implemented on the Artix-7 FPGA.
-The FPGA is able to communicate with the Tiva microcontroller using SPI and the previously designed protocol.
+All of the above mentioned modules have been developed and implemented on the Artix7 FPGA.
+The FPGA is able to communicate with the Tiva microcontroller over \todo{using SPI} SPI and the previously designed protocol.
 \\
-The big advantage of using a FPGA for controlling the motors and reading the encoders is that all of the modules are implemented in hardware.
-This means that all of the processes run in parallel and it is therefore not necessary to take timing of processes into consideration.
+The big advantage with \todo{of using} using a FPGA for controlling the motors and reading the encoders is that all of the modules are implemented in hardware.
+This means that all of the processes runs \todo{run} in parallel and therefore its not necessary to take timing of processes into consideration.
+
 
 \end{document}
