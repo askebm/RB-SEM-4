@@ -19,18 +19,18 @@ In order to provide a satisfactory answer to the above questions, the design of 
 
 \subsection{System requirements}
 
-The theoretical usecase of the system is as mentioned a stage spotlight, which means that the system requirements need to be rather hard as overshoot and a slow rise time could render the system useless.
-Overshoot is undesirable as a spotlight is placed rather far away from the stage. Even a $1\%$ overshoot would result in a sizeable overshoot of the intented target which could potentially be disruptive to the stage show.
+The theoretical use case of the system is as mentioned a stage spotlight, which means that the system requirements need to be rather hard as overshoot and a slow rise time could render the system useless.
+Overshoot is undesirable as a spotlight is placed rather far away from the stage. Even a $1\%$ overshoot would result in a sizable overshoot of the intended target which could potentially be disruptive to the stage show.
 Furthermore the system needs a rise time as fast as possible without overworking the motors and gearing.
 
-A rise time of $1$ second fits both criterias, as this should not need a unrealitic amount of current for the system to react nor should it react so slow it causes a noticeable lag to the stage light.
-The settling time is set to be $1.2$ seconds as this gives the system time to slow down when it is apporaching the target and settling in to $1\%$ of the reference.
+A rise time of $1$ second fits both criteria, as this should not need a unrealistic amount of current for the system to react nor should it react so slow it causes a noticeable lag to the stage light.
+The settling time is set to be $1.2$ seconds as this gives the system time to slow down when it is approaching the target and settling in to $1\%$ of the reference.
 \\
 The requirements can be observed in the list below:
 
 \begin{itemize}
   \item No overshoot.
-  \item Maximum $1s$ risetime.
+  \item Maximum $1s$ rise time.
   \item $1\%$ settling time of $1.2s$.
 \end{itemize}
 \end{document}
