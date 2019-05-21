@@ -5,14 +5,16 @@ In this section the controllers for the Top and Bottom frames of the pan-tilt sy
 
 \subsection{Tuning of Top-Frame}
 
-The top frame is unlinear, as can be seen in equation \ref{eq:new_mech_equation_with_corners}, which includes a sine term.
-
+The top frame is unlinear, as can be seen in equation \ref{}, which includes a sine term.
+\todo{ref}
 To design a controller, for the topframe, the system is linearized in four points. It is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{??}
 \todo{insert reference}
 
 In this way, it is possible to have linear behaviour for the system in general.
+Because $-90^o and +90^o$ are the has the same behavior in this system, only 3 linearizations are made.
 
 \subsubsection{Linearize in $0^o$}
+\label{sec:linearize}
 The system is linearized in $0^o$. Which gives the following A, B and C matrices. 
 
 
@@ -26,7 +28,7 @@ The system is linearized in $0^o$. Which gives the following A, B and C matrices
         i_t
     \end{bmatrix}
     =&
-    \begin{bmatrix} 0 & 1.0 & 0\\ -6.63\cdot 10^{-16} & -75.8 & 455.0\\ 0 & -7799.0 & -1.24\cdot10^{4} \end{bmatrix}
+    \begin{bmatrix}0 & 1.0 & 0\\ -10.8 & -75.8 & 455.0\\ 0 & -7799.0 & -1.24\cdot10^{4}\end{bmatrix}
     \begin{bmatrix}
         \theta_t \\
         \dot \theta_t \\
@@ -87,7 +89,7 @@ With a $T_i = \frac{1}{0.035}$ the root locus in figure \ref{fig:rlocus_int} is 
 \label{fig:rlocus_int}
 \end{figure}
 
-With a gain $Kp = 6.95$ a dominant pole is placed at $-5$. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035} & Kp = 6.95$ returns a system with the stepresponse in figure \ref{fig:step_0_first}
+With a gain $Kp = 6.95$ a dominant pole is placed at $-5$. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035}$ and $Kp = 6.95$ returns a system with the stepresponse in figure \ref{fig:step_0_first}
 
 \begin{figure}[H]
 \centering
@@ -96,6 +98,119 @@ With a gain $Kp = 6.95$ a dominant pole is placed at $-5$. Which should make thi
 \caption{Step responce of system with the tuned PI-regulator.}
 \label{fig:step_0_first}
 \end{figure}
+
+In figure \ref{step_0_first} it can be seen that the settling time is faster than the expected 1 second. Therefore the $Kp$ is tuned to better match the requirements. $Kp = 2.82$ is found to give the closest to expectet response. The stepresponse can be seen in figure \ref{fig:step_0_second}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second.pdf_tex}
+\caption{Step responce of system with the tuned PI-regulator.}
+\label{fig:step_0_second}
+\end{figure}
+
+It is a bit slower than expected, but performes much closer to the requirements.
+
+
+\subsubsection{Linearize in $90^o$ and $180^o$}
+In this section the linearized system is tuned in the same manor as is in section \ref{sec:linearize}. But not all steps are shown, as the approach is the same. Here the tuned values and the final stepresponses will be shown and commented.
+
+Linearization in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_linearized}. 
+
+\begin{equation}
+      \label{eq:90_linearized}
+      \begin{split}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    =&
+    \begin{bmatrix}  0 & 1.0 & 0\\ 0 & -75.8 & 455.0\\ 0 & -7799.0 & -1.24\cdot10^4 \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+     0\\ -1.57\\ 2600.0
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t\\
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+Figure \ref{fig:step_0_second_90} shows the tuned stepresponse of the closed loop control sytem and plant.
+It is tuned to $Kp = 2.86$ and $Ti = \frac{1}{0.035}$
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_90.pdf_tex}
+\caption{Step responce of system with the tuned PI-regulator.}
+\label{fig:step_0_second_90}
+\end{figure}
+
+
+Linearization in $180^o$ gives A, B and C matrices shown in equation \ref{eq:180_linearized}. 
+
+\begin{equation}
+      \label{eq:180_linearized}
+      \begin{split}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    =&
+    \begin{bmatrix} 0 & 1.0 & 0\\ 10.8 & -75.8 & 455.0\\ 0 & -7799.0 & -1.24\cdot10^4 \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+    0\\ -1.0\\ 2600.0
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t\\
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+
+Figure \ref{fig:step_0_second_180} shows the tuned stepresponse of the closed loop control sytem and plant.
+It is tuned to $Kp = 2.8$ and $Ti = \frac{1}{0.035}$
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_180.pdf_tex}
+\caption{Step responce of system with the tuned PI-regulator.}
+\label{fig:step_0_second_180}
+\end{figure}
+
+The system responses are not exactly alike, and especially the system when linearized in $180^o$ does not quite look like the other stepresponses. In figure \ref{}, all three responses are shown in the same plot for comparison.
+
 
 
 \end{document}

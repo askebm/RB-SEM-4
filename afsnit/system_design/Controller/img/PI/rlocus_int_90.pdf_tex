@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'rlocus_int.pdf' (pdf, eps, ps)
+%% Accompanies image file 'rlocus_int_90.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -53,23 +53,24 @@
   \begin{picture}(1,0.50352358)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{rlocus_int.pdf}}%
-    \put(0.15,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-7\end{tabular}}}}%
-    \put(0.244375,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-6\end{tabular}}}}%
-    \put(0.33875,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-5\end{tabular}}}}%
-    \put(0.433125,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-4\end{tabular}}}}%
-    \put(0.5275,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-3\end{tabular}}}}%
-    \put(0.621875,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-2\end{tabular}}}}%
-    \put(0.71625,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-1\end{tabular}}}}%
-    \put(0.810625,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{rlocus_int_90.pdf}}%
+    \put(0.15,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-6\end{tabular}}}}%
+    \put(0.25785717,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-5\end{tabular}}}}%
+    \put(0.36571433,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-4\end{tabular}}}}%
+    \put(0.4735715,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-3\end{tabular}}}}%
+    \put(0.5814285,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-2\end{tabular}}}}%
+    \put(0.68928567,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-1\end{tabular}}}}%
+    \put(0.79714283,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
     \put(0.905,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}1\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{rlocus_int.pdf}}%
-    \put(0.1410185,0.05252358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-5\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{rlocus_int_90.pdf}}%
+    \put(0.1410185,0.05252358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-1\end{tabular}}}}%
+    \put(0.1410185,0.14627358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-0.5\end{tabular}}}}%
     \put(0.1410185,0.24002358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
-    \put(0.1410185,0.42752358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}5\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{rlocus_int.pdf}}%
+    \put(0.1410185,0.33377358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0.5\end{tabular}}}}%
+    \put(0.1410185,0.42752358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{rlocus_int_90.pdf}}%
     \put(0.52583333,0.44969024){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Root Locus}\end{tabular}}}}%
     \put(0.52583333,0.00363008){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Re$(s)$\end{tabular}}}}%
-    \put(0.10561567,0.24394024){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Im$(s)$\end{tabular}}}}}%
+    \put(0.083949,0.24394024){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Im$(s)$\end{tabular}}}}}%
   \end{picture}%
 \endgroup%
