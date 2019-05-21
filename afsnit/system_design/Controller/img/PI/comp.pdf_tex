@@ -64,10 +64,10 @@
     \put(0.905,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}3.5\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{comp.pdf}}%
     \put(0.1410185,0.05214972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
-    \put(0.1410185,0.15339972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}81\end{tabular}}}}%
-    \put(0.1410185,0.25464972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}162\end{tabular}}}}%
-    \put(0.1410185,0.35589972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}243\end{tabular}}}}%
-    \put(0.1410185,0.38964972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}270\end{tabular}}}}%
+    \put(0.1410185,0.15339972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$30\%$\end{tabular}}}}%
+    \put(0.1410185,0.25464972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$60\%$\end{tabular}}}}%
+    \put(0.1410185,0.35589972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$90\%$\end{tabular}}}}%
+    \put(0.1410185,0.38964972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$100\%$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{comp.pdf}}%
     \put(0.795373,0.39464972){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$0^o$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{comp.pdf}}%
@@ -75,8 +75,12 @@
     \put(0,0){\includegraphics[width=\unitlength,page=5]{comp.pdf}}%
     \put(0.795373,0.34298305){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$180^o$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{comp.pdf}}%
+    \put(0.795373,0.31714972){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}data1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{comp.pdf}}%
+    \put(0.795373,0.29131638){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}data2\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{comp.pdf}}%
     \put(0.52583333,0.44931638){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Step Response}\end{tabular}}}}%
     \put(0.52583333,0.00325622){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Time (seconds)\end{tabular}}}}%
-    \put(0.08561567,0.24356638){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Amplitude\end{tabular}}}}}%
+    \put(0.02728233,0.24356638){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Amplitude\end{tabular}}}}}%
   \end{picture}%
 \endgroup%
