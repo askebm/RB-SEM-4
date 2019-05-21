@@ -55,12 +55,12 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{step_0_first.pdf}}%
     \put(0.15044248,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
-    \put(0.27610619,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0.5\end{tabular}}}}%
-    \put(0.40176991,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}1\end{tabular}}}}%
-    \put(0.52743363,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}1.5\end{tabular}}}}%
-    \put(0.65309735,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}2\end{tabular}}}}%
-    \put(0.77876106,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}2.5\end{tabular}}}}%
-    \put(0.90442478,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}3\end{tabular}}}}%
+    \put(0.27610619,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0.2\end{tabular}}}}%
+    \put(0.40176991,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0.4\end{tabular}}}}%
+    \put(0.52743363,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0.6\end{tabular}}}}%
+    \put(0.65309735,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0.8\end{tabular}}}}%
+    \put(0.77876106,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}1\end{tabular}}}}%
+    \put(0.90442478,0.05524089){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}1.2\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{step_0_first.pdf}}%
     \put(0.1409046,0.07681416){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
     \put(0.1409046,0.23212389){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$30\%$\end{tabular}}}}%

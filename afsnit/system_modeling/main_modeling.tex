@@ -3,14 +3,14 @@
 \subsection{General model}
 \label{ch:General_model}
 
-In this project a pan-tilt system has been provided with the goal of gaining control of its behavior. The system can be seen on figure \ref{fig:ImageOfPanTiltSystem}.
+In this project a pan-tilt system has been provided with the goal of gaining control of its behavior.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width = 0.5\textwidth]{\main/afsnit/system_modeling/img/system.png}
-  \caption{Image of the pan-tilt system given.}
-  \label{fig:ImageOfPanTiltSystem}
-\end{figure}
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width = 0.5\textwidth]{\main/afsnit/system_modeling/img/system.png}
+%  \caption{Image of the pan-tilt system given.}
+%  \label{fig:ImageOfPanTiltSystem}
+%%\end{figure}
 
 The system works such that the upper frame is driven by a motor causing it to rotate about a horizontal axis, while the bottom frame is driven by a similar motor but has a vertical axis. This is illustrated on figure \ref{fig:pan-tilt_frames}.
 
@@ -63,7 +63,7 @@ Equation (\ref{eq:new_mech_equation_with_corners}) is found by analyzing figure 
 
 The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ being the mass of 1 of the 2 the aluminium corners on the top frame.\\
 To ease the further analysis above mentioned the model is linearized by applying the Jacobian matrix. The linearized state space model can be seen in eq. (\ref{eq:topframe_mech_linearized}).
- q
+ 
 \begin{equation}
       \label{eq:topframe_mech_linearized}
       \begin{split}
@@ -188,7 +188,7 @@ The state space models for the two motors can be written as shown in eq. (\ref{e
 
 \subsection{Application specified model}
 
-To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in these models must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants concerning these will from this point on be denoted with the following subscripts, in the same order as mentioned above: $K_{t,a}$ and $K_{b,a}$. \todo{way too long a sentece with way too many interpolated sentences}\\
+To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in these models must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants associated are denoted with following subscripts: $K_{t,a}$ and $K_{b,a}$. \\
 Firstly the ohmic resistance of the two motors is determined in the journal \textit{Determine ohmic resistance of motors} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors is determined  in journal \textit{Determine electrical inductance of motors}. The constants are determined to $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.
 To determine the viscous frictions, $b_b$ and $b_t$, experiments, which has not been performed in this project, would be necessary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and bottom frame.
 
@@ -203,7 +203,7 @@ To determine the top frame's moment of inertia, $J_{t}$, it is considered to be 
   \label{fig:TopFrame}
 \end{figure}
 
-Since moments of inertia are linear the superposition principle can be applied. The frames are to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be see the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true. \todo{So the naming is what makes the eq true? This needs changing}
+Since moments of inertia are linear the superposition principle can be applied. The frames are to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. 
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia_formula}
