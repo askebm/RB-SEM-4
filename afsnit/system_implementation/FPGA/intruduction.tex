@@ -1,12 +1,12 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
-
 The purpose of this section is to discuss some of the challenges and benefits that are related to the use of a FPGA in this project.
-The FPGA connects the microcontroller to all the components on the pan-tilt system in order to control the system. It collects data from encoders and homing sensors as well as creating and updating the PWM signal to both the H-Bridges.
+The FPGA connects the microcontroller to all the components on the pan-tilt system in order to control the system. It collects data from encoders and homing sensors as well as creating and updating the PWM signal to both of the H-Bridges.
 \\
-One of the main differences between a FPGA and a microcontroller is that on a FPGA everything is implemented in hardware. This means that all of the processes running, are running in parallel. When implementing the different components this needs to be taken into consideration. \todo{hvad}
+One of the main differences between a FPGA and a microcontroller is that on a FPGA everything is implemented in hardware. This means that all of the processes are running in parallel.
+When implementing the different components this needs to be taken into consideration, so that registers issent updatet while other processes are reading them.
 \\
-The FPGA used in this project is a Artix7 mounted on a BASYS3 kit. \todo{ref}
+The FPGA used in this project is a Artix-7 mounted on a BASYS3 kit. \todo{ref}
 \subsubsection{System overview}%
 \label{sub:system_overview}
 
@@ -14,20 +14,19 @@ The FPGA used in this project is a Artix7 mounted on a BASYS3 kit. \todo{ref}
   \centering
   \def\svgwidth{\textwidth}
   \includesvg[\main /afsnit/system_implementation/FPGA/images/]{components_connection}
-  \caption{FPGA System overview.}
+  \caption{FPGA system overview.}
   \label{fig:FPGA_system_overview}
 \end{figure}
-
 The system consist of different modules, implemented in VHDL.
+The data path between the modules can be seen in the system overview. Se figure \ref{fig:FPGA_system_overview}.
+\\
 To store the data that needs to be exchanged between the FPGA and the Tiva microcontroller, different registers is implemented on the FPGA with the necessary size. Se table \ref{table:FPGA_registers}.
 \\
-The data path between the modules can be seen in the system overview. Se figure \ref{fig:FPGA_system_overview}
-\todo{Maybe add register names to data path lines on figure?}
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{12 Bit} & \textbf{9 Bit} & \textbf{1 Bit} \\ \hline
+\textbf{$12$ Bit} & \textbf{$9$ Bit} & \textbf{$1$ Bit} \\ \hline
 Position\_T     & PWM\_T         & Home\_T        \\ \hline
 Position\_B     & PWM\_B         & Home\_B        \\ \hline
 Velocity\_T     & -              & Reset\_T       \\ \hline
@@ -36,22 +35,24 @@ Velocity\_B     & -              & Reset\_B       \\ \hline
 \caption{FPGA Registers}
 \label{table:FPGA_registers}
 \end{table}
+
 \subsubsection{PWM}
 The PWM module creates a PWM signal for both motors. It takes a 9 bit vector as input for each motor, and output the signals necessary for the H-Bridges to work.
 It takes the 100Mhz system clock from the FPGA as a input, and then the module contains a clock divider that creates the necessary clock frequency, for the desired PWM frequency.
 MSB in the 9 bit input vector determine witch way the motor should turn.
-The module is design so that it is possible to just define the system clock frequency and the desired PWM frequency, and the correct divider is calculated when the code is synthesized.
+The module is designed such that it is possible to define the system clock frequency and the desired PWM frequency, and the correct divider is calculated when the code is synthesized.
 This is done so that it is easy to change the PWM frequency for testing.
 \subsubsection{Protocol}
-The protocol module uses a SPI module created by \todo{ref.} for communicating with the Tiva microcontroller.
+The protocol module uses a SPI module created by \todo{ref.} for communication with the Tiva microcontroller. 
 The role of the protocol module is to decode the data received over SPI, and prepare data for transmission, in regards to the previously determined protocol.
 \\
 Since all the different processes, like receiving data over SPI and updating data registers, all run in parallel, it is important to make sure that the protocol module cannot update the data registers while the SPI module is receiving data form the microcontroller.
 This is done by placing a latch on the output from the protocol module, witch is triggered by a busy signal from the SPI module.
 
 \subsubsection{Quadrature decoder}
-Since there is to motors on the system and therefor to encoders, their have been implemented to instances of the quadrature decoder module.
-Each of these modules has a 12 bit position vector as output, and takes the A and B signal directly from the encoder. The modules also uses the 100Mhz system clock directly, and takes a reset witch is active low as input.
+\label{subsubsec:Qdecoder_implement}
+Since there are two motors on the system and therefore to encoders, their have been implemented two instances of the quadrature decoder module.
+Each of these modules has a 12 bit position vector as output, and takes the A and B encoder signals directly from the encoder. The modules also uses the 100Mhz system clock directly, and takes a reset which is active low as input.
 The reset for the encoders are inverted before they are given to the module, so when a high reset is sent by the Tiva, a low reset signal is given to the decoder.
 
 
@@ -62,10 +63,10 @@ This is done so that it is possible to regulate both on position and speed for f
 
 \subsubsection{FPGA Summery}
 All of the above mentioned modules have been developed and implemented on the Artix7 FPGA.
-The FPGA is able to communicate with the Tiva microcontroller over SPI and the previously designed protocol.
+The FPGA is able to communicate with the Tiva microcontroller using SPI and the previously designed protocol.
 \\
-The big advantage with using a FPGA for controlling the motors and reading the encoders is that all of the modules are implemented in hardware.
-This means that all of the processes runs in parallel and therefor its not necessary to take timing of processes into consideration.
+The big advantage with of using a FPGA for controlling the motors and reading the encoders is that all of the modules are implemented in hardware.
+This means that all of the processes run in parallel and therefore its not necessary to take timing of processes into consideration.
 
 
 \end{document}
