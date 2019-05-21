@@ -62,9 +62,7 @@
     \put(0.5407805,0.9472812){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Time [s]\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{step_bot.pdf}}%
     \put(0.16690319,1.03120567){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
-    \put(0.16690319,1.12104007){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}50\end{tabular}}}}%
-    \put(0.16690319,1.21087482){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}100\end{tabular}}}}%
-    \put(0.16690319,1.30070922){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}150\end{tabular}}}}%
+    \put(0.16690319,1.22370816){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}200\end{tabular}}}}%
     \put(0.04491738,1.17730496){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Current [mA]\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{step_bot.pdf}}%
     \put(0.25,0.57895993){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
@@ -75,8 +73,8 @@
     \put(0.5407805,0.52529539){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Time [s]\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{step_bot.pdf}}%
     \put(0.16690319,0.60921986){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
-    \put(0.16690319,0.72742305){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}2\end{tabular}}}}%
-    \put(0.16690319,0.8456266){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}4\end{tabular}}}}%
+    \put(0.16690319,0.71560284){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}2\end{tabular}}}}%
+    \put(0.16690319,0.82198582){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}4\end{tabular}}}}%
     \put(0.04491738,0.7535461){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Velocity [rad/s]\end{tabular}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{step_bot.pdf}}%
     \put(0.25,0.15342801){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
