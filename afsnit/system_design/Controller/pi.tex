@@ -5,8 +5,8 @@ In this section the controllers for the Top and Bottom frames of the pan-tilt sy
 
 \subsection{Tuning of Top-Frame}
 
-The top frame is unlinear, as can be seen in equation \ref{}, which includes a sine term.
-\todo{ref}
+The top frame is unlinear, as can be seen in equation \ref{eq:new_mech_equation_with_corners}, which includes a sine term.
+
 To design a controller, for the topframe, the system is linearized in four points. It is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{??}
 \todo{insert reference}
 
@@ -89,7 +89,7 @@ With a $T_i = \frac{1}{0.035}$ the root locus in figure \ref{fig:rlocus_int} is 
 \label{fig:rlocus_int}
 \end{figure}
 
-With a gain $Kp = 6.95$ a dominant pole is placed at $-5$. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035}$ and $Kp = 6.95$ returns a system with the stepresponse in figure \ref{fig:step_0_first}
+With a gain $Kp = 6.95$ a dominant pole is placed at $-5$. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035} \& Kp = 6.95$ returns a system with the stepresponse in figure \ref{fig:step_0_first}
 
 \begin{figure}[H]
 \centering

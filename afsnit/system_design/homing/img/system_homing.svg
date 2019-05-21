@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -133,7 +133,7 @@
        id="tspan12407"
        x="105.47038"
        y="146.8954"
-       style="stroke-width:0.26458332">End stop</tspan></text>
+       style="stroke-width:0.26458332">End-stop</tspan></text>
   <path
      style="fill:none;stroke:#0000ff;stroke-width:0.11033125;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
      d="m 123.6778,138.79638 c -13.08256,6.88784 -13.12588,6.88784 -13.12588,6.88784"
