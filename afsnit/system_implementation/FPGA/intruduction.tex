@@ -1,6 +1,5 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
-
 The purpose of this section is to discuss some of the challenges and benefits that are related to the use of a FPGA in this project.
 The FPGA connects the microcontroller to all the components on the pan-tilt system in order to control the system. It collects data from encoders and homing sensors as well as creating and updating the PWM signal to both the H-Bridges.\todo{both of the H-bridges.}
 \\
@@ -52,6 +51,7 @@ Since all the different processes, like receiving data over SPI and updating dat
 This is done by placing a latch on the output from the protocol module, witch is triggered by a busy signal from the SPI module.
 
 \subsubsection{Quadrature decoder}
+\label{subsubsec:Qdecoder_implement}
 Since there are two motors on the system and therefore to encoders, their have been implemented two instances of the quadrature decoder module.
 Each of these modules has a 12 bit position vector as output, and takes the \todo{A and B, hvad er de og hvoran er de defineret} A and B signal directly from the encoder. The modules also uses the 100Mhz system clock directly, and takes a reset witch \todo{heks?} is active low as input.
 The reset for the encoders are inverted before they are given to the module, so when a high reset is sent by the Tiva \todo{Tiva eller TIVA}, a low reset signal is given to the decoder.
