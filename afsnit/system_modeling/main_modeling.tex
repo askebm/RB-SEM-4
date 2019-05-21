@@ -188,7 +188,7 @@ The state space models for the two motors can be written as shown in eq. (\ref{e
 
 \subsection{Application specified model}
 
-To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in these models must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants concerning these will from this point on be denoted with the following subscripts, in the same order as mentioned above: $K_{t,a}$ and $K_{b,a}$. \todo{way too long a sentece with way too many interpolated sentences}\\
+To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in these models must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants associated are denoted with following subscripts: $K_{t,a}$ and $K_{b,a}$. \\
 Firstly the ohmic resistance of the two motors is determined in the journal \textit{Determine ohmic resistance of motors} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors is determined  in journal \textit{Determine electrical inductance of motors}. The constants are determined to $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.
 To determine the viscous frictions, $b_b$ and $b_t$, experiments, which has not been performed in this project, would be necessary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and bottom frame.
 
@@ -203,7 +203,7 @@ To determine the top frame's moment of inertia, $J_{t}$, it is considered to be 
   \label{fig:TopFrame}
 \end{figure}
 
-Since moments of inertia are linear the superposition principle can be applied. The frames are to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. As it here can be see the bars are named such that eq. (\ref{eq:Top_frame_total_inertia_formula}) is true. \todo{So the naming is what makes the eq true? This needs changing}
+Since moments of inertia are linear the superposition principle can be applied. The frames are to be considered a collection of four bars, as seen on figure (\ref{fig:TopFrame}). From this point on, the notation for a general expression of these components will be $n \in \{a,b,c,d\}$. 
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia_formula}
@@ -371,7 +371,7 @@ Thus the moment of inertia for the bottom frame has been determined to be
 \newline $J_{b} = \, 0.0606 \cdot \cos^2(\theta_t)$.
 
 \subsection{Application specified model - pre-tuning}
-Since the various parameters in the determined models \todo{lidt for fordansket sætning  - f.eks. med "now are determined", "in the found model"} now are determined with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. The two models can thus be written as seen \todo{maybe say: can now be put on state space form or similar?} in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom. Since the gearing between the motors and frames are known to be $3:1$, each moment of inertia gets divided by $3$.
+Since the various parameters in the determined models now are found with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. The two models can thus be written on state space form as seen in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom. Since the gearing between the motors and frames are known to be $3:1$, each moment of inertia gets divided by $3$.
 \begin{equation}
       \label{eq:Theoretical_models_top}
       \begin{split}
