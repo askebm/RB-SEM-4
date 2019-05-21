@@ -6,7 +6,7 @@
 
 \subsubsection{Softwaredesign of a PI controller}
 In order to implement the aforementioned PI-controller in a fashion that complies with API the provided by FreeRTOS, it is chosen that a single interface is to be designed.
-\todo{Omskriv sætning, meget mærkelig}This is due to the mattter that only one subprogram has to be written, thus it requieres to be generic, if multiple PI-controllers are to be implemented.
+\todo{Omskriv sætning, meget mærkelig}This is to avoid writting multiple sub-programs with the same functionallity, and thus it requieres to be generic if multiple PI-controllers are to be implemented.
 \\
 
 To meet the given requirements the following design criteria must be fulfilled.
@@ -26,16 +26,15 @@ In this the desired calculations will be done. This is done to meet the first cr
 
 
 
-\todo{Svær sætning, og det er en task creation call ikke en tas ki sig selv som får argumentet}
 tsk\_PI() will be the argument to the function by FreeRTOS, that creates a task.
-It is noticed that all of the above criteria are met, if the functions calculate\_error\_PI() and calculate\_P() are assumed to be re-entrant.
+It is noticed that if the functions; calculate\_error\_PI() and calculate\_P() are assumed to be re-entrant. Then all of the above criteria are achieved.
 %For it to be generic the struct PI, is passed from the function, task\_PI(), this also ensures that it can be initialized from main.
 The third and fourth criteria are achieved by passing the struct PI from the function task\_PI().
 \\
 
 The struct will contain all the necessary gains and data-samples, which a PI-controller will need in order to operate.
 The struct members can be seen in listing \ref{list:struct_def}.
-\lstinputlisting[language=C, firstline=18, lastline=31,caption = {struct definition} ,label={list:struct_def}]{\main/afsnit/system_implementation/PI/code_snippets.h}
+\lstinputlisting[language=C, firstline=20, lastline=33,caption = {struct definition} ,label={list:struct_def}]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
 Since the design requirements are met, the next step is to implement the funtionallity of a PI-controller, which has the following requirements:
 \begin{itemize}
@@ -97,10 +96,11 @@ $$
 
 \subsubsection{Implementation of the difference equation}
 \todo{Lyder lidt som en tale fra en diktator - With the Softwaredesign completed the Implementation with anti windup, is shown is ref??}
-The design has been chosen.The difference equation has been derived.
-It is time to implement the PI-controller with anti-windup.
-The following code snippet will allow for anti-windup, whilst having the PI-controller expressed as a difference equation.
-\lstinputlisting[language=C, firstline=35, lastline=64,label={list:PI_controller}]{\main/afsnit/system_implementation/PI/code_snippets.h}
+
+With the softwaredesign chosen and the difference equation derived, the next step is to implement it.
+This is done in the following code snippet,which includes anti-windup whilst having the PI-controller expressed as a difference equation.
+
+\lstinputlisting[language=C, firstline=37, lastline=67,label={list:PI_controller}]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
 
 
