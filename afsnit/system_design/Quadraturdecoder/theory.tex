@@ -63,7 +63,7 @@ The decoder works by first initializing and go to a state depending on the level
 If the starting state is AB\_low, there is three correct outcomes: the reset signal goes low and the counter will go to zero, the signal A goes high and the state changes to A\_high or the last possible outcome, that does not give an error, is B\_high. By looking at the truth table from the above figure \ref{fig:truth_table}, it can be observed that if the state goes from AB\_low to A\_high, the direction will be forward and the counter will increment where the counter would decrements and direction set to backwards if the next state is B\_high.\\
 
 
-The counter keeps track of the position of the encoder. Since the counter value is relative to the initial position, it is condsidered usefull to have a reset function. This will allow setting a new fixed home position. The state machine approach has been implemented and the process described in section \ref{sec:system_implementation} under subsubsection \ref{subsubsec:Qdecoder_implement}
+The counter keeps track of the position of the encoder. Since the counter value is relative to the initial position, it is condsidered useful to have a reset function. This will allow setting a new fixed home position. The state machine approach has been implemented and the process described in section \ref{sec:system_implementation} under subsubsection \ref{subsubsec:Qdecoder_implement}
 
 \begin{figure}[H]
   \centering
