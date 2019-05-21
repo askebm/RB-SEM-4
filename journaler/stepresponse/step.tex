@@ -1,12 +1,9 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
-\subsection{Stepresponse of system}%
-\label{sub:stepresponse_of_system}
-
 \paragraph{Purpose}%
 \label{par:purpose}
 
-Deterine stepresponse of system, monitoring current, position, and velocity for use in tuning system parameters.
+Determine stepresponse of system, monitoring current, position, and velocity for use in tuning system parameters.
 
 \paragraph{Apperateur}%
 \label{par:apperateur}
@@ -28,10 +25,10 @@ Data is sampled at 2.5\si{kHz} to properly filter out pwm signal of 1\si{kHz}.
         \centering
 				\def\svgwidth{0.47\columnwidth}
 				\subfloat[Stepresponse of bottomframe with top frame at 0 degrees.]{%
-				\includesvg[\main/journaler/]{step_bot}}
+				\includesvg[\main/journaler/stepresponse/]{step_bot}}
 				\def\svgwidth{0.47\columnwidth}
 				\subfloat[Stepresponse of top frame, with start at 0 degrees.]{%
-				\includesvg[\main/journaler/]{step_top}}
+				\includesvg[\main/journaler/stepresponse/]{step_top}}
 				\caption{Stepresponse results of both frames.}
 				\label{fig:jour_step_bot}
 \end{figure}
