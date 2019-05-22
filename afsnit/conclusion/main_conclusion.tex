@@ -1,18 +1,11 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
-
-AC's bud:
-Everything worked out amazingly well as the theoretical model of the system is identical to the pratical. \\
-Nicholai's bud:
-Everything went to shit. Bloody Russioans
-\\
-
-Sanity:\\
-
 The control engineering theory:
-FreeRTOS
-The desired controller has been chosen to be a PI controller. The controller is implemented on the Tiva as a task with the highest possible priority to make sure it has the best timing the system can offer. The controllers gain, Kp og Ki, are implemented so it is easy to change them for turning purposes.
 
+FreeRTOS:
+ The controller is implemented on the Tiva as a task with the highest possible priority to make sure it has the best timing possible for the system. It has been chosen to use FreeRTOS as the Tiva's operating system, because it can handle more than one task as well as offering preemptive scheduling.
+Encoder
+The controller needs a position in order 
 
 
 \end{document}
