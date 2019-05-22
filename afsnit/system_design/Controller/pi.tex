@@ -10,7 +10,7 @@ The top frame is unlinear, as can be seen in equation \ref{eq:new_mech_equation_
 To design a controller, for the topframe, the system is linearized in four points. It is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{fig:jour_step_bot}
 
 In this way, it is possible to have linear behaviour for the system in general.
-Because $-90^o and +90^o$ are the has the same behavior in this system, only 3 linearizations are made.
+Because $-90^o$ and  $+90^o$ are the has the same behavior in this system, only 3 linearizations are made.
 
 \subsubsection{Linearize in $0^o$}
 \label{sec:linearize}
@@ -18,8 +18,8 @@ The system is linearized in $0^o$. Which gives the following A, B and C matrices
 
 
 \begin{equation}
-      \label{eq:zero_linearized}
       \begin{split}
+      \label{eq:zero_linearized}
       \frac{d}{dt}
     \begin{bmatrix}
         \theta_t \\
@@ -27,7 +27,7 @@ The system is linearized in $0^o$. Which gives the following A, B and C matrices
         i_t
     \end{bmatrix}
     =&
-    \begin{bmatrix}0 & 1.0 & 0\\ -10.8 & -75.8 & 455.0\\ 0 & -7799.0 & -1.24\cdot10^{4}\end{bmatrix}
+    \begin{bmatrix}0 & 1.0 & 0\\ -10.8 & -75.8 & 212.0\\ 0 & -260.0 & -1.24\cdot10^{4}\end{bmatrix}
     \begin{bmatrix}
         \theta_t \\
         \dot \theta_t \\
@@ -88,28 +88,27 @@ With a $T_i = \frac{1}{0.035}$ the root locus in figure \ref{fig:rlocus_int} is 
 \label{fig:rlocus_int}
 \end{figure}
 
-With a gain $Kp = 6.95$ a dominant pole is placed at $-5$. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035} \& Kp = 6.95$ returns a system with the stepresponse in figure \ref{fig:step_0_first}
+With a gain $Kp = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, would approach the zero. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035}$ and $Kp = 3.1$ returns a system with the stepresponse in figure \ref{fig:step_0_first}
 
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first.pdf_tex}
-\caption{Step responce of system with the tuned PI-regulator.}
+\caption{Step responce of system with the tuned PI-regulator. The dotted vertical line is 1 second.}
 \label{fig:step_0_first}
 \end{figure}
 
-In figure \ref{step_0_first} it can be seen that the settling time is faster than the expected 1 second. Therefore the $Kp$ is tuned to better match the requirements. $Kp = 2.82$ is found to give the closest to expectet response. The stepresponse can be seen in figure \ref{fig:step_0_second}.
+In figure \ref{fig:step_0_first} it can be seen that the settling time is faster than the expected 1 second. Therefore the $Kp$ and $T_i$ are tuned to better match the requirements. $Kp = 1.6$ and $T_i=0.2$ is found to give the closest to expectet response. The stepresponse can be seen in figure \ref{fig:step_0_second}.
 
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second.pdf_tex}
-\caption{Step responce of system with the tuned PI-regulator.}
+\caption{Step responce of system with the tuned PI-regulator. The vertical dotted line is 1 second.}
 \label{fig:step_0_second}
 \end{figure}
 
-It is a bit slower than expected, but performes much closer to the requirements.
-
+The regulated system has a slight overshoot, but has a risetime of 1 second as per the system requirements. The overshoot is the lowest possible, if the reference is to be reached. Furthermore the system takes 100 seconds to reach its final value.
 
 \subsubsection{Linearize in $90^o$ and $180^o$}
 In this section the linearized system is tuned in the same manor as is in section \ref{sec:linearize}. But not all steps are shown, as the approach is the same. Here the tuned values and the final stepresponses will be shown and commented.
@@ -125,8 +124,8 @@ Linearization in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_l
         \dot \theta_t \\
         i_t
     \end{bmatrix}
-    =&
-    \begin{bmatrix}  0 & 1.0 & 0\\ 0 & -75.8 & 455.0\\ 0 & -7799.0 & -1.24\cdot10^4 \end{bmatrix}
+    &=
+    \begin{bmatrix}0 & 1.0 & 0\\ 0  & -75.8 & 212.0\\ 0 & -260.0 & -1.24cdot10^4 \end{bmatrix}
     \begin{bmatrix}
         \theta_t \\
         \dot \theta_t \\
@@ -136,22 +135,21 @@ Linearization in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_l
     \begin{bmatrix}
      0\\ -1.57\\ 2600.0
     \end{bmatrix}
-    V_t
-\\
-      y =&
+    V_t \\
+		y &=
     \begin{bmatrix}
         1 & 0 & 0
     \end{bmatrix}
     \begin{bmatrix}
         \theta_t \\
         \dot \theta_t\\
-        i_t\\
+        i_t
     \end{bmatrix}
     \end{split}
 \end{equation}
 
 Figure \ref{fig:step_0_second_90} shows the tuned stepresponse of the closed loop control sytem and plant.
-It is tuned to $Kp = 2.86$ and $Ti = \frac{1}{0.035}$
+It is tuned to $Kp = 1.39$ and $Ti = \frac{1}{0.006}$
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
@@ -173,7 +171,7 @@ Linearization in $180^o$ gives A, B and C matrices shown in equation \ref{eq:180
         i_t
     \end{bmatrix}
     =&
-    \begin{bmatrix} 0 & 1.0 & 0\\ 10.8 & -75.8 & 455.0\\ 0 & -7799.0 & -1.24\cdot10^4 \end{bmatrix}
+    \begin{bmatrix}0 & 1.0 & 0\\ 10.8 & -75.8 & 212.0\\ 0 & -260.0 & -1.24\cdot10^4 \end{bmatrix}
     \begin{bmatrix}
         \theta_t \\
         \dot \theta_t \\
@@ -199,7 +197,7 @@ Linearization in $180^o$ gives A, B and C matrices shown in equation \ref{eq:180
 
 
 Figure \ref{fig:step_0_second_180} shows the tuned stepresponse of the closed loop control sytem and plant.
-It is tuned to $Kp = 2.8$ and $Ti = \frac{1}{0.035}$
+It is tuned to $Kp = 1.3$ and $Ti = \frac{1}{0.2}$
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
@@ -208,7 +206,7 @@ It is tuned to $Kp = 2.8$ and $Ti = \frac{1}{0.035}$
 \label{fig:step_0_second_180}
 \end{figure}
 
-The system responses are not exactly alike, and especially the system when linearized in $180^o$ does not quite look like the other stepresponses. In figure \ref{fig:comp}, all three responses are shown in the same plot for comparison. The only stepresponse without any overshoot is the system linearized in $0^o$. The other two have slight overshoots.
+The system responses are not exactly alike, and especially the system when linearized in $180^o$ does not look like the other stepresponses. In figure \ref{fig:comp}, all three responses are shown in the same plot, for comparison.
 
 \begin{figure}[H]
 \centering

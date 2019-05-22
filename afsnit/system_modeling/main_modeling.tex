@@ -179,7 +179,7 @@ The state space models for the two motors can be written as shown in eq. (\ref{e
 \subsection{Application specified model}
 
 To apply the models found in section \ref{ch:General_model} on page \pageref{ch:General_model} the various constants in these models must be determined. Since the pan-tilt system contains two motors, one for the top frame, and one for the bottom frame, the constants associated are denoted with following subscripts: $K_{t,a}$ and $K_{b,a}$. \\
-Firstly the ohmic resistance of the two motors is determined in the journal \textit{Determine ohmic resistance of motors} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors is determined  in journal \textit{Determine electrical inductance of motors}. The constants are determined to $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.
+Firstly the ohmic resistance of the two motors is determined in the journal in section \ref{sub:journal_determine_resistence_of_motor} as $R_t = 4.79 \si{\Omega}$ and $R_b = 4.70 \si{\Omega}$. The electrical inductance of the motors is determined in the journal in section \ref{sub:journal_determine_inductance_of_motor}. The constants are determined to $L_t = L_b = 3.85\cdot 10^{-4} \si{H}$.
 To determine the viscous frictions, $b_b$ and $b_t$, experiments, which has not been performed in this project, would be necessary. Instead they will be used as a tuning parameter together with the motor constants in section \ref{ch:stepresponse_tuning}. Thus the final parameters needed to be determined is the moment of inertia for the top and bottom frame.
 
 \subsubsection{Moment of inertia - Top frame}
@@ -272,7 +272,7 @@ The top frame's moment of inertia is therefore determined to be
 \newline $J_{t} = 0.0198 \si{\,kg\cdot m^2}$
 
 \subsubsection{Moment of inertia - Bottom frame}
-To calculate the moment of inertia for the bottom frame, some observations needs to be made. Firstly the same procedure as in section \ref{sec:Top_frame_inertia} can be followed to determine the base frame's own inertia, since the base frame of itself has a structure identical to the top frame with one bar being the difference. Secondly, the base frame's moment of inertia is directly influenced by the position of the top frame, thus making the base frame's moment of inertia a function of the top frame's position $\theta_t$.\\
+To calculate the moment of inertia for the bottom frame, some observations needs to be made. Firstly the same procedure as in section \ref{sec:Top_frame_inertia} can be followed to determine the base frame's own inertia, since the base frame of itself has a structure identical to the top frame with one bar being the difference. Secondly, the base frame's moment of inertia is directly influenced by the position of the top frame, thus making the base frame's moment of inertia a function of the top frame's position $\theta_t$. And finally on the element $g$ the motor controlling the top frame in mounted, which is included in the constant moment of inertia with mass $m_{b,motor}$ as added mass to the above mentioned element.\\
 As in section \ref{sec:Top_frame_inertia} the base frame is fragmented, this time in three parts: $e$, $f$ and $g$ as shown on figure \ref{fig:BottomFrame}. The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frame's moment of inertia can now be expressed as seen in eq. (\ref{eq:Base_frame_eq}).
 
 \begin{figure}[H]
@@ -293,7 +293,7 @@ First the constant part of the moment of inertia is determined which, with the s
 
 \begin{equation}
   \label{eq:top_frame_constant}
-  J_{b,const} = \frac{1}{12}\cdot m_{b,e}\cdot l_{b,e}^2 + m_{b,f} \cdot \left( \frac{l_{b,e}}{2} \right)^2 + m_{b,g} \cdot \left(\frac{l_{b,e}}{2}\right)^2
+  J_{b,const} = \frac{1}{12}\cdot m_{b,e}\cdot l_{b,e}^2 + m_{b,f} \cdot \left( \frac{l_{b,e}}{2} \right)^2 + (m_{b,g}+m_{b,motor}) \cdot \left(\frac{l_{b,e}}{2}\right)^2
 \end{equation}
 
 The various constants needed to determine $J_{b,cont}$ are listed in table \ref{tab:Base_frame_table}.
@@ -304,11 +304,13 @@ The various constants needed to determine $J_{b,cont}$ are listed in table \ref{
 \hline
   & $l_{b,k} \, \si{[m]}$ & $m_{b,k} \, \si{[kg]}$ \\
 \hline
-$e$ & 0.42  & 0.5334  \\
+$e$           & 0.42  & 0.5334  \\
 \hline
-$f$ & 0.207  & 0.2629  \\
+$f$           & 0.207  & 0.2629  \\
 \hline
-$g$ & 0.207 & 0.2629  \\
+$g$           & 0.207 & 0.2629  \\
+\hline
+$m_{b,motor}$ & 0.27 & \\
 \hline
 \end{tabular}
 \caption{Bottom frame measurements.}
@@ -320,14 +322,14 @@ $J_{b,const}$ can now be determined as shown in eq. (\ref{eq:J_b,const}).
 \begin{equation}
   \label{eq:J_b,const}
   \begin{split}
-      J_{b,const} =& \quad \frac{1}{12} \cdot m_{b,e} \cdot l_{b,e}^2 + m_{b,f} \left( \frac{l_{b,e}}{2} \right)^2 + m_{b,g} \cdot \left(\frac{l_{b,e}}{2}\right)^2\\
+      J_{b,const} =& \quad \frac{1}{12} \cdot m_{b,e} \cdot l_{b,e}^2 + m_{b,f} \left( \frac{l_{b,e}}{2} \right)^2 + (m_{b,g}+m_{b,motor}) \cdot \left(\frac{l_{b,e}}{2}\right)^2\\
       =& \quad \frac{1}{12} \cdot 0.5334\si{\,kg} \cdot (0.42 \si{\,m})^2 + 0.2629\si{\,kg} \cdot \left( \frac{0.42 \si{\,m}}{2} \right)^2 \\
-      &+ 0.2629 \si{\,kg}\cdot \left(\frac{0.42 \si{\,kg}}{2}\right)^2\\
-      =& \quad 0.0304 \si{\,kg\cdot m^2}
+      &+ (0.2629\si{\,kg}+0.27\si{\,kg}) \cdot \left(\frac{0.42 \si{\,kg}}{2}\right)^2\\
+      =& \quad 0.0429 \si{\,kg\cdot m^2}
   \end{split}
 \end{equation}
 
-Thus the constant part of the moment of inertia of the base frame is determined to be $J_{b,const} = 0.0304 \si{\,kg\cdot m^2}$.\\
+Thus the constant part of the moment of inertia of the base frame is determined to be $J_{b,const} = 0.0429 \si{\,kg\cdot m^2}$.\\
 The varying moment of inertia, $J_{b,var}(\theta_t)$, is dependent on the angular displacement of the top frame from the vertical axis parallel to the bottom frame. This can be seen on figure (\ref{fig:TrekantDiagram}).
 
 \begin{figure}[H]
@@ -350,15 +352,16 @@ The total moment of inertia for the bottom frame can thus be determined as in eq
 \begin{equation}
   \label{eq:BottomFrame_moment_of_inertia}
 \begin{split}
-    J_{b}(\theta_t) =& \, J_{b,const} + J_{b,var} = 0.0304 \si{\, kg \, m^2} + ( m_{t,a} + m_{t,b} + m_{t,c} + m_{t,d} ) \cdot \frac{l_{t,a}^2}{4} \cdot \sin^2(\theta_t)\\
-    =& \, 0.0304 \si{\, kg \, m^2} + ( 0.3696 \si{\, kg \, m^2} + 0.2680 \si{\, kg \, m^2} + 0.4196 \si{\, kg \, m^2}\\
+    J_{b}(\theta_t) =& \, J_{b,const} + J_{b,var} = 0.0429 \si{\, kg \, m^2} + ( m_{t,a} + m_{t,b} + m_{t,c} + m_{t,d} ) \cdot \frac{l_{t,a}^2}{4} \cdot \sin^2(\theta_t)\\
+    %Du er nået her til
+    =& \, 0.0429 \si{\, kg \, m^2} + ( 0.3696 \si{\, kg \, m^2} + 0.2680 \si{\, kg \, m^2} + 0.4196 \si{\, kg \, m^2}\\
     &+ 0.3696 \si{\, kg \, m^2}) \cdot \frac{0.291^2}{4} \cdot \sin^2(\theta_t)\\
-    =& \, 0.0606\cdot \sin^2(\theta_t)
+    =& \, 0.0731\cdot \sin^2(\theta_t)
 \end{split}
 \end{equation}
 
 Thus the moment of inertia for the bottom frame has been determined to be
-\newline $J_{b} = \, 0.0606 \cdot \sin^2(\theta_t)$.
+\newline $J_{b} = \, 0.0731 \cdot \sin^2(\theta_t)$.
 
 \subsection{Application specified model - pre-tuning}
 Since the various parameters in the determined models now are found with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. The two models can thus be written on state space form as seen in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom. Since the gearing between the motors and frames are known to be $3:1$, each moment of inertia gets divided by $3$.
@@ -414,7 +417,7 @@ Since the various parameters in the determined models now are found with $K_{b,t
         =&
           \begin{bmatrix}
               0 & 1                         & 0                         \\
-              0 & -\frac{b_b}{0.02\cdot \sin^2(\theta_t) \si{\,kg\,m^2}} & \frac{K_{b,torque}}{0.02\cdot \sin^2(\theta_t)\si{\,kg\,m^2}}  \\
+              0 & -\frac{b_b}{0.0244\cdot \sin^2(\theta_t) \si{\,kg\,m^2}} & \frac{K_{b,torque}}{0.0244\cdot \sin^2(\theta_t)\si{\,kg\,m^2}}  \\
               0 & -\frac{K_{b,elec}}{3.85\cdot 10^{-4}\si{H}}   & -12213 \si{\frac{\Omega}{H}}          \\
           \end{bmatrix}
     \begin{bmatrix}
@@ -441,10 +444,6 @@ Since the various parameters in the determined models now are found with $K_{b,t
     \end{bmatrix}
   \end{split}
 \end{equation}
-
-
-\subsubsection{Simulation}
-
 \subsection{Step response tuning}
 \label{ch:stepresponse_tuning}
 \subfile{\main/afsnit/system_modeling/stepresponse_tuning.tex}
