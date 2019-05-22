@@ -55,18 +55,17 @@
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{step_0_second_180.pdf}}%
     \put(0.15,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
-    \put(0.27583333,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0.5\end{tabular}}}}%
-    \put(0.40166667,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}1\end{tabular}}}}%
-    \put(0.5275,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}1.5\end{tabular}}}}%
-    \put(0.65333333,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}2\end{tabular}}}}%
-    \put(0.77916667,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}2.5\end{tabular}}}}%
-    \put(0.905,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}3\end{tabular}}}}%
+    \put(0.301,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}2\end{tabular}}}}%
+    \put(0.452,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}4\end{tabular}}}}%
+    \put(0.603,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}6\end{tabular}}}}%
+    \put(0.754,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}8\end{tabular}}}}%
+    \put(0.905,0.03183488){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}10\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{step_0_second_180.pdf}}%
     \put(0.1410185,0.05214972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
-    \put(0.1410185,0.15339972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$30\%$\end{tabular}}}}%
-    \put(0.1410185,0.25464972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$60\%$\end{tabular}}}}%
-    \put(0.1410185,0.35589972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$90\%$\end{tabular}}}}%
-    \put(0.1410185,0.38964972){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$100\%$\end{tabular}}}}%
+    \put(0.1410185,0.13893538){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$30\%$\end{tabular}}}}%
+    \put(0.1410185,0.22572122){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$60\%$\end{tabular}}}}%
+    \put(0.1410185,0.31250688){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$90\%$\end{tabular}}}}%
+    \put(0.1410185,0.34143538){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}$100\%$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{step_0_second_180.pdf}}%
     \put(0.52583333,0.44931638){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Step Response}\end{tabular}}}}%
     \put(0.52583333,0.00325622){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Time (seconds)\end{tabular}}}}%

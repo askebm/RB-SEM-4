@@ -54,15 +54,12 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{rlocus_int.pdf}}%
-    \put(0.15,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-7\end{tabular}}}}%
-    \put(0.244375,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-6\end{tabular}}}}%
-    \put(0.33875,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-5\end{tabular}}}}%
-    \put(0.433125,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-4\end{tabular}}}}%
-    \put(0.5275,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-3\end{tabular}}}}%
-    \put(0.621875,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-2\end{tabular}}}}%
-    \put(0.71625,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-1\end{tabular}}}}%
-    \put(0.810625,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
-    \put(0.905,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}1\end{tabular}}}}%
+    \put(0.15,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.5\end{tabular}}}}%
+    \put(0.301,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.4\end{tabular}}}}%
+    \put(0.452,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.3\end{tabular}}}}%
+    \put(0.603,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.2\end{tabular}}}}%
+    \put(0.754,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.1\end{tabular}}}}%
+    \put(0.905,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{rlocus_int.pdf}}%
     \put(0.1410185,0.05252358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-5\end{tabular}}}}%
     \put(0.1410185,0.24002358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
