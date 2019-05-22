@@ -13,7 +13,10 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
   			\makebox[\textwidth][c]{
         	\includesvg[\main/afsnit/system_modeling/img/]{simulink_top}
 				}
-        \caption{Simulink Top frame}
+				\caption{Simulink Top frame. J is inertia, L is henry, R is resistance,
+				g is force of gravity, b is friction,l is the length of the frame,
+				$m_{corner}$ is the mass of a corner bracket, motor\_torque is the motor torque constant
+				and electro force is the electro force constant.}
         \label{fig:simulink_top}
 \end{figure}
 
@@ -24,7 +27,11 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
   			\makebox[\textwidth][c]{
         	\includesvg[\main/afsnit/system_modeling/img/]{simulink_bot}
 				}
-        \caption{Simulink Bot frame}
+				\caption{Simulink Bottom frame. J is inertia, L is henry, R is resistance,
+				g is force of gravity, b is friction,l is the length of the frame,
+				$m_{corner}$ is the mass of a corner bracket, $mass_{top}$ is the mass of the top frame
+				motor\_torque is the motor torque constant
+				and electro force is the electro force constant.}
         \label{fig:simulink_bot}
 \end{figure}
 
@@ -62,6 +69,10 @@ The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_consta
 				\label{fig:validation_steptuning}
 \end{figure}
 
-The resulting simulated model is somewhat close, but there are still some inconsistencies which could be explained by slack in the system.
+It was not possible tune the model to fit the simulated model better to fit the real data, 
+which indicates that there are some parameters that are not accounted for in the model.
+Since not both velocity and current could be fitted the velocity is prioritised,
+because it more important to match velocity/position than current draw of the system.
+This increases the requirement for the gain margin of the controller to allow for these disturbances.
 
 \end{document}

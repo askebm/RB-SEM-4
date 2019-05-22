@@ -3,12 +3,11 @@
 
 In this section the controllers for the Top and Bottom frames of the pan-tilt system are designed and tuned, so they conform to the system requirements put forth in the problem statement.
 
-\subsection{Tuning of Top-Frame}
-
+\subsubsection{Tuning of Top-Frame}
+\label{sec:top_frame_tuning}
 The top frame is unlinear, as can be seen in equation \ref{eq:new_mech_equation_with_corners}, which includes a sine term.
 
-To design a controller, for the topframe, the system is linearized in four points. It is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{??}
-\todo{insert reference}
+To design a controller, for the topframe, the system is linearized in four points. It is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{fig:jour_step_bot}
 
 In this way, it is possible to have linear behaviour for the system in general.
 Because $-90^o and +90^o$ are the has the same behavior in this system, only 3 linearizations are made.
@@ -209,8 +208,97 @@ It is tuned to $Kp = 2.8$ and $Ti = \frac{1}{0.035}$
 \label{fig:step_0_second_180}
 \end{figure}
 
-The system responses are not exactly alike, and especially the system when linearized in $180^o$ does not quite look like the other stepresponses. In figure \ref{}, all three responses are shown in the same plot for comparison.
+The system responses are not exactly alike, and especially the system when linearized in $180^o$ does not quite look like the other stepresponses. In figure \ref{fig:comp}, all three responses are shown in the same plot for comparison. The only stepresponse without any overshoot is the system linearized in $0^o$. The other two have slight overshoots.
 
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{comp.pdf_tex}
+\caption{Step responce of all three PI-controlled systems}
+\label{fig:comp}
+\end{figure}
+
+\subsubsection{tuning of bottom frame}
+
+While the top frame of the pan-tilt system is unlinear, the bottom frame is not. Therefore it is not neccessary to linearize it. But as top frame can move, the moment of inertia, of the bottom- and topframe is a function of the top freames angle in relation to the bottomframe, as described in section\ref{}
+\todo{reference here.}
+In the following the regulator is tuned for ven the topframe is at $90^o$ and at $0^o$.
+
+The statespace model of the bottomframe, when the topframe is at $0^o$  is found in equation \ref{:eq:bottom_state_eq}
+
+\begin{equation}
+      \label{eq:bottom_state_eq}
+      \begin{split}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    =&
+    \begin{bmatrix}0 & 1.0 & 0\\ 0 & -75.8 & 238.0\\ 0 & -57.8 & -79.0\end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+      0\\ 0\\ 16.5
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t\\
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_pure_bot.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_pure_bot}
+\end{figure}
+
+In figure \ref{rlocus_pure_bot} a root locus of the openloop system is seen. As in section \ref{top_frame_tuning} the system can be controlled only by a p gain. But it will likely result in a steadystate error. Therefore the system is tuned with a PI-controller. In figure \ref{fig:rlocus_int_bot} the root locus of the system with an I-controller, is shown.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_int_bot.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_int_bot}
+\end{figure}
+
+A gain of 9, will place a dominant pole in -5. which is needed for the system to comply with the requirements as explained in section \ref{sec:top_frame_tuning}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first_bot.pdf_tex}
+\caption{Stepresponse of PI controller on system.}
+\label{fig:step_0_first_bot}
+\end{figure}
+
+Figure \ref{fig:step_0_first_bot} then shows the stepresponse of that PI-controller.
+As in section \ref{sec:top_frame_tuning}, the response is not quite as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $P = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_bot.pdf_tex}
+\caption{Stepresponse of tuned PI controller on system.}
+\label{fig:step_0_second_bot}
+\end{figure}
 
 
 \end{document}
