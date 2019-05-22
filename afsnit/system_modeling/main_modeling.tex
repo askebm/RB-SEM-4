@@ -28,7 +28,7 @@ Each motor is geared to the frame in a $3:1$ relation.\\
 
 In this chapter an approximated model of the physical system will be found.\\
 
-By analysising the forces acting on the motors when voltage is added the following differential equations are found.\\
+By analyzing the forces acting on the motors when voltage is added the following differential equations are found.\\
 
 \begin{equation}
   \label{equ:model_mech_equ}
@@ -43,7 +43,7 @@ By analysising the forces acting on the motors when voltage is added the followi
 In (\ref{equ:model_mech_equ}) $J$ is the moment of inertia about the axis of rotation, $b$ is the motors viscous friction constant, $K_{torque}$ is the motor toque constant, $\dot \theta$ is the first time derivative of the position, and $\ddot \theta$ is the second time derivative. The first time derivative is the velocity and the second is the acceleration.\\
 In (\ref{equ:model_ele_equ}) $L$ is the electrical inductance of the coil in the motor, $\frac{di}{dt}$ is the first time derivative of the current, $R$ is the ohmic resistance of the motor, $V$ is the voltage applied, $K_{elec}$ is the electromotive force constant and $\dot \theta$ is the velocity as mentioned above.\\
 
-By further inspection inspection of a non-linear contribution on the top frame's moment of inertia is caused by the added aluminium corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
+By further inspection inspection of a non-linear contribution on the top frame's moment of inertia is caused by the added aluminum corners as seen on figure (\ref{fig:real_image_of_pan-tilt_system}).\\
 As an extra gravitational pull on these corners is added, the mechanical equation describing the motor driving the top frame has to be rewritten as seen in eq. (\ref{eq:new_mech_equation_with_corners}).
 
 \begin{equation}
@@ -61,7 +61,7 @@ Equation (\ref{eq:new_mech_equation_with_corners}) is found by analyzing figure 
   \label{fig:TrekantDiagramForce}
 \end{figure}
 
-The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ being the mass of 1 of the 2 the aluminium corners on the top frame.\\
+The added term in eq. (\ref{eq:new_mech_equation_with_corners}) contains the gravitational acceleration on earths surface, $g = 9.82 \si{\frac{m}{s^2}}$, $\theta_t$ which is the angle of the top frame with the vertical axis of the system being the reference and $m_{t,cor}$ being the mass of 1 of the 2 the aluminum corners on the top frame.\\
 To ease the further analysis above mentioned the model is linearized by applying the Jacobian matrix. The linearized state space model can be seen in eq. (\ref{eq:topframe_mech_linearized}).
  
 \begin{equation}
@@ -226,7 +226,7 @@ Since moment of inertia is an expression of the mass distribution about a given 
 
 In this expression $I_{||\,axis}$ is the resulting moment of inertia, $I_{cm}$ is the center of mass inertia, $m$ is the mass of the object and $u$ is the distance between the axis of rotation and the axis going through the center of mass parallel to the axis of rotation.
 
-It is seen on figure \ref{fig:TopFrame} that $d$ has two corners, $m_{t,cor}$, which in this case will be seen as added mass to $d$. As a final concideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
+It is seen on figure \ref{fig:TopFrame} that $d$ has two corners, $m_{t,cor}$, which in this case will be seen as added mass to $d$. As a final consideration the length of $b$ and $d$ are two times the bar width, which is found to be $L_{bw} = 0.04m$, shorter than $a$ and $c$. With these criteria, the moment of inertia can be determined as seen in eq. (\ref{eq:Top_frame_total_inertia}).
 
 \begin{equation}
   \label{eq:Top_frame_total_inertia}
@@ -459,14 +459,6 @@ Since the various parameters in the determined models now are found with $K_{b,t
 \label{ch:stepresponse_tuning}
 \subfile{\main/afsnit/system_modeling/stepresponse_tuning.tex}
 
-\subsection{Improvements}
-
-\begin{itemize}
-  \item Statefeedback
-  \item Kahlman filter
-  \item Observer
-  \item Controller
-\end{itemize}
 
 
 \end{document}

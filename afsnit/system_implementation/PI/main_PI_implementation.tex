@@ -4,9 +4,9 @@
 \begin{document}
 \subsection{PI}
 
-\subsubsection{Softwaredesign of a PI controller}
+\subsubsection{Software design of a PI controller}
 In order to implement the aforementioned PI-controller in a fashion that complies with API the provided by FreeRTOS, it is chosen that a single interface is to be designed.
-This is to avoid writting multiple sub-programs with the same functionallity, and thus it requieres to be generic if multiple PI-controllers are to be implemented.
+This is to avoid writing multiple sub-programs with the same functionality, and thus it requires to be generic if multiple PI-controllers are to be implemented.
 \\
 
 To meet the given requirements the following design criteria must be fulfilled.
@@ -36,7 +36,7 @@ The struct will contain all the necessary gains and data-samples, which a PI-con
 The struct members can be seen in listing \ref{list:struct_def}.
 \lstinputlisting[language=C, firstline=20, lastline=33,caption = {struct definition} ,label={list:struct_def}]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
-Since the design requirements are met, the next step is to implement the funtionallity of a PI-controller, which has the following requirements:
+Since the design requirements are met, the next step is to implement the functionality of a PI-controller, which has the following requirements:
 \begin{itemize}
     \item Must be implemented as a difference equation
     \item Must include anti-windup
@@ -55,7 +55,7 @@ In order to obtain the difference equation for the PI-controller, the standard P
 
 To get the PI equation into the time-discrete z-domain, it is chosen to use Tustin's Method.
 
-This is done by substiting $s$ with the following
+This is done by substituting $s$ with the following
 
 $$
 s = \frac{2}{T}\cdot \Bigg( \frac{z-1}{z+1}\Bigg)
@@ -95,7 +95,7 @@ $$
 
 
 \subsubsection{Implementation of the difference equation}
-With the softwaredesign chosen and the difference equation derived, the next step is to implement it.
+With the software design chosen and the difference equation derived, the next step is to implement it.
 This is done in the following code snippet,seen in listing \ref{list:PI_controller}, which includes anti-windup whilst having the PI-controller expressed as a difference equation.
 
 \lstinputlisting[language=C, firstline=37, lastline=67,caption = {PI controller} ,label={list:PI_controller}]{\main/afsnit/system_implementation/PI/code_snippets.h}
