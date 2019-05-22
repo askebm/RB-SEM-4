@@ -356,12 +356,12 @@ The total moment of inertia for the bottom frame can thus be determined as in eq
     %Du er nået her til
     =& \, 0.0429 \si{\, kg \, m^2} + ( 0.3696 \si{\, kg \, m^2} + 0.2680 \si{\, kg \, m^2} + 0.4196 \si{\, kg \, m^2}\\
     &+ 0.3696 \si{\, kg \, m^2}) \cdot \frac{0.291^2}{4} \cdot \sin^2(\theta_t)\\
-    =& \, 0.0731\cdot \sin^2(\theta_t)
+    =&0.429\si{\,kg\cdot m^2} + 0.0302 \si{\,kg\cdot m^2} \cdot \sin^2(\theta_t)
 \end{split}
 \end{equation}
 
 Thus the moment of inertia for the bottom frame has been determined to be
-\newline $J_{b} = \, 0.0731 \cdot \sin^2(\theta_t)$.
+\newline $J_{b} = \, 0.429\si{\,kg\cdot m^2} + 0.0302 \si{\,kg\cdot m^2} \cdot \sin^2(\theta_t)$.
 
 \subsection{Application specified model - pre-tuning}
 Since the various parameters in the determined models now are found with $K_{b,torque/elec}$, $K_{t,torque/elec}$, $b_b$ and $b_t$ being the exceptions. The two models can thus be written on state space form as seen in eq. (\ref{eq:Theoretical_models_top}) for the top and (\ref{eq:Theoretical_models_bottom}) for the bottom. Since the gearing between the motors and frames are known to be $3:1$, each moment of inertia gets divided by $3$.
@@ -417,7 +417,7 @@ Since the various parameters in the determined models now are found with $K_{b,t
         =&
           \begin{bmatrix}
               0 & 1                         & 0                         \\
-              0 & -\frac{b_b}{0.0244\cdot \sin^2(\theta_t) \si{\,kg\,m^2}} & \frac{K_{b,torque}}{0.0244\cdot \sin^2(\theta_t)\si{\,kg\,m^2}}  \\
+              0 & -\frac{b_b}{0.429\si{\,kg\cdot m^2} + 0.0302 \si{\,kg\cdot m^2} \cdot \sin^2(\theta_t)} & \frac{K_{b,torque}}{0.429\si{\,kg\cdot m^2} + 0.0302 \si{\,kg\cdot m^2} \cdot \sin^2(\theta_t)}  \\
               0 & -\frac{K_{b,elec}}{3.85\cdot 10^{-4}\si{H}}   & -12213 \si{\frac{\Omega}{H}}          \\
           \end{bmatrix}
     \begin{bmatrix}
@@ -431,7 +431,7 @@ Since the various parameters in the determined models now are found with $K_{b,t
         0             \\
         2597.40 \si{H^{-1}} \\
     \end{bmatrix}
-    V_t
+    V_b
 \\
       y =&
     \begin{bmatrix}
