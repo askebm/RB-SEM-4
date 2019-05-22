@@ -1,7 +1,7 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
 
-To tune the theoretical model the electromotiveforce, the motortorque and friction, is adjusted for both the top frame and the bottom frame, to fit the openloop stepresponse of the physical system.
+To tune the theoretical model the electromotive force, the motor torque and friction, is adjusted for both the top frame and the bottom frame, to fit the open loop stepresponse of the physical system.
 The system is tuned using the simulink models seen in figure \ref{fig:simulink_top} and in figure 
 \ref{fig:simulink_bot}.
 
@@ -13,7 +13,10 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
   			\makebox[\textwidth][c]{
         	\includesvg[\main/afsnit/system_modeling/img/]{simulink_top}
 				}
-        \caption{Simulink Top frame}
+				\caption{Simulink Top frame. J is inertia, L is henry, R is resistance,
+				g is force of gravity, b is friction,l is the length of the frame,
+				$m_{corner}$ is the mass of a corner bracket, motor\_torque is the motor torque constant
+				and electro force is the electro force constant.}
         \label{fig:simulink_top}
 \end{figure}
 
@@ -24,25 +27,29 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
   			\makebox[\textwidth][c]{
         	\includesvg[\main/afsnit/system_modeling/img/]{simulink_bot}
 				}
-        \caption{Simulink Bot frame}
+				\caption{Simulink Bottom frame. J is inertia, L is henry, R is resistance,
+				g is force of gravity, b is friction,l is the length of the frame,
+				$m_{corner}$ is the mass of a corner bracket, $mass_{top}$ is the mass of the top frame
+				motor\_torque is the motor torque constant
+				and electro force is the electro force constant.}
         \label{fig:simulink_bot}
 \end{figure}
 
-The adjusted motorconstants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated stepresponse interlaced with the physical stepresponse can be seen in figure \ref{fig:validation_steptuning}.
+The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated stepresponse interlaced with the physical stepresponse can be seen in figure \ref{fig:validation_steptuning}.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{ll}
 		\multicolumn{2}{c}{ \textbf{Top frame} }\\
 		\hline
-		electromotiveforce& 0.1\si{ \frac{rad}{Vs}}\\
-		motortorque & 1.4 \si{ \frac{N m}{A}}\\
+		electromotive force& 0.1\si{ \frac{rad}{Vs}}\\
+		motor torque & 1.4 \si{ \frac{N m}{A}}\\
 		friction coefficient& 0.57\\
 
 		\multicolumn{2}{c}{ \textbf{Bottom frame} }\\
 		\hline
-		electromotiveforce& 3.5\si{ \frac{rad}{Vs}}\\
-		motortorque & 1.57 \si{ \frac{N m}{A}}\\
+		electromotive force& 3.5\si{ \frac{rad}{Vs}}\\
+		motor torque & 1.57 \si{ \frac{N m}{A}}\\
 		friction coefficient & 0.5\\
 	\end{tabular}
 	\caption{Fitted motor constants.}
@@ -62,6 +69,10 @@ The adjusted motorconstants can be viewed in table \ref{tab:fitted_motor_constan
 				\label{fig:validation_steptuning}
 \end{figure}
 
-The resulting simulated model is somewhat close, but there are still some inconsistencies which could be exlained by slack in the system.
+It was not possible tune the model to fit the simulated model better to fit the real data, 
+which indicates that there are some parameters that are not accounted for in the model.
+Since not both velocity and current could be fitted the velocity is prioritised,
+because it more important to match velocity/position than current draw of the system.
+This increases the requirement for the gain margin of the controller to allow for these disturbances.
 
 \end{document}
