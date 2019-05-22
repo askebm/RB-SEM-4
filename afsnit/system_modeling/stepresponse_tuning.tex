@@ -56,7 +56,6 @@ The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_consta
 	\label{tab:fitted_motor_constants}
 \end{table}
 
-
 \begin{figure}[H]
         \centering
 				\def\svgwidth{0.47\columnwidth}
@@ -68,10 +67,9 @@ The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_consta
 				\caption{Step response results of both frames.}
 				\label{fig:validation_steptuning}
 \end{figure}
-\todo{what is the figure a at? - check caption}
 It was not possible to tune the simulated model to fit the real data,
 which indicates that there are some parameters not accounted for in the model.
-\todo{Bud: It was not possible to match both the theoretical velocity and current to their practical counterparts/version at the same time. It has been deemed more important to match the velocity than to match the current, meaning velocity has been prioritised. }Since not both velocity and current could be fitted \todo{fitted? tuned? also needs to be rewritten}, the velocity is prioritised, as it's more important to match the velocity/position than the current draw of the system.
-This increases the requirement for the gain margin of the controller to allow for these disturbances. \todo{at vi har valgt velocity fremfor current eller fordi vi var nødt til at vælge?}
+It was not possible to match both the theoretical velocity and current to their practical counterparts at the same time. Since only position and thereby velocity is observable, it's prioritised to match the practical and theoretical velocity.
+As the modelled system is not a perfect match, the requirement for the gain margin of the controller to allow for disturbances increase.
 
 \end{document}
