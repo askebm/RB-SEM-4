@@ -2,15 +2,37 @@
 \begin{document}
 To be able to set a reference for the system, and to see where the system is at any given time, a user interface needs to be implemented.
 There are multiple ways in which a user interface can be implemented. 
-Two will be discussed in this section, a command line interface and a hardware interface.
+Two will be discussed in this section, a command-line interface and a hardware interface.
 
-\subsubsection{Command line interface}%
-\label{ssub:command_line_interface}
-
-
+\subsubsection{Command-line interface}%
+\label{ssub:command-line_interface}
+A command-line interface is practical for designing and tuning of the system, since it allows for data to be sent to a computer and analyzed.
+It is not the most user friendly way to interact with a system, and therefor it should not stand on its own.
+\\
+Logging data is essential for tuning of the system, and therefore a command-line interface has been implemented. 
+The interface commands can be seen in table XX. \todo{create table}
+\\
+Implementation of the command-line interface is done by utilizing the USB port on the Tiva to communicate with a computer via a UART interface.  
 
 \subsubsection{Hardware interface}%
 \label{ssub:hardware_interface}
+A hardware interface is more user friendly, and it is possible to use without connecting a computer to the system. 
+Since the system already is equipped whit both a matrix keypad and a small LCD screen, these have been used to create a hardware interface.
+\\
+Since the LCD screen only can display 16X2 characters only the most essential information is shown.
+
+
+\begin{figure}[H]
+  \centering
+  \def\svgwidth{\textwidth}
+  \includesvg[\main /afsnit/system_implementation/UI/img/]{UI_emp_board}
+  \caption{User interface.}
+  \label{fig:User_interface}
+\end{figure}
+
+
+\subsubsection{User interface summary}%
+\label{ssub:user_interface_summary}
 
 
 
@@ -23,16 +45,6 @@ Two will be discussed in this section, a command line interface and a hardware i
     \item Descripe LCD UI
     \item Conclude on UI 
 \end{itemize}
-
-
-
-\begin{figure}[H]
-  \centering
-  \def\svgwidth{\textwidth}
-  \includesvg[\main /afsnit/system_implementation/UI/img/]{UI_emp_board}
-  \caption{User interface.}
-  \label{fig:User_interface}
-\end{figure}
 
 
 \end{document}
