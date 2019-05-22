@@ -11,7 +11,27 @@ The controller needs a position in order to calculate the PWM values for the pan
 As the FPGA handles all direct contact with the pan-tilt system, a Quadrature Decoder program has been designed and written to decode the encoders' signals into a position.
 It can detect the position with a $\frac{1}{3}$ degrees precision and direction as well as the velocity of which the system is rotating.
 
+\begin{itemize}
+  \item what are the performance requirements. - men det har vi allerede besvaret i system requirements?
+  \item PI controller choice - should we have picked a PID/Modern control?
+  \item issue with nonlinaer modeling - how did we solve this?
+  \item top and bottom frrame - two "idividual" systems - are. theoretically fulfilling our requirements
+  \item reality vs theoretical top and bottom frame - plus the finished handtuned values for Ki and Kp
+  \item design choices software0: - important as it is a main point in the problem statement
+    \begin{itemize}
+      \item Encoder - position counting with 1080 ticks or 1/3 degrees precision
+      \item SPI - Protocol used - did it do the trick
+      \item PWM
+      \item Homing?
+    \end{itemize}
+  \item implementation:
+    \begin{itemize}
+      \item Pi implementation - diffrence equation plus anti windup.
+      \item FreeRTOS?
+      \item FPGA - not part of the problem statement - only the design phrase
+    \end{itemize}
 
+\end{itemize}
 
 
 \end{document}
