@@ -4,7 +4,7 @@ The purpose of this section is to discuss some of the challenges and benefits th
 The FPGA connects the microcontroller to all the components on the pan-tilt system in order to control the system. It collects data from encoders and homing sensors as well as creating and updating the PWM signal to both of the H-Bridges.
 \\
 One of the main differences between a FPGA and a microcontroller is that on a FPGA everything is implemented in hardware. This means that all of the processes are running in parallel.
-When \todo{This needs to be taken into consideration when implementing the various components and global registers so that a register can not be updated while other processes are using them} implementing the different components this needs to be taken into consideration, so that registers issent updatet while other processes are reading them.
+This needs to be taken into consideration when implementing the various components and global registers so that a register can not be updated while other processes are using them.
 \\
 The FPGA used in this project is a Artix-7 mounted on a BASYS3 kit \cite{xilinx2019fpga}.
 \subsubsection{System overview}%
@@ -20,8 +20,7 @@ The FPGA used in this project is a Artix-7 mounted on a BASYS3 kit \cite{xilinx2
 The system consists of different modules mplemented in VHDL.
 The data paths between the modules can be seen in the system overview, see figure \ref{fig:FPGA_system_overview}.
 \\
-To \todo{mit bud: Multiple registers, of different sizes depending on the useage, have been implemented to store the data that is to be exhanged between the FPGA and the Tiva, see table \ref{table:FPGA_registers}.} store the data that needs to be exchanged between the FPGA and the Tiva microcontroller, multiple registers is implemented on the FPGA with the necessary size. See table \ref{table:FPGA_registers}.
-\\
+Multiple registers, of different sizes depending on the useage, have been implemented to store the data that is to be exhanged between the FPGA and the Tiva, see table \ref{table:FPGA_registers}.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -38,7 +37,7 @@ Velocity\_B     & -              & Reset\_B       \\ \hline
 
 \subsubsection{PWM}
 The PWM module creates a PWM signal for both motors. It takes a 9 bits vector as input for each motor, and output the signals necessary for the H-Bridges to work.
-It \todo{igen, lille ændring hvis du kan lide den: It takes the 100MHz system clock from the FPGA as input which it uses to create a downscaled clock frequency for the desired PWM frequency.} takes the 100Mhz system clock from the FPGA as input and, as the module contains a clock divider it creates the necessary clock frequency for the desired PWM frequency.
+It takes the 100MHz system clock from the FPGA as input which it uses to create a downscaled clock frequency for the desired PWM frequency.
 MSB in the 9 bit input vector determines which way the motor should turn.
 The module is designed such that it is possible to define the system clock frequency, the desired PWM frequency and the correct clock divider is calculated when the code is synthesized.
 This is done so that it is easy to change the PWM frequency for testing.
