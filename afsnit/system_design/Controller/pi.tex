@@ -218,8 +218,7 @@ The system responses are not exactly alike, and especially the system when linea
 
 \subsubsection{tuning of bottom frame}
 
-While the top frame of the pan-tilt system is unlinear, the bottom frame is not. Therefore it is not neccessary to linearize it. But as top frame can move, the moment of inertia, of the bottom- and topframe is a function of the top freames angle in relation to the bottomframe, as described in section\ref{}
-\todo{reference here.}
+While the top frame of the pan-tilt system is unlinear, the bottom frame is not. Therefore it is not neccessary to linearize it. But as top frame can move, the moment of inertia, of the bottom- and topframe is a function of the top freames angle in relation to the bottomframe, as described in section \ref{sec:moment_botom}.
 In the following the regulator is tuned for ven the topframe is at $90^o$ and at $0^o$.
 
 The statespace model of the bottomframe, when the topframe is at $0^o$  is found in equation \ref{:eq:bottom_state_eq}
@@ -234,7 +233,7 @@ The statespace model of the bottomframe, when the topframe is at $0^o$  is found
         i_t
     \end{bmatrix}
     =&
-    \begin{bmatrix}0 & 1.0 & 0\\ 0 & -75.8 & 238.0\\ 0 & -57.8 & -79.0\end{bmatrix}
+    \begin{bmatrix}0 & 1.0 & 0\\ 0 & -35.0 & 110.0\\ 0 & -9099.0 & -1.24\cdot10^4\end{bmatrix}
     \begin{bmatrix}
         \theta_t \\
         \dot \theta_t \\
@@ -242,7 +241,7 @@ The statespace model of the bottomframe, when the topframe is at $0^o$  is found
     \end{bmatrix}
     +
     \begin{bmatrix}
-      0\\ 0\\ 16.5
+      0\\ 0\\ 17.0
     \end{bmatrix}
     V_t
 \\
@@ -267,7 +266,7 @@ The statespace model of the bottomframe, when the topframe is at $0^o$  is found
 \label{fig:rlocus_pure_bot}
 \end{figure}
 
-In figure \ref{rlocus_pure_bot} a root locus of the openloop system is seen. As in section \ref{top_frame_tuning} the system can be controlled only by a p gain. But it will likely result in a steadystate error. Therefore the system is tuned with a PI-controller. In figure \ref{fig:rlocus_int_bot} the root locus of the system with an I-controller, is shown.
+In figure \ref{fig:rlocus_pure_bot} a root locus of the openloop system is seen. As in section \ref{sec:top_frame_tuning} the system can be controlled only by a p gain. But it will likely result in a steadystate error. Therefore the system is tuned with a PI-controller. In figure \ref{fig:rlocus_int_bot} the root locus of the system with an I-controller with gain $T_i = \frac{1}{0.035}$ is shown.
 
 \begin{figure}[H]
 \centering
@@ -277,7 +276,7 @@ In figure \ref{rlocus_pure_bot} a root locus of the openloop system is seen. As 
 \label{fig:rlocus_int_bot}
 \end{figure}
 
-A gain of 9, will place a dominant pole in -5. which is needed for the system to comply with the requirements as explained in section \ref{sec:top_frame_tuning}.
+A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole in -5 which will dominate the system. This is needed for the system to comply with the requirements as explained in section \ref{sec:top_frame_tuning}.
 
 \begin{figure}[H]
 \centering
@@ -288,7 +287,7 @@ A gain of 9, will place a dominant pole in -5. which is needed for the system to
 \end{figure}
 
 Figure \ref{fig:step_0_first_bot} then shows the stepresponse of that PI-controller.
-As in section \ref{sec:top_frame_tuning}, the response is not quite as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $P = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot}.
+As in section \ref{sec:top_frame_tuning}, the response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot}.
 
 \begin{figure}[H]
 \centering
@@ -297,6 +296,95 @@ As in section \ref{sec:top_frame_tuning}, the response is not quite as expected,
 \caption{Stepresponse of tuned PI controller on system.}
 \label{fig:step_0_second_bot}
 \end{figure}
+
+
+The statespace model of the bottomframe, when the topframe is at $90^o$  is found in equation \ref{eq:bottom_state_eq_2}
+
+\begin{equation}
+      \label{eq:bottom_state_eq_2}
+      \begin{split}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    =&
+    \begin{bmatrix}0 & 1.0 & 0\\ 0 & -35.0 & 110.0\\ 0 & -9099.0 & -1.24\cdot10^4\end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+      0\\ 0\\ 13.7
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t\\
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_pure_bot_90.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_pure_bot_90}
+\end{figure}
+
+In figure \ref{fig:rlocus_pure_bot_90} a root locus of the openloop system is seen. In figure \ref{fig:rlocus_int_bot_90} the root locus of the system with an I-controller with gain $T_i = \frac{1}{0.035}$ is shown.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_int_bot_90.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_int_bot_90}
+\end{figure}
+
+A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole in -5 which will dominate the system. This is needed for the system to comply with the requirements as explained in section \ref{sec:top_frame_tuning_90}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first_bot_90.pdf_tex}
+\caption{Stepresponse of PI controller on system.}
+\label{fig:step_0_first_bot_90}
+\end{figure}
+
+Figure \ref{fig:step_0_first_bot_90} then shows the stepresponse of that PI-controller.
+The response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot_90}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_bot_90.pdf_tex}
+\caption{Stepresponse of tuned PI controller on system.}
+\label{fig:step_0_second_bot_90}
+\end{figure}
+
+In figure \ref{fig:comp_bot} a graph of both stepresponses together are shown. It shows that there are no difference if the topframe is at an angle of $0^o$ or at $90^o$. Therefore there is no reason to take the changing moment of inertia into account. 
+
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{comp_bot.pdf_tex}
+\caption{Comparison of the stepresponeses of the two tuned PI-controllers with topframe in $0$ and $90$ degrees.}
+\label{fig:comp_bot}
+\end{figure}
+
 
 
 \end{document}
