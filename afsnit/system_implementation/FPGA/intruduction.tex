@@ -42,7 +42,7 @@ MSB in the 9 bit input vector determines which way the motor should turn.
 The module is designed such that it is possible to define the system clock frequency, the desired PWM frequency and the correct clock divider is calculated when the code is synthesized.
 This is done so that it is easy to change the PWM frequency for testing.
 \subsubsection{Protocol}
-The protocol module uses a SPI module created by \todo{ref.} for communication with the Tiva.
+The protocol module uses a SPI module created by \cite{spi_git_module} for communication with the Tiva.
 The role of the protocol module is to decode the data received over SPI, and prepare data for transmission, in regards to the determined protocol in section \ref{sub:spi}.
 \\
 Since all the different processes, like receiving data over SPI and updating data registers, run in parallel, it is important to make sure that the protocol module cannot update the data registers while the SPI module is receiving data form the Tiva.
