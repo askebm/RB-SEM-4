@@ -3,17 +3,17 @@
 
 \subsection{Results}
 \label{sec:results}
-In this section, the project results are presented. In section \ref{sec:PI} the tuning of the system model is made, and the PI-gains $K_p$ and $T_i$ are found. The different controller gains are implemented on the real system, and the actual system responses are shown and compared
+In this section, the project results are presented. In section \ref{sec:PI} the tuning of the system model is \todo{done?}made, and the PI-gains $K_p$ and $T_i$ are found. The different controller gains are implemented on the real system, and the actual system responses are shown and compared
 with the model response.
 
 \subsubsection{Top Frame}
 \label{sec:top_frame_results}
 
-The following graphs \ref{fig:top_0}, \ref{fig:top_90} and \ref{fig:top_180} depicts the real, modllled and tuned real step responses.
+The following graphs \ref{fig:top_0}, \ref{fig:top_90} and \ref{fig:top_180} depicts the real, modeled and tuned real step responses.
 It is observed that the stepresponses of the model against the stepresponses of the real
 systems are not alike. The real system has a larger overshoot compared to the model.
-Furthermore the real system is ocsillating quite a lot. Based on the observed behaviour
-the system is handtuned to better meet the requirements of the system. Though the
+Furthermore the real system is oscillating quite a lot. Based on the observed behavior
+the system is hand tuned to better meet the requirements of the system. Though the
 overshoot and oscillations are not able to be removed completely with a PI-controller
 alone.
 
@@ -143,5 +143,5 @@ In the same way as with the topframe in section \ref{sec:top_frame_results}, the
 
 It is also observed that the tuned $K_i$ and $K_p$ values from the model, does not give an expected stepresponse. There is more overshoot compared to the model. The real system is tuned to give at better response, but as in section \ref{sec:top_frame_results} the system PI-controller alone cannot eliminate overshoot.
 
-From the results it can be conluded that the modelled system was not close enough to the real system,to use it for tuning. Furthermore, even though it is not reflected in the model, the real system will benefit from a D-term in the controller, making it at PID-controller. The D-term will help dampen the overshoot, perhaps eliminating them all together. 
+From the results it can be concluded that the modeled system was not close enough to the real system,to use it for tuning. Furthermore, even though it is not reflected in the model, the real system will benefit from a D-term in the controller, making it at PID-controller. The D-term will help dampen the overshoot, perhaps eliminating them all together. 
 \end{document}
