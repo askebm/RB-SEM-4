@@ -273,8 +273,8 @@ The top frame's moment of inertia is therefore determined to be
 
 \subsubsection{Moment of inertia - Bottom frame}
 \label{sec:moment_botom}
-To calculate the moment of inertia for the bottom frame, some observations needs to be made. Firstly the same procedure as in section \ref{sec:Top_frame_inertia} can be followed to determine the base frame's own inertia, since the base frame of itself has a structure identical to the top frame with one bar being the difference. Secondly, the base frame's moment of inertia is directly influenced by the position of the top frame, thus making the base frame's moment of inertia a function of the top frame's position $\theta_t$. And finally on the element $g$ the motor controlling the top frame in mounted, which is included in the constant moment of inertia with mass $m_{b,motor}$ as added mass to the above mentioned element.\\
-As in section \ref{sec:Top_frame_inertia} the base frame is fragmented, this time in three parts: $e$, $f$ and $g$ as shown on figure \ref{fig:BottomFrame}. The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frame's moment of inertia can now be expressed as seen in eq. \eqref{eq:Base_frame_eq}.
+To calculate the moment of inertia for the bottom frame, some observations needs to be made. Firstly the same procedure as in section \ref{sec:Top_frame_inertia} can be followed to determine the bottom frame's own inertia, since the bottom frame has a structure identical to the top frame with one bar being the difference. Secondly, the bottom frame's moment of inertia is directly influenced by the position of the top frame, thus making the bottom frame's moment of inertia a function of the top frame's position $\theta_t$. Lastly, on part $g$, the motor, controlling the top frame, is mounted, which is included in the constant moment of inertia with mass $m_{b,motor}$ as added mass to the part $g$.\\
+As in section \ref{sec:Top_frame_inertia} the bottom frame is fragmented, this time in three parts: $e$, $f$ and $g$ as shown on figure \ref{fig:BottomFrame}. The constants related to these components are generally noted by $k$ such that $k \in \{e,f,g\}$. The top frame's moment of inertia can now be expressed as seen in eq. \eqref{eq:Base_frame_eq}.
 
 \begin{figure}[H]
   \centering
@@ -290,7 +290,7 @@ As in section \ref{sec:Top_frame_inertia} the base frame is fragmented, this tim
   \sum J_{b,k} + J_{b,k-1} + \dotsb + J_{b,1} + J_{t,0^{\circ}}}_\text{$J_{b,const}$} + J_{b,var}(\theta_t)
 \end{equation}
 
-First the constant part of the moment of inertia is determined which, with the same procedure as in section \ref{sec:Top_frame_inertia}, results in eq. \eqref{eq:top_frame_constant}.
+First the constant part of the moment of inertia is determined, which, with the same procedure as in section \ref{sec:Top_frame_inertia}, results in eq. \eqref{eq:top_frame_constant}.
 
 \begin{equation}
   \label{eq:top_frame_constant}
@@ -335,8 +335,8 @@ $J_{b,const}$ can now be determined as shown in eq. (\ref{eq:J_b,const}).
   \end{split}
 \end{equation}
 
-Thus the constant part of the moment of inertia of the base frame is determined to be $J_{b,const} = 0.0705\si{\,kg\cdot m^2}$.\\
-The varying moment of inertia, $J_{b,var}(\theta_t)$, is dependent on the angular displacement of the top frame from the vertical axis parallel to the bottom frame. This can be seen on figure \ref{fig:TrekantDiagram}.
+Thus the constant part of the moment of inertia of the bottom frame is determined to be $J_{b,const} = 0.0705\si{\,kg\cdot m^2}$.\\
+The varying moment of inertia, $J_{b,var}(\theta_t)$, is dependent on the angular displacement of the top frame from the vertical axis parallel to the bottom frame. This can be observed on figure \ref{fig:TrekantDiagram}.
 
 \begin{figure}[H]
   \centering
