@@ -264,8 +264,8 @@ The system responses are not exactly alike, and especially the system when linea
 
 \subsubsection{Tuning of bottom frame}
 
-While the top frame of the pan-tilt system is nonlinear, the bottom frame is not. Therefore it is not necessary to linearize it. But as top frame can move, the moment of inertia of the bottom and top frame is a function of the top frames angle in relation to the bottom frame, as described in section \ref{sec:moment_botom}. \todo{As the top frame can move, it means it influences the moment of inertia of the bottom frame as a function of the top frames angle in relation to the bottom frame, as described in section \ref{sec:moment_botom}}
-In the following subsection the bottom frame regulator is tuned for when the topframe is at $90^o$ and at $0^o$.
+While the top frame of the pan-tilt system is nonlinear, the bottom frame is not. Therefore it is not necessary to linearize it. As the top frame can move, it influences the moment of inertia of the bottom frame as a function of the top frames angle in relation to the bottom frame, as described in section \ref{sec:moment_botom}.
+In the following subsection the bottom frame controller is tuned for when the topframe is at $90^\circ$ and at $0^\circ$.
 
 The state space model of the bottom frame, when the topframe is at $0^o$, is found in equation \eqref{:eq:bottom_state_eq}
 
