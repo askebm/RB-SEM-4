@@ -1,108 +1,147 @@
-
-\documentclass[../../main]{subfiles}
+\documentclass[../../Main]{subfiles}
 \begin{document}
 
 \subsection{Results}
 \label{sec:results}
-In this section, the project results are presented.
+In this section, the project results are presented. In section \ref{sec:PI} the tuning of the system model is done, and the PI-gains $K_p$ and $T_i$ are found. The different controller gains are implemented on the real system, and the actual system responses are shown and compared
+with the model response.
 
-\begin{table}[h]
+\subsubsection{Top Frame}
+\label{sec:top_frame_results}
+
+The following graphs \ref{fig:top_0}, \ref{fig:top_90} and \ref{fig:top_180} depicts the real, modelled and tuned real step responses.
+It is observed that the stepresponses of the model against the stepresponses of the real
+systems are not alike. The real system has a larger overshoot compared to the model.
+Furthermore the real system is oscillating quite a lot. Based on the observed behavior
+the system is hand tuned to better meet the requirements of the system. Though the
+overshoot and oscillations are not able to be removed completely with a PI-controller
+alone.
+
+
+\begin{figure}[H]
+  \def\svgwidth{\textwidth}
+  \includesvg[\main/afsnit/result_and_discussion/img/]{0_top}
+  \caption{Stepresponses of Topframe linearized in $0^{\circ}$}
+  \label{fig:top_0}
+\end{figure}
+
+
+\begin{figure}[H]	
+  \def\svgwidth{\textwidth}
+  \includesvg[\main/afsnit/result_and_discussion/img/]{90_top}
+  \caption{Stepresponses of Topframe linearized in $90^{\circ}$}
+  \label{fig:top_90}
+\end{figure}
+
+\begin{figure}[H]
+  \def\svgwidth{\textwidth}
+  \includesvg[\main/afsnit/result_and_discussion/img/]{180_top}
+  \caption{Stepresponses of Topframe linearized in $180^{\circ}$}
+  \label{fig:top_180}
+\end{figure}
+
+
+
+\begin{table}[H]
 	\centering
-	\begin{tabular}{*{4}{l}}
-		&Modelled&Untuned&Tuned\\
-		Overshoot&1.361&22.592&39.629\\
-		Risetime& 1.018&0.353&0.417\\
-		Settling Time& 1.653&NaN& 15.416\\
-		Kp&3.7&3.7&1.59\\
-		Ki&0.130&0.130&0.95
+	\begin{tabular}{lc|*{3}{l}}
+		&&Simulated&Model tuned&Manually tuned\\
+		\hline
+		Overshoot&[\%] &1.752&38.148&28.518\\
+		Risetime&[\si{s}]&0.831&0.250&0.279\\
+		Settling Time&[\si{s}]&1.319&15.402&8.560\\
+		Kp&&1.6&1.6&1.9\\
+		Ki&&0.32&0.32&5
 	\end{tabular}
-	\caption{90 bot}
-	\label{tab:90_bot}
-\end{table}
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{*{4}{l}}
-		&Modelled&Untuned&Tuned\\
-		Overshoot&1.362&22.592&38.518\\
-		Risetime&1.022&0.327&0.388\\
-		Settling Time&1.658&NaN&15.425\\
-		Kp&3.7&3.7&1.59\\
-		Ki&0.130&0.130&0.95
-	\end{tabular}
-	\caption{0 bot}
-	\label{tab:0_bot}
-\end{table}
-
-
-\begin{table}[h]
-	\centering
-	\begin{tabular}{*{4}{l}}
-		&Modelled&Untuned&Tuned\\
-		Overshoot&1.752&38.148&28.518\\
-		Risetime&0.831&0.250&0.279\\
-		Settling Time&1.319&15.402&8.560\\
-		Kp&1.6&1.6&1.9\\
-		Ki&0.32&0.32&5
-	\end{tabular}
-	\caption{0 top}
+	\caption{System characteristics when linearized at $0^o$}
 	\label{tab:0_top}
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
-	\begin{tabular}{*{4}{l}}
-		&Modelled&Untuned&Tuned\\
-		Overshoot&2.560&27.407&25.185\\
-		Risetime&0.988&0.258&0.244\\
-		Settling Time&NaN&NaN&7.235\\
-		Kp&1.39&1.39&2.2\\
-		Ki&0.083&0.083&1.4
+	\begin{tabular}{lc|*{3}{l}}
+		&&Simulated&Model tuned&Manually tuned\\
+		\hline
+		Overshoot&[\%]&2.560&27.407&25.185\\
+		Risetime&[\si{s}]&0.988&0.258&0.244\\
+		Settling Time&[\si{s}]&NaN&NaN&7.235\\
+		Kp&&1.39&1.39&2.2\\
+		Ki&&0.083&0.083&1.4
 	\end{tabular}
-	\caption{90 top}
+	\caption{System characteristics when linearized at $90^o$}
 	\label{tab:90_top}
 \end{table}
 
 
-\begin{table}[h]
+\begin{table}[H]
 	\centering
-	\begin{tabular}{*{4}{l}}
-		&Modelled&Untuned&Tuned\\
-		Overshoot&13.540&29.629&24.074\\
-		Risetime&0.807&0.244&0.226\\
-		Settling Time&10.868&NaN&11.281\\
-		Kp&1.3&1.3&2.3\\
-		Ki&0.26&0.26&1.8
+	\begin{tabular}{lc|*{3}{l}}
+		&&Simulated&Model tuned&Manually tuned\\
+		\hline
+		Overshoot&[\%]&13.540&29.629&24.074\\
+		Risetime&[\si{s}]&0.807&0.244&0.226\\
+		Settling Time&[\si{s}]&10.868&NaN&11.281\\
+		Kp&&1.3&1.3&2.3\\
+		Ki&&0.26&0.26&1.8
 	\end{tabular}
-	\caption{180 top}
+	\caption{System characteristics when linearized at $180^o$}
 	\label{tab:180_top}
 \end{table}
 
-\todo{Figure of difference in theoretical and practical data}
-
-To diagnose the potential causes for these differences, its worth considering the approximations made in process of simulating the real system.
 
 
-As seen in section \ref{sec:Top_frame_inertia} the moment of inertia is estimated through the following approximations: The corners on the top frame are considered added mass to $d$ while their center of mass actually are closer to the axis of rotation and the bolts keeping the frames together aren't accounted. Since moment of inertia is an expression of mass distribution about a given axis of rotation, we should expect that these approximations would indicate a potential error with same sign as the one we observe. As we would expect a greater moment of inertia would result in a bigger overshoot. This can be seen on figure \todo{ref}REF, which from the above mentioned approximations confirm since the weight of the bolts in the frame would add to the moment of inertia. This is to some extend counter weighed by the corners which would contribute to the moment of inertia to a smaller overshoot, since their distance from the axis of rotation is shorter on the actual system. It is here worth mentioning that the displacement of the frame corners would contribute to the lowering of the overshoot. While this might be present, its influence on the resulting behavior seems to be small based on the real systems behavior.\\
-One other constant which might differ from the real one is the \todo{Hvorfor lige fokus på den konstant?}ohmic resistance in the motors. From the datasheet of the used multimeter \todo{ref}BIBREF its seen that the percentage error generally is $0.0075\%$ which results in the correct resistance for the top frame motor being in the interval $[4.7346\Omega;4.7534\Omega]$ and for the bottom frame its $[4.7016\Omega;4.7024\Omega]$. Since these intervals are as small as shown, they would not contribute in a significant way to the overshoot, and are therefore viewed as negligible.\\
+\subsubsection{Bottom Frame}%
+\label{sec:bottom_frame_results}
 
-To improve the control of the system, implementation of a\todo{Lowpass kommer før D-term?} D-term followed by a lowpass filter would be an option. This is caused by the fact that the D-term in a PID controller reduces the amount of overshoot, and the filter eliminates noise to prevent the D-term in reacting to these.\\
-A second approach to improve the control of the system would be use of modern control techniques. Here is implementation of state feedback a candidate to improve performance.
+In the same way as with the topframe in section \ref{sec:top_frame_results}, the results are shown in figure \ref{fig:bot_0} and \ref{fig:bot_90}.
 
-
-
+\begin{figure}[H]
   \def\svgwidth{\textwidth}
-  \includesvg[\main/afsnit/result_and_discussion/img/]{0_top}
+  \includesvg[\main/afsnit/result_and_discussion/img/]{0_bot}
+  \caption{Stepresponses of Bottomframe when topframe is at $0^o$.}
+  \label{fig:bot_0}
+\end{figure}
+
+\begin{figure}[H]
+ \def\svgwidth{\textwidth}
+ \includesvg[\main/afsnit/result_and_discussion/img/]{90_bot}
+  \caption{Stepresponses of Bottomframe when topframe is at $90^o$.}
+  \label{fig:bot_90}
+\end{figure}
 
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lc|*{3}{l}}
+		&&Simulated&Model tuned&Manually tuned\\
+		\hline
+		Overshoot&[\%]&1.361&22.592&39.629\\
+		Risetime&[\si{s}]& 1.018&0.353&0.417\\
+		Settling Time&[\si{s}]& 1.653&NaN& 15.416\\
+		Kp&&3.7&3.7&1.59\\
+		Ki&&0.130&0.130&0.95
+	\end{tabular}
+	\caption{System characteristics when top frame is at $90^o$}
+	\label{tab:90_bot}
+\end{table}
 
-  \def\svgwidth{\textwidth}
-  \includesvg[\main/afsnit/result_and_discussion/img/]{90_top}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lc|*{3}{l}}
+		&&Simulated&Model tuned&Manually tuned\\
+		\hline
+		Overshoot&[\%]&1.362&22.592&38.518\\
+		Risetime&[\si{s}]&1.022&0.327&0.388\\
+		Settling Time&[\si{s}]&1.658&NaN&15.425\\
+		Kp&&3.7&3.7&1.59\\
+		Ki&&0.130&0.130&0.95
+	\end{tabular}
+	\caption{System characteristics when top frame is at $0^o$}
+	\label{tab:0_bot}
+\end{table}
 
+It is also observed that the tuned $K_i$ and $K_p$ values from the model, does not give an expected stepresponse. There is more overshoot compared to the model. The real system is tuned to give at better response, but as in section \ref{sec:top_frame_results} the system PI-controller alone cannot eliminate overshoot.
 
-
-  \def\svgwidth{\textwidth}
-  \includesvg[\main/afsnit/result_and_discussion/img/]{180_top}
-
+From the results it can be concluded that the modeled system was not close enough to the real system,to use it for tuning. Furthermore, even though it is not reflected in the model, the real system will benefit from a D-term in the controller, making it at PID-controller. The D-term will help dampen the overshoot, perhaps eliminating them all together. 
 \end{document}

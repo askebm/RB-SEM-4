@@ -50,23 +50,23 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.50352358)%
+  \begin{picture}(1,0.50367667)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{rlocus_int_bot_90.pdf}}%
-    \put(0.15,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.5\end{tabular}}}}%
-    \put(0.301,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.4\end{tabular}}}}%
-    \put(0.452,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.3\end{tabular}}}}%
-    \put(0.603,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.2\end{tabular}}}}%
-    \put(0.754,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.1\end{tabular}}}}%
-    \put(0.905,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
+    \put(0.15,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.5\end{tabular}}}}%
+    \put(0.301,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.4\end{tabular}}}}%
+    \put(0.452,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.3\end{tabular}}}}%
+    \put(0.603,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.2\end{tabular}}}}%
+    \put(0.754,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-0.1\end{tabular}}}}%
+    \put(0.905,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{rlocus_int_bot_90.pdf}}%
-    \put(0.1410185,0.05252358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-0.05\end{tabular}}}}%
-    \put(0.1410185,0.24002358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
-    \put(0.1410185,0.42752358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0.05\end{tabular}}}}%
+    \put(0.14092583,0.05267667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-0.05\end{tabular}}}}%
+    \put(0.14092583,0.24017667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
+    \put(0.14092583,0.42767667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0.05\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{rlocus_int_bot_90.pdf}}%
-    \put(0.52583333,0.44969024){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Root Locus}\end{tabular}}}}%
-    \put(0.52583333,0.00363008){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Re$(s)$\end{tabular}}}}%
-    \put(0.07061567,0.24394024){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Im$(s)$\end{tabular}}}}}%
+    \put(0.52583333,0.44984334){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Root Locus}\end{tabular}}}}%
+    \put(0.52583333,0.00366751){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Re$(s)$\end{tabular}}}}%
+    \put(0.068787,0.24409334){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Im$(s)$\end{tabular}}}}}%
   \end{picture}%
 \endgroup%
