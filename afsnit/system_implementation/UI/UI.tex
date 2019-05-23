@@ -2,23 +2,27 @@
 \begin{document}
 To be able to set a reference position for the system, and to see where the system currently is, a user interface needs to be implemented.\\
 There are multiple ways in which a user interface can be implemented.
-Two og which will be discussed in this section, a command-line interface and a hardware interface.
+Two of which will be discussed in this section, a command-line interface and a hardware interface.
 
 \subsubsection{Command-line interface}%
 \label{ssub:command-line_interface}
-A command-line interface is practical for tuning the system, since it allows for data to be sent to a receiver and analyzed.
-However It is not suitable as a userfriendly way to interact with the system on its own, which is why in this project it is used for debugging operations.
+A command-line interface is practical for tuning the system, since it allows for data to be sent to a computer and analyzed.
+However It is not suitable as a user friendly way to interact with the system on its own.
 \\
-Since logging data is essential for tuning of the system, a command-line interface has been implemented to achieve the gains nessecary for the wanted behavior fo the system.
+Since logging data is essential for tuning of the system, a command-line interface has been implemented to achieve test the regulator gains for the system.
+The command-line interface is also used for debugging purpose.
 \\
-Implementation of the command-line interface is realised by utilizing the USB port on the Tiva to communicate with a computer via a UART interface.
+Implementation of the command-line interface is realized by utilizing the USB port on the Tiva to communicate with a computer via a UART interface.
 
 \subsubsection{Hardware interface}%
 \label{ssub:hardware_interface}
-The hardware interface is considered more userfriendly since it is useable without connecting a computer to the system.
+The hardware interface is considered more user friendly since it is usable without connecting a computer to the system.
 Since the system already is equipped with a matrix keypad and a small LCD screen, these will be used to create the hardware interface.
 \\
-However the LCD is only capable of displaying $32$ characters distributed on $2$ rows of 16 characters, thus only the position and refernce is displayed.
+However the LCD is only capable of displaying $32$ characters distributed on $2$ rows of 16 characters, thus only the position and reference is displayed.
+\\
+The matrix keypad is used to change the reference for the system, by typing in the position in degrees first for the top frame followed by a pound sign. 
+After setting a reference for the top frame it is possible to set a reference to the bottom frame with the same procedure. 
 
 \begin{figure}[H]
   \centering
@@ -31,7 +35,8 @@ However the LCD is only capable of displaying $32$ characters distributed on $2$
 \subsubsection{User interface summary}%
 \label{ssub:user_interface_summary}
 
-A command-line interface has been implemented in order to acces the system response data.
-Furhtermore, a hardware interface has been implemted. This is to use the system when the tuning is done, and the debug utilities no longer is required.
+A command-line interface has been implemented for logging of data and debugging purpose.
+Furthermore, a hardware interface has been implemented. 
+This is done so that it is possible to  use the system without connecting a computer.
 These two interfaces provide the option to tune and use the system as desired.
 \end{document}
