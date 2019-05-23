@@ -453,7 +453,7 @@ opt = stepDataOptions('StepAmplitude',3*90);
 %Step response Second
 
 %Regulator
-kp = 3.5;
+kp = 3.7;
 Ti = 1/0.035;
 Td = 0;
 ki = kp*1/Ti;
