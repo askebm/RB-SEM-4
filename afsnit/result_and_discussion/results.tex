@@ -1,18 +1,25 @@
 
-\documentclass[../../main]{subfiles}
+\documentclass[../../Main]{subfiles}
 \begin{document}
 
 \subsection{Results}
 \label{sec:results}
-In this section, the project results are presented.
+
+In this section, the project results are presented. In section \ref{sec:} \todo{insert reference to PI-section} the tuning of the system model is made, and the PI-gains $K_p$ and $T_i$ are found. The different controller gains are implemented on the real system, and the actual system responses are shown and compared with the model response. 
+
+\subsubsection{Top Frame}
+\label{sec:top_frame_results}
+The following graphs \ref{fig:top_0}
+,\ref{fig:top_90} and \ref{fig:top_180} depicts the real, modelled and tuned real step responses.
+It is observed that the stepresponses of the model against the stepresponses of the real systems are not alike. The real system has a larger overshoot compared to the model. Furthermore the real system is ocsillating quite a lot. Based on the observed behaviour the system is handtuned to better meet the requirements of the system. Though the overshoot and oscillations are not able to be removed completely with a PI-controller alone.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
-                & Theoretical & Practical & Difference \\
+    	             & Model & Practical & Tuned \\
 \hline
-Overshoot               & ---   & ---  & --- \\
+Overshoot               &    &   &  \\
 \hline
 Risetime                & ---   & ---  & --- \\
 \hline
@@ -21,32 +28,70 @@ Settling time           & ---   & ---  & --- \\
 \end{tabular}
 \caption{Project results}
     \label{tab:project_results}
-\end{table}
-
-\todo{Figure of difference in theoretical and practical data}
-
-To diagnose the potential causes for these differences, its worth considering the approximations made in process of simulating the real system.
+\end{table} 
 
 
-As seen in section \ref{sec:Top_frame_inertia} the moment of inertia is estimated through the following approximations: The corners on the top frame are considered added mass to $d$ while their center of mass actually are closer to the axis of rotation and the bolts keeping the frames together aren't accounted. Since moment of inertia is an expression of mass distribution about a given axis of rotation, we should expect that these approximations would indicate a potential error with same sign as the one we observe. As we would expect a greater moment of inertia would result in a bigger overshoot. This can be seen on figure \todo{ref}REF, which from the above mentioned approximations confirm since the weight of the bolts in the frame would add to the moment of inertia. This is to some extend counter weighed by the corners which would contribute to the moment of inertia to a smaller overshoot, since their distance from the axis of rotation is shorter on the actual system. It is here worth mentioning that the displacement of the frame corners would contribute to the lowering of the overshoot. While this might be present, its influence on the resulting behavior seems to be small based on the real systems behavior.\\
-One other constant which might differ from the real one is the \todo{Hvorfor lige fokus på den konstant?}ohmic resistance in the motors. From the datasheet of the used multimeter \todo{ref}BIBREF its seen that the percentage error generally is $0.0075\%$ which results in the correct resistance for the top frame motor being in the interval $[4.7346\Omega;4.7534\Omega]$ and for the bottom frame its $[4.7016\Omega;4.7024\Omega]$. Since these intervals are as small as shown, they would not contribute in a significant way to the overshoot, and are therefore viewed as negligible.\\
-
-To improve the control of the system, implementation of a\todo{Lowpass kommer før D-term?} D-term followed by a lowpass filter would be an option. This is caused by the fact that the D-term in a PID controller reduces the amount of overshoot, and the filter eliminates noise to prevent the D-term in reacting to these.\\
-A second approach to improve the control of the system would be use of modern control techniques. Here is implementation of state feedback a candidate to improve performance.
-
-
-
+\begin{figure}[H]
   \def\svgwidth{\textwidth}
   \includesvg[\main/afsnit/result_and_discussion/img/]{0_top}
+  \caption{Stepresponses of Topframe linearized in $0^{\circ}$}
+  \label{fig:top_0}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+                & Model  & Hand Tuned  \\
+\hline
+Overshoot               &    & --- \\
+\hline
+Risetime                & ---   & --- \\
+\hline
+Settling time           & ---   & --- \\
+\hline
+\end{tabular}
+\caption{Project results}
+    \label{tab:project_results}
+\end{table} 
 
 
 
+\begin{figure}[H]	
   \def\svgwidth{\textwidth}
   \includesvg[\main/afsnit/result_and_discussion/img/]{90_top}
+  \caption{Stepresponses of Topframe linearized in $90^{\circ}$}
+  \label{fig:top_90}
+\end{figure}
 
-
-
+\begin{figure}[H]
   \def\svgwidth{\textwidth}
   \includesvg[\main/afsnit/result_and_discussion/img/]{180_top}
+  \caption{Stepresponses of Topframe linearized in $180^{\circ}$}
+  \label{fig:top_180}
+\end{figure}
 
+\subsubsection{Bottom Frame}%
+\label{sec:bottom_frame_results}
+
+In the same way as with the topframe in section \ref{sec:top_frame_results}, the results are shown in figure \ref{fig:bot_0} and \ref{fig:bot_90}.
+
+\begin{figure}[H]
+  \def\svgwidth{\textwidth}
+  \includesvg[\main/afsnit/result_and_discussion/img/]{0_bot}
+  \caption{Stepresponses of Bottomframe when topframe is at $0^o$.}
+  \label{fig:bot_0}
+\end{figure}
+
+\begin{figure}[H]
+ \def\svgwidth{\textwidth}
+  \includesvg[\main/afsnit/result_and_discussion/img/]{90_bot}
+  \caption{Stepresponses of Bottomframe when topframe is at $90^o$.}
+  \label{fig:bot_90}
+\end{figure}
+
+It is also observed that the tuned $K_i$ and $K_p$ values from the model, does not give an expected stepresponse. There is more overshoot compared to the model. The real system is tuned to give at better response, but as in section \ref{sec:top_frame_results} the system PI-controller alone cannot eliminate overshoot.
+
+From the results it can be conluded that the modelled system was not close enough to the real system,to use it for tuning. Furthermore, even though it is not reflected in the model, the real system will benefit from a D-term in the controller, making it at PID-controller. The D-term will help dampen the overshoot, perhaps eliminating them all together. 
 \end{document}
