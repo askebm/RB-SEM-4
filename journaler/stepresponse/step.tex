@@ -3,22 +3,24 @@
 \paragraph{Purpose}%
 \label{par:purpose}
 
-Determine step response of system, monitoring current, position, and velocity for use in tuning system parameters.
+Determine the step response of the system as well as monitoring current, position and velocity for use in tuning the system's parameters.
 
 \paragraph{Apparatus}%
 \label{par:apperateur}
 \begin{itemize}
 	\item DSO-X 2024A (Oscilloscope)
 	\item Power supply 12\si{V} and 5\si{V}
-	\item 0.1\si{\Omega}5\% power resistor
-	\item pan-tilt system with FPGA and Tiva
+	\item 0.1\si{\Omega} 5\% power resistor
+	\item pan-tilt
+	\item FPGA
+	\item Tiva
 \end{itemize}
 
 
 \paragraph{Approach}%
 \label{par:approach}
-The steprepsonse is performed at 200 pwm wich is $200\frac{12\si{V}}{255} = 9.4\si{V}$.\\
-The current is measured over the 0.1\si{\Omega} resistor, while its in series with the pan-tilt system.
+The step response is performed with $200$ PWM which is $200\frac{12\si{V}}{255} = 9.4\si{V}$.\\
+The current is measured over the 0.1\si{\Omega} resistor, while it is in series with the pan-tilt system.
 Data is sampled at 2.5\si{kHz} to properly filter out pwm signal of 1\si{kHz}.
 
 \paragraph{Result}%
