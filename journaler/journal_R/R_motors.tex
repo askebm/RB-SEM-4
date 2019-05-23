@@ -2,29 +2,33 @@
 
 \begin{document}
 \paragraph{Abstract}
-The ohmic resistance of the two motors controlling the pan-tilt system gets determined.
+The ohmic resistance of the two motors controlling the pan-tilt system is determined.
 \paragraph{Introduction}
-The ohmic ressitance of the motors are the goal to be determined in this jounal. Every constant concerning the motor of the topframe is denoted $A_t$ while constants for the buttom frame is denoted $A_b$.
+The goal of this journal is to determine the ohmic resistance of the two motors. Every constant concerning the motor of the top frame is denoted $A_t$ and the constants for the buttom frame is denoted $A_b$.
 \paragraph{Materials and Methods}
-To determine the ohmic resistance of the motors a known voltage will be applied, causing a current to flow through the motor. Using Ohm's law we thus can determine the wanted resistance.\\
-The circuit used to determine the resistance fo the motor can be seen on figure (\ref{fig:resistance_circuit}). When executing the experiment a $VCC$ of $12V$ is chosen with a ohmic resistor with resistance $R_1 = 22\Omega$. Measuring the current flowing through the resistor in series with the motor on the top frame, its seen that $I_t \approx 0.449 A$.
+To determine the ohmic resistance of the motors a known voltage will be applied, causing a current to flow through the motor. Using Ohm's law we can this determine the desired resistance.\\
+The circuit used to determine the resistance of the motors can be seen on figure \ref{fig:resistance_circuit}. When executing the experiment a $VCC$ of $12V$ is chosen with a ohmic resistor with resistance $R_1 = 22\Omega$. Measuring the current flowing through the resistor in series with the motor on the top frame, it is seen that $I_t \approx 0.449 A$.
 
 \begin{figure}[H]
   \begin{center}
     \includegraphics[width=0.1\textwidth]{\main/journaler/journal_R/circuitDiagramR.png}
   \end{center}
+  \caption{Circuit diagram}
   \label{fig:resistance_circuit}
 \end{figure}
-Doing the same but with the buttom frame, the current measured is $I_b \approx 0.448 A$. Thus the resistance of the two motors can be caluclated as:
+
+The same procedure is follwed for the bottom frame yielding a current measured to be $I_b \approx 0.448 A$. Thus the resistance of the two motors can be caluclated as:
 $$VCC = (R_1 + R_{motor,t})\cdot I_t \Rightarrow R_{motor,t} = \frac{12V}{0.448 A}-22\Omega \approx 4.79 \Omega $$
 $$VCC = (R_1 + R_{motor,b})\cdot I_b \Rightarrow R_{motor,b} = \frac{12V}{0.449 A}-22\Omega \approx 4.70 \Omega $$
 
 
 \paragraph{Results}
 
-The result of this experiment is as follows.
+The result of this experiment is:
 $$R_{motor,b} \approx 4.70 \Omega$$
 $$R_{motor,t} \approx 4.79 \Omega$$
+
+
 
 \paragraph{Conclusion}
 
