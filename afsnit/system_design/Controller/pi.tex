@@ -5,7 +5,7 @@ In this section the controllers for the Top and Bottom frames of the pan-tilt sy
 
 \subsubsection{Tuning of Top-Frame}
 \label{sec:top_frame_tuning}
-The top frame is unlinear, as can be seen in equation \ref{eq:new_mech_equation_with_corners}, which includes a sine term.
+The top frame is nonlinear, as can be seen in equation \eqref{eq:new_mech_equation_with_corners}, which includes a sine term.
 
 To design a controller, for the topframe, the system is linearized in four points. It is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{fig:jour_step_bot}
 
@@ -61,15 +61,15 @@ The system is linearized in $0^o$. Which gives the following A, B and C matrices
 \label{fig:rlocus_pure}
 \end{figure}
 
-Based on the root-locus, the system can be regulated and and be stable only using a p-gain. 
+Based on the root-locus, the system can be regulated and be stable only using a p-gain. 
 But this will result in a steady-state error. therefore a PI-controller is tuned. 
-A PI-controller is given by transferfunction \ref{equ:transfPI}
+A PI-controller is given by transferfunction \eqref{equ:transfPI}
 
 \begin{align}
 	Kp \frac{s+\frac{1}{Ti}}{s}
 	\label{equ:transfPI}
 \end{align}
-From equation \ref{equ:transfPI} it is seen, that a zero is added to the system.
+From equation \eqref{equ:transfPI} it is seen, that a zero is added to the system.
 and is placed in $-\frac{1}{Ti} $
 The controller must be tuned to comply with the system requirements set forth in the problem statement, with a settling time of maximum 1 sec and no overshoot. For this to apply, the controlled system must be overdamped with real poles. And these poles must be located further to the left than $\sigma$
 \begin{align}
@@ -111,7 +111,7 @@ In figure \ref{fig:step_0_first} it can be seen that the settling time is faster
 The regulated system has a slight overshoot, but has a risetime of 1 second as per the system requirements. The overshoot is the lowest possible, if the reference is to be reached. Furthermore the system takes 100 seconds to reach its final value.
 
 \subsubsection{Linearize in $90^o$ and $180^o$}
-In this section the linearized system is tuned in the same manor as is in section \ref{sec:linearize}. But not all steps are shown, as the approach is the same. Here the tuned values and the final stepresponses will be shown and commented.
+In this section the linearized system is tuned in the same manner as is in section \ref{sec:linearize}. But not all steps are shown, as the approach is the same. Here the tuned values and the final stepresponses will be shown and commented.
 
 Linearization in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_linearized}. 
 
@@ -125,7 +125,7 @@ Linearization in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_l
         i_t
     \end{bmatrix}
     &=
-    \begin{bmatrix}0 & 1.0 & 0\\ 0  & -75.8 & 212.0\\ 0 & -260.0 & -1.24cdot10^4 \end{bmatrix}
+    \begin{bmatrix}0 & 1.0 & 0\\ 0  & -75.8 & 212.0\\ 0 & -260.0 & -1.24 \cdot 10^4 \end{bmatrix}
     \begin{bmatrix}
         \theta_t \\
         \dot \theta_t \\
@@ -157,6 +157,7 @@ It is tuned to $Kp = 1.39$ and $Ti = \frac{1}{0.006}$
 \caption{Step responce of system with the tuned PI-regulator.}
 \label{fig:step_0_second_90}
 \end{figure}
+\todo{Hvad er settling time her, samme som ovenfor ? eller 4 sek ?}
 
 
 Linearization in $180^o$ gives A, B and C matrices shown in equation \ref{eq:180_linearized}. 
