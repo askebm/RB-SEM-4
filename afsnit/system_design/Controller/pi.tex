@@ -14,7 +14,7 @@ Because $-90^o$ and  $+90^o$ are the has the same behavior in this system, only 
 
 \subsubsection{Linearize in $0^o$}
 \label{sec:linearize}
-The system is linearized in $0^o$. Which gives the following A, B and C matrices. 
+The system is linearized in $0^o$. Which gives the following A, B and C matrices.
 
 
 \begin{equation}
@@ -61,8 +61,8 @@ The system is linearized in $0^o$. Which gives the following A, B and C matrices
 \label{fig:rlocus_pure}
 \end{figure}
 
-Based on the root-locus, the system can be regulated and be stable only using a p-gain. 
-But this will result in a steady-state error. therefore a PI-controller is tuned. 
+Based on the root-locus, the system can be regulated and be stable only using a p-gain.
+But this will result in a steady-state error. therefore a PI-controller is tuned.
 A PI-controller is given by transfer function \eqref{equ:transfPI}
 
 \begin{align}
@@ -87,7 +87,7 @@ With a $T_i = \frac{1}{0.035}$ the root locus in figure \ref{fig:rlocus_int} is 
 \label{fig:rlocus_int}
 \end{figure}
 
-With a gain $Kp = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, would approach the zero. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035}$ and $Kp = 3.1$ returns a system with the stepresponse in figure \ref{fig:step_0_first}
+With a gain $Kp = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, would approach the zero. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035}$ and $Kp = 3.1$ returns a system with the step response in figure \ref{fig:step_0_first}
 
 \begin{figure}[H]
 \centering
@@ -102,13 +102,13 @@ With a gain $Kp = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, wou
 	 \begin{tabular}{ll}
 		 Overshoot & 0\%\\
 		 Risetime & 0.4798s\\
-		 Settling time & 2.1619s 
+		 Settling time & 2.1619s
 	 \end{tabular}
 	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_first}.}
 	 \label{tab:performance_0_1}
 \end{table}
 
-In figure \ref{fig:step_0_first} it can be seen that the risetime is faster than the expected 1 second. And the reference is not reached. Therefore the $Kp$ and $T_i$ are tuned to better match the requirements. $Kp = 1.6$ and $T_i=0.2$ is found to give the closest to expected response. The stepresponse can be seen in figure \ref{fig:step_0_second}.
+In figure \ref{fig:step_0_first} it can be seen that the risetime is faster than the expected 1 second. And the reference is not reached. Therefore the $Kp$ and $T_i$ are tuned to better match the requirements. $Kp = 1.6$ and $T_i=0.2$ is found to give the closest to expected response. The step response can be seen in figure \ref{fig:step_0_second}.
 
 \begin{figure}[H]
 \centering
@@ -124,7 +124,7 @@ In figure \ref{fig:step_0_first} it can be seen that the risetime is faster than
 	 \begin{tabular}{ll}
 		 Overshoot & 1.7522\%\\
 		 Risetime  & 0.8318s\\
-		 Settling time & 1.3199s 	
+		 Settling time & 1.3199s
 	 \end{tabular}
 	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second}.}
 	 \label{tab:performance_0_2}
@@ -135,9 +135,9 @@ In figure \ref{fig:step_0_first} it can be seen that the risetime is faster than
 The regulated system has a slight overshoot, but has a risetime of 1 second as per the system requirements. The overshoot is the lowest possible, if the reference is to be reached. Furthermore the system takes 100 seconds to reach its final value.
 
 \subsubsection{Linearize in $90^o$ and $180^o$}
-In this section the linearized system is tuned in the same manner as is in section \ref{sec:linearize}. But not all steps are shown, as the approach is the same. Here the tuned values and the final stepresponses will be shown and commented.
+In this section the linearized system is tuned in the same manner as is in section \ref{sec:linearize}. But not all steps are shown, as the approach is the same. Here the tuned values and the final step responses will be shown and commented.
 
-Linearizations in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_linearized}. 
+Linearizations in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_linearized}.
 
 \begin{equation}
       \label{eq:90_linearized}
@@ -172,7 +172,7 @@ Linearizations in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_
     \end{split}
 \end{equation}
 
-Figure \ref{fig:step_0_second_90} shows the tuned stepresponse of the closed loop control system and plant.
+Figure \ref{fig:step_0_second_90} shows the tuned step response of the closed loop control system and plant.
 It is tuned to $Kp = 1.39$ and $Ti = \frac{1}{0.006}$
 \begin{figure}[H]
 \centering
@@ -188,13 +188,13 @@ It is tuned to $Kp = 1.39$ and $Ti = \frac{1}{0.006}$
 	 \begin{tabular}{ll}
 		 Overshoot & 2.5603\%\\
 		 Risetime  & 0.9890s\\
-		 Settling time & 8.1063s 	
+		 Settling time & 8.1063s
 	 \end{tabular}
 	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second_90}.}
 	 \label{tab:performance_0_3}a
 \end{table}
 
-Linearization in $180^o$ gives A, B and C matrices shown in equation \ref{eq:180_linearized}. 
+Linearization in $180^o$ gives A, B and C matrices shown in equation \ref{eq:180_linearized}.
 
 \begin{equation}
       \label{eq:180_linearized}
@@ -231,7 +231,7 @@ Linearization in $180^o$ gives A, B and C matrices shown in equation \ref{eq:180
 \end{equation}
 
 
-Figure \ref{fig:step_0_second_180} shows the tuned stepresponse of the closed loop control system and plant.
+Figure \ref{fig:step_0_second_180} shows the tuned step response of the closed loop control system and plant.
 It is tuned to $Kp = 1.3$ and $Ti = \frac{1}{0.2}$
 \begin{figure}[H]
 \centering
@@ -246,7 +246,7 @@ It is tuned to $Kp = 1.3$ and $Ti = \frac{1}{0.2}$
 	 \begin{tabular}{ll}
 		 Overshoot & 13.5409\%\\
 		 Risetime  & 0.8075s\\
-		 Settling time & 10.8682s 	
+		 Settling time & 10.8682s
 	 \end{tabular}
 	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second_180}.}
 	 \label{tab:performance_0_4}
@@ -328,7 +328,7 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first_bot.pdf_tex}
-\caption{Stepresponse of PI controller on system.}
+\caption{Step response of PI controller on system.}
 \label{fig:step_0_first_bot}
 \end{figure}
 
@@ -338,7 +338,7 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 	 \begin{tabular}{ll}
 		 Overshoot & 0.6323\%\\
 		 Risetime  & 0.4143s\\
-		 Settling time & 0.7133s 	
+		 Settling time & 0.7133s
 	 \end{tabular}
 	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_first_bot}.}
 	 \label{tab:performance_0_5}
@@ -346,14 +346,14 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 
 
 
-Figure \ref{fig:step_0_first_bot} then shows the stepresponse of that PI-controller.
-As in section \ref{sec:top_frame_tuning}, the response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot}.
+Figure \ref{fig:step_0_first_bot} then shows the step response of that PI-controller.
+As in section \ref{sec:top_frame_tuning}, the response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the step response seen in figure \ref{fig:step_0_second_bot}.
 
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_bot.pdf_tex}
-\caption{Stepresponse of tuned PI controller on system.}
+\caption{Step response of tuned PI controller on system.}
 \label{fig:step_0_second_bot}
 \end{figure}
 
@@ -363,7 +363,7 @@ As in section \ref{sec:top_frame_tuning}, the response is not as expected, as th
 	 \begin{tabular}{ll}
 		 Overshoot & 1.5803\%\\
 		 Risetime  & 1.0226s\\
-		 Settling time & 1.6587s 	
+		 Settling time & 1.6587s
 	 \end{tabular}
 	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_second_bot}.}
 	 \label{tab:performance_0_6}
@@ -430,7 +430,7 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first_bot_90.pdf_tex}
-\caption{Stepresponse of PI controller on system.}
+\caption{Step response of PI controller on system.}
 \label{fig:step_0_first_bot_90}
 \end{figure}
 
@@ -440,7 +440,7 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 	 \begin{tabular}{ll}
 		 Overshoot & 0.6315\%\\
 		 Risetime  & 0.4099s\\
-		 Settling time & 0.7071s 	
+		 Settling time & 0.7071s
 	 \end{tabular}
 	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_first_bot_90}.}
 	 \label{tab:performance_0_7}
@@ -448,14 +448,14 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 
 
 
-Figure \ref{fig:step_0_first_bot_90} then shows the stepresponse of that PI-controller.
-The response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot_90}.
+Figure \ref{fig:step_0_first_bot_90} then shows the step response of that PI-controller.
+The response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the step response seen in figure \ref{fig:step_0_second_bot_90}.
 
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_bot_90.pdf_tex}
-\caption{Stepresponse of tuned PI controller on system.}
+\caption{Step response of tuned PI controller on system.}
 \label{fig:step_0_second_bot_90}
 \end{figure}
 
@@ -464,7 +464,7 @@ The response is not as expected, as the system is not a first order system. Ther
 	 \begin{tabular}{ll}
 		 Overshoot & 1.6636\%\\
 		 Risetime  & 1.0755s\\
-		 Settling time & 1.7388s 	
+		 Settling time & 1.7388s
 	 \end{tabular}
 	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_second_bot_90}.}
 	 \label{tab:performance_0_8}
@@ -472,7 +472,7 @@ The response is not as expected, as the system is not a first order system. Ther
 
 
 
-In figure \ref{fig:comp_bot} a graph of both stepresponses are shown. It shows that there are no difference if the topframe is at an angle of $0^o$ or at $90^o$, when the to plants with the samme cotroller is tested. Based on this, it is concluded that the changing moment of inertia does not have an effect on the response of the system. 
+In figure \ref{fig:comp_bot} a graph of both step responses are shown. It shows that there are no difference if the topframe is at an angle of $0^o$ or at $90^o$, when the to plants with the samme cotroller is tested. Based on this, it is concluded that the changing moment of inertia does not have an effect on the response of the system.
 
 
 \begin{figure}[H]

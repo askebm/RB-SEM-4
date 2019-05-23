@@ -35,7 +35,7 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
         \label{fig:simulink_bot}
 \end{figure}
 
-The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated stepresponse interlaced with the physical step response can be seen in figure \ref{fig:validation_steptuning}.
+The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated step response interlaced with the physical step response can be seen in figure \ref{fig:validation_steptuning}.
 
 \begin{table}[h]
 	\centering
@@ -52,7 +52,7 @@ The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_consta
 		motor torque & 1.57 \si{ \frac{N m}{A}}\\
 		friction coefficient & 0.5\\
 	\end{tabular}
-	\caption{Fitted motor constants.}
+	\caption{Adjusted motor constants.}
 	\label{tab:fitted_motor_constants}
 \end{table}
 
@@ -71,5 +71,4 @@ It was not possible to tune the simulated model to fit the real data,
 which indicates that there are some parameters not accounted for in the model.
 It was not possible to match both the theoretical velocity and current to their practical counterparts at the same time. Since only position, and therefore velocity, is observable, it is prioritized to match the practical and theoretical velocity.
 As the modeled system is not a perfect match, the requirement for the gain margin of the controller, to allow for disturbances, increase.
-
 \end{document}
