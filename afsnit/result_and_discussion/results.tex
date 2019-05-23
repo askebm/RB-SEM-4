@@ -3,12 +3,13 @@
 
 \subsection{Results}
 \label{sec:results}
-In this section, the project results are presented. In section \ref{} \todo{insert reference} the tuning of the system model is made, and the PI-gains $K_p$ and $T_i$ are found. The different controller gains are implemented on the real system, and the actual system responses are shown and compared
+In this section, the project results are presented. In section \ref{sec:PI} the tuning of the system model is made, and the PI-gains $K_p$ and $T_i$ are found. The different controller gains are implemented on the real system, and the actual system responses are shown and compared
 with the model response.
 
-\section{Top Frame}%
-\label{sec:top_frame_result}
-The following graphs \ref{fig:0_top} , \ref{fig:90_top} and \ref{fig:180_top} depicts the real, modllled and tuned real step responses.
+\subsubsection{Top Frame}
+\label{sec:top_frame_results}
+
+The following graphs \ref{fig:top_0}, \ref{fig:top_90} and \ref{fig:top_180} depicts the real, modllled and tuned real step responses.
 It is observed that the stepresponses of the model against the stepresponses of the real
 systems are not alike. The real system has a larger overshoot compared to the model.
 Furthermore the real system is ocsillating quite a lot. Based on the observed behaviour
@@ -43,45 +44,48 @@ alone.
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{*{4}{l}}
+	\begin{tabular}{l|*{3}{l}}
 		&Modelled&Untuned&Tuned\\
+		\hline
 		Overshoot&1.752&38.148&28.518\\
 		Risetime&0.831&0.250&0.279\\
 		Settling Time&1.319&15.402&8.560\\
 		Kp&1.6&1.6&1.9\\
 		Ki&0.32&0.32&5
 	\end{tabular}
-	\caption{0 top}
+	\caption{System characteristics when linearized at $0^o$}
 	\label{tab:0_top}
 \end{table}
 
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{*{4}{l}}
+	\begin{tabular}{l|*{3}{l}}
 		&Modelled&Untuned&Tuned\\
+		\hline
 		Overshoot&2.560&27.407&25.185\\
 		Risetime&0.988&0.258&0.244\\
 		Settling Time&NaN&NaN&7.235\\
 		Kp&1.39&1.39&2.2\\
 		Ki&0.083&0.083&1.4
 	\end{tabular}
-	\caption{90 top}
+	\caption{System characteristics when linearized at $90^o$}
 	\label{tab:90_top}
 \end{table}
 
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{*{4}{l}}
+	\begin{tabular}{l|*{3}{l}}
 		&Modelled&Untuned&Tuned\\
+		\hline
 		Overshoot&13.540&29.629&24.074\\
 		Risetime&0.807&0.244&0.226\\
 		Settling Time&10.868&NaN&11.281\\
 		Kp&1.3&1.3&2.3\\
 		Ki&0.26&0.26&1.8
 	\end{tabular}
-	\caption{180 top}
+	\caption{System characteristics when linearized at $180^o$}
 	\label{tab:180_top}
 \end{table}
 
@@ -109,8 +113,9 @@ In the same way as with the topframe in section \ref{sec:top_frame_results}, the
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{*{4}{l}}
+	\begin{tabular}{l|*{3}{l}}
 		&Modelled&Untuned&Tuned\\
+		\hline
 		Overshoot&1.361&22.592&39.629\\
 		Risetime& 1.018&0.353&0.417\\
 		Settling Time& 1.653&NaN& 15.416\\
@@ -123,8 +128,9 @@ In the same way as with the topframe in section \ref{sec:top_frame_results}, the
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{*{4}{l}}
+	\begin{tabular}{l|*{3}{l}}
 		&Modelled&Untuned&Tuned\\
+		\hline
 		Overshoot&1.362&22.592&38.518\\
 		Risetime&1.022&0.327&0.388\\
 		Settling Time&1.658&NaN&15.425\\
