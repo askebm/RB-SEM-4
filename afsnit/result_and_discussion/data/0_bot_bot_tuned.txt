@@ -1,0 +1,2 @@
+RiseTime,SettlingTime,SettlingMin,SettlingMax,Overshoot,Undershoot,Peak,PeakTime
+0.388397399999999,15.4258494,211,374,38.5185185185185,-0,374,9.701216
