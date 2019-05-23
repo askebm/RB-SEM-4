@@ -2,7 +2,7 @@
 \begin{document}
 
 
-The overarching aim of the project is to create a platform for a stage spotlight with the behaviour expected of such a system in regards to its movement characteristics.
+The overarching aim of the project is to create a platform for a stage spotlight with the behavior expected of such a system in regards to its movement characteristics.
 
 As the mechanical platform is provided, the project can be resolved using the fields of study connected to this project, which are; control engineering, digital system design and embedded programming.
 The problem statement is therefore divided by field of study.
@@ -25,7 +25,7 @@ Design a controller such that the performance specifications are met in a satisf
 
 \paragraph{Digital System Design}%
 \label{par:digital_system_design}
-\todo{A communication's protocol should be designed and implemented on the FPGA with SPI as the communication method. } Make the FPGA able to communicate by using SPI and implement a protocol.
+A communication's protocol should be designed and implemented on the FPGA with SPI as the communication method. 
 Measure velocity and position reliably, such that these can be used to monitor and regulate the
 system.
 Control the motors using PWM.
@@ -36,7 +36,7 @@ Implement a real time operating system such that it will be able to handle user 
 \\
 
 To properly define the project a set of performance specification regarding the controller design is necessary.
-These specifications consists of rise time, which is the time it takes to reach a \todo{which is the time it takes to reach 90\% of the steady-state response.} given set point with a threshold.
+These specifications consists of rise time, which is the time it takes to reach a given set point with a threshold.
 Settling time, which is the time it takes to stay within 1\% of the set point indefinitely.
 Lastly there is overshoot, which is the percentage amount with which a system initially surpasses its set point.\\
 
@@ -51,9 +51,14 @@ To limit the scope of these specifications they will only apply for movement up 
 \\
 The performance specifications for a 90$^o$ movement are listed below:
 
-\begin{itemize}
-  \item No overshoot.
-  \item Maximum $1s$ rise time.
-  \item $1\%$ settling time of $1.2s$.
-\end{itemize}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{ll}
+		Overshoot & 0\\
+		Risetime & 90\% of set point at 1\si{s}\\
+		Settling time & 1.2\si{s}
+	\end{tabular}
+	\caption{Performance specifications}
+	\label{tab:performance_specifications}
+\end{table}
 \end{document}
