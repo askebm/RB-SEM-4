@@ -1,7 +1,18 @@
 \documentclass[../../../main]{subfiles}
 
-
 \begin{document}
+\lstset{basicstyle=\tt\scriptsize}
+
+\lstset{language=C,
+	tabsize=4,
+	numbers=left,
+	numberstyle=\tiny,
+	keywordstyle=\bfseries\color{green!40!black},
+    commentstyle = \color{olive},
+	stepnumber=1,
+	numbersep=5pt}
+\lstset{morekeywords={int16\_t, uint\_t, PI,x\_n,y\_n}}
+
 \subsection{PI}
 
 \subsubsection{Software design of a PI controller}
@@ -21,7 +32,7 @@ To meet the requirements, the following design criteria must be fulfilled.
 In order to write a routine that will act as the PI-controller, it must be wrapped into a never ending loop.
 In this loop the desired calculations will be done. This is done to meet the first criteria and is achieved in listing \ref{list:funtion_body}.
 
-\lstinputlisting[language=C, firstline=3, lastline=16,caption = {Function body} ,label={list:funtion_body} ]{\main/afsnit/system_implementation/PI/code_snippets.h}
+\lstinputlisting[ firstline=3, lastline=16,caption = {Function body} ,label={list:funtion_body} ]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
 
 
@@ -32,7 +43,7 @@ It is noticed that if the functions, calculate\_error\_PI() and calculate\_P(), 
 
 The struct will contain all the necessary gains and data-samples, which a PI-controller needs in order to operate.
 The struct members can be seen in listing \ref{list:struct_def}.
-\lstinputlisting[language=C, firstline=20, lastline=33,caption = {struct definition} ,label={list:struct_def}]{\main/afsnit/system_implementation/PI/code_snippets.h}
+\lstinputlisting[ firstline=20, lastline=33,caption = {struct definition} ,label={list:struct_def}]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
 Since the design requirements are met, the next step is to implement the functionality of a PI-controller with the following requirements:
 \begin{itemize}
@@ -95,16 +106,8 @@ $$
 \subsubsection{Implementation of the difference equation}
 With the software design chosen and the difference equation derived, the next step is to implement it.
 This is done in the following code snippet,seen in listing \ref{list:PI_controller}, which includes anti-windup whilst having the PI-controller expressed as a difference equation.
-\todo{Hvad x i implementeringen i forhold til differense liningen, der skal være en sammenkobling af variable}
 
-\lstinputlisting[language=C, firstline=37, lastline=67,caption = {PI controller} ,label={list:PI_controller}]{\main/afsnit/system_implementation/PI/code_snippets.h}
-
-
-
-
-
-
-
+\lstinputlisting[ firstline=37, lastline=67,caption = {PI controller, with \text{x\_n =  e[n] and y\_n = u[n]} } ,label={list:PI_controller}]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
 
 
