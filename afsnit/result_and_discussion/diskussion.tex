@@ -1,0 +1,29 @@
+
+\documentclass[../../main]{subfiles}
+\begin{document}
+
+\subsection{Discussion}
+\label{sec:discussion}
+In this section, the reasons for the difference in the \todo{ikke "found", det lyder som om den lå på jorden}found theoretical model and the observed behavior of the system will be discussed together with suggstions to further improve the project.
+
+\subsubsection{Difference in practical vs. Theoretical results}
+Firstly the above mentioned differences must be quantified to see if the errors, caused by approximations, have the expected size and sign. This can be seen on figure \todo{REF}
+
+\todo{Figure of difference in theoretical and practical data}
+
+To diagnose the potential causes for these differences, its worth considering the approximations made in process of simulating the real system.
+
+
+As seen in section \ref{sec:Top_frame_inertia} the moment of inertia is estimated through the following approximations: The corners on the top frame are considered added mass to $d$ while their center of mass actually are closer to the axis of rotation and the bolts keeping the frames together aren't accounted. Since moment of inertia is an expression of mass distribution about a given axis of rotation, we should expect that these approximations would indicate a potential error with same sign as the one we observe. As we would expect a greater moment of inertia would result in a bigger overshoot. This can be seen on figure \todo{ref}REF, which from the above mentioned approximations confirm since the weight of the bolts in the frame would add to the moment of inertia. This is to some extend counter weighed by the corners which would contribute to the moment of inertia to a smaller overshoot, since their distance from the axis of rotation is shorter on the actual system. It is here worth mentioning that the displacement of the frame corners would contribute to the lowering of the overshoot. While this might be present, its influence on the resulting behavior seems to be small based on the real systems behavior.\\
+One other constant which might differ from the real one is the \todo{Hvorfor lige fokus på den konstant?}ohmic resistance in the motors. From the datasheet of the used multimeter \todo{ref}BIBREF its seen that the percentage error generally is $0.0075\%$ which results in the correct resistance for the top frame motor being in the interval $[4.7346\Omega;4.7534\Omega]$ and for the bottom frame its $[4.7016\Omega;4.7024\Omega]$. Since these intervals are as small as shown, they would not contribute in a significant way to the overshoot, and are therefore viewed as negligible.\\
+
+To improve the control of the system, implementation of a\todo{Lowpass kommer før D-term?} D-term followed by a lowpass filter would be an option. This is caused by the fact that the D-term in a PID controller reduces the amount of overshoot, and the filter eliminates noise to prevent the D-term in reacting to these.\\
+A second approach to improve the control of the system would be use of modern control techniques. Here is implementation of state feedback a candidate to improve performance.
+
+
+
+
+
+
+
+\end{document}
