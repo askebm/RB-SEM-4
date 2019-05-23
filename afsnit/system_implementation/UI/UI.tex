@@ -7,10 +7,9 @@ Two will be discussed in this section, a command-line interface and a hardware i
 \subsubsection{Command-line interface}%
 \label{ssub:command-line_interface}
 A command-line interface is practical for designing and tuning of the system, since it allows for data to be sent to a computer and analyzed.
-It is not the most user friendly way to interact with a system, and therefor it should not stand on its own.
+It is not the most user friendly way to interact with a system , and therefor it should not stand on its own and is more suited for debug operations.
 \\
 Logging data is essential for tuning of the system, and therefore a command-line interface has been implemented. 
-The interface commands can be seen in table XX. \todo{create table}
 \\
 Implementation of the command-line interface is done by utilizing the USB port on the Tiva to communicate with a computer via a UART interface.  
 
@@ -19,7 +18,7 @@ Implementation of the command-line interface is done by utilizing the USB port o
 A hardware interface is more user friendly, and it is possible to use without connecting a computer to the system. 
 Since the system already is equipped whit both a matrix keypad and a small LCD screen, these have been used to create a hardware interface.
 \\
-Since the LCD screen only can display 16X2 characters only the most essential information is shown.
+Since the LCD screen only can display 16X2 characters only the most essential information, the current position and reference is shown.
 
 
 \begin{figure}[H]
@@ -34,17 +33,6 @@ Since the LCD screen only can display 16X2 characters only the most essential in
 \subsubsection{User interface summary}%
 \label{ssub:user_interface_summary}
 
-
-
-\begin{itemize}
-    \item Why do we need a UI? 
-    \item Descripe UART UI
-        \begin{itemize}
-            \item protcol table
-        \end{itemize}
-    \item Descripe LCD UI
-    \item Conclude on UI 
-\end{itemize}
-
+These two systems provide a way to interact with the system, either in order to extract data or change the systems reference point.
 
 \end{document}
