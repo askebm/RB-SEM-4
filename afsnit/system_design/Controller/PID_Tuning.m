@@ -103,7 +103,7 @@ opt = stepDataOptions('StepAmplitude',3*90);
   line([1 1],[0 300], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
   yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
-  set(rlocus_int,'Position',[10 10 600 300]) % Must closely match the final size needed
+  set(step_0_first,'Position',[10 10 600 300]) % Must closely match the final size needed
   Plot2LaTeX(step_0_first,'img/PI/step_0_first')
   
   
