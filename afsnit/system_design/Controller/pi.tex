@@ -288,7 +288,7 @@ The statespace model of the bottomframe, when the topframe is at $0^o$  is found
     \end{bmatrix}
     +
     \begin{bmatrix}
-      0\\ 0\\ 17.0
+      0\\ 0\\ 2600
     \end{bmatrix}
     V_t
 \\
@@ -333,6 +333,20 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 \label{fig:step_0_first_bot}
 \end{figure}
 
+
+\begin{table}[h]
+	 \centering
+	 \begin{tabular}{ll}
+		 Overshoot & 0.6323\%\\
+		 Risetime  & 0.4143s\\
+		 Settling time & 0.7133s 	
+	 \end{tabular}
+	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_first_bot}.}
+	 \label{tab:performance_0_5}
+\end{table}
+
+
+
 Figure \ref{fig:step_0_first_bot} then shows the stepresponse of that PI-controller.
 As in section \ref{sec:top_frame_tuning}, the response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot}.
 
@@ -343,6 +357,18 @@ As in section \ref{sec:top_frame_tuning}, the response is not as expected, as th
 \caption{Stepresponse of tuned PI controller on system.}
 \label{fig:step_0_second_bot}
 \end{figure}
+
+
+\begin{table}[h]
+	 \centering
+	 \begin{tabular}{ll}
+		 Overshoot & 1.5803\%\\
+		 Risetime  & 1.0226s\\
+		 Settling time & 1.6587s 	
+	 \end{tabular}
+	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_second_bot}.}
+	 \label{tab:performance_0_6}
+\end{table}
 
 The statespace model of the bottomframe, when the topframe is at $90^o$  is found in equation \ref{eq:bottom_state_eq_2}
 
@@ -356,7 +382,7 @@ The statespace model of the bottomframe, when the topframe is at $90^o$  is foun
         i_t
     \end{bmatrix}
     =&
-    \begin{bmatrix}0 & 1.0 & 0\\ 0 & -35.0 & 110.0\\ 0 & -9099.0 & -1.24\cdot10^4\end{bmatrix}
+    \begin{bmatrix}0 & 1.0 & 0\\ 0 & -18.6 & 58.3\\ 0 & -9099.0 & -1.24\cdot10^4\end{bmatrix}
     \begin{bmatrix}
         \theta_t \\
         \dot \theta_t \\
@@ -364,7 +390,7 @@ The statespace model of the bottomframe, when the topframe is at $90^o$  is foun
     \end{bmatrix}
     +
     \begin{bmatrix}
-      0\\ 0\\ 13.7
+      0\\ 0\\ 2600
     \end{bmatrix}
     V_t
 \\
@@ -409,6 +435,20 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 \label{fig:step_0_first_bot_90}
 \end{figure}
 
+
+\begin{table}[h]
+	 \centering
+	 \begin{tabular}{ll}
+		 Overshoot & 0.6315\%\\
+		 Risetime  & 0.4099s\\
+		 Settling time & 0.7071s 	
+	 \end{tabular}
+	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_first_bot_90}.}
+	 \label{tab:performance_0_7}
+\end{table}
+
+
+
 Figure \ref{fig:step_0_first_bot_90} then shows the stepresponse of that PI-controller.
 The response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot_90}.
 
@@ -420,7 +460,20 @@ The response is not as expected, as the system is not a first order system. Ther
 \label{fig:step_0_second_bot_90}
 \end{figure}
 
-In figure \ref{fig:comp_bot} a graph of both stepresponses together are shown. It shows that there are no difference if the topframe is at an angle of $0^o$ or at $90^o$. Therefore there is no reason to take the changing moment of inertia into account. 
+\begin{table}[h]
+	 \centering
+	 \begin{tabular}{ll}
+		 Overshoot & 1.6636\%\\
+		 Risetime  & 1.0755s\\
+		 Settling time & 1.7388s 	
+	 \end{tabular}
+	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_second_bot_90}.}
+	 \label{tab:performance_0_8}
+\end{table}
+
+
+
+In figure \ref{fig:comp_bot} a graph of both stepresponses are shown. It shows that there are no difference if the topframe is at an angle of $0^o$ or at $90^o$, when the to plants with the samme cotroller is tested. Based on this, it is concluded that the changing moment of inertia does not have an effect on the response of the system. 
 
 
 \begin{figure}[H]

@@ -262,7 +262,7 @@ Lb = 3.85 * 10^(-4);
 %Ohmic resistance of motor
 Rb = 4.79;
 %Moment of inertia divided by 3 to take gearing into account.
-Jb = ( 0.0429 + 0.030205713*sin(th)*sin(th) ) / 3;
+Jb = ( 0.0705 + 0.0103*sin(th)*sin(th) ) / 3;
 %Gravitational constant
 g = 9.82;
 
@@ -359,10 +359,27 @@ opt = stepDataOptions('StepAmplitude',3*90);
 
   %% BOTTOM frame PI tuning, with topframe at 90 degrees.
   
+s = tf('s');
+
 %Working point top frame.
 xbar = 90;
 %Convert to radians
 th = xbar*pi/180;
+
+%Friction
+bb = 0.5;
+%Electro force
+Keb = 3.5;
+%Motor Tourque
+Kmb = 1.57;
+%Inductance of motor
+Lb = 3.85 * 10^(-4);
+%Ohmic resistance of motor
+Rb = 4.79;
+%Moment of inertia divided by 3 to take gearing into account.
+Jb = ( 0.0705 + 0.0103*sin(th)*sin(th) ) / 3;
+%Gravitational constant
+g = 9.82;
 
 
 % Defining A,B,C matrices
@@ -436,7 +453,7 @@ opt = stepDataOptions('StepAmplitude',3*90);
 %Step response Second
 
 %Regulator
-kp = 3.7;
+kp = 3.5;
 Ti = 1/0.035;
 Td = 0;
 ki = kp*1/Ti;
@@ -447,7 +464,7 @@ sys_cl_4 = (Gs * Hs) / ( 1 + Gs * Hs);
 opt = stepDataOptions('StepAmplitude',3*90);
 
  step_0_second_bot_90 = figure('Name','float_me'); % Allows I3 to float the window
-  step(sys_cl_4,opt)
+ step(sys_cl_4,opt)
   line([0 10],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
   line([1 1],[0 300], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
