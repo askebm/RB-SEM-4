@@ -1,0 +1,2 @@
+RiseTime,SettlingTime,SettlingMin,SettlingMax,Overshoot,Undershoot,Peak,PeakTime
+NaN,NaN,NaN,NaN,0,-0,0,0.033723

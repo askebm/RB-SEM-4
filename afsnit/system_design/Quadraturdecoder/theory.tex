@@ -38,6 +38,7 @@ The founding principle of a Quadrature decoder relies on decoding the relationsh
 \label{subsubsec:reset_state}
 To use the transitions between encoder output A and output B, a truth table of every possible combination of the two signals must be computed. It is necessary to include a third signal, called reset, to allow for resetting of the position counter when a new home position is desired. The truth table computed from all three signals is shown in figure \ref{fig:truth_table}.
 \begin{figure}[H]
+  \centering
   \begin{tabular}{|c | c | c | c | c | c |c|}
   \hline
    A\_prev & A\_new & B\_prev & B\_new & Reset & Direction & Position \\

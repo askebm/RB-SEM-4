@@ -1,26 +1,24 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
-To be able to set a reference for the system, and to see where the system is at any given time, a user interface needs to be implemented.
-There are multiple ways in which a user interface can be implemented. 
-Two will be discussed in this section, a command-line interface and a hardware interface.
+To be able to set a reference position for the system, and to see where the system currently is, a user interface needs to be implemented.\\
+There are multiple ways in which a user interface can be implemented.
+Two og which will be discussed in this section, a command-line interface and a hardware interface.
 
 \subsubsection{Command-line interface}%
 \label{ssub:command-line_interface}
-A command-line interface is practical for designing and tuning of the system, since it allows for data to be sent to a computer and analyzed.
-It is not the most user friendly way to interact with a system, and therefor it should not stand on its own.
+A command-line interface is practical for tuning the system, since it allows for data to be sent to a receiver and analyzed.
+However It is not suitable as a userfriendly way to interact with the system on its own, which is why in this project it is used for debugging operations.
 \\
-Logging data is essential for tuning of the system, and therefore a command-line interface has been implemented. 
-The interface commands can be seen in table XX. \todo{create table}
+Since logging data is essential for tuning of the system, a command-line interface has been implemented to achieve the gains nessecary for the wanted behavior fo the system.
 \\
-Implementation of the command-line interface is done by utilizing the USB port on the Tiva to communicate with a computer via a UART interface.  
+Implementation of the command-line interface is realised by utilizing the USB port on the Tiva to communicate with a computer via a UART interface.
 
 \subsubsection{Hardware interface}%
 \label{ssub:hardware_interface}
-A hardware interface is more user friendly, and it is possible to use without connecting a computer to the system. 
-Since the system already is equipped whit both a matrix keypad and a small LCD screen, these have been used to create a hardware interface.
+The hardware interface is considered more userfriendly since it is useable without connecting a computer to the system.
+Since the system already is equipped with a matrix keypad and a small LCD screen, these will be used to create the hardware interface.
 \\
-Since the LCD screen only can display 16X2 characters only the most essential information is shown.
-
+However the LCD is only capable of displaying $32$ characters distributed on $2$ rows of 16 characters, thus only the position and refernce is displayed.
 
 \begin{figure}[H]
   \centering
@@ -30,21 +28,10 @@ Since the LCD screen only can display 16X2 characters only the most essential in
   \label{fig:User_interface}
 \end{figure}
 
-
 \subsubsection{User interface summary}%
 \label{ssub:user_interface_summary}
 
-
-
-\begin{itemize}
-    \item Why do we need a UI? 
-    \item Descripe UART UI
-        \begin{itemize}
-            \item protcol table
-        \end{itemize}
-    \item Descripe LCD UI
-    \item Conclude on UI 
-\end{itemize}
-
-
+A command-line interface has been implemented in order to acces the system response data.
+Furhtermore, a hardware interface has been implemted. This is to use the system when the tuning is done, and the debug utilities no longer is required.
+These two interfaces provide the option to tune and use the system as desired.
 \end{document}
