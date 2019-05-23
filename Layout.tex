@@ -14,7 +14,7 @@
 
 %============================================================================
 %Links
-%Hvis man vil vise et link skal man bruge "$" både før og efter url adressen. 
+%Hvis man vil vise et link skal man bruge "$" både før og efter url adressen.
 %Hvis man vil lave noget mere advanceret så se "usepackage{hyperref}"
 
 %===========================================================================
@@ -116,6 +116,10 @@
 %===========================================================================
 \usepackage{subfiles}
 
+%===========================================================================
+
+
+
 
 %===========================================================================
 \usepackage{enumitem}
@@ -139,11 +143,13 @@
 
 %===========================================================================
 \usepackage{listings}
-\lstset{language=TeX,
+\lstset{language=C++,
 	basicstyle=\footnotesize,
 	tabsize=4,
 	numbers=left,
 	numberstyle=\tiny,
+	keywordstyle=\bfseries\color{green!40!black},
+	morekeywords={*,int16_t},
 	stepnumber=1,
 	numbersep=5pt}
 %Her er et link til hvordan denne package virker: "http://mirrors.dotsrc.org/ctan/macros/latex/contrib/listings/listings.pdf".
@@ -202,7 +208,7 @@
 
 %===========================================================================
 \numberwithin{equation}{section}
-\usepackage[headheight=14pt, top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}    
+\usepackage[headheight=14pt, top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
 
 
 %===========================================================================
@@ -249,5 +255,3 @@
 \usepackage{tikz-timing}
 %\tikzset{timing/font={\normalfont}}
 %Source: https://www.ctan.org/pkg/tikz-timing
-
-
