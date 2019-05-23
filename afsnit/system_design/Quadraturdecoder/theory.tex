@@ -3,7 +3,7 @@
 \label{subsec:Theory_encoder}
 \subsubsection{Quadrature Encoder}
 In order to understand the design of the Quadrature Decoder a small explanation, of how a Quadrature Encoder works, is needed. \\
-A Quadrature Encoder uses two channels to sense the position and direction of, typically, a rotating disk/shaft or a linear strip. The disk or strip has two paths on it, positioned 90 degrees out of phase with each other, see figure \ref{rotary_encoder} for a rotary encoder and figure \ref{channels} for a strip encoder. Stationary sensors are typically placed on top of the encoder\footnote{The Stationary sensors are part of the whole component called an encoder}, so when a track moves in relation to a sensor, it outputs a logic high or low output signal depending on what part of the track is visible to the sensor. An encoder has two output signals, one for each channel, typically called A and B, see figure \ref{output_channels} for a representation of those for both encoder types. These two signals, A and B, are what allows the decoder to determine the position and direction of the encoder. \cite{encoder_princpel}
+A Quadrature Encoder uses two channels to sense the position and direction of, typically, a rotating disk/shaft or a linear strip. The disk or strip has two paths on it, positioned 90 degrees out of phase with each other, see figure \ref{rotary_encoder} for a rotary encoder and figure \ref{channels} for a strip encoder. Stationary sensors are typically placed on top of the encoder\footnote{The Stationary sensors are part of the whole component called an encoder}, so when a track moves in relation to a sensor, it outputs a logic high or low output signal depending on what part of the track is visible to the sensor. An encoder has two output signals, one for each channel, typically called A and B, see figure \ref{output_channels} for a representation of both encoder types. These two signals, A and B, are what allows the decoder to determine the position and direction of the encoder. \cite{encoder_princpel}
 
 \begin{figure}[H]
   \centering
@@ -56,11 +56,14 @@ To use the transitions between encoder output A and output B, a truth table of e
   \caption{This figure shows the truth table for the Quadrature decoder}
   \label{fig:truth_table}
 \end{figure}
-The truth table shows eight possible scenarios that can occur from tracking the transitions of the outputs. Four of these results in a forward direction and the counter will increment, four scenarios results in a backwards direction and the counter will decrements. The last scenario occurs if the reset flag is set low\footnote{Reset is implemented as active low, as can be observed in the truth table \ref{fig:truth_table}.}, and the counter is set to zero regardless of what it was on before. From these observations a state machine containing 4 states has been computed. The states are: AB\_low with the gray code $001$\footnote{The first digit is signal A, second is signal B and third is the reset signal}, AB\_high with gray code $111$, A\_high with gray code $101$ and B\_high with gray code $011$. The state machine diagram is shown below in figure \ref{fig:state_dia}. There is no reset state as it would not meet the criterias of a state. Thereforth the reset signal will be treated as synchronous reset signal and every state will check for it. \\
+The truth table shows eight possible scenarios that can occur from tracking the transitions of the outputs. Four of these results in a forward direction and the counter will increment, four scenarios results in a backwards direction and the counter will decrements. The last scenario occurs if the reset flag is set low\footnote{Reset is implemented as active low, as can be observed in the truth table \ref{fig:truth_table}.}, and the counter is set to zero regardless of what it was on before. From these observations a state machine containing 4 states has been computed. The states are: AB\_low with the gray code $00$\footnote{The first digit is signal A and second is signal B}, AB\_high with gray code $11$, A\_high with gray code $10$ and B\_high with gray code $01$. The state machine diagram is shown below in figure \ref{fig:state_dia}.  There is no reset state as it does not meet the criteria of a state. Therefore the reset signal will be treated as synchronous reset flag and every state will check for if the flag is high or low. \\
 
-The decoder works by first initializing and go to a state depending on the level of signal A and B. The decoder will then use the debounced signals to determine the next state. If the starting state is AB\_low, there is three correct outcomes: the reset signal goes low and the counter will go to zero, the signal A goes high and the state changes to A\_high or the last possible outcome, that does not give an error, is B\_high. By looking at the truth table from the above figure \ref{fig:truth_table}, it can be observed that if the state goes from AB\_low to A\_high, the direction will be forward and the counter will increment where the counter would decrements and direction set to backwards if the next state is B\_high.\\
+The decoder works by first initializing and go to a state depending on the levels of signal A and B. The decoder will then use the debounced signals to determine the next state.
 
-The counter keeps track of the position of the encoder. The counter counts position zero as the angle the system was in as the encoder was initialized. It is therefore considered useful to add a reset function, so a new home position can be added as desired. The state machine approach has been implemented and the process described in section \ref{sec:system_implementation} under subsubsection \ref{subsubsec:Qdecoder_implement}
+If the starting state is AB\_low, there is three correct outcomes: the reset signal goes low and the counter will go to zero, the signal A goes high and the state changes to A\_high or the last possible outcome, that does not give an error, is B\_high. By looking at the truth table from the above figure \ref{fig:truth_table}, it can be observed that if the state goes from AB\_low to A\_high, the direction will be forward and the counter will increment where the counter would decrements and direction set to backwards if the next state is B\_high.\\
+
+
+The counter keeps track of the position of the encoder. Since the counter value is relative to the initial position, it is considered useful to have a reset function. This will allow setting a new fixed home position. The state machine approach has been implemented and the process described in section \ref{sec:system_implementation} under subsubsection \ref{subsubsec:Qdecoder_implement}
 
 \begin{figure}[H]
   \centering
@@ -70,16 +73,17 @@ The counter keeps track of the position of the encoder. The counter counts posit
   \caption{Shows the different states the decoder can be in}
   \label{fig:state_dia}
 \end{figure}
-As mentioned above a reset is needed for the application as this allows a new home position to be set as desired. The reset can be implemented as either a synchronous or an asynchronous reset. The difference between the two is that the synchronous reset depends on a clock signal, either rising or falling egde, and will not be effective before next actove edge whereas the asynchronous reset is independent of the clock and triggers immediately when enabled.
+As mentioned above a reset is needed for the application as this allows a new home position to be set as desired. The reset can be implemented as either a synchronous or an asynchronous reset. The difference between the two is that the synchronous reset depends on a clock signal, either rising or falling edge, and will not be effective before next active edge whereas the asynchronous reset is independent of the clock and triggers immediately when enabled.
 
-The advantages of a synchronous reset is that it gives a synchronous circuit and provides a natural filter for most giltches.\footnote{If a glitch/noise happens on an active clock edge the fake reset will go through}
+
+The advantages of a synchronous reset is that it gives a synchronous circuit and provides a natural filter for most glitches.\footnote{If a glitch/noise happens on an active clock edge the fake reset will go through}
 The disadvantages are that it requires a clock signal to reset and the response time depends on the clock frequency, which produces a further issue with the length of the reset signal.
-This paticular issue however is not relevant in this system as the decoder component will run many times faster than the component that provides the reset signal.
+This particular issue however is not relevant in this system as the decoder component will run many times faster than the component that provides the reset signal.
 
-The asynchronous reset has the advantages of the reset being of higest priority and it has an almost immediate response.
-The disadvantages are that it is very sensitive towards any noise as just a milisond of a "fake" reset signal can set it off and it can cause issues if any synchronous resets are used in the system. \\
+The asynchronous reset has the advantages of the reset being of highest priority and it has an almost immediate response.
+The disadvantages it can cause issues if any synchronous resets are used in the system. \\
 
-Due to the fact that the state machine itself is using an active clock edge and that the decoder component will be the fastest, the synchronous reset has been chosen.
+Due to the fact that the state machine itself is using an active clock edge and that the decoder component will be the fastest component the synchronous reset has been chosen for this system due to simplicity
 \subsubsection{Velocity measure}
 The decoder is not only responsible for computing the position of the system but also the velocity. The simplest way to estimate the velocity is by dividing the change in position with the change in time. The most classic options are either to keep the $\Delta$t fixed, measure the position between the interval and then take the difference between x(n) and x(n-1) as shown in equation \ref{eq_1}. The other is to keep the position fixed and compute how long it takes to reach the fixed  $\Delta$x like in equation \ref{eq_2}.
 \begin{equation}
@@ -94,9 +98,9 @@ The second approach \ref{eq_2} is considered the most reliable at slow speeds, w
 \\
 The first approach using equation \ref{eq_1} is not hindered by the difference in frequency it has been chosen.  \\
 \\
- As the chosen approach requires a fixed time interval one such must be decided. The issue to take into account here is to make sure the interval is neither too short or too long.
+ As the chosen approach requires a fixed time interval one such must be decided. It is important to make sure the interval is neither too short or too long.
  A too short interval might yield scenario where the velocity seems to be zero even if the system does move. However, on the opposite side, a too long interval could yield a scenario that gives a wrong velocity, if the system changes velocity a lot.
-
+\\
 This can be illustrated using a system that during a 1 second sample period changes velocity more then once, the result will always be a average over the period and if the system changes velocity a lot can be very misleading.
 
 In this case it is important to capture the system speeding up and slowing down, so a low interval time of $10ms$ has been chosen.

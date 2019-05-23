@@ -1,4 +1,391 @@
-\documentclass[../../../main]{subfiles}
+\documentclass[../../../Main]{subfiles}
 \begin{document}
+
+In this section the controllers for the Top and Bottom frames of the pan-tilt system are designed and tuned, so they conform to the system requirements put forth in the problem statement.
+
+\subsubsection{Tuning of Top-Frame}
+\label{sec:top_frame_tuning}
+The top frame is nonlinear, as can be seen in equation \eqref{eq:new_mech_equation_with_corners}, which includes a sine term.
+
+To design a controller, for the topframe, the system is linearized in four points. It is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{fig:jour_step_bot}
+
+In this way, it is possible to have linear behaviour for the system in general.
+Because $-90^o$ and  $+90^o$ are the has the same behavior in this system, only 3 linearizations are made.
+
+\subsubsection{Linearize in $0^o$}
+\label{sec:linearize}
+The system is linearized in $0^o$. Which gives the following A, B and C matrices. 
+
+
+\begin{equation}
+      \begin{split}
+      \label{eq:zero_linearized}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    =&
+    \begin{bmatrix}0 & 1.0 & 0\\ -10.8 & -75.8 & 212.0\\ 0 & -260.0 & -1.24\cdot10^{4}\end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        0 \\
+        0 \\
+	\frac{1}{3.85\cdot10^{-4}}\\
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t\\
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_pure.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_pure}
+\end{figure}
+
+Based on the root-locus, the system can be regulated and be stable only using a p-gain. 
+But this will result in a steady-state error. therefore a PI-controller is tuned. 
+A PI-controller is given by transferfunction \eqref{equ:transfPI}
+
+\begin{align}
+	Kp \frac{s+\frac{1}{Ti}}{s}
+	\label{equ:transfPI}
+\end{align}
+From equation \eqref{equ:transfPI} it is seen, that a zero is added to the system.
+and is placed in $-\frac{1}{Ti} $
+The controller must be tuned to comply with the system requirements set forth in the problem statement, with a settling time of maximum 1 sec and no overshoot. For this to apply, the controlled system must be overdamped with real poles. And these poles must be located further to the left than $\sigma$
+\begin{align}
+	\sigma &\ge \frac{4.6}{ts}\\
+	ts &= 1 sec\\
+	\sigma &\ge 4.6
+\end{align}
+
+With a $T_i = \frac{1}{0.035}$ the root locus in figure \ref{fig:rlocus_int} is generated.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_int.pdf_tex}
+\caption{Root locus of openloop plant with integral regulator.}
+\label{fig:rlocus_int}
+\end{figure}
+
+With a gain $Kp = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, would approach the zero. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035}$ and $Kp = 3.1$ returns a system with the stepresponse in figure \ref{fig:step_0_first}
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first.pdf_tex}
+\caption{Step responce of system with the tuned PI-regulator. The dotted vertical line is 1 second.}
+\label{fig:step_0_first}
+\end{figure}
+
+In figure \ref{fig:step_0_first} it can be seen that the settling time is faster than the expected 1 second. Therefore the $Kp$ and $T_i$ are tuned to better match the requirements. $Kp = 1.6$ and $T_i=0.2$ is found to give the closest to expectet response. The stepresponse can be seen in figure \ref{fig:step_0_second}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second.pdf_tex}
+\caption{Step responce of system with the tuned PI-regulator. The vertical dotted line is 1 second.}
+\label{fig:step_0_second}
+\end{figure}
+
+The regulated system has a slight overshoot, but has a risetime of 1 second as per the system requirements. The overshoot is the lowest possible, if the reference is to be reached. Furthermore the system takes 100 seconds to reach its final value.
+
+\subsubsection{Linearize in $90^o$ and $180^o$}
+In this section the linearized system is tuned in the same manner as is in section \ref{sec:linearize}. But not all steps are shown, as the approach is the same. Here the tuned values and the final stepresponses will be shown and commented.
+
+Linearization in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_linearized}. 
+
+\begin{equation}
+      \label{eq:90_linearized}
+      \begin{split}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    &=
+    \begin{bmatrix}0 & 1.0 & 0\\ 0  & -75.8 & 212.0\\ 0 & -260.0 & -1.24 \cdot 10^4 \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+     0\\ -1.57\\ 2600.0
+    \end{bmatrix}
+    V_t \\
+		y &=
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+Figure \ref{fig:step_0_second_90} shows the tuned stepresponse of the closed loop control sytem and plant.
+It is tuned to $Kp = 1.39$ and $Ti = \frac{1}{0.006}$
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_90.pdf_tex}
+\caption{Step responce of system with the tuned PI-regulator.}
+\label{fig:step_0_second_90}
+\end{figure}
+\todo{Hvad er settling time her, samme som ovenfor ? eller 4 sek ?}
+
+
+Linearization in $180^o$ gives A, B and C matrices shown in equation \ref{eq:180_linearized}. 
+
+\begin{equation}
+      \label{eq:180_linearized}
+      \begin{split}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    =&
+    \begin{bmatrix}0 & 1.0 & 0\\ 10.8 & -75.8 & 212.0\\ 0 & -260.0 & -1.24\cdot10^4 \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+    0\\ -1.0\\ 2600.0
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t\\
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+
+Figure \ref{fig:step_0_second_180} shows the tuned stepresponse of the closed loop control sytem and plant.
+It is tuned to $Kp = 1.3$ and $Ti = \frac{1}{0.2}$
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_180.pdf_tex}
+\caption{Step responce of system with the tuned PI-regulator.}
+\label{fig:step_0_second_180}
+\end{figure}
+
+The system responses are not exactly alike, and especially the system when linearized in $180^o$ does not look like the other stepresponses. In figure \ref{fig:comp}, all three responses are shown in the same plot, for comparison.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{comp.pdf_tex}
+\caption{Step responce of all three PI-controlled systems}
+\label{fig:comp}
+\end{figure}
+
+\subsubsection{tuning of bottom frame}
+
+While the top frame of the pan-tilt system is unlinear, the bottom frame is not. Therefore it is not neccessary to linearize it. But as top frame can move, the moment of inertia, of the bottom- and topframe is a function of the top freames angle in relation to the bottomframe, as described in section \ref{sec:moment_botom}.
+In the following the regulator is tuned for ven the topframe is at $90^o$ and at $0^o$.
+
+The statespace model of the bottomframe, when the topframe is at $0^o$  is found in equation \ref{:eq:bottom_state_eq}
+
+\begin{equation}
+      \label{eq:bottom_state_eq}
+      \begin{split}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    =&
+    \begin{bmatrix}0 & 1.0 & 0\\ 0 & -35.0 & 110.0\\ 0 & -9099.0 & -1.24\cdot10^4\end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+      0\\ 0\\ 17.0
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t\\
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_pure_bot.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_pure_bot}
+\end{figure}
+
+In figure \ref{fig:rlocus_pure_bot} a root locus of the openloop system is seen. As in section \ref{sec:top_frame_tuning} the system can be controlled only by a p gain. But it will likely result in a steadystate error. Therefore the system is tuned with a PI-controller. In figure \ref{fig:rlocus_int_bot} the root locus of the system with an I-controller with gain $T_i = \frac{1}{0.035}$ is shown.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_int_bot.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_int_bot}
+\end{figure}
+
+A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole in -5 which will dominate the system. This is needed for the system to comply with the requirements as explained in section \ref{sec:top_frame_tuning}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first_bot.pdf_tex}
+\caption{Stepresponse of PI controller on system.}
+\label{fig:step_0_first_bot}
+\end{figure}
+
+Figure \ref{fig:step_0_first_bot} then shows the stepresponse of that PI-controller.
+As in section \ref{sec:top_frame_tuning}, the response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_bot.pdf_tex}
+\caption{Stepresponse of tuned PI controller on system.}
+\label{fig:step_0_second_bot}
+\end{figure}
+
+
+The statespace model of the bottomframe, when the topframe is at $90^o$  is found in equation \ref{eq:bottom_state_eq_2}
+
+\begin{equation}
+      \label{eq:bottom_state_eq_2}
+      \begin{split}
+      \frac{d}{dt}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t
+    \end{bmatrix}
+    =&
+    \begin{bmatrix}0 & 1.0 & 0\\ 0 & -35.0 & 110.0\\ 0 & -9099.0 & -1.24\cdot10^4\end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t \\
+        i_t \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+      0\\ 0\\ 13.7
+    \end{bmatrix}
+    V_t
+\\
+      y =&
+    \begin{bmatrix}
+        1 & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        \theta_t \\
+        \dot \theta_t\\
+        i_t\\
+    \end{bmatrix}
+    \end{split}
+\end{equation}
+
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_pure_bot_90.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_pure_bot_90}
+\end{figure}
+
+In figure \ref{fig:rlocus_pure_bot_90} a root locus of the openloop system is seen. In figure \ref{fig:rlocus_int_bot_90} the root locus of the system with an I-controller with gain $T_i = \frac{1}{0.035}$ is shown.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_int_bot_90.pdf_tex}
+\caption{Root locus of openloop plant without regulator.}
+\label{fig:rlocus_int_bot_90}
+\end{figure}
+
+A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole in -5 which will dominate the system. This is needed for the system to comply with the requirements as explained in section \ref{sec:top_frame_tuning_90}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first_bot_90.pdf_tex}
+\caption{Stepresponse of PI controller on system.}
+\label{fig:step_0_first_bot_90}
+\end{figure}
+
+Figure \ref{fig:step_0_first_bot_90} then shows the stepresponse of that PI-controller.
+The response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the stepresponse seen in figure \ref{fig:step_0_second_bot_90}.
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_bot_90.pdf_tex}
+\caption{Stepresponse of tuned PI controller on system.}
+\label{fig:step_0_second_bot_90}
+\end{figure}
+
+In figure \ref{fig:comp_bot} a graph of both stepresponses together are shown. It shows that there are no difference if the topframe is at an angle of $0^o$ or at $90^o$. Therefore there is no reason to take the changing moment of inertia into account. 
+
+
+\begin{figure}[H]
+\centering
+\def\svgwidth{\textwidth}
+\import{\main/afsnit/system_design/Controller/img/PI/}{comp_bot.pdf_tex}
+\caption{Comparison of the stepresponeses of the two tuned PI-controllers with topframe in $0$ and $90$ degrees.}
+\label{fig:comp_bot}
+\end{figure}
+
+
 
 \end{document}

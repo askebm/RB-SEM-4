@@ -12,7 +12,7 @@ In this section the implementation and calculations of PWM\footnote{Pulse Width 
 
 The duty cycle can be varied from $0 - 100\%$. Translating to a DC-motor torque of $0 - max$.
 The PWM signal is generated using the FPGA, which is a hard requirement from the project  specification. To generate a PWM signal as in figure \ref{fig:pwm} a counter on the FPGA  is used.
-The output signal is set high, as soon as the counter starts counting. When the counter reaches the calcutaled value for a given dutycycle, the output signal is set LOW. When the counter then reaches its precalculated maximum value, the process starts over. Thus generating a PWM output. The maximum counter value is calculated based on the wanted frequency of the PWM signal. The frequency of the signal is important for a correct operation of the DC-motor, and depends on specific parameters of the motor. The optimal frequency of the motors in this project is calculated in the following section.
+The output signal is set high, as soon as the counter starts counting. When the counter reaches the calculated value for a given duty cycle, the output signal is set LOW. When the counter then reaches its recalculated maximum value, the process starts over. Thus generating a PWM output. The maximum counter value is calculated based on the wanted frequency of the PWM signal. The frequency of the signal is important for a correct operation of the DC-motor, and depends on specific parameters of the motor. The optimal frequency of the motors in this project is calculated in the following section.
 \newpage
 \subsubsection{Determining the PWM frequency}
 
@@ -20,6 +20,7 @@ A DC-motor can be modeled by the equivalent circuit depicted in figure \ref{fig:
 
 \begin{figure}[ht]
 	\center
+    \def\svgwidth{0.5\textwidth}
 	\includesvg[\main/afsnit/system_design/pwm/img/]{electrical_motor_equ}
 	\caption{Electrically equivalent DC-motor circuit.}
   \label{fig:electrical_equ}
@@ -36,6 +37,7 @@ To find the maximum PWM frequency though, it is not necessary to take into accou
 
 \begin{figure}[H]
 	\center
+    \def\svgwidth{0.4\textwidth}
 	\includesvg[\main/afsnit/system_design/pwm/img/]{electrical_motor}
 	\caption{Simplified electrically circuit of DC-motor}
   \label{fig:electrical}

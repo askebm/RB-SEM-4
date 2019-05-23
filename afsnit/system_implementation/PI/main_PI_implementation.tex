@@ -2,17 +2,16 @@
 
 
 \begin{document}
+\subsection{PI}
 
-
-\subsubsection{Softwaredesign of a PI controller}
-In order to implement the aforementioned PI-controller in a fashion that complies with API the provided by FreeRTOS, it is chosen that a single interface is to be designed.
-\todo{Omskriv sætning, meget mærkelig}This is to avoid writting multiple sub-programs with the same functionallity, and thus it requieres to be generic if multiple PI-controllers are to be implemented.
+\subsubsection{Software design of a PI controller}
+In order to implement the aforementioned PI-controller in a fashion that complies with the API provided by FreeRTOS, it has been chosen to design a single interface.
+This is to avoid writing multiple sub-programs with the same functionality, and thus, it is required to be generic if multiple PI-controllers are to be implemented.
 \\
 
-To meet the given requirements the following design criteria must be fulfilled.
+To meet the requirements, the following design criteria must be fulfilled.
 
 \begin{itemize}
-
   \item Must comply with FreeRTOS's API
   \item Must be re-entrant
   \item Must be able to be initialized from main
@@ -20,23 +19,22 @@ To meet the given requirements the following design criteria must be fulfilled.
 \end{itemize}
 
 In order to write a routine that will act as the PI-controller, it must be wrapped into a never ending loop.
-In this the desired calculations will be done. This is done to meet the first criteria and is achieved in listing \ref{list:funtion_body}.
+In this loop the desired calculations will be done. This is done to meet the first criteria and is achieved in listing \ref{list:funtion_body}.
 
 \lstinputlisting[language=C, firstline=3, lastline=16,caption = {Function body} ,label={list:funtion_body} ]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
 
 
 tsk\_PI() will be the argument to the function by FreeRTOS, that creates a task.
-It is noticed that if the functions; calculate\_error\_PI() and calculate\_P() are assumed to be re-entrant. Then all of the above criteria are achieved.
+It is noticed that if the functions, calculate\_error\_PI() and calculate\_P(), are assumed to be re-entrant and the third and fourth criteria are achieved by passing the struct PI from the function task\_PI(), all of the above criteria are achieved.
 %For it to be generic the struct PI, is passed from the function, task\_PI(), this also ensures that it can be initialized from main.
-The third and fourth criteria are achieved by passing the struct PI from the function task\_PI().
 \\
 
-The struct will contain all the necessary gains and data-samples, which a PI-controller will need in order to operate.
+The struct will contain all the necessary gains and data-samples, which a PI-controller needs in order to operate.
 The struct members can be seen in listing \ref{list:struct_def}.
 \lstinputlisting[language=C, firstline=20, lastline=33,caption = {struct definition} ,label={list:struct_def}]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
-Since the design requirements are met, the next step is to implement the funtionallity of a PI-controller, which has the following requirements:
+Since the design requirements are met, the next step is to implement the functionality of a PI-controller with the following requirements:
 \begin{itemize}
     \item Must be implemented as a difference equation
     \item Must include anti-windup
@@ -55,7 +53,7 @@ In order to obtain the difference equation for the PI-controller, the standard P
 
 To get the PI equation into the time-discrete z-domain, it is chosen to use Tustin's Method.
 
-This is done by substiting $s$ with the following
+This is done by substituting $s$ with the following
 
 $$
 s = \frac{2}{T}\cdot \Bigg( \frac{z-1}{z+1}\Bigg)
@@ -76,7 +74,7 @@ $$
   u(z) = \Bigg( \frac{k_p \cdot(1-z^{-1}) + k_i \cdot \frac{T}{2} \cdot (1+z^{-1}) }{(1-z^{-1})}\Bigg) \cdot e(z)
 $$
 
-It is wished to get an expressions in terms of u(z) and e(z) with no non-constant-fractions, therefore both sides are multiplied by $(1 - z^{-1})$
+It is wished to get an expression in terms of u(z) and e(z) with no non-constant-fractions, therefore both sides are multiplied by $(1 - z^{-1})$
 $$
   u(z)\cdot(1 - z^{-1}) = \Bigg( k_p \cdot(z-1) + k_i \cdot \frac{T}{2} \cdot (z+1) \Bigg) \cdot e(z)
 $$
@@ -95,13 +93,11 @@ $$
 
 
 \subsubsection{Implementation of the difference equation}
-\todo{Lyder lidt som en tale fra en diktator - With the Softwaredesign completed the Implementation with anti windup, is shown is ref??}
+With the software design chosen and the difference equation derived, the next step is to implement it.
+This is done in the following code snippet,seen in listing \ref{list:PI_controller}, which includes anti-windup whilst having the PI-controller expressed as a difference equation.
+\todo{Hvad x i implementeringen i forhold til differense liningen, der skal være en sammenkobling af variable}
 
-With the softwaredesign chosen and the difference equation derived, the next step is to implement it.
-This is done in the following code snippet,which includes anti-windup whilst having the PI-controller expressed as a difference equation.
-
-\lstinputlisting[language=C, firstline=37, lastline=67,label={list:PI_controller}]{\main/afsnit/system_implementation/PI/code_snippets.h}
-
+\lstinputlisting[language=C, firstline=37, lastline=67,caption = {PI controller} ,label={list:PI_controller}]{\main/afsnit/system_implementation/PI/code_snippets.h}
 
 
 

@@ -1,41 +1,75 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
 
-To tune the theoretical model the electromotiveforce, the motortorque and friction, is adjusted for both the top frame and the bottom frame, to fit the openloop stepresponse of the physical system.
+To tune the theoretical model the electromotive force, the motor torque and friction is adjusted, for both the top frame and the bottom frame, to fit the openloop step response of the physical system.
+The system is tuned using the simulink models seen in figure \ref{fig:simulink_top} and in figure
+\ref{fig:simulink_bot}.
 
-Further more the total weight of the corners is increased by 200\si{g}. The bottom frame also have what seems to be a sizeable nonlinear component, which is evaluated to be a torque of $1.4$\si{N m} sine dependency on the bottom frames position.
 
-The adjusted motorconstants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated stepresponse interlaced with the physical stepresponse can be seen in figure \ref{fig:openloop_step_phys}.
+\begin{figure}[h]
+        \centering
+  			\fontsize{10}{12}\selectfont
+				\def\svgwidth{1.3\textwidth}
+  			\makebox[\textwidth][c]{
+        	\includesvg[\main/afsnit/system_modeling/img/]{simulink_top}
+				}
+				\caption{Simulink Top frame. J is inertia, L is Henry, R is resistance,
+				g is force of gravity, b is friction, l is the length of the frame,
+				$m_{corner}$ is the mass of a corner bracket, motor\_torque is the motor torque constant
+				and electro force is the electro force constant.}
+        \label{fig:simulink_top}
+\end{figure}
+
+\begin{figure}[h]
+        \centering
+				\def\svgwidth{1.3\textwidth}
+  			\fontsize{10}{12}\selectfont
+  			\makebox[\textwidth][c]{
+        	\includesvg[\main/afsnit/system_modeling/img/]{simulink_bot}
+				}
+				\caption{Simulink Bottom frame. J is inertia, L is henry, R is resistance,
+				g is force of gravity, b is friction,l is the length of the frame,
+				$m_{corner}$ is the mass of a corner bracket, $mass_{top}$ is the mass of the top frame
+				motor\_torque is the motor torque constant
+				and electro force is the electro force constant.}
+        \label{fig:simulink_bot}
+\end{figure}
+
+The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated stepresponse interlaced with the physical step response can be seen in figure \ref{fig:validation_steptuning}.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{ll}
 		\multicolumn{2}{c}{ \textbf{Top frame} }\\
 		\hline
-		electromotiveforce& 3\si{ \frac{rad}{Vs}}\\
-		motortorque & 2.8 \si{ \frac{N m}{A}}\\
-		friction coefficient& 0.5\\
-		m$_{corners}$& 0.351\si{g}  \\
+		electromotive force& 0.1\si{ \frac{rad}{Vs}}\\
+		motor torque & 1.4 \si{ \frac{N m}{A}}\\
+		friction coefficient& 0.57\\
 
 		\multicolumn{2}{c}{ \textbf{Bottom frame} }\\
 		\hline
-		electromotiveforce& 3\si{ \frac{rad}{Vs}}\\
-		motortorque & 4.4 \si{ \frac{N m}{A}}\\
-		friction coefficient & 0.8\\
-		non-linear torque & 1.4\si{N m}\\
+		electromotive force& 3.5\si{ \frac{rad}{Vs}}\\
+		motor torque & 1.57 \si{ \frac{N m}{A}}\\
+		friction coefficient & 0.5\\
 	\end{tabular}
 	\caption{Fitted motor constants.}
 	\label{tab:fitted_motor_constants}
 \end{table}
 
-\begin{figure}[h]
-	\centering
-	\def\svgwidth{\textwidth}
-	\import{\main/afsnit/system_modeling/img/}{step_response.pdf_tex}
-	\caption{Openloop stepresponse of physical and simulated system.}
-	\label{fig:openloop_step_phys}
+\begin{figure}[H]
+        \centering
+				\def\svgwidth{0.47\columnwidth}
+				\subfloat[Step response of bottom frame with top frame at 0 degrees.]{%
+				\includesvg[\main/afsnit/system_modeling/img/]{sim_validation_top}}
+				\def\svgwidth{0.47\columnwidth}
+				\subfloat[Step response of top frame, with start at 0 degrees.]{%
+				\includesvg[\main/afsnit/system_modeling/img/]{sim_validation_bot}}
+				\caption{Step response results of both frames.}
+				\label{fig:validation_steptuning}
 \end{figure}
-
-The resulting simulated model is somewhat close, but there are stille some inconsistencies which could be exlained by slack in the system.
+It was not possible to tune the simulated model to fit the real data,
+which indicates that there are some parameters not accounted for in the model.
+It was not possible to match both the theoretical velocity and current to their practical counterparts at the same time. Since only position, and therefore velocity, is observable, it is prioritized to match the practical and theoretical velocity.
+As the modeled system is not a perfect match, the requirement for the gain margin of the controller, to allow for disturbances, increase.
 
 \end{document}
