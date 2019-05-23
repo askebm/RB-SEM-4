@@ -1,23 +1,27 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
-To be able to set a reference for the system, and to see where the system is at any given time, a user interface needs to be implemented.
-There are multiple ways in which a user interface can be implemented. 
+To be able to set a reference for the system, and to see where the system \todo{ positions are?} is at any given time, a user interface needs to be implemented.
+There are multiple ways in which a user interface can be implemented.
 Two will be discussed in this section, a command-line interface and a hardware interface.
 
 \subsubsection{Command-line interface}%
 \label{ssub:command-line_interface}
-A command-line interface is practical for designing and tuning of the system, since it allows for data to be sent to a computer and analyzed.
-It is not the most user friendly way to interact with a system , and therefor it should not stand on its own and is more suited for debug operations.
+A command-line interface is practical for designing\todo{designing?} and tuning of the system, since it allows for data to be sent to a computer and analyzed.
+\todo{however }It is not the most user friendly way to interact with a system , \todo{and should therefore not stand alone, but used as a debug-tool}and therefor it should not stand on its own and is more suited for debug operations.
 \\
-Logging data is essential for tuning of the system, and therefore a command-line interface has been implemented. 
+Logging data is essential for tuning of the system, and therefore a command-line interface has been implemented.
+\todo{Since the desired system response is achieved through tuning of the controller gains, it is necessary to have acces to the system response data.
+For this reason it is chosen to implemnt command-line interface. }
 \\
-Implementation of the command-line interface is done by utilizing the USB port on the Tiva to communicate with a computer via a UART interface.  
+Implementation of the command-line interface is done \todo{is realised by utilizing ...} by utilizing the USB port on the Tiva \todo{. This is then used to communicate with a computer via a UART interface.} to communicate with a computer via a UART interface.
 
 \subsubsection{Hardware interface}%
 \label{ssub:hardware_interface}
-A hardware interface is more user friendly, and it is possible to use without connecting a computer to the system. 
-Since the system already is equipped whit both a matrix keypad and a small LCD screen, these have been used to create a hardware interface.
+\todo{hvad er argumentationen for dette?}
+A hardware interface is more user friendly, \todo{furthermore it doesnt require a computer connected to the system }and it is possible to use without connecting a computer to the system.
+Since the system already is equipped with a matrix keypad and a small LCD screen, \todo{these will be used to create the hardware interface }these have been used to create a hardware interface.
 \\
+\todo{However the LCD is only capable of displaying 32 characters ( or 16x2), thus only the position and refernce is displayed}
 Since the LCD screen only can display 16X2 characters only the most essential information, the current position and reference is shown.
 
 
@@ -34,5 +38,7 @@ Since the LCD screen only can display 16X2 characters only the most essential in
 \label{ssub:user_interface_summary}
 
 These two systems provide a way to interact with the system, either in order to extract data or change the systems reference point.
-
+\todo{A command-line interface has been implemented in order to acces the system response data.
+Furhtermore, a hardware interface has been implemted. This is to use the system when the tuning is done, and the debug utilities no longer is required.
+These two interfaces provide the option to tune and use the system as desired.}
 \end{document}

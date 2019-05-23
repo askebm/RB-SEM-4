@@ -17,11 +17,11 @@ PWM:\\
 The PWM signal's frequency has been calculated to be $1003$Hz, as this allows the motor to draw full current and utilize all available torque. \\
 
 SPI:
-The SPI protocol is made as a shift register protocol
+The SPI protocol is a shift register protocol with a register size varying from 8 bits to a maximum of 16 bits. The protocol follows the master/slave princple, with the Tiva as the master and FPGA as slave. This protocol has been implemented on the FPGA by using a module created by x. 
 
 
 \begin{itemize}
-  \item PI controller choice - should we have picked a PID/Modern control?
+  \item PI controller choice
   \item control engineering:
   \begin{itemize}
     \item issue with nonlinaer modeling - how did we solve this?
