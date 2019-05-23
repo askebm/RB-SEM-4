@@ -98,7 +98,7 @@ opt = stepDataOptions('StepAmplitude',3*90);
 
  step_0_first = figure('Name','float_me'); % Allows I3 to float the window
   step(sys_cl_0,opt)
-  xlim([0 100])
+  xlim([0 4])
   line([0 100],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
   line([1 1],[0 300], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
@@ -123,7 +123,7 @@ opt = stepDataOptions('StepAmplitude',3*90);
 
  step_0_second = figure('Name','float_me'); % Allows I3 to float the window
   step(sys_cl_1,opt)
-  xlim([0 100])
+  xlim([0 4])
   line([0 100],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
   line([1 1],[0 300], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
