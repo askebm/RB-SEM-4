@@ -1,6 +1,8 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
 The control engineering: \\
+A mathematical model of the pan tilt system has been made. Based on this model a PI-controller with $K_p$ and $T_i$ gains have been tuned to comply with specifications as best as possible. 
+A controller with the respective $K_p$ and $T_i$ have been implementet on the Tiva microcontroller. Stepresponses of the actual system have been logged and compared with the expected stepresponses from the mathematical model. The results a difference between the two. The stepresponses based on the mathematical model have no overshoot compared with the actual system, which has overshoot. Based on the results it is concluded that the mathematical model is not accurate enough, and that a PID-controller including a D-term will improve the response of the system by limiting overshoot.  
 
 FreeRTOS:\\
 A real operating system, FreeRTOS, has been implemented on the Tiva. FreeRTOS has been chosen as it can emulate tasks running in parallel on the micrcontroller. \\
