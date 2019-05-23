@@ -264,10 +264,10 @@ The system responses are not exactly alike, and especially the system when linea
 
 \subsubsection{Tuning of bottom frame}
 
-While the top frame of the pan-tilt system is nonlinear, the bottom frame is not. Therefore it is not necessary to linearize it. But as top frame can move, the moment of inertia, of the bottom- and topframe is a function of the top frames angle in relation to the bottom frame, as described in section \ref{sec:moment_botom}.
-In the following the regulator is tuned for when the topframe is at $90^o$ and at $0^o$.
+While the top frame of the pan-tilt system is nonlinear, the bottom frame is not. Therefore it is not necessary to linearize it. But as top frame can move, the moment of inertia of the bottom and top frame is a function of the top frames angle in relation to the bottom frame, as described in section \ref{sec:moment_botom}. \todo{As the top frame can move, it means it influences the moment of inertia of the bottom frame as a function of the top frames angle in relation to the bottom frame, as described in section \ref{sec:moment_botom}}
+In the following subsection the bottom frame regulator is tuned for when the topframe is at $90^o$ and at $0^o$.
 
-The state space model of the bottomframe, when the topframe is at $0^o$  is found in equation \ref{:eq:bottom_state_eq}
+The state space model of the bottom frame, when the topframe is at $0^o$, is found in equation \eqref{:eq:bottom_state_eq}
 
 \begin{equation}
       \label{eq:bottom_state_eq}
@@ -322,7 +322,7 @@ In figure \ref{fig:rlocus_pure_bot} a root locus of the openloop system is seen.
 \label{fig:rlocus_int_bot}
 \end{figure}
 
-A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole in -5 which will dominate the system. This is needed for the system to comply with the requirements as explained in section \ref{sec:top_frame_tuning}.
+A gain of 9 will draw one of the poles from $0$ to the zero, and place a pole in $-5$, which will dominate the system. This is needed for the system to comply with the requirements, as explained in section \ref{sec:top_frame_tuning}.
 
 \begin{figure}[H]
 \centering
@@ -340,14 +340,14 @@ A gain of 9, will draw one of the poles from $0$ to the zero, and place a pole i
 		 Risetime  & 0.4143s\\
 		 Settling time & 0.7133s
 	 \end{tabular}
-	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_first_bot}.}
+	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_first_bot}.}
 	 \label{tab:performance_0_5}
 \end{table}
 
 
 
 Figure \ref{fig:step_0_first_bot} then shows the step response of that PI-controller.
-As in section \ref{sec:top_frame_tuning}, the response is not as expected, as the system is not a first order system. Therefore the p gain is tuned to better meet requirements. $K_p = 3.7$ returns the step response seen in figure \ref{fig:step_0_second_bot}.
+As in section \ref{sec:top_frame_tuning}, the response is not as expected, because the system is not a first order system. Therefore the P gain is tuned to better meet the performance requirements. $K_p = 3.7$ returns the step response in figure \ref{fig:step_0_second_bot}.
 
 \begin{figure}[H]
 \centering
@@ -365,11 +365,11 @@ As in section \ref{sec:top_frame_tuning}, the response is not as expected, as th
 		 Risetime  & 1.0226s\\
 		 Settling time & 1.6587s
 	 \end{tabular}
-	 \caption{Performance charachteristics of PI-controlled system in figure \ref{fig:step_0_second_bot}.}
+	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second_bot}.}
 	 \label{tab:performance_0_6}
 \end{table}
 
-The statespace model of the bottomframe, when the topframe is at $90^o$  is found in equation \ref{eq:bottom_state_eq_2}
+The statespace model of the bottom frame, when the top frame is at $90^o$, is found in equation \eqref{eq:bottom_state_eq_2}
 
 \begin{equation}
       \label{eq:bottom_state_eq_2}
@@ -414,7 +414,7 @@ In figure \ref{fig:comp_bot} a graph of both step responses are shown. It shows 
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{comp_bot.pdf_tex}
-\caption{Comparison of the step responses of the two tuned PI-controllers with topframe in $0$ and $90$ degrees.}
+\caption{Comparison of the step responses of the two tuned PI-controllers with top frame in $0$ and $90$ degrees.}
 \label{fig:comp_bot}
 \end{figure}
 
