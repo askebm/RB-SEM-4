@@ -18,7 +18,7 @@ Each motor is geared to the frame in a $3:1$ relation.\\
 
 In this chapter an approximated model of the physical system will be found.\\
 
-By analyzing the forces acting on the motors when voltage is added the following differential equations are found.\\
+By analyzing the forces acting on the motors when voltage is added the following differential equations are \todo{derived?}found.\\
 
 \begin{equation}
   \label{equ:model_mech_equ}
@@ -33,7 +33,7 @@ By analyzing the forces acting on the motors when voltage is added the following
 In (\ref{equ:model_mech_equ}) $J$ is the moment of inertia about the axis of rotation, $b$ is the motors viscous friction constant, $K_{torque}$ is the motor toque constant, $\dot \theta$ is the first time derivative of the position, and $\ddot \theta$ is the second time derivative. The first time derivative is the velocity and the second is the acceleration.\\
 In (\ref{equ:model_ele_equ}) $L$ is the electrical inductance of the coil in the motor, $\frac{di}{dt}$ is the first time derivative of the current, $R$ is the ohmic resistance of the motor, $V$ is the voltage applied, $K_{elec}$ is the electromotive force constant and $\dot \theta$ is the velocity as mentioned above.\\
 
-By further inspection inspection of a non-linear contribution on the top frame's moment of inertia is caused by the added aluminum corners as seen on figure \ref{fig:system}.\\
+By further inspection of a non-linear contribution on the top frame's moment of inertia is caused by the added aluminum corners as seen on figure \ref{fig:system}.\\
 As an extra gravitational pull on these corners is added, the mechanical equation describing the motor driving the top frame has to be rewritten as seen in eq. \eqref{eq:new_mech_equation_with_corners}.
 
 \begin{equation}
@@ -184,7 +184,7 @@ To determine the viscous frictions, $b_b$ and $b_t$, experiments, which has not 
 
 \subsubsection{Moment of inertia - Top frame}
 \label{sec:Top_frame_inertia}
-To determine the top frame's moment of inertia, $J_{t}$, it is considered to be an isolated system with only the frame's own weight contributing to $J_{t}$ as the weight of motors and wires on the frame are considered negligible. The system then considered is seen on figure \subref{subfig:TopFrame_general}. The axis of rotation, shown in the figure \subref{subfig:TopFrame_general} will be the reference for the following calculation.\\
+To determine the top frame's moment of inertia, $J_{t}$, it is considered to be an isolated system with only the frame's own weight contributing to $J_{t}$.\todo{. This is due to the weight... ellers er sætningen for lang.} as weight of the motors and wires on the frame are considered negligible. The system then considered is seen on figure \subref{subfig:TopFrame_general}. The axis of rotation, shown in the figure \subref{subfig:TopFrame_general} will be the reference for the following calculation.\\
 
 \begin{figure}[H]
   \centering
