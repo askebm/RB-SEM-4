@@ -1,8 +1,8 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
 
-To tune the theoretical model the electromotive force, the motor torque and friction, is adjusted for both the top frame and the bottom frame, to fit the openloop stepresponse of the physical system.
-The system is tuned using the simulink models seen in figure \ref{fig:simulink_top} and in figure 
+To tune the theoretical model the electromotive force, the motor torque and friction is adjusted, for both the top frame and the bottom frame, to fit the openloop step response of the physical system.
+The system is tuned using the simulink models seen in figure \ref{fig:simulink_top} and in figure
 \ref{fig:simulink_bot}.
 
 
@@ -14,7 +14,7 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
         	\includesvg[\main/afsnit/system_modeling/img/]{simulink_top}
 				}
 				\caption{Simulink Top frame. J is inertia, L is henry, R is resistance,
-				g is force of gravity, b is friction,l is the length of the frame,
+				g is force of gravity, b is friction, l is the length of the frame,
 				$m_{corner}$ is the mass of a corner bracket, motor\_torque is the motor torque constant
 				and electro force is the electro force constant.}
         \label{fig:simulink_top}
@@ -35,7 +35,7 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
         \label{fig:simulink_bot}
 \end{figure}
 
-The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated stepresponse interlaced with the physical stepresponse can be seen in figure \ref{fig:validation_steptuning}.
+The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_constants} and the resulting simulated stepresponse interlaced with the physical step response can be seen in figure \ref{fig:validation_steptuning}.
 
 \begin{table}[h]
 	\centering
@@ -56,23 +56,20 @@ The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_consta
 	\label{tab:fitted_motor_constants}
 \end{table}
 
-
 \begin{figure}[H]
         \centering
 				\def\svgwidth{0.47\columnwidth}
-				\subfloat[Stepresponse of bottomframe with top frame at 0 degrees.]{%
+				\subfloat[Step response of bottom frame with top frame at 0 degrees.]{%
 				\includesvg[\main/afsnit/system_modeling/img/]{sim_validation_top}}
 				\def\svgwidth{0.47\columnwidth}
-				\subfloat[Stepresponse of top frame, with start at 0 degrees.]{%
+				\subfloat[Step response of top frame, with start at 0 degrees.]{%
 				\includesvg[\main/afsnit/system_modeling/img/]{sim_validation_bot}}
-				\caption{Stepresponse results of both frames.}
+				\caption{Step response results of both frames.}
 				\label{fig:validation_steptuning}
 \end{figure}
-
-It was not possible to tune the simulated model to fit the real data, 
-which indicates that there are some parameters that are not accounted for in the model.
-Since not both velocity and current could be fitted, the velocity is prioritised,
-because it's more important to match the velocity/position than the current draw of the system.
-This increases the requirement for the gain margin of the controller to allow for these disturbances.
+It was not possible to tune the simulated model to fit the real data,
+which indicates that there are some parameters not accounted for in the model.
+It was not possible to match both the theoretical velocity and current to their practical counterparts at the same time. Since only position and thereby velocity is observable, it's prioritised to match the practical and theoretical velocity.
+As the modelled system is not a perfect match, the requirement for the gain margin of the controller to allow for disturbances increase.
 
 \end{document}

@@ -4,29 +4,57 @@
 
 The overarching aim of the project is to create a platform for a stage spotlight with the behavior expected of such a system in regards to movement characteristics.
 
-As the mechanical platform is provided for the project, the main challenges arise from the theoretical system, control design and software engineering required to materialize the platform.
+As the mechanical platform is provided the project can be resolved using the fields of study connected to this project, which are; control engineering, digital system design and embedded programming.
+The problem statement is therefore divided by field of study.
 
-These challenges include:
+%for the project, the main challenges arise from the theoretical system, control design and software engineering required to materialize the platform.
+%These challenges include:
 
-\begin{itemize}
-    \item What are the desired performance requirements for a spotlight?
-    \item In what ways can a system of this type be controlled?
-    \item How are control engineering theory implemented on a microcontroller?
-    \item How can a system allowing hardware control of the given platform be designed?
-\end{itemize}
+%\begin{itemize}
+%    \item What are the desired performance requirements for a spotlight?
+%    \item In what ways can a system of this type be controlled?
+%    \item How are control engineering theory implemented on a microcontroller?
+%    \item How can a system allowing hardware control of the given platform be designed?
+%\end{itemize}
 
-In order to provide a satisfactory answer to the above questions, the design of the FPGA modules, microcontroller software and control engineering theory will be covered in the following report.
+\paragraph{Control Engineering}%
+\label{par:control_engineering}
+Model the system such that a controller can be designed and implemented from said model.
+Design a controller such that the performance specifications are met in a satisfactory manner.
 
-\subsection{System requirements}
-\todo{Vi har aldrig en defination af overshoot,settling time eller risetime}
-As the use case of the system is as a stage spotlight, it means that the system requirements need to be rather hard as overshoot and a slow rise time could render the system useless.
+\paragraph{Digital System Design}%
+\label{par:digital_system_design}
+Make the FPGA able to communicate by way of SPI and implement a protocol.
+Measure velocity and position reliably, such that these can be used to monitor and regulate the
+system.
+Control motors using PWM.
+
+\paragraph{Emebedded Programming}%
+\label{par:emebedded_programming}
+Implement a real time operating system such that it will be able to handle user input while simultaneously controlling the given system consistently.
+\\
+
+To properly define the project a set of performance specification regarding the controller design is necessary.
+These specifications consists of rise time, which is the time it takes to reach a given set point with a threshold.
+Settling time, which is the time it takes to stay within 1\% of the set point indefinitely.
+Lastly there is overshoot the percentage amount with a system initially surpasses its set point.\\
+
+%In order to provide a satisfactory answer to the above questions, the design of the FPGA modules, microcontroller software and control engineering theory will be covered in the following report.
+
+
+
+%\subsection{System requirements}
+
+
+As the use case of the system is as a stage spotlight, the performance specifications  need to be rather hard as overshoot and a slow rise time could render the system useless.
 Overshoot is undesirable as a spotlight is placed rather far away from the stage. Even a $1\%$ overshoot would result in a sizable overshoot of the intended target which could potentially be disruptive to the stage show.
 Furthermore the system needs a rise time as fast as possible without overworking the motors and gearing.
 
 A rise time of $1$ second fits both criteria, as this should not need a unrealistic amount of current for the system to react nor should it react so slow it causes a noticeable lag to the stage light.
 The settling time is set to be $1.2$ seconds as this gives the system time to slow down when it is approaching the target and settling in to $1\%$ of the reference.
+To limit the scope of these specifications they will only apply for movement deltas up to 90$^o$
 \\
-The requirements can be observed in the list below:
+The performance specifications for a 90$^o$ movement are listed below:
 
 \begin{itemize}
   \item No overshoot.
