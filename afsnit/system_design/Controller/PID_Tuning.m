@@ -239,7 +239,7 @@ opt = stepDataOptions('StepAmplitude',3*90);
   
   
   
-  %% BOTTOM frame PI tuning, with topframe at 0 degrees.
+%% BOTTOM frame PI tuning, with topframe at 0 degrees.
   
 clc
 clear
@@ -258,14 +258,13 @@ Keb = 3.5;
 %Motor Tourque
 Kmb = 1.57;
 %Inductance of motor
-Lb = 0.0606*cos(th)*cos(th);
+Lb = 3.85 * 10^(-4);
 %Ohmic resistance of motor
 Rb = 4.79;
 %Moment of inertia divided by 3 to take gearing into account.
-Jb = 0.0198/3;
+Jb = ( 0.0429 + 0.030205713*sin(th)*sin(th) ) / 3;
 %Gravitational constant
 g = 9.82;
-
 
 % Defining A,B,C matrices
 A = [0 1 0; 
@@ -294,8 +293,8 @@ Hs = kp * (1 + I);
   axRe = findall(gcf,'String','Real Axis (seconds^{-1})');
   set(axIm,'String', 'Im$(s)$');
   set(axRe,'String','Re$(s)$');
-  xlim([-200 50])
-  ylim([-150 150])
+  xlim([-120 10])
+  ylim([-10 10])
   set(rlocus_pure_bot,'Position',[10 10 600 300]) % Must closely match the final size needed
   Plot2LaTeX(rlocus_pure_bot,'img/PI/rlocus_pure_bot')
 
@@ -360,30 +359,10 @@ opt = stepDataOptions('StepAmplitude',3*90);
 
   %% BOTTOM frame PI tuning, with topframe at 90 degrees.
   
-clc
-clear
-
-s = tf('s');
-
 %Working point top frame.
-xbar = 10;
+xbar = 90;
 %Convert to radians
 th = xbar*pi/180;
-
-%Friction
-bb = 0.5;
-%Electro force
-Keb = 3.5;
-%Motor Tourque
-Kmb = 1.57;
-%Inductance of motor
-Lb = 0.0606*cos(th)*cos(th);
-%Ohmic resistance of motor
-Rb = 4.79;
-%Moment of inertia divided by 3 to take gearing into account.
-Jb = 0.0198/3;
-%Gravitational constant
-g = 9.82;
 
 
 % Defining A,B,C matrices
@@ -406,75 +385,93 @@ ki = kp*1/Ti;
 I = 1/(s*Ti);
 Hs = kp * (1 + I);
 
-% %Root Locus open loop
-%  rlocus_pure_bot = figure('Name','float_me'); % Allows I3 to float the window
-%   rlocus(Gs);
-%   axIm = findall(gcf,'String','Imaginary Axis (seconds^{-1})');
-%   axRe = findall(gcf,'String','Real Axis (seconds^{-1})');
-%   set(axIm,'String', 'Im$(s)$');
-%   set(axRe,'String','Re$(s)$');
-%   xlim([-200 50])
-%   ylim([-150 150])
-%   set(rlocus_pure_bot,'Position',[10 10 600 300]) % Must closely match the final size needed
-%   Plot2LaTeX(rlocus_pure_bot,'img/PI/rlocus_pure_bot')
-% 
-% 
-% %Root Locus with Ti gain
-%  rlocus_int_bot = figure('Name','float_me'); % Allows I3 to float the window
-%   rlocus(Hs*Gs);
-%   axIm = findall(gcf,'String','Imaginary Axis (seconds^{-1})');
-%   axRe = findall(gcf,'String','Real Axis (seconds^{-1})');
-%   set(axIm,'String', 'Im$(s)$');
-%   set(axRe,'String','Re$(s)$');
-%   xlim([-200 50])
-%   ylim([-150 150])
-%   set(rlocus_int_bot,'Position',[10 10 600 300]) % Must closely match the final size needed
-%   Plot2LaTeX(rlocus_int_bot,'img/PI/rlocus_int_bot')
-% 
-% %Regulator
-% kp = 9;
-% Ti = 1/0.035;
-% Td = 0;
-% ki = kp*1/Ti;
-% I = 1/(s*Ti);
-% Hs = kp * (1 + I);
-%   
-% %Step response First
-% sys_cl_0 = (Gs * Hs) / ( 1 + Gs * Hs);
-% opt = stepDataOptions('StepAmplitude',3*90);
-% %step(sys_cl_0,opt)
-% 
-%  step_0_first_bot = figure('Name','float_me'); % Allows I3 to float the window
-%   step(sys_cl_0,opt)
-%   line([0 10],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
-%   line([1 1],[0 300], 'Color','black','LineStyle','--')
-%   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
-%   yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
-%   set(step_0_first_bot,'Position',[10 10 600 300]) % Must closely match the final size needed
-%   Plot2LaTeX(step_0_first_bot,'img/PI/step_0_first_bot')
-%   
-% 
-% %Step response Second
-% 
-% %Regulator
-% kp = 3.7;
-% Ti = 1/0.035;
-% Td = 0;
-% ki = kp*1/Ti;
-% I = 1/(s*Ti);
-% Hs = kp * (1 + I);
-% 
-% sys_cl_1 = (Gs * Hs) / ( 1 + Gs * Hs);
-% opt = stepDataOptions('StepAmplitude',3*90);
-% %step(sys_cl_0,opt)
-% 
-%  step_0_second_bot = figure('Name','float_me'); % Allows I3 to float the window
-%   step(sys_cl_1,opt)
-%   line([0 10],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
-%   line([1 1],[0 300], 'Color','black','LineStyle','--')
-%   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
-%   yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
-%   set(step_0_second_bot,'Position',[10 10 600 300]) % Must closely match the final size needed
-%   Plot2LaTeX(step_0_second_bot,'img/PI/step_0_second_bot')
+%Root Locus open loop
+ rlocus_pure_bot_90 = figure('Name','float_me'); % Allows I3 to float the window
+  rlocus(Gs);
+  axIm = findall(gcf,'String','Imaginary Axis (seconds^{-1})');
+  axRe = findall(gcf,'String','Real Axis (seconds^{-1})');
+  set(axIm,'String', 'Im$(s)$');
+  set(axRe,'String','Re$(s)$');
+  xlim([-200 50])
+  ylim([-150 150])
+  set(rlocus_pure_bot_90,'Position',[10 10 600 300]) % Must closely match the final size needed
+  Plot2LaTeX(rlocus_pure_bot_90,'img/PI/rlocus_pure_bot_90')
 
+
+%Root Locus with Ti gain
+ rlocus_int_bot_90 = figure('Name','float_me'); % Allows I3 to float the window
+  rlocus(Hs*Gs);
+  axIm = findall(gcf,'String','Imaginary Axis (seconds^{-1})');
+  axRe = findall(gcf,'String','Real Axis (seconds^{-1})');
+  set(axIm,'String', 'Im$(s)$');
+  set(axRe,'String','Re$(s)$');
+  xlim([-0.5 0])
+  ylim([-0.05 0.05])
+  set(rlocus_int_bot_90,'Position',[10 10 600 300]) % Must closely match the final size needed
+  Plot2LaTeX(rlocus_int_bot_90,'img/PI/rlocus_int_bot_90')
+
+%Regulator
+kp = 9;
+Ti = 1/0.035;
+Td = 0;
+ki = kp*1/Ti;
+I = 1/(s*Ti);
+Hs = kp * (1 + I);
+  
+%Step response First
+sys_cl_3 = (Gs * Hs) / ( 1 + Gs * Hs);
+opt = stepDataOptions('StepAmplitude',3*90);
+%step(sys_cl_0,opt)
+
+ step_0_first_bot_90 = figure('Name','float_me'); % Allows I3 to float the window
+  step(sys_cl_3,opt)
+  line([0 10],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
+  line([1 1],[0 300], 'Color','black','LineStyle','--')
+  yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
+  yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
+  set(step_0_first_bot_90,'Position',[10 10 600 300]) % Must closely match the final size needed
+  Plot2LaTeX(step_0_first_bot_90,'img/PI/step_0_first_bot_90')
+  
+
+%Step response Second
+
+%Regulator
+kp = 3.7;
+Ti = 1/0.035;
+Td = 0;
+ki = kp*1/Ti;
+I = 1/(s*Ti);
+Hs = kp * (1 + I);
+
+sys_cl_4 = (Gs * Hs) / ( 1 + Gs * Hs);
+opt = stepDataOptions('StepAmplitude',3*90);
+
+ step_0_second_bot_90 = figure('Name','float_me'); % Allows I3 to float the window
+  step(sys_cl_4,opt)
+  line([0 10],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
+  line([1 1],[0 300], 'Color','black','LineStyle','--')
+  yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
+  yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
+  set(step_0_second_bot_90,'Position',[10 10 600 300]) % Must closely match the final size needed
+  Plot2LaTeX(step_0_second_bot_90,'img/PI/step_0_second_bot_90')
+
+    %% Comparison bottom
+  
+ comp = figure('Name','float_me'); % Allows I3 to float the window
+  step(sys_cl_1,opt)
+  hold on
+  step(sys_cl_4,opt)
+  hold off
+  h = line([0 20],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
+  b = line([1 1],[0 450], 'Color','black','LineStyle','--')
+  c = line([0 20],[270 270], 'Color','black','LineStyle','--')
+  yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
+  yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
+  set(get(get(h,'Annotation'),'LegendInformation'),'IconDisplayStyle','off')
+  legend('$0^o$','$90^o$','Location','east')
+  xlim([0 3])
+  ylim([0 320])
+  set(comp,'Position',[10 10 600 300]) % Must closely match the final size needed
+  Plot2LaTeX(comp,'img/PI/comp_bot')
+  
   

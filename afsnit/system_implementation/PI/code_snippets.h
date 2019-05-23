@@ -13,7 +13,7 @@ void tsk_PI(void* pvArgs)
        error = calculate_error_PI(controller.ref, controller.measured_y_n, &controller );
        calculate_PI( error, &controller );
 
-       vTaskDelay(pdMS_TO_TICKS(100));
+       vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 
