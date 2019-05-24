@@ -37,7 +37,6 @@ data will be read on rising edge from the SPI clock, as seen in figure \ref{fig:
 Each datagram is 16 bits in size and the datagram format sent by the Tiva
 can be observed in table \ref{tab:package_format_tiva} and \ref{tab:shorthand}
 
-\todo{Resp. select -> response select. }
 \begin{table}[h]
 	\centering
 	\begin{tabular}{|*{16}{p{0.50cm}|}}
@@ -45,7 +44,7 @@ can be observed in table \ref{tab:package_format_tiva} and \ref{tab:shorthand}
 		0&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15\\
 		\hline
 		\multicolumn{9}{|c|}{PWM  - 9bits} & M S&
-		\multicolumn{2}{c|}{Resp. select}& R S&
+		\multicolumn{2}{p{1cm}|}{Response select}& R S&
 		\multicolumn{3}{c|}{Reserved}
 		\\
 		\hline
@@ -73,9 +72,8 @@ can be observed in table \ref{tab:package_format_tiva} and \ref{tab:shorthand}
 	\label{tab:shorthand}
 \end{table}
 while the package format send by the FPGA
-can be observed in table \ref{tab:package_format_fpga}.
+can be observed in table \ref{tab:package_format_fpga}, where HS0 and HS1 is the home sensor bits.
 In the package format the bit number indicates the order of transmission starting with 0.
-\todo{Hvad er HS1 og HS0 ? uddyb mere evt.}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|*{16}{p{.3cm}|}}
