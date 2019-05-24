@@ -15,7 +15,7 @@
 
 \subsection{PI}
 
-\subsubsection{Software design of a PI controller}
+\subsubsection{Software Design of a PI Controller}
 In order to implement the aforementioned PI-controller in a fashion that complies with the API provided by FreeRTOS, it has been chosen to design a single interface.
 This is to avoid writing multiple sub-programs with the same functionality, and thus, it is required to be generic if multiple PI-controllers are to be implemented.
 \\
@@ -53,7 +53,7 @@ Since the design requirements are met, the next step is to implement the functio
 The reasoning for it to be implemented as a difference equation, is due to it being an exact relationship between current and past samples.
 %The reasoning for it to be implemented as a difference equation, is due to it being the easiest and most efficient way to compute the controller-signal.
 
-\subsubsection{Deriving the PI difference equation}
+\subsubsection{Deriving the PI Difference Equation}
 
 In order to obtain the difference equation for the PI-controller, the standard PI equation in the s-domain is observed:
 
@@ -103,7 +103,7 @@ $$
 
 
 
-\subsubsection{Implementation of the difference equation}
+\subsubsection{Implementation of the Difference Equation}
 With the software design chosen and the difference equation derived, the next step is to implement it.
 This is done in the following code snippet,seen in listing \ref{list:PI_controller}, which includes anti-windup whilst having the PI-controller expressed as a difference equation.
 

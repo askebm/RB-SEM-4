@@ -7,7 +7,7 @@ One of the main differences between a FPGA and a microcontroller is that on a FP
 This needs to be taken into consideration when implementing the various components and global registers so that a register can not be updated while other processes are using them.
 \\
 The FPGA used in this project is a Artix-7 mounted on a BASYS3 kit \cite{xilinx2019fpga}.
-\subsubsection{System overview}%
+\subsubsection{System Overview}%
 \label{sub:system_overview}
 
 \begin{figure}[H]
@@ -48,14 +48,14 @@ The role of the protocol module is to decode the data received over SPI, and pre
 Since all the different processes, like receiving data over SPI and updating data registers, run in parallel, it is important to make sure that the protocol module cannot update the data registers while the SPI module is receiving data form the Tiva.
 This is done by placing a latch on the output from the protocol module, which is triggered by a busy signal from the SPI module.
 
-\subsubsection{Quadrature decoder}
+\subsubsection{Quadrature Decoder}
 \label{subsubsec:Qdecoder_implement}
 Since there are two motors on the system and therefore two encoders, two instances of the quadrature decoder module has been implemented.
 Each of these modules has a 12 bit position vector as their output and takes the A and B encoder signals directly from the encoder. The modules uses the 100MHz system clock directly and takes a reset which is active low as input.
 The reset for the encoders are inverted before they are handed to the modules, so when a high reset is sent by the Tiva, a low reset signal is given to the decoder.
 
 
-\subsubsection{Velocity measurement}
+\subsubsection{Velocity Measurement}
 Thee two modules are used to calculate the velocity of which the system is rotating. For this calculation it uses the 12 bit output vector from the quadrature decoder module.
 There is two velocity measurement modules implemented, one for each motor.
 This is done to make it possible to regulate both the position and velocity for future development of the system.

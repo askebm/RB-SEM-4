@@ -52,7 +52,6 @@ The system is linearized in $0^\circ$. Which gives the following A, B and C matr
     \end{bmatrix}
     \end{split}
 \end{equation}
-\todo{reg/punktum hele fil}
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
@@ -83,7 +82,7 @@ With a $T_i = \frac{1}{0.035}$ the root locus in figure \ref{fig:rlocus_int} is 
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_int.pdf_tex}
-\caption{Root locus of openloop plant with integral regulator}
+\caption{Root locus of openloop plant with integral controller}
 \label{fig:rlocus_int}
 \end{figure}
 
@@ -93,7 +92,7 @@ With a gain $K_p = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, wo
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first.pdf_tex}
-\caption{Step response of system with the tuned PI-regulator. The dotted vertical line is 1s}
+\caption{Step response of system with the tuned PI-controller. The dotted vertical line is 1s}
 \label{fig:step_0_first}
 \end{figure}
 
@@ -104,7 +103,7 @@ With a gain $K_p = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, wo
 		 \textbf{Risetime} & 0.4798s\\
 		 \textbf{Settling Time} & 2.1619s
 	 \end{tabular}
-	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_first}.}
+	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_first}}
 	 \label{tab:performance_0_1}
 \end{table}
 
@@ -114,7 +113,7 @@ In figure \ref{fig:step_0_first} it can be seen that the rise time is faster tha
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second.pdf_tex}
-\caption{Step response and bode plot of system with the tuned PI-regulator}
+\caption{Step response and bode plot of system with the tuned PI-controller}
 \label{fig:step_0_second}
 \end{figure}
 
@@ -128,7 +127,7 @@ In figure \ref{fig:step_0_first} it can be seen that the rise time is faster tha
 		 \textbf{Gain Margin} & 74.4dB\\
 		 \textbf{Phase Margin} & 86.7$^\circ$
 	 \end{tabular}
-	 \caption{Performance and stability characteristics of PI-controlled system in figure \ref{fig:step_0_second}.}
+	 \caption{Performance and stability characteristics of PI-controlled system in figure \ref{fig:step_0_second}}
 	 \label{tab:performance_0_2}
 \end{table}
 
@@ -180,7 +179,7 @@ It is tuned to $K_p = 1.39$ and $T_i = \frac{1}{0.006}$
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_90.pdf_tex}
-\caption{Step response and stability  of system with the tuned PI-regulator.}
+\caption{Step response and stability  of system with the tuned PI-controller}
 \label{fig:step_0_second_90}
 \end{figure}
 
@@ -194,7 +193,7 @@ It is tuned to $K_p = 1.39$ and $T_i = \frac{1}{0.006}$
 		 \textbf{Gain Margin} & 75.6dB\\
 		 \textbf{Phase Margin} & 86.8$^\circ$
 	 \end{tabular}
-	 \caption{Performance characteristics and stabillity margins of PI-controlled system in figure \ref{fig:step_0_second_90}.}
+	 \caption{Performance characteristics and stabillity margins of PI-controlled system in figure \ref{fig:step_0_second_90}}
 	 \label{tab:performance_0_3}a
 \end{table}
 
@@ -241,7 +240,7 @@ it is tuned to $K_p = 1.3$ and $T_i = \frac{1}{0.2}$
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_180.pdf_tex}
-\caption{Step response and bodeplot of system with the tuned PI-regulator.}
+\caption{Step response and bodeplot of system with the tuned PI-controller}
 \label{fig:step_0_second_180}
 \end{figure}
 
@@ -255,7 +254,7 @@ it is tuned to $K_p = 1.3$ and $T_i = \frac{1}{0.2}$
 		 \textbf{Negative Gain Margin} & -22.9dB\\
 		 \textbf{Phase Margin} & 78.5$^\circ$
 	 \end{tabular}
-	 \caption{Performance characteristics and stability margins of PI-controlled system in figure \ref{fig:step_0_second_180}.}
+	 \caption{Performance characteristics and stability margins of PI-controlled system in figure \ref{fig:step_0_second_180}}
 	 \label{tab:performance_0_4}
 \end{table}
 
@@ -316,7 +315,7 @@ The state space model of the bottom frame, when the topframe is at $0^\circ$, is
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_pure_bot.pdf_tex}
-\caption{Root locus of openloop plant without regulator}
+\caption{Root locus of openloop plant without controller}
 \label{fig:rlocus_pure_bot}
 \end{figure}
 
@@ -351,7 +350,7 @@ This is needed for the system to comply with the requirements, as explained in s
 		 \textbf{Risetime}  & 0.4143s\\
 		  \textbf{Settling time}& 0.7133s
 	 \end{tabular}
-	 \caption{Performance characteristics and stability margins of PI-controlled system in figure \ref{fig:step_0_first_bot}.}
+	 \caption{Performance characteristics and stability margins of PI-controlled system in figure \ref{fig:step_0_first_bot}}
 	 \label{tab:performance_0_5}
 \end{table}
 
@@ -378,7 +377,7 @@ Therefore the P-gain is tuned to better meet the performance requirements. $K_p 
 	         \textbf{Gain Margin} & infinite\\
 		 \textbf{Phase Margin} & 87.4\\
 	 \end{tabular}
-	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second_bot}.}
+	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second_bot}}
 	 \label{tab:performance_0_6}
 \end{table}
 
