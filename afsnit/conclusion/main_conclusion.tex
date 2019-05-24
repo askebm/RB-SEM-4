@@ -35,7 +35,7 @@ The FPGA can communicate with the Tiva by the use of a SPI protocol.
 The implemented protocol follows the master/slave principle, in which the Tiva acts as the master and the FPGA as slave.
 
 \paragraph{Embedded Programming}
-A real time operating system, FreeRTOS, has been implemented on the Tiva. FreeRTOS has been chosen as this provides a scheduler, and thus making multiple task run in apparent concurrency possible.
+A real time operating system, FreeRTOS, has been implemented on the Tiva. FreeRTOS has been chosen as this provides a scheduler, and thus making multiple tasks run in apparent concurrency possible.
 The PI-controllers are implemented on the Tiva as tasks having the highest priority. This is to ensure the timings are consistent.
 
 The system can be controlled using a UART or keyboard interface allowing users to change the position of the system.
