@@ -3,7 +3,7 @@
 \label{sec:PI}
 In this section the controllers for the Top and Bottom frames of the pan-tilt system are designed and tuned, so they conform to the system requirements put forth in the problem statement see table \ref{tab:performance_specifications}.
 
-\subsubsection{Tuning of Top-Frame}
+\subsubsection{Tuning of Top Frame}
 \label{sec:top_frame_tuning}
 The top frame is nonlinear, as can be seen in equation \eqref{eq:new_mech_equation_with_corners}, which includes a sine term.
 
@@ -269,7 +269,7 @@ The system responses are not exactly alike, and especially the system when linea
 \label{fig:comp}
 \end{figure}
 
-\subsubsection{Tuning of bottom frame}
+\subsubsection{Tuning of Bottom Frame}
 
 \todo{The bottom frame's moment of inertia is directly influenced by the postion of the top frame. For this reason the bottom frame is non-linear. However the influence has been approximated to be 1/7 of the static momemt of inertia for the bottom frame. Therefore the bottomframe is considered linear. }
 While the top frame of the pan-tilt system is nonlinear, the bottom frame is not. Therefore it is not necessary to linearize it. As the top frame can move, it influences the moment of inertia of the bottom frame as a function of the top frames angle in relation to the bottom frame, as described in section \ref{sec:moment_botom}.
