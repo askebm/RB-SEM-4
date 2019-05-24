@@ -1,25 +1,25 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
 
-In section \ref{subsubsec:reset_state} regarding the Quadrature Decoder, it is described that when the system restarts it obtains a new and unknown reference point.
+In section \ref{subsubsec:reset_state} regarding the quadrature decoder, it is described that when the system restarts it obtains a new and unknown reference point.
 The system needs a fixed reference point in order to set a desired angle with a known reference for the system to move to. \\
 The system's top and bottom frame are both equipped with a hall sensor.
 The sensors are used to determine when one or both of the frames are at the reference point at $0^\circ$. The positioning of the sensors and the end stop can be seen on figure \ref{fig:homing_system}.
 For the system to be able to return to $0^\circ$ a homing process needs to be designed.
 The bottom frame can not turn freely which needs to be taken into consideration when designing the process.
-\subsubsection{Methods}
-There are multiple ways to home the system. A crude and inefficient way to do this is by manually rotating both the frames to the home position and then manually resetting the FPGA when the frames are in position.
+\subsubsection{Strategys}
+There are multiple ways to home the system. An inefficient way to do this is by manually rotating both the frames to the home position and then manually resetting the FPGA when the frames are in position.
 This is a very inefficient way of doing so, as it is not possible to home the system without turning it on and off and the frames has to be turned manually.
-An automated homing process is therefore preferred and two methods have been considered to achieve this.
+An automated homing process is therefore preferred and two strategys have been considered to achieve this.
 
 \begin{figure}[H]
   \centering
   \def\svgwidth{\textwidth}
   \includesvg[\main /afsnit/system_design/homing/img/]{system_homing}
-  \caption{Placement of sensors and end stop.}
+  \caption{Placement of sensors and end-stop.}
   \label{fig:homing_system}
 \end{figure}
-\paragraph{Method 1}%
+\paragraph{Strategy 1}%
 \label{par:method_1}
 One way of homing the system is to give the top frame a low PWM signal, such that it is rotating slowly.
 When the top frame triggers the hall sensor it resets the position counter for the top frame.
@@ -30,7 +30,7 @@ If the frame is hitting the end-stop, it needs to switch direction of the motor 
 The detection of collision with the end stop can be identified by checking if the frame is still rotating. If the rotation has stopped then switch the direction of the frame.
 Otherwise the homing of the bottom frame will be identical to the top frame.
 
-\paragraph{Method 2}%
+\paragraph{Strategy 2}%
 \label{par:method_2}
 Another method of homing the system is to rotate the frames slowly like in the previous method, but instead of resetting the position counter of the encoder when the frames trigger the hall sensors, it will save the position in witch the sensors were triggered and then change direction of the motor.
 When the sensor is triggered again it will save that position and calculate the difference between the to positions.
@@ -41,7 +41,7 @@ This approach will most likely be more precise, however more complicated.
 \subsubsection{Homing summary}%
 \label{ssub:homing_summary}
 For this system the second method has been chosen. This is done because a precise home position is desired.
-The system is also able to detect if the bottom frame is hitting the end stop. If this happens while homing the direction of the bottom frame is changed. 
+The system is able to detect if the bottom frame is hitting the end stop. If this happens while homing the direction of the bottom frame is changed. 
 This makes the system able to start at the same position every time.
 If for some reason the position should drift during use, the system is able to reset the position on request.
 
