@@ -16,7 +16,7 @@
 \subsection{PI}
 
 \subsubsection{Software Design of a PI Controller}
-In order to implement the aforementioned PI-controller in a fashion that complies with the API provided by FreeRTOS, it has been chosen to design a single interface.
+In order to implement the PI-controller in a fashion that complies with the API provided by FreeRTOS, it has been chosen to design a single interface.
 This is to avoid writing multiple sub-programs with the same functionality, and thus, it is required to be generic if multiple PI-controllers are to be implemented.
 \\
 
@@ -70,7 +70,7 @@ $$
 s = \frac{2}{T}\cdot \Bigg( \frac{z-1}{z+1}\Bigg)
 $$
 
-Equation \eqref{eq:eq_1} now becomes
+Equation \eqref{eq:eq_1} now becomes, where $T$ is the sample time.
 $$
   u(z) = \Bigg(k_p + k_i\cdot \frac{T}{2} \frac{z+1}{z-1} \Bigg) \cdot e(z)
 $$
@@ -105,7 +105,7 @@ $$
 
 \subsubsection{Implementation of the Difference Equation}
 With the software design chosen and the difference equation derived, the next step is to implement it.
-This is done in the following code snippet,seen in listing \ref{list:PI_controller}, which includes anti-windup whilst having the PI-controller expressed as a difference equation.
+This is done in the following code snippet, seen in listing \ref{list:PI_controller}, which includes anti-windup whilst having the PI-controller expressed as a difference equation.
 
 \lstset{morekeywords={int16\_t, uint8\_t, PI,x\_n,y\_n}}
 \lstinputlisting[ firstline=37, lastline=67,caption = {PI controller, with \text{x\_n =  e[n] and y\_n = u[n]} } ,label={list:PI_controller}]{\main/afsnit/system_implementation/PI/code_snippets.h}
