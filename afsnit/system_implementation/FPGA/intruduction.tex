@@ -7,20 +7,20 @@ One of the main differences between a FPGA and a microcontroller is that on a FP
 This needs to be taken into consideration when implementing the various components and global registers so that a register can not be updated while other processes are using them.
 \\
 The FPGA used in this project is a Artix-7 mounted on a BASYS3 kit \cite{xilinx2019fpga}.
-\subsubsection{System overview}%
+\subsubsection{System Overview}%
 \label{sub:system_overview}
 
 \begin{figure}[H]
   \centering
   \def\svgwidth{\textwidth}
   \includesvg[\main /afsnit/system_implementation/FPGA/images/]{components_connection}
-  \caption{FPGA System overview.}
+  \caption{FPGA system overview}
   \label{fig:FPGA_system_overview}
 \end{figure}
-The system consists of different modules mplemented in VHDL.
+The system consists of different modules implemented in VHDL.
 The data paths between the modules can be seen in the system overview, see figure \ref{fig:FPGA_system_overview}.
 \\
-Multiple registers, of different sizes depending on the useage, have been implemented to store the data that is to be exhanged between the FPGA and the Tiva, see table \ref{table:FPGA_registers}.
+Multiple registers, of different sizes depending on the usage, have been implemented to store the data that is to be exchanged between the FPGA and the Tiva, see table \ref{table:FPGA_registers}.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|}
@@ -31,34 +31,34 @@ Position\_B     & PWM\_B         & Home\_B        \\ \hline
 Velocity\_T     & -              & Reset\_T       \\ \hline
 Velocity\_B     & -              & Reset\_B       \\ \hline
 \end{tabular}
-\caption{FPGA Registers}
+\caption{FPGA registers}
 \label{table:FPGA_registers}
 \end{table}
 
 \subsubsection{PWM}
-The PWM module creates a PWM signal for both motors. It takes a 9 bits vector as input for each motor, and output the signals necessary for the H-Bridges to work.
+The PWM module creates a PWM signal for both motors. It takes a 9 bit signed vector as input for each motor, and output the signals necessary for the H-bridges to work.
 It takes the 100MHz system clock from the FPGA as input which it uses to create a downscaled clock frequency for the desired PWM frequency.
 MSB in the 9 bit input vector determines which way the motor should turn.
 The module is designed such that it is possible to define the system clock frequency, the desired PWM frequency and the correct clock divider is calculated when the code is synthesized.
 This is done so that it is easy to change the PWM frequency for testing.
 \subsubsection{Protocol}
-The protocol module uses a SPI module created by \cite{spi_git_module} for communication with the Tiva.
+The protocol module uses a SPI module \cite{spi_git_module} for communication with the Tiva.
 The role of the protocol module is to decode the data received over SPI, and prepare data for transmission, in regards to the determined protocol in section \ref{sub:spi}.
 \\
 Since all the different processes, like receiving data over SPI and updating data registers, run in parallel, it is important to make sure that the protocol module cannot update the data registers while the SPI module is receiving data form the Tiva.
 This is done by placing a latch on the output from the protocol module, which is triggered by a busy signal from the SPI module.
 
-\subsubsection{Quadrature decoder}
+\subsubsection{Quadrature Decoder}
 \label{subsubsec:Qdecoder_implement}
 Since there are two motors on the system and therefore two encoders, two instances of the quadrature decoder module has been implemented.
-Each of these modules has a 12 bit position vector as thier output and takes the A and B encoder signals directly from the encoder. The modules uses the 100Mhz system clock directly and takes a reset which is active low as input.
+Each of these modules has a 12 bit position vector as their output and takes the A and B encoder signals directly from the encoder. The modules uses the 100MHz system clock directly and takes a reset which is active low as input.
 The reset for the encoders are inverted before they are handed to the modules, so when a high reset is sent by the Tiva, a low reset signal is given to the decoder.
 
 
-\subsubsection{Speed measurement}
-Thee two modules are used to calculate the speed of which the system is rotating. For this calculation it uses the 12 bit output vector from the quadrature decoder module.
-There is two speed measurement modules implemented, one for each motor.
-This is done to make it possible to regulate both the position and speed for future developmenting of the system.
+\subsubsection{Velocity Measurement}
+Thee two modules are used to calculate the velocity of which the system is rotating. For this calculation it uses the 12 bit output vector from the quadrature decoder module.
+There is two velocity measurement modules implemented, one for each motor.
+This is done to make it possible to regulate both the position and velocity for future development of the system.
 
 \subsubsection{FPGA Summary}
 All of the above mentioned modules have been developed and implemented on the Artix7 FPGA.

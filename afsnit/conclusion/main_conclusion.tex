@@ -1,29 +1,47 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
 
-In this section its concluded to which extend the problems in the problemstatement is solved.
+In this section it is concluded to what extend the problems in the problem statements is solved.
 
-\paragraph{The control engineering}
-A mathematical model of the pan-tilt system has been made.
-A nonlinaerity is here observed for the top and bottom frame. The top frame nonlinaerity i solved by linearization with the Jacobian matrix in angles $0^\circ$, $90^\circ$ and $180^\circ$. Its here determined that the bottom frame is dependent on teh topframe and therefore the same linearizations are utilized. The moments of inertia for these are determined independently.
+\paragraph{Control engineering}
 
-Based on this model a PI-controller with $K_p$ and $T_i$ gains have been tuned to comply with specifications as best as possible. This controller is implemented on the Tiva.
+A mathematical model of the pan-tilt system has been made. \todo{It is noticed that in this model, both the top and bottom frame are nonlinear.}
+
+A nonlinaerity is here observed for the top and bottom frame.
+The top frame's nonlinaerity is approximated by linearization with the Jacobian matrix in angles $0^\circ$, $90^\circ$ and $180^\circ$.
+\todo{The top frame is therefore linearized in the angles (insert angels) by calculating the Jacobian matrix. }
+\todo{As for the bottom frame's non-linearity, it is shown that the influence caused by the position of the top frame is negligible. This is shown by a step response, in which the top frame is set to the aforementioned angles.}
+It is  here determined that the bottom frame is dependent on the top frame, but the top frames effect is negligible.
+
+
+
+Based on the modelled system, \todo{a PI-controller has been tuned with the gains $K_p$ and $T_i$. It has then further been tuned by hand, in order to achieve the performance specifications to the best extend possible. } a PI-controller has be with $K_p$ and $T_i$ gains have been tuned and then tuned by hand to comply with the performance specifications to the best extend possible.
+
+\todo{The PI-controller has been implemented on the tiva, by deriving the difference equation using Tustin's method. }
+This controller is implemented on the using tustin's method Tiva.
+\todo{Futhermore step responses of the acutal system have been logged. (This is in order to achieve a comparison of the ...)  This is to compare the physical and mathematical systems. }
 Step responses of the actual system have been logged and compared with the expected step responses from the mathematical model.
-
+\todo{In the comparison it is seen that, the mathematical model have almost no overshoot, opposed to the actual system which capable of reaching an overshoot of 38\% }
 The step responses based on the mathematical model have no overshoot compared with the actual system.
 
-Based on the results it is concluded that the mathematical model is not accurate enough to apply directly, and that a PID-controller including a D-term will improve the response of the system by limiting overshoot.\\
-To implement the controller as a difference equation tustin's method is applied.
+\todo{Since the step responses are too dissimilar, it is concluded that the model itself is too inaccurate to be applied directly as a tool to tune the system.   }
+Based on the results it is concluded that the mathematical model is not accurate enough to apply directly.\\
 
 \paragraph{Digital System Design}
-On the FPGA decoders are implemented to decode the position from the quadrature encoders on the pan-tilt system. Based on the position decoded, the FPGA sends the, Tiva decided, PWM signal to the motors, and thus the position. This is done with a implemented PWM module.\\
-The FPGA can determine the position with a $\frac{1}{3}$ degrees precision and direction, in which the system is rotating. A velocity has been implmented, which can be calculated from the position.\\
+On the FPGA, decoders are implemented in order to measure the positon of the system.
+This is achieved by decoding the signals from the quadrature encoders of the pan-tilt system.
+
+The FPGA can determine the position with a \todo{The resolution of the position and direction measurement is  } $\frac{1}{3}$ degrees of precision, and direction, in which the system is rotating.
+\todo{Based on the quadrature decoder, a velocity }
+A velocity has been implemented, which can be calculated from the position.\\
+
+. This is done with a implemented PWM module.\\
 The PWM signal's frequency has been calculated to be $1003 \si{\,Hz}$, as this allows the motor to draw full current and utilize all available torque. \\
 The SPI protocol is a shift register protocol with a register size varying from 8 bits to a maximum of 16 bits. The protocol follows the master/slave princple, with the Tiva as the master and FPGA as slave. This protocol has been implemented on the FPGA by using a SPI module.
 
 \paragraph{Embedded Programming}
-A real operating system, FreeRTOS, has been implemented on the Tiva. FreeRTOS has been chosen as it can emulate tasks running in parallel. \\
-The controller is implemented on the Tiva as a task with the highest possible priority to make sure it has the most accurate timing possible for the system.
+A real time operating system, FreeRTOS, has been implemented on the Tiva. FreeRTOS has been chosen as it can emulate tasks running in parallel. \\
+The controller is implemented on the Tiva as a task with the highest priority to make sure it has the most consistent timing possible for the controller.
 
 \begin{itemize}
   \item PI controller choice
