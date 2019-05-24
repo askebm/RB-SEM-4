@@ -54,18 +54,18 @@
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{current.pdf}}%
-    \put(0.28480881,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau$\end{tabular}}}}%
-    \put(0.43866524,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$2\tau$\end{tabular}}}}%
-    \put(0.59252143,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$3\tau$\end{tabular}}}}%
-    \put(0.74637786,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$4\tau$\end{tabular}}}}%
-    \put(0.90023429,0.050635){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$5\tau$\end{tabular}}}}%
-    \put(0.51785762,0.01222214){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}time\end{tabular}}}}%
+    \put(0.28480881,0.05048952){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$\tau$\end{tabular}}}}%
+    \put(0.43866524,0.05048952){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$2\tau$\end{tabular}}}}%
+    \put(0.59252143,0.05048952){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$3\tau$\end{tabular}}}}%
+    \put(0.74637786,0.05048952){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$4\tau$\end{tabular}}}}%
+    \put(0.90023429,0.05048952){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}$5\tau$\end{tabular}}}}%
+    \put(0.51785762,0.01206024){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}time\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{current.pdf}}%
-    \put(0.12396833,0.07095238){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
-    \put(0.12396833,0.14079357){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1\end{tabular}}}}%
-    \put(0.12396833,0.210635){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}2\end{tabular}}}}%
-    \put(0.12396833,0.28047619){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}3\end{tabular}}}}%
-    \put(0.04206357,0.18333333){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}(ampere)\end{tabular}}}}}%
+    \put(0.12382286,0.07095238){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
+    \put(0.12382286,0.14079357){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}1\end{tabular}}}}%
+    \put(0.12382286,0.210635){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}2\end{tabular}}}}%
+    \put(0.12382286,0.28047619){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}3\end{tabular}}}}%
+    \put(0.04181881,0.18333333){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Current[A]\end{tabular}}}}}%
     \put(0.51785762,0.29925143){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Current through motor}\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{current.pdf}}%
   \end{picture}%
