@@ -38,7 +38,7 @@ The scheduler is run by a timer interrupt every 5ms and during this the current 
 
 \subsubsection{Subtask Communication}
 
-The multiple task architecture where each task deals only in their own specific area of the system requires since the combination of tasks are designed to accomplish one or more high level objective, a way to efficiently communicate between tasks running on the system.
+The multiple task architecture, where each task deals only in their own specific area of the system, requires a way to efficiently communicate between tasks running on the system.    
 This is accomplished using a combination of state buffers and queues.
 
 State buffers are simple buffers keeping the last value written to it until a new value is overwrites this regardless of how many reads has been performed in that time. The implementation of this concept is done through variables of the appropriate task being declared in global scope and therefore available to every function in the system.
