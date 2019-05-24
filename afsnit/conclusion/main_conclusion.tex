@@ -1,19 +1,30 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
 
-In this section its concluded to which extend the problems in the problemstatement is solved.
+In this section it is concluded to what extend the problems in the problem statements is solved.
 
 \paragraph{Control engineering}
-A mathematical model of the pan-tilt system has been made.
-A nonlinaerity is here observed for the top and bottom frame. The top frames nonlinaerity is approximated by linearization with the Jacobian matrix in angles $0^\circ$, $90^\circ$ and $180^\circ$.
-Its here determined that the bottom frame is dependent on the top frame, but the top frames effect is negligible.
 
-Based on the modelled system a PI-controller with $K_p$ and $T_i$ gains have been tuned and then tuned by hand to comply with the performance specifications to the best extend possible.
+A mathematical model of the pan-tilt system has been made. \todo{It is noticed that in this model, both the top and bottom frame are nonlinear.}
+
+A nonlinaerity is here observed for the top and bottom frame.
+The top frame's nonlinaerity is approximated by linearization with the Jacobian matrix in angles $0^\circ$, $90^\circ$ and $180^\circ$.
+\todo{The top frame is therefore linearized in the angles $0^\circ$, $90^\circ$ and $180^\circ$ by calculating the Jacobian matrix. }
+\todo{As for the bottom frame's non-linearity, it is shown that the influence caused by the position of the top frame is negligible. This is shown by a step response, in which the top frame is set to the aforementioned angles.}
+It is  here determined that the bottom frame is dependent on the top frame, but the top frames effect is negligible.
+
+
+
+Based on the modelled system, \todo{a PI-controller has been tuned with the gains $K_p$ and $T_i$. It has then further been tuned by hand, in order to achieve the performance specifications to the best extend possible. } a PI-controller has be with $K_p$ and $T_i$ gains have been tuned and then tuned by hand to comply with the performance specifications to the best extend possible.
+
+\tood{The PI-controller has been implemented on the tiva, by deriving the difference equation using Tustin's method. }
 This controller is implemented on the using tustin's method Tiva.
+\todo{Futhermore step responses of the acutal system have been logged. (This is in order to achieve a comparison of the ...)  This is to compare the physical and mathematical systems. }
 Step responses of the actual system have been logged and compared with the expected step responses from the mathematical model.
-
+\todo{In the comparison it is seen that, the mathematical model have almost no overshoot, opposed to the actual system which capable of reaching an overshoot of 38\% }
 The step responses based on the mathematical model have no overshoot compared with the actual system.
 
+\todo{Since the step responses are too dissimilar, it is concluded that the model itself is too inaccurate to be applied directly.   }
 Based on the results it is concluded that the mathematical model is not accurate enough to apply directly.\\
 
 \paragraph{Digital System Design}
