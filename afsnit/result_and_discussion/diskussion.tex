@@ -1,25 +1,29 @@
-
 \documentclass[../../main]{subfiles}
 \begin{document}
 
 \subsection{Discussion}
 \label{sec:discussion}
-In this section, the reasons for the difference in the deduced theoretical model and the observed behavior of the system will be discussed together with suggstions to further improve the project.
 
-Firstly the above mentioned differences must be quantified to see if the errors, caused by approximations, have the expected size and sign. This can be seen in table \ref{tab:project_results}.\\
+%In this section, the reasons for the difference in the deduced theoretical model and the observed behavior of the system will be discussed together with suggstions to further improve the project.
 
-To diagnose the potential causes for these differences, its worth considering the approximations made in process of simulating the real system.
+To investigate the potential causes for differences in the theoretical model and the physical model, its worth considering the approximations made in process of modelling the physical system.
 
-As seen in section \ref{sec:Top_frame_inertia} the moment of inertia is estimated through the following approximations: The corners on the top frame are considered added mass to $d$ while their center of mass actually are closer to the axis of rotation and the bolts keeping the frames together aren't accounted. Since moment of inertia is an expression of mass distribution about a given axis of rotation, we should expect that these approximations would indicate a potential error with same sign as the one we observe. As we would expect a greater moment of inertia would result in a bigger overshoot. This can be seen on figure \todo{ref}REF, which from the above mentioned approximations confirm since the weight of the bolts in the frame would add to the moment of inertia. This is to some extend counter weighed by the corners which would contribute to the moment of inertia to a smaller overshoot, since their distance from the axis of rotation is shorter on the actual system. It is here worth mentioning that the displacement of the frame corners would contribute to the lowering of the overshoot. While this might be present, its influence on the resulting behavior seems to be small based on the real systems behavior.\\
-One other constant which might differ from the real one is the ohmic resistance in the motors. From the datasheet of the used multimeter \todo{ref}BIBREF its seen that the percentage error generally is $0.0075\%$ which results in the correct resistance for the top frame motor being in the interval $[4.7346\Omega;4.7534\Omega]$ and for the bottom frame its $[4.7016\Omega;4.7024\Omega]$. Since these intervals are as small as shown, they would not contribute in a significant way to the overshoot, and are therefore viewed as negligible.\\
+As seen in section \ref{sec:Top_frame_inertia} the moment of inertia is estimated through the following approximations: The corners on the top frame are considered added mass to the top bar, named $d$ on figure \ref{fig:TopFrame}. Their center of mass are closer to the axis of rotation which makes the modelled system overestimate their contribution to the non-linearity of system. This is not consistent with the modelled system behaviour compared to the physical system.
+At the same time the bolts keeping the frames together aren't accounted for, which might explain this explain this behaviour, but not entirely.
 
-To improve the control of the system, implementation of a lowpass filter followed by a D-term would be an option. This is caused by the fact that the D-term in a PID controller reduces the amount of overshoot, and the filter eliminates noise to prevent the D-term in reacting to these.\\
-A second approach to improve the control of the system would be use of modern control techniques. Here is implementation of state feedback a candidate to improve performance.
+%Since moment of inertia is an expression of mass distribution about a given axis of rotation, we should expect that these approximations would indicate a potential error with same sign as the one we observe.
 
+Another major margin of error in the modelled system is the motor torque constant, the electromotive force constant and the friction of the system which where used as tuning parameters to try and emulate the step response of the physical system. This tuning was not based in any calculations, but rather through trial and error. This is most likely the greatest source of error for the modelled system, where thorough testing of the motor would most likely result in more accurate values, which should make the modelled system more equivalent to the physical system and thus make it possible to tune the current PI implementation better.
 
+%As we would expect a greater moment of inertia would result in a bigger overshoot. This can be seen on figure \todo{ref}REF, which from the above mentioned approximations confirm since the weight of the bolts in the frame would add to the moment of inertia. This is to some extend counter weighed by the corners which would contribute to the moment of inertia to a smaller overshoot, since their distance from the axis of rotation is shorter on the actual system. It is here worth mentioning that the displacement of the frame corners would contribute to the lowering of the overshoot. While this might be present, its influence on the resulting behavior seems to be small based on the real systems behavior.\\
+%One other constant which might differ from the real one is the ohmic resistance in the motors. From the datasheet of the used multimeter \todo{ref}BIBREF its seen that the percentage error generally is $0.0075\%$ which results in the correct resistance for the top frame motor being in the interval $[4.7346\Omega;4.7534\Omega]$ and for the bottom frame its $[4.7016\Omega;4.7024\Omega]$. Since these intervals are as small as shown, they would not contribute in a significant way to the overshoot, and are therefore viewed as negligible.\\
 
+A possible improvement to the controller of the system, could an implementation of a low pass filtered D-term. This is caused by the fact that the D-term in a PID controller could reduce the observed overshoot.
+Another solution still retaining to classic control engineering would be cascade control which could limit the maximum velocity, which in turn would reduce overshoot, but also increase rise time.
+Lastly, if a more accurate model of the system was achieved it would be viable to implement modern control engineering scheme, such as state-feedback or integral-control.
 
-
-
+Both a modern controller and a classic cascade controller	could have benefited from current sensing.
+A classic cascade controller with 3 levels, position, velocity and current, would demand more from the RTOS in terms of timing since the control of an inner controller should be close to steady-state within the periodic time of the outer loop frequency.
+%A second approach to improve the control of the system would be use of modern control techniques. Here is implementation of state feedback a candidate to improve performance.
 
 \end{document}
