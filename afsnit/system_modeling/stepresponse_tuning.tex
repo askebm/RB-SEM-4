@@ -13,10 +13,7 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
   			\makebox[\textwidth][c]{
         	\includesvg[\main/afsnit/system_modeling/img/]{simulink_top}
 				}
-				\caption{Simulink Top frame. J is inertia, L is Henry, R is resistance,
-				g is force of gravity, b is friction, l is the length of the frame,
-				$m_{corner}$ is the mass of a corner bracket, motor\_torque is the motor torque constant
-				and electro force is the electro force constant.}
+				\caption{Simulink top frame}
         \label{fig:simulink_top}
 \end{figure}
 
@@ -27,11 +24,7 @@ The system is tuned using the simulink models seen in figure \ref{fig:simulink_t
   			\makebox[\textwidth][c]{
         	\includesvg[\main/afsnit/system_modeling/img/]{simulink_bot}
 				}
-				\caption{Simulink Bottom frame. J is inertia, L is henry, R is resistance,
-				g is force of gravity, b is friction,l is the length of the frame,
-				$m_{corner}$ is the mass of a corner bracket, $mass_{top}$ is the mass of the top frame
-				motor\_torque is the motor torque constant
-				and electro force is the electro force constant.}
+				\caption{Simulink bottom frame}
         \label{fig:simulink_bot}
 \end{figure}
 
@@ -42,15 +35,15 @@ The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_consta
 	\begin{tabular}{ll}
 		\multicolumn{2}{c}{ \textbf{Top frame} }\\
 		\hline
-		electromotive force& 0.1\si{ \frac{rad}{Vs}}\\
-		motor torque & 1.4 \si{ \frac{N m}{A}}\\
-		friction coefficient& 0.57\\
+		Electromotive force& 0.1\si{ \frac{rad}{Vs}}\\
+		Motor torque & 1.4 \si{ \frac{N m}{A}}\\
+		Friction coefficient& 0.57\\
 
 		\multicolumn{2}{c}{ \textbf{Bottom frame} }\\
 		\hline
-		electromotive force& 3.5\si{ \frac{rad}{Vs}}\\
-		motor torque & 1.57 \si{ \frac{N m}{A}}\\
-		friction coefficient & 0.5\\
+		Electromotive force& 3.5\si{ \frac{rad}{Vs}}\\
+		Motor torque & 1.57 \si{ \frac{N m}{A}}\\
+		Friction coefficient & 0.5\\
 	\end{tabular}
 	\caption{Adjusted motor constants.}
 	\label{tab:fitted_motor_constants}
@@ -69,6 +62,6 @@ The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_consta
 \end{figure}
 It was not possible to tune the simulated model to fit the real data,
 which indicates that there are some parameters not accounted for in the model.
-It was not possible to match both the theoretical velocity and current to their practical counterparts at the same time. Since only position, \todo{ lyder mærkeligt. } and therefore velocity, is observable, it is prioritized to match the practical and theoretical velocity.
-As the modeled system is not a perfect match, the requirement for the gain margin of the controller, to allow for disturbances, increase.
+It was not possible to match both the theoretical velocity and current to their practical counterparts at the same time. Since only position, and therefore velocity, is observable, it is prioritized to match the practical and theoretical velocity.
+As the modeled system is not a perfect match, the requirement for the gain margin of the controller, to allow for disturbances, increases.
 \end{document}
