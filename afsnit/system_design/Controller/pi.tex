@@ -1,18 +1,18 @@
 \documentclass[../../../Main]{subfiles}
 \begin{document}
-
+\label{sec:PI}
 In this section the controllers for the Top and Bottom frames of the pan-tilt system are designed and tuned, so they conform to the system requirements put forth in the problem statement see table \ref{tab:performance_specifications}.
 
 \subsubsection{Tuning of Top-Frame}
 \label{sec:top_frame_tuning}
 The top frame is nonlinear, as can be seen in equation \eqref{eq:new_mech_equation_with_corners}, which includes a sine term.
 
-To design a controller, for the topframe, the system is linearized in four points. It is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{fig:jour_step_bot}
+To design a controller, for the topframe, the system is linearized in four points. This is done because the actual system step response looks more like a sawtooth pattern, than an actual sine pattern. See graph \ref{fig:jour_step_bot}
 
 In this way, it is possible to have linear behavior for the system in general.
 Because $-90^o$ and  $+90^o$ are the has the same behavior in this system, only 3 linearizations are made.
 
-\subsubsection{Linearize in $0^o$}
+\paragraph{Linearize in $0^o$}
 \label{sec:linearize}
 The system is linearized in $0^o$. Which gives the following A, B and C matrices.
 
@@ -62,7 +62,7 @@ The system is linearized in $0^o$. Which gives the following A, B and C matrices
 \end{figure}
 
 Based on the root-locus, the system can be regulated and be stable only using a p-gain.
-But this will result in a steady-state error. therefore a PI-controller is tuned.
+However this will result in a steady-state error. For this reason a PI-controller is tuned.
 A PI-controller is given by transfer function \eqref{equ:transfPI}
 
 \begin{align}
@@ -87,7 +87,7 @@ With a $T_i = \frac{1}{0.035}$ the root locus in figure \ref{fig:rlocus_int} is 
 \label{fig:rlocus_int}
 \end{figure}
 
-With a gain $Kp = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, would approach the zero. Which should make this system mimic a first order system. The system controlled by a controller with gains $T_i = \frac{1}{0.035}$ and $Kp = 3.1$ returns a system with the step response in figure \ref{fig:step_0_first}
+With a gain $Kp = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, would approach the zero. Which should make this system mimic a first order system. \todo{The system behavior with a controller with the following gains, $T_i = \frac{1}{0.035}$ and $Kp = 3.1$   yields a stepresponse seen in figure \ref{fig:step_0_first} }The system controlled by a controller with gains $T_i = \frac{1}{0.035}$ and $Kp = 3.1$ returns a system with the step response in figure \ref{fig:step_0_first}
 
 \begin{figure}[H]
 \centering
@@ -100,21 +100,21 @@ With a gain $Kp = 3.1$ a dominant pole is placed at $-5$. And the pole in 0, wou
 \begin{table}[h]
 	 \centering
 	 \begin{tabular}{ll}
-		 Overshoot & 0\%\\
-		 Risetime & 0.4798s\\
-		 Settling time & 2.1619s
+		\textbf{Overshoot} & 0\%\\
+		 \textbf{Risetime} & 0.4798s\\
+		 \textbf{Settling Time} & 2.1619s
 	 \end{tabular}
 	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_first}.}
 	 \label{tab:performance_0_1}
 \end{table}
 
-In figure \ref{fig:step_0_first} it can be seen that the risetime is faster than the expected 1 second. And the reference is not reached. Therefore the $Kp$ and $T_i$ are tuned to better match the requirements. $Kp = 1.6$ and $T_i=0.2$ is found to give the closest to expected response. The step response can be seen in figure \ref{fig:step_0_second}.
+In figure \ref{fig:step_0_first} it can be seen that the risetime is faster than the expected 1 second.\todo{It is also noticed that the reference is not achieved when the setlingtime is reached. Because of this the ....} And the reference is not reached. Therefore the $Kp$ and $T_i$ are tuned to better match the requirements. $Kp = 1.6$ and $T_i=0.2$ is found to give the closest to expected response. The step response can be seen in figure \ref{fig:step_0_second}.
 
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second.pdf_tex}
-\caption{Step response of system with the tuned PI-regulator. The vertical dotted line is 1 second.}
+\caption{Step response and bode plot of system with the tuned PI-regulator.}
 \label{fig:step_0_second}
 \end{figure}
 
@@ -122,11 +122,13 @@ In figure \ref{fig:step_0_first} it can be seen that the risetime is faster than
 \begin{table}[h]
 	 \centering
 	 \begin{tabular}{ll}
-		 Overshoot & 1.7522\%\\
-		 Risetime  & 0.8318s\\
-		 Settling time & 1.3199s
+		 \textbf{Overshoot} & 1.7522\%\\
+		 \textbf{Risetime}  & 0.8318s\\
+		 \textbf{Settling Time} & 1.3199s\\
+		 \textbf{Gain Margin} & 74.4dB\\
+		 \textbf{Phase Margin} & 86.7$^o$
 	 \end{tabular}
-	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second}.}
+	 \caption{Performance and stabillity characteristics of PI-controlled system in figure \ref{fig:step_0_second}.}
 	 \label{tab:performance_0_2}
 \end{table}
 
@@ -134,7 +136,7 @@ In figure \ref{fig:step_0_first} it can be seen that the risetime is faster than
 
 The regulated system has a slight overshoot, but has a risetime of 1 second as per the system requirements. The overshoot is the lowest possible, if the reference is to be reached. Furthermore the system takes 100 seconds to reach its final value.
 
-\subsubsection{Linearize in $90^o$ and $180^o$}
+\paragraph{Linearize in $90^o$ and $180^o$}
 In this section the linearized system is tuned in the same manner as is in section \ref{sec:linearize}. But not all steps are shown, as the approach is the same. Here the tuned values and the final step responses will be shown and commented.
 
 Linearizations in $90^o$ gives A, B and C matrices shown in equation \ref{eq:90_linearized}.
@@ -178,7 +180,7 @@ It is tuned to $Kp = 1.39$ and $Ti = \frac{1}{0.006}$
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_90.pdf_tex}
-\caption{Step responce of system with the tuned PI-regulator.}
+\caption{Step response and stabillity  of system with the tuned PI-regulator.}
 \label{fig:step_0_second_90}
 \end{figure}
 
@@ -186,11 +188,13 @@ It is tuned to $Kp = 1.39$ and $Ti = \frac{1}{0.006}$
 \begin{table}[h]
 	 \centering
 	 \begin{tabular}{ll}
-		 Overshoot & 2.5603\%\\
-		 Risetime  & 0.9890s\\
-		 Settling time & 8.1063s
+		 \textbf{Overshoot} & 2.5603\%\\
+		 \textbf{Risetime}  & 0.9890s\\
+		 \textbf{Settling Time} & 8.1063s\\
+		 \textbf{Gain Margin} & 75.6dB\\
+		 \textbf{Phase Margin} & 86.8$^o$
 	 \end{tabular}
-	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second_90}.}
+	 \caption{Performance characteristics and stabillity margins of PI-controlled system in figure \ref{fig:step_0_second_90}.}
 	 \label{tab:performance_0_3}a
 \end{table}
 
@@ -237,22 +241,25 @@ It is tuned to $Kp = 1.3$ and $Ti = \frac{1}{0.2}$
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_second_180.pdf_tex}
-\caption{Step response of system with the tuned PI-regulator.}
+\caption{Step response and bodeplot of system with the tuned PI-regulator.}
 \label{fig:step_0_second_180}
 \end{figure}
 
 \begin{table}[h]
 	 \centering
 	 \begin{tabular}{ll}
-		 Overshoot & 13.5409\%\\
-		 Risetime  & 0.8075s\\
-		 Settling time & 10.8682s
+		 \textbf{Overshoot} & 13.5409\%\\
+		 \textbf{Overshoot} & 0.8075s\\
+		 \textbf{Settling Time} & 10.8682s\\
+		 \textbf{Positive Gain Margin} & 76.2dB\\
+		 \textbf{Negative Gain Margin} & -22.9dB\\
+		 \textbf{Phase Margin} & 78.5$^o$
 	 \end{tabular}
-	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second_180}.}
+	 \caption{Performance characteristics and stabilliy margins of PI-controlled system in figure \ref{fig:step_0_second_180}.}
 	 \label{tab:performance_0_4}
 \end{table}
 
-The system responses are not exactly alike, and especially the system when linearized in $180^o$ does not look like the other stepresponeses. In figure \ref{fig:comp}, all three responses are shown in the same plot, for comparison. Furthermore none of the tuned controllers reach all of the requirements, but reaches the best compromise, for the system.
+The system responses are not exactly alike, and especially the system when linearized in $180^o$ does not look like the other stepresponeses. Also the system is less stable, as it has a smaller gain margin, than the other linearizations. In figure \ref{fig:comp}, all three responses are shown in the same plot, for comparison. Furthermore none of the tuned controllers reach all of the requirements, but reaches the best compromise, for the system.
 
 \begin{figure}[H]
 \centering
@@ -264,6 +271,7 @@ The system responses are not exactly alike, and especially the system when linea
 
 \subsubsection{Tuning of bottom frame}
 
+\todo{The bottom frame's moment of inertia is directly influenced by the postion of the top frame. For this reason the bottom frame is non-linear. However the influence has been approximated to be 1/7 of the static momemt of inertia for the bottom frame. Therefore the bottomframe is considered linear. }
 While the top frame of the pan-tilt system is nonlinear, the bottom frame is not. Therefore it is not necessary to linearize it. As the top frame can move, it influences the moment of inertia of the bottom frame as a function of the top frames angle in relation to the bottom frame, as described in section \ref{sec:moment_botom}.
 In the following subsection the bottom frame controller is tuned for when the topframe is at $90^\circ$ and at $0^\circ$.
 
@@ -312,23 +320,23 @@ The state space model of the bottom frame, when the topframe is at $0^o$, is fou
 \label{fig:rlocus_pure_bot}
 \end{figure}
 
-In figure \ref{fig:rlocus_pure_bot} a root locus of the openloop system is seen. As in section \ref{sec:top_frame_tuning} the system can be controlled only by a p gain. But it will likely result in a steady state error. Therefore the system is tuned with a PI-controller. In figure \ref{fig:rlocus_int_bot} the root locus of the system with an I-controller with gain $T_i = \frac{1}{0.035}$ is shown.
+In figure \ref{fig:rlocus_pure_bot} a root locus of the openloop system is seen. As in section \ref{sec:top_frame_tuning} the system can be controlled only by a p gain. But it will likely result in a steady state error. Therefore the system is tuned with a PI-controller. In figure \ref{fig:rlocus_int_bot} the root locus of the system with an PI-controller with gain $T_i = \frac{1}{0.035}$ and $K_p= 1$ is shown.
 
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_int_bot.pdf_tex}
-\caption{Root locus of openloop plant without regulator.}
+\caption{Root locus of openloop plant with PI-controller}
 \label{fig:rlocus_int_bot}
 \end{figure}
 
-A gain of 9 will draw one of the poles from $0$ to the zero, and place a pole in $-5$, which will dominate the system. This is needed for the system to comply with the requirements, as explained in section \ref{sec:top_frame_tuning}.
+A $K_p = 9$ will draw one of the poles from $0$ to the zero, and place a pole in $-5$, which will dominate the system. This is needed for the system to comply with the requirements, as explained in section \ref{sec:top_frame_tuning}.
 
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{step_0_first_bot.pdf_tex}
-\caption{Step response of PI controller on system.}
+\caption{Step response and bode plot of PI controller on system.}
 \label{fig:step_0_first_bot}
 \end{figure}
 
@@ -336,11 +344,11 @@ A gain of 9 will draw one of the poles from $0$ to the zero, and place a pole in
 \begin{table}[h]
 	 \centering
 	 \begin{tabular}{ll}
-		 Overshoot & 0.6323\%\\
-		 Risetime  & 0.4143s\\
-		 Settling time & 0.7133s
+		 \textbf{Overshoot} & 0.6323\%\\
+		 \textbf{Risetime}  & 0.4143s\\
+		  \textbf{Settling time}& 0.7133s
 	 \end{tabular}
-	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_first_bot}.}
+	 \caption{Performance characteristics ang stabillity margins of PI-controlled system in figure \ref{fig:step_0_first_bot}.}
 	 \label{tab:performance_0_5}
 \end{table}
 
@@ -361,9 +369,11 @@ As in section \ref{sec:top_frame_tuning}, the response is not as expected, becau
 \begin{table}[h]
 	 \centering
 	 \begin{tabular}{ll}
-		 Overshoot & 1.5803\%\\
-		 Risetime  & 1.0226s\\
-		 Settling time & 1.6587s
+		 \textbf{Overshoot} & 1.5803\%\\
+		 \textbf{Risetime}  & 1.0226s\\
+		 \textbf{Settling Time} & 1.6587s\\
+	         \textbf{Gain Margin} & infinite\\
+		 \textbf{Phase Margin} & 87.4\\
 	 \end{tabular}
 	 \caption{Performance characteristics of PI-controlled system in figure \ref{fig:step_0_second_bot}.}
 	 \label{tab:performance_0_6}

@@ -1,24 +1,29 @@
 \documentclass[../../main]{subfiles}
 \begin{document}
-The control engineering: \\
 
-FreeRTOS:\\
-A real operating system, FreeRTOS, has been implemented on the Tiva. FreeRTOS has been chosen as it can emulate tasks running in parallel on the micrcontroller. \\
-The controller is implemented on the Tiva as a task with the highest possible priority to make sure it has the best timing possible for the system.
-\\
+In this section its concluded to which extend the problems in the problemstatement is solved.
 
-Encoder:\\
-The controller needs a position in order to calculate the PWM values for the pan-tilt system. For this purpose quadrature encoders, mounted on the motors, are used.
-A quadrature decoder program has been designed and written for the FPGA to decode the encoders' signals into a position.
-It can determine the position with a $\frac{1}{3}$ degrees precision and direction, in which the system is rotating. A velocity has been implmented, which uses the position to calculate the velocity.
-\\
+\paragraph{The control engineering}
+A mathematical model of the pan-tilt system has been made.
+A nonlinaerity is here observed for the top and bottom frame. The top frame nonlinaerity i solved by linearization with the Jacobian matrix in angles $0^\circ$, $90^\circ$ and $180^\circ$. Its here determined that the bottom frame is dependent on teh topframe and therefore the same linearizations are utilized. The moments of inertia for these are determined independently.
 
-PWM:\\
-The PWM signal's frequency has been calculated to be $1003$Hz, as this allows the motor to draw full current and utilize all available torque. \\
+Based on this model a PI-controller with $K_p$ and $T_i$ gains have been tuned to comply with specifications as best as possible. This controller is implemented on the Tiva.
+Step responses of the actual system have been logged and compared with the expected step responses from the mathematical model.
 
-SPI:
-The SPI protocol is a shift register protocol with a register size varying from 8 bits to a maximum of 16 bits. The protocol follows the master/slave princple, with the Tiva as the master and FPGA as slave. This protocol has been implemented on the FPGA by using a module created by x. 
+The step responses based on the mathematical model have no overshoot compared with the actual system.
 
+Based on the results it is concluded that the mathematical model is not accurate enough to apply directly, and that a PID-controller including a D-term will improve the response of the system by limiting overshoot.\\
+To implement the controller as a difference equation tustin's method is applied.
+
+\paragraph{Digital System Design}
+On the FPGA decoders are implemented to decode the position from the quadrature encoders on the pan-tilt system. Based on the position decoded, the FPGA sends the, Tiva decided, PWM signal to the motors, and thus the position. This is done with a implemented PWM module.\\
+The FPGA can determine the position with a $\frac{1}{3}$ degrees precision and direction, in which the system is rotating. A velocity has been implmented, which can be calculated from the position.\\
+The PWM signal's frequency has been calculated to be $1003 \si{\,Hz}$, as this allows the motor to draw full current and utilize all available torque. \\
+The SPI protocol is a shift register protocol with a register size varying from 8 bits to a maximum of 16 bits. The protocol follows the master/slave princple, with the Tiva as the master and FPGA as slave. This protocol has been implemented on the FPGA by using a SPI module.
+
+\paragraph{Embedded Programming}
+A real operating system, FreeRTOS, has been implemented on the Tiva. FreeRTOS has been chosen as it can emulate tasks running in parallel. \\
+The controller is implemented on the Tiva as a task with the highest possible priority to make sure it has the most accurate timing possible for the system.
 
 \begin{itemize}
   \item PI controller choice

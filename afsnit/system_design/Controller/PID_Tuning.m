@@ -103,7 +103,7 @@ opt = stepDataOptions('StepAmplitude',3*90);
   line([1 1],[0 300], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
   yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
-  set(rlocus_int,'Position',[10 10 600 300]) % Must closely match the final size needed
+  set(step_0_first,'Position',[10 10 600 300]) % Must closely match the final size needed
   Plot2LaTeX(step_0_first,'img/PI/step_0_first')
   
   
@@ -122,12 +122,16 @@ opt = stepDataOptions('StepAmplitude',3*90);
 %step(sys_cl_0,opt)
 
  step_0_second = figure('Name','float_me'); % Allows I3 to float the window
+  subplot(1,2,1)
   step(sys_cl_1,opt)
   xlim([0 4])
   line([0 100],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
   line([1 1],[0 300], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
   yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
+  subplot(1,2,2)
+  margin(Hs*Gs)
+  title('Bode Diagram')
   set(step_0_second,'Position',[10 10 600 300]) % Must closely match the final size needed
   Plot2LaTeX(step_0_second,'img/PI/step_0_second')
 
@@ -165,11 +169,15 @@ opt = stepDataOptions('StepAmplitude',3*90);
 %step(sys_cl_0,opt)
 
  step_0_second_90 = figure('Name','float_me'); % Allows I3 to float the window
+ subplot(1,2,1)
   step(sys_cl_2,opt)
   line([0 10],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
   line([1 1],[0 300], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
   yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
+ subplot(1,2,2)
+  margin(Hs*Gs)
+  title('Bode Diagram')
   set(step_0_second_90,'Position',[10 10 600 300]) % Must closely match the final size needed
   Plot2LaTeX(step_0_second_90,'img/PI/step_0_second_90')
   
@@ -206,12 +214,16 @@ opt = stepDataOptions('StepAmplitude',3*90);
 %step(sys_cl_0,opt)
 
  step_0_second_180 = figure('Name','float_me'); % Allows I3 to float the window
+ subplot(1,2,1)
   step(sys_cl_3,opt)
   xlim([0 10])
   line([0 10],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
   line([1 1],[0 360], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
   yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
+ subplot(1,2,2)
+  margin(Hs*Gs)
+  title('Bode Diagram')
   set(step_0_second_180,'Position',[10 10 600 300]) % Must closely match the final size needed
   Plot2LaTeX(step_0_second_180,'img/PI/step_0_second_180')
   
@@ -349,11 +361,15 @@ opt = stepDataOptions('StepAmplitude',3*90);
 %step(sys_cl_0,opt)
 
  step_0_second_bot = figure('Name','float_me'); % Allows I3 to float the window
+  subplot(1,2,1)
   step(sys_cl_1,opt)
   line([0 10],[0.9*270 0.9*270], 'Color','black','LineStyle','--')
   line([1 1],[0 300], 'Color','black','LineStyle','--')
   yticks([0 (0.3*270) (0.6*270) (0.9*270) 270])
   yticklabels({'0','$30\%$', '$60\%$', '$90\%$', '$100\%$'})
+  subplot(1,2,2)
+  margin(Hs*Gs)
+  title('Bode Diagram')
   set(step_0_second_bot,'Position',[10 10 600 300]) % Must closely match the final size needed
   Plot2LaTeX(step_0_second_bot,'img/PI/step_0_second_bot')
 
@@ -453,7 +469,7 @@ opt = stepDataOptions('StepAmplitude',3*90);
 %Step response Second
 
 %Regulator
-kp = 3.5;
+kp = 3.7;
 Ti = 1/0.035;
 Td = 0;
 ki = kp*1/Ti;

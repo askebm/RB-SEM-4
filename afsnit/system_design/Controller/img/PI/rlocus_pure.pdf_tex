@@ -50,30 +50,30 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.50352358)%
+  \begin{picture}(1,0.50367667)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{rlocus_pure.pdf}}%
-    \put(0.15,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-400\end{tabular}}}}%
-    \put(0.24320983,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-350\end{tabular}}}}%
-    \put(0.33641983,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-300\end{tabular}}}}%
-    \put(0.42962967,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-250\end{tabular}}}}%
-    \put(0.5228395,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-200\end{tabular}}}}%
-    \put(0.61604933,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-150\end{tabular}}}}%
-    \put(0.70925917,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-100\end{tabular}}}}%
-    \put(0.80246917,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-50\end{tabular}}}}%
-    \put(0.895679,0.03220874){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
+    \put(0.15,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-400\end{tabular}}}}%
+    \put(0.24320983,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-350\end{tabular}}}}%
+    \put(0.33641983,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-300\end{tabular}}}}%
+    \put(0.42962967,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-250\end{tabular}}}}%
+    \put(0.5228395,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-200\end{tabular}}}}%
+    \put(0.61604933,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-150\end{tabular}}}}%
+    \put(0.70925917,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-100\end{tabular}}}}%
+    \put(0.80246917,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}-50\end{tabular}}}}%
+    \put(0.895679,0.03226917){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}0\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{rlocus_pure.pdf}}%
-    \put(0.1410185,0.05252358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-15\end{tabular}}}}%
-    \put(0.1410185,0.11502358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-10\end{tabular}}}}%
-    \put(0.1410185,0.17752358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-5\end{tabular}}}}%
-    \put(0.1410185,0.24002358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
-    \put(0.1410185,0.30252358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}5\end{tabular}}}}%
-    \put(0.1410185,0.36502358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}10\end{tabular}}}}%
-    \put(0.1410185,0.42752358){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}15\end{tabular}}}}%
+    \put(0.14092583,0.05267667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-15\end{tabular}}}}%
+    \put(0.14092583,0.11517667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-10\end{tabular}}}}%
+    \put(0.14092583,0.17767667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}-5\end{tabular}}}}%
+    \put(0.14092583,0.24017667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}0\end{tabular}}}}%
+    \put(0.14092583,0.30267667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}5\end{tabular}}}}%
+    \put(0.14092583,0.36517667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}10\end{tabular}}}}%
+    \put(0.14092583,0.42767667){\makebox(0,0)[rt]{\lineheight{1.25}\smash{\begin{tabular}[t]{r}15\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{rlocus_pure.pdf}}%
-    \put(0.52583333,0.44969024){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Root Locus}\end{tabular}}}}%
-    \put(0.52583333,0.00363008){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Re$(s)$\end{tabular}}}}%
-    \put(0.09228233,0.24394024){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Im$(s)$\end{tabular}}}}}%
+    \put(0.52583333,0.44984334){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}\textbf{Root Locus}\end{tabular}}}}%
+    \put(0.52583333,0.00366751){\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Re$(s)$\end{tabular}}}}%
+    \put(0.09045367,0.24409334){\rotatebox{90}{\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}Im$(s)$\end{tabular}}}}}%
   \end{picture}%
 \endgroup%
