@@ -51,14 +51,14 @@ This is done by placing a latch on the output from the protocol module, which is
 \subsubsection{Quadrature decoder}
 \label{subsubsec:Qdecoder_implement}
 Since there are two motors on the system and therefore two encoders, two instances of the quadrature decoder module has been implemented.
-Each of these modules has a 12 bit position vector as thier output and takes the A and B encoder signals directly from the encoder. The modules uses the 100Mhz system clock directly and takes a reset which is active low as input.
+Each of these modules has a 12 bit position vector as their output and takes the A and B encoder signals directly from the encoder. The modules uses the 100MHz system clock directly and takes a reset which is active low as input.
 The reset for the encoders are inverted before they are handed to the modules, so when a high reset is sent by the Tiva, a low reset signal is given to the decoder.
 
 
-\subsubsection{Speed measurement}
-Thee two modules are used to calculate the speed of which the system is rotating. For this calculation it uses the 12 bit output vector from the quadrature decoder module.
-There is two speed measurement modules implemented, one for each motor.
-This is done to make it possible to regulate both the position and speed for future developmenting of the system.
+\subsubsection{Velocity measurement}
+Thee two modules are used to calculate the velocity of which the system is rotating. For this calculation it uses the 12 bit output vector from the quadrature decoder module.
+There is two velocity measurement modules implemented, one for each motor.
+This is done to make it possible to regulate both the position and velocity for future development of the system.
 
 \subsubsection{FPGA Summary}
 All of the above mentioned modules have been developed and implemented on the Artix7 FPGA.
