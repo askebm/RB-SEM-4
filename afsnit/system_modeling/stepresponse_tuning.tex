@@ -2,7 +2,7 @@
 \begin{document}
 
 To tune the theoretical model the electromotive force, the motor torque and friction is adjusted, for both the top frame and the bottom frame, to fit the openloop step response of the physical system.
-The system is tuned using the simulink models seen in figure \ref{fig:simulink_top} and in figure
+The system is tuned using the simulink models seen in figure \ref{fig:simulink_top} and figure
 \ref{fig:simulink_bot}.
 
 
@@ -69,6 +69,6 @@ The adjusted motor constants can be viewed in table \ref{tab:fitted_motor_consta
 \end{figure}
 It was not possible to tune the simulated model to fit the real data,
 which indicates that there are some parameters not accounted for in the model.
-It was not possible to match both the theoretical velocity and current to their practical counterparts at the same time. Since only position, and therefore velocity, is observable, it is prioritized to match the practical and theoretical velocity.
+It was not possible to match both the theoretical velocity and current to their practical counterparts at the same time. Since only position, \todo{ lyder mærkeligt. } and therefore velocity, is observable, it is prioritized to match the practical and theoretical velocity.
 As the modeled system is not a perfect match, the requirement for the gain margin of the controller, to allow for disturbances, increase.
 \end{document}
