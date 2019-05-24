@@ -41,18 +41,18 @@ The scheduler is run by a timer interrupt every 5ms and during this the current 
 The multiple task architecture, where each task deals only in their own specific area of the system, requires a way to efficiently communicate between tasks running on the system.    
 This is accomplished using a combination of state buffers and queues.
 
-State buffers are simple buffers keeping the last value written to it until a new value is overwrites this regardless of how many reads has been performed in that time. The implementation of this concept is done through variables of the appropriate task being declared in global scope and therefore available to every function in the system.
+State buffers are simple buffers keeping the last value written to it until a new value overwrites it, regardless of how many reads has been performed in that time. The implementation of this concept is done through variables of the appropriate task being declared in global scope and therefore available to every function in the system.
 
 All queues in the system are FIFO\footnote{First-In-First-Out} queues which allows easy exchange of data between different parts of the system, while maintaining loose coupling between components. This loose coupling allows more parallel development and a more robust end product.
 
 To maintain data integrity all shared-write resources are protected with semaphores allowing a task to obtain exclusive access to a resource and be able to update it without risk of data corruption caused by interrupted write access.
-These semaphores are done via the implementation that ships with FreeRTOS and allows both binary and counting semaphores, although only the binary implementation is utilized.
+These semaphores are done trough the implementation that ships with FreeRTOS and allows both binary and counting semaphores, although only the binary implementation is utilized.
 
 
 
 \subsubsection{Tasks}
 
-The entire system has been created as a task diagram in figure \ref{fig:entire_task_diagram}.
+The entire system has been created as the task diagram in figure \ref{fig:entire_task_diagram}.
 
 There is a number of task that exists only to provide services to other tasks, those tasks are designated system tasks.
 
@@ -61,11 +61,11 @@ Each task is designated a priority\footnote{by the designer} based on the demand
 
 \paragraph{Status LED task}
 
-This task only exist to toggle an LED on the board to verify that the OS is running and has not encountered some problem that could not be resolved automatically. Therefore the task has been assigned a low priority and will be processed with spare capacity.
+This task only exist to toggle an LED on the board to verify that the OS is running. Therefore the task has been assigned a low priority and will be processed with spare capacity.
 
 \paragraph{UART Tasks}%
 
-This group consists of the Transmit and Receive task, whom have been created completely independently. The TX task accepts data through a queue and sends that out the system by UART. The RX task is the inverse of this. These tasks are part of what makes the system work and therefore run with normal priority.
+This group consists of the Transmit and Receive task, have been created completely independently. The TX task accepts data through a queue and sends that out the system by UART. The RX task is the inverse of this. These tasks are part of what makes the system work and therefore run with normal priority.
 
 \paragraph{LCD Task}
 

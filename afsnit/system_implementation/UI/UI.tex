@@ -1,18 +1,18 @@
 \documentclass[../../../main]{subfiles}
 \begin{document}
-To be able to set a reference position for the system, and to see where the system currently is, a user interface needs to be implemented.\\
+To be able to set a reference position for the system, and to see where the system currently is at, a user interface needs to be implemented.\\
 There are multiple ways in which a user interface can be implemented.
 Two of which will be discussed in this section, a command-line interface and a hardware interface.
 
 \subsubsection{Command-line Interface}%
 \label{ssub:command-line_interface}
 A command-line interface is practical for tuning the system, since it allows for data to be sent to a computer and analyzed.
-However It is not suitable as a user friendly way to interact with the system on its own.
+However it is not suitable as a user friendly way to interact with the system on its own.
 \\
-Since logging data is essential for tuning of the system, a command-line interface has been implemented to achieve a test for the regulator gains.
+Since logging data is essential for tuning of the system, a command-line interface has been implemented to achieve a test for the controller gains.
 The command-line interface is also used for debugging purpose.
 \\
-Implementation of the command-line interface is realized by utilizing the USB port on the Tiva to communicate with a computer via a UART interface.
+Implementation of the command-line interface is realized by utilizing the USB port on the Tiva to communicate with a computer through a UART interface.
 
 \subsubsection{Hardware Interface}%
 \label{ssub:hardware_interface}
