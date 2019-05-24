@@ -320,17 +320,17 @@ The state space model of the bottom frame, when the topframe is at $0^o$, is fou
 \label{fig:rlocus_pure_bot}
 \end{figure}
 
-In figure \ref{fig:rlocus_pure_bot} a root locus of the openloop system is seen. As in section \ref{sec:top_frame_tuning} the system can be controlled only by a p gain. But it will likely result in a steady state error. Therefore the system is tuned with a PI-controller. In figure \ref{fig:rlocus_int_bot} the root locus of the system with an I-controller with gain $T_i = \frac{1}{0.035}$ is shown.
+In figure \ref{fig:rlocus_pure_bot} a root locus of the openloop system is seen. As in section \ref{sec:top_frame_tuning} the system can be controlled only by a p gain. But it will likely result in a steady state error. Therefore the system is tuned with a PI-controller. In figure \ref{fig:rlocus_int_bot} the root locus of the system with an PI-controller with gain $T_i = \frac{1}{0.035}$ and $K_p= 1$ is shown.
 
 \begin{figure}[H]
 \centering
 \def\svgwidth{\textwidth}
 \import{\main/afsnit/system_design/Controller/img/PI/}{rlocus_int_bot.pdf_tex}
-\caption{Root locus of openloop plant without regulator.}
+\caption{Root locus of openloop plant with PI-controller}
 \label{fig:rlocus_int_bot}
 \end{figure}
 
-A gain of 9 will draw one of the poles from $0$ to the zero, and place a pole in $-5$, which will dominate the system. This is needed for the system to comply with the requirements, as explained in section \ref{sec:top_frame_tuning}.
+A $K_p = 9$ will draw one of the poles from $0$ to the zero, and place a pole in $-5$, which will dominate the system. This is needed for the system to comply with the requirements, as explained in section \ref{sec:top_frame_tuning}.
 
 \begin{figure}[H]
 \centering
