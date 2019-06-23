@@ -1,0 +1,39 @@
+
+\documentclass[a4paper,11pt]{article}
+\usepackage[headheight=14pt, top=0.5cm, bottom=0.5cm, left=.5cm, right=.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{transparent}
+\usepackage{xifthen}
+\usepackage{import}
+\usepackage[final]{pdfpages}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+\setboolean{@twoside}{false}
+\pdfminorversion=7
+\setlength\parindent{0pt}
+
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\begin{document}
+\title{Corrections}
+\date{}
+\maketitle
+\vspace{-2cm}
+
+\begin{itemize}
+    \item Page 8 \& 11: "g" is used on both pages to refer to gravitational acceleration and a part of the system.    
+    \item Page 26: Footnote 3 should be "Electromotive force" 
+    \item Page 27: Eq. 4.15: Missing negative sign in exponent.
+    \item Page 39: "PID" header before section 5.3 should be "PI"
+    \item Page 39: LCD, Matrix keyboard and Status LED task runs with normal priority not low as written. 
+\end{itemize}
+
+
+
+
+\end{document}
